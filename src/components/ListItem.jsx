@@ -11,12 +11,12 @@ function ListItem({item}) {
         <img src="." alt="listing" loading="lazy"></img>
       </div>
       <section className="listing__section">
-        <header>
+        <header className='listing__section-header'>
           <div>
             <h2>{item.offerTitle}</h2>
             <h3>{item.titleKategoria}</h3>
           </div>
-          <div>
+          <div className='listing__section-price'>
             <p>{item.priceInfo}</p>
             <p>
               {item.areaPriceInfo} m<sup>2</sup>
@@ -24,7 +24,7 @@ function ListItem({item}) {
           </div>
         </header>
         <div>
-          <ul>
+          <ul className='listing__list-info'>
             <li>{item.numberOfRoomsInfo}pokoje</li>
             <li>{item.usableArea}</li>
             <li>{item.floorInfo}</li>

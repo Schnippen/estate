@@ -1,9 +1,16 @@
+/*<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    dupnij margin
+    */
 .nav{
+    position: fixed;
+    width: 100%;
     display:flex;
     justify-content: space-evenly;
     align-items: center;
     padding: 10px 10%;
-    background-color: rgb(162, 151, 151) ;
+    background-color: rgba(99, 118, 141,0.9);
 }
 
 .logo{
@@ -15,52 +22,60 @@
 }
 
 .nav__links li{
+    vertical-align: middle;
     display: inline-block;
     padding: 10px 32px;
     margin: 5px;
     border-radius: 5px;
-    background-color: #1038B7;
+    background-color: #554971;
     transition: all 0.3s ease 0s;
 }
 
 .nav__links li a {
     color:white;
     text-decoration: none;
+    
 }
 
-.nav__links li:hover {
-    background-color:#1240D1;
+.nav__links li:hover{
+    background-color:#36213E;
 }
+
+.nav__links li:hover a{
+color:#DAA520;
+}
+
 
 li{
     padding:0 25px;
 }
 
-.btn__group{
-    background-color: #1038B7;
-    display: inline-flex;
-    align-items: center;
-    border-radius: 5px;
-}
 
 .btn{
     display: inline-flex;
+    vertical-align: middle;
     align-items: center;
     cursor: pointer;
     border:none;
     padding: 10px 32px;
+    border-radius: 5px;
     color:white;
-    background-color: transparent;
+    background-color: #554971;
     transition: all 0.3s ease 0s;
     overflow: hidden;
 }
 
 .btn:hover {
-    background-color:#1240D1;
+    background-color:#36213E;
     border-radius: 5px;
+    color:#DAA520;
 }
 
 .btn:active {
     background-color:#051034;
     border-radius: 5px;
 }
+
+/*#8AC6D0
+#B8F3FF
+*/

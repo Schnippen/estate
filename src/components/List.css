@@ -1,3 +1,16 @@
 .list__container{
+    margin:10px;
+    background-color: aqua;
     display:block;
+}
+
+.pagination{
+    list-style: none;
+}
+
+.pagination__list{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    list-style: none;
 }

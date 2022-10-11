@@ -1,11 +1,12 @@
 import './Navbar.css'
 import { HiDotsHorizontal } from "react-icons/hi";
 
+//<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"></link>
 
 function Navbar() {
   return (
     <div className="nav">
-      <div className="Logo">logo</div>
+      <div className="Logo">Anytown Real Estate</div>
       <ul className="nav__links">
         <li>
           <a href="#">buy</a>
@@ -28,7 +29,7 @@ function Navbar() {
           Sign In
         </button>
         <button type="button" className="btn">
-          <HiDotsHorizontal className='hdh'/>
+          <HiDotsHorizontal className="hdh" />
         </button>
       </div>
     </div>
