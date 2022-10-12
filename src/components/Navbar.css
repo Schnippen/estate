@@ -3,77 +3,79 @@
     font-weight: bold;
     dupnij margin
     */
-.nav{
-    position: fixed;
-    width: 100%;
-    display:flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 10px 10%;
-    background-color: rgba(99, 118, 141,0.9);
+.nav {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 10%;
+  background-color: rgba(99, 118, 141, 1);
 }
 
-.logo{
-    cursor:pointer;
+.logo {
+  cursor: pointer;
 }
 
-.nav__links{
-    list-style: none;
+.nav__links {
+  list-style: none;
 }
 
-.nav__links li{
-    vertical-align: middle;
-    display: inline-block;
-    padding: 10px 32px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color: #554971;
-    transition: all 0.3s ease 0s;
+.nav__links li {
+  vertical-align: middle;
+  display: inline-block;
+  padding: 10px 32px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #554971;
+  transition: all 0.3s ease 0s;
 }
 
 .nav__links li a {
-    color:white;
-    text-decoration: none;
-    
+  color: white;
+  text-decoration: none;
 }
 
-.nav__links li:hover{
-    background-color:#36213E;
+.nav__links li:hover {
+  background-color: #36213e;
 }
 
-.nav__links li:hover a{
-color:#DAA520;
+.nav__links li:hover a {
+  color: #daa520;
 }
 
-
-li{
-    padding:0 25px;
+li {
+  padding: 0 25px;
 }
 
+.btn {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  height: 2.15rem;
+  padding: 10px 32px;
+  color: white;
+  background-color: #554971;
+  transition: all 0.3s ease 0s;
+  overflow: hidden;
+}
 
-.btn{
-    display: inline-flex;
-    vertical-align: middle;
-    align-items: center;
-    cursor: pointer;
-    border:none;
-    padding: 10px 32px;
-    border-radius: 5px;
-    color:white;
-    background-color: #554971;
-    transition: all 0.3s ease 0s;
-    overflow: hidden;
+.btn1 {
+  border-radius: 5px 0px 0px 5px;
+}
+.btn2 {
+  border-radius: 0px 5px 5px 0px;
 }
 
 .btn:hover {
-    background-color:#36213E;
-    border-radius: 5px;
-    color:#DAA520;
+  background-color: #36213e;
+  color: #daa520;
 }
 
 .btn:active {
-    background-color:#051034;
-    border-radius: 5px;
+  background-color: #051034;
 }
 
 /*#8AC6D0

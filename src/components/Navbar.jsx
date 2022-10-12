@@ -25,10 +25,10 @@ function Navbar() {
         </li>
       </ul>
       <div className="btn__group">
-        <button type="button" className="btn">
+        <button type="button" className="btn btn1">
           Sign In
         </button>
-        <button type="button" className="btn">
+        <button type="button" className="btn btn2">
           <HiDotsHorizontal className="hdh" />
         </button>
       </div>

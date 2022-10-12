@@ -1,15 +1,11 @@
-import Navbar from "./components/Navbar";
-import SearchForm from "./components/SearchForm";
 import Main from "./components/Main";
+import Header from "./components/Header";
 
 
 function App(){
     return (
       <>
-        <header>
-        <Navbar/>
-        <SearchForm/>
-        </header>
+        <Header/>
         <Main/>
         <footer>footer</footer>
       </>
