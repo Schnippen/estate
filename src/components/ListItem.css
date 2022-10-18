@@ -48,3 +48,13 @@
     align-items: center;
     list-style: none;
 }
+
+.listing__list-contact{
+    background-color: yellow;
+    display: flex;
+    justify-content:space-around;
+}
+
+.listing__list-contact >button{
+    margin-left: auto;
+}

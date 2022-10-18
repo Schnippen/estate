@@ -1,13 +1,13 @@
-import Main from "./components/Main";
-import Header from "./components/Header";
+import {Route,Routes} from "react-router-dom"
+import LandingPage from "./pages/LandingPage";
 
+
+/* <Route path='/' element={<Home/>}/> */
 
 function App(){
     return (
       <>
-        <Header/>
-        <Main/>
-        <footer>footer</footer>
+        <LandingPage/>
       </>
     );
 }

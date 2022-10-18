@@ -1,6 +1,4 @@
 main{
-    background-color: lightgray;
-    position: relative;
     z-index: -1;
-    top:200px;
+    margin-top:200px;
 }

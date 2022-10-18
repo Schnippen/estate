@@ -1,6 +1,6 @@
 .search__form{
     position: relative;
-    display:flexbox;
+    display:flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
@@ -24,6 +24,7 @@
     border: none;
     border-radius: 5px;
     background-color: #554971;
+    color:#fff;
     transition: all 0.3s ease 0s;
     width:40px;
     height: 40px;
@@ -36,4 +37,8 @@
 .search__form-btn:hover{
     color:#DAA520;
     background-color: #36213e;
+}
+.search__form-btn:active{
+    transform: scale(0.8, 0.8);
+    transition: 0.15s;
 }

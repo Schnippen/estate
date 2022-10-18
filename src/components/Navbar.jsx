@@ -9,19 +9,19 @@ function Navbar() {
       <div className="Logo">Anytown Real Estate</div>
       <ul className="nav__links">
         <li>
-          <a href="#">buy</a>
+          <a href="*">buy</a>
         </li>
         <li>
-          <a href="#">rent</a>
+          <a href="*">rent</a>
         </li>
         <li>
-          <a href="#">kredyty</a>
+          <a href="*">kredyty</a>
         </li>
         <li>
-          <a href="#">overseas</a>
+          <a href="*">overseas</a>
         </li>
         <li>
-          <a href="#">blog</a>
+          <a href="*">blog</a>
         </li>
       </ul>
       <div className="btn__group">

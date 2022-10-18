@@ -1,0 +1,22 @@
+.small-button{
+    border: none;
+    border-radius: 5px;
+    background-color: #554971;
+    color:#fff;
+    transition: all 0.3s ease 0s;
+    width:40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.small-button> svg{
+    vertical-align: middle;
+}
+.small-button:hover{
+    color:#DAA520;
+    background-color: #36213e;
+}
+.small-button:active{
+    transform: scale(0.8, 0.8);
+    transition: 0.15s;
+}

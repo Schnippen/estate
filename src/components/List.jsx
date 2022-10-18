@@ -34,17 +34,14 @@ function List() {
   for (let i = 1; i <= Math.floor(Database.length / itemsPerPage); i++) {
     pages.push(i);
   }
-
-  console.log(pages);
-  console.log("current", currentPage);
-  console.log("pages.length-1", pages.length - 1);
-
+  
   const items = Database.slice(pagesVisited, itemsPerPage + pagesVisited).map(
     (item) => <ListItem item={item} />
   );
 
   return (
     <>
+      <section className="section__main">
       <ul className="list__container">{items}</ul>
       <nav className="pagination">
         <ul className="pagination__list">
@@ -93,14 +90,12 @@ function List() {
             </button>
             <button
               className="pagination__list-btn"
-              disabled={currentPage >= pages.length - 2}
+              disabled={currentPage > pages.length - 2}
               onClick={handleNextPlusOneButton}
             >
-              {currentPage >= pages.length - 2 ? (
-                <span></span>
-              ) : (
-                currentPage + 3
-              )}
+              {currentPage > pages.length - 2
+                ? <span></span>
+                : currentPage + 3}
             </button>
           </li>
           <li>...</li>
@@ -118,6 +113,7 @@ function List() {
           </li>
         </ul>
       </nav>
+      </section>
     </>
   );
 }
