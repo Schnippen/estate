@@ -1,5 +1,6 @@
 import {Route,Routes} from "react-router-dom"
 import LandingPage from "./pages/LandingPage";
+import Item from "./pages/Item";
 
 
 /* <Route path='/' element={<Home/>}/> */
@@ -7,7 +8,7 @@ import LandingPage from "./pages/LandingPage";
 function App(){
     return (
       <>
-        <LandingPage/>
+        <Item/>
       </>
     );
 }

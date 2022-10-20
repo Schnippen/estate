@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Card(props) {
+
   return (
     <li>
       <div className="landing__page-card-section-item">
