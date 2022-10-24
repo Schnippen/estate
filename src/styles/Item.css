@@ -114,10 +114,11 @@ padding-right: 1rem;
   user-select: none;
 }
 
-.item__container-article-main-bigImage-arrowPrev,
+.item__container-article-main-bigImage-arrowPrev > svg,
 .item__container-article-main-bigImage-arrowNext> svg {
   transition: all 0.3s ease 0s;
-  vertical-align: middle;
+  display: block;
+  margin:auto;
   color: white;
 }
 .item__container-article-main-bigImage-arrowPrev:hover,

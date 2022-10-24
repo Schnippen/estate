@@ -8,6 +8,10 @@ function SimpleSelect(props) {
       setState(e.target.value);
     };
 
+        function SimpleOption({ props }) {
+          return <option value={props.value}>{props.name}</option>;
+        }
+
   return (
     <div className="simple-select">
       <label>{props.title}</label>
