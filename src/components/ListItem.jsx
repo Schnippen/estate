@@ -16,12 +16,7 @@ function ListItem({item}) {
       <section className="listing__section">
         <header className="listing__section-header">
           <div>
-            <Link to="/Offers/Item">
               <h2>{item.offerTitle}</h2>
-            </Link>
-            <Routes>
-              <Route path="/Offer/Item" element={<Item />} />
-            </Routes>
             <h3>{item.titleKategoria}</h3>
           </div>
           <div className="listing__section-price">
