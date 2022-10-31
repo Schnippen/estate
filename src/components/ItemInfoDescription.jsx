@@ -1,22 +1,21 @@
-import React from 'react'
+import React from "react";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
 
-function ItemInfoDescription() {
+function ItemInfoDescription({...props}) {
+  
+  const propa = Database[1];
 
-    const propa = Database[1];
+  function TableRow({ name }) {
+    return <th>{name}</th>;
+  }
 
-    function TableRow({name}){
-      return <th>{name}</th>
-    }
+  function TableData({ prop }) {
+    return prop !== "" ? <td>{prop}</td> : null;
+  }
 
-      function TableData({prop}){
-      return (prop!=="")?<td>{prop}</td>:null;}
-    
-
-    function TableBig({prop}){
-      return <table></table>
-    }
-
+  function TableBig({ prop }) {
+    return <table></table>;
+  }
 
   return (
     <div>
@@ -27,8 +26,8 @@ function ItemInfoDescription() {
           <td>{propa.areaInfo}</td>
         </tr>
         <tr>
-          <TableRow name="Ilość okien"/>
-          <TableData prop={propa.windowWoodworkInfo}/>
+          <TableRow name="Ilość okien" />
+          <TableData prop={propa.windowWoodworkInfo} />
         </tr>
       </table>
       <h3>Opis nieruchomości</h3>
@@ -36,11 +35,20 @@ function ItemInfoDescription() {
       <div>
         <p>{propa.descriptionInfo}</p>
       </div>
+      <div>
+        <iframe
+          src={`https://maps.google.com/maps?q=${parseFloat(
+            propa.googleMapsInfo[0].split("").slice(0, -2).join("")
+          )},${parseFloat(
+            propa.googleMapsInfo[1].split("").slice(0, -2).join("")
+          )}&hl=es;&output=embed`}
+        ></iframe>
+      </div>
     </div>
   );
 }
 
-export default ItemInfoDescription
+export default ItemInfoDescription;
 
 let shit = {
   titleKategoria: "Mieszkanie na sprzedaż",

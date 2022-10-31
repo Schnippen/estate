@@ -10,8 +10,8 @@ import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
 
 
 function Item(props) {
-
-  const prop = Database[1]
+  let intiger = 1
+  const prop = Database[intiger]
   console.dir(prop)
 
   return (
@@ -74,7 +74,7 @@ function Item(props) {
             </div>
           </section>
           <section className="item__section-information">
-          <ItemInfoDescription/>
+          <ItemInfoDescription />
           </section>
         </article>
         <article className="item__container-article-side">

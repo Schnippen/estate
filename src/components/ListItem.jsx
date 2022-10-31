@@ -1,4 +1,4 @@
-import './ListItem.css'
+import styles from './ListItem.module.css'
 import { HiHeart } from "react-icons/hi";
 import Button from './Button';
 import { Link, Route, Routes } from "react-router-dom";
@@ -9,17 +9,17 @@ function ListItem({item}) {
 
 
   return (
-    <li className="listing__item" key={item.offerID}>
-      <div className="listing__photos">
+    <li className={styles.listing__item} key={item.offerID}>
+      <div className={styles.listing__photos}>
         <img src="." alt="listing" loading="lazy"></img>
       </div>
-      <section className="listing__section">
-        <header className="listing__section-header">
+      <section className={styles.listing__section}>
+        <header className={styles.listing__section_header}>
           <div>
               <h2>{item.offerTitle}</h2>
             <h3>{item.titleKategoria}</h3>
           </div>
-          <div className="listing__section-price">
+          <div className={styles.listing__section_price}>
             <p>{item.priceInfo}</p>
             <p>
               {item.areaPriceInfo} m<sup>2</sup>
@@ -27,13 +27,13 @@ function ListItem({item}) {
           </div>
         </header>
         <div>
-          <ul className="listing__list-info">
+          <ul className={styles.listing__list_info}>
             <li>{item.numberOfRoomsInfo}pokoje</li>
-            <li>{item.usableArea}</li>
+            <li>{item.areaInfo}</li>
             <li>{item.floorInfo}</li>
           </ul>
         </div>
-        <div className="listing__list-contact">
+        <div className={styles.listing__list_contact}>
           <div>napisz maila</div>
           <Button>
             <HiHeart />

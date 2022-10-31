@@ -3,11 +3,14 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import ListItem from "./ListItem";
 import "./List.css";
 import { useState } from "react";
+import Pagination from "./Pagination";
 
 function List() {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [state, setState] = useState();
+  const [databaseState, setDatabaseState] = useState(Database);
+
+  //prevstate => prevstate xx 
 
   const handlePrevButton = () => {
     setCurrentPage(currentPage - 1);
@@ -40,23 +43,21 @@ function List() {
     setItemsPerPage((itemsPerPage) => parseInt(e.target.value));
   };
 
-  const sortedItems = Database;
-
   /*const sortLowToHigh = Database.sort(
     (firstItem, secondItem) =>
       parseFloat(firstItem.priceInfo.split(" ").slice(0, -1).join("")) -
       parseFloat(secondItem.priceInfo.split(" ").slice(0, -1).join(""))
   );*/
 
-  const handleState = (e) => {
+  const handleDatabaseState = (e) => {
     const sortBy = parseInt(e.target.value);
     if (sortBy === 1) {
       console.log("domyslnie");
-      setState(sortedItems);
+      setDatabaseState([...Database]);
     } else if (sortBy === 2) {
       console.log("cena od najnizszej");
-      setState(
-        sortedItems.sort(
+      setDatabaseState(
+        [...databaseState].sort(
           (firstItem, secondItem) =>
             parseFloat(firstItem.priceInfo.split(" ").slice(0, -1).join("")) -
             parseFloat(secondItem.priceInfo.split(" ").slice(0, -1).join(""))
@@ -64,119 +65,89 @@ function List() {
       );
     } else if (sortBy === 3) {
       console.log("cena od najwyzszej");
-      setState(
-        sortedItems.sort(
+      setDatabaseState(
+        [...databaseState].sort(
           (firstItem, secondItem) =>
             parseFloat(secondItem.priceInfo.split(" ").slice(0, -1).join("")) -
             parseFloat(firstItem.priceInfo.split(" ").slice(0, -1).join(""))
         )
       );
+    } else if (sortBy === 4) {
+      console.log("Najniższej ceny za m²");
+      setDatabaseState(
+        [...databaseState].sort(
+          (firstItem, secondItem) =>
+            parseFloat(
+              firstItem.areaPriceInfo.replace(",", ".").split("zł").slice(0, -1)
+            ) -
+            parseFloat(
+              secondItem.areaPriceInfo
+                .replace(",", ".")
+                .split("zł")
+                .slice(0, -1)
+            )
+        )
+      );
+    } else if (sortBy === 5) {
+      console.log("Najwyższej ceny za m²");
+      setDatabaseState(
+        [...databaseState].sort(
+          (firstItem, secondItem) =>
+            parseFloat(
+              secondItem.areaPriceInfo
+                .replace(",", ".")
+                .split("zł")
+                .slice(0, -1)
+            ) -
+            parseFloat(
+              firstItem.areaPriceInfo.replace(",", ".").split("zł").slice(0, -1)
+            )
+        )
+      );
     }
   };
 
-  const items = sortedItems
+  const items = [...databaseState]
     .slice(pagesVisited, itemsPerPage + pagesVisited)
     .map((item) => <ListItem item={item} />);
 
-  return (
-    <>
-      <section className="section__main">
-        <div>
-          <select onChange={handleState}>
-            <option value={1}>Domyślnie</option>
-            <option value={2}>cena od najniższej</option>
-            <option value={3}>cena od najwyższej</option>
-          </select>
-        </div>
-        <div>
-          Ilość ofert na stronie
-          <select onChange={handleSetItemsPerPage}>
-            <option value={5}>5</option>
-            <option value={1}>1</option>
-            <option value={3}>3</option>
-          </select>
-        </div>
-        <ul className="list__container">{items}</ul>
-        <nav className="pagination">
-          <ul className="pagination__list">
-            <li>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage < pages[0]}
-                onClick={handlePrevButton}
-              >
-                <HiArrowLeft />
-              </button>
-              <button
-                className="pagination__list-btn"
-                onClick={handleFirstButton}
-              >
-                {pages[0]}
-              </button>
-            </li>
-            <li>...</li>
-            <li>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage < pages[1]}
-                onClick={handlePrevMinusOneButton}
-              >
-                {currentPage < pages[1] ? <span> </span> : currentPage - 1}
-              </button>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage < pages[0]}
-                onClick={handlePrevButton}
-              >
-                {currentPage < pages[0] ? <span> </span> : currentPage}
-              </button>
-              <button className="pagination__list-btn">
-                {currentPage + 1}
-              </button>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage >= pages.length - 0}
-                onClick={handleNextButton}
-              >
-                {currentPage >= pages.length - 0 ? (
-                  <span></span>
-                ) : (
-                  currentPage + 2
-                )}
-              </button>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage > pages.length - 2}
-                onClick={handleNextPlusOneButton}
-              >
-                {currentPage > pages.length - 2 ? (
-                  <span></span>
-                ) : (
-                  currentPage + 3
-                )}
-              </button>
-            </li>
-            <li>...</li>
-            <li>
-              <button
-                className="pagination__list-btn"
-                onClick={handleLastButton}
-              >
-                {pages.length + 1}
-              </button>
-              <button
-                className="pagination__list-btn"
-                disabled={currentPage === pages.length}
-                onClick={handleNextButton}
-              >
-                <HiArrowRight />
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </section>
-    </>
-  );
+    let luj = Database.map((n) => n.titleKategoria);
+  console.log(luj.filter(n=>n === "Dom na sprzedaż"))
+    return (
+      <>
+        <section className="section__main">
+          <div>
+            <select onChange={handleDatabaseState}>
+              <option value={1}>Domyślnie</option>
+              <option value={2}>cena od najniższej</option>
+              <option value={3}>cena od najwyższej</option>
+              <option value={4}>Najniższej ceny za m²</option>
+              <option value={5}>Najwyższej ceny za m²</option>
+            </select>
+          </div>
+          <div>
+            Ilość ofert na stronie
+            <select onChange={handleSetItemsPerPage}>
+              <option value={5}>5</option>
+              <option value={1}>1</option>
+              <option value={3}>3</option>
+            </select>
+          </div>
+          <ul className="list__container">{items}</ul>
+          <Pagination
+            pages={pages}
+            currentPage={currentPage}
+            handleFirstButton={handleFirstButton}
+            handleLastButton={handleLastButton}
+            handleNextButton={handleNextButton}
+            handleNextPlusOneButton={handleNextPlusOneButton}
+            handlePrevButton={handlePrevButton}
+            handlePrevMinusOneButton={handlePrevMinusOneButton}
+            handleSetItemsPerPage={handleSetItemsPerPage}
+          />
+        </section>
+      </>
+    );
 }
 
 export default List;
