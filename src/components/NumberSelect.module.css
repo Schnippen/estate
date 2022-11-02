@@ -1,0 +1,40 @@
+.back {
+  background-color: beige;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  background-color: aqua;
+}
+
+.list {
+  list-style: none;
+  display: none;
+}
+
+.containter > ul > li {
+  background-color: azure;
+}
+
+.list_active {
+  list-style: none;
+  display: block;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.list_item {
+  text-decoration: none;
+}
+
+.list_item_active{
+  text-decoration: underline red;
+  font-weight: 700;
+}

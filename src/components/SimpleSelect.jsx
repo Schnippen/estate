@@ -1,18 +1,24 @@
 import {useState} from 'react'
+import styles from './SimpleSelect.module.css'
 
 function SimpleSelect(props) {
 
+    const [isActive, setIsActive] = useState(false);
     const [state, setState] = useState("");
+
+      const handleActive = () => {
+        setIsActive((current) => !current);
+      };
 
     const handleState = (e) => {
       setState(e.target.value);
     };
 
   return (
-    <div className="simple-select">
+    <div className={styles.simple_select}>
       <label>{props.title}</label>
       <div>
-        <select onChange={handleState}>
+        <select className={styles.select_form} onChange={handleState}>
           <option value="1">mieszkania</option>
           <option value="2">domy</option>
           <option value="3">komercyjne</option>
@@ -28,7 +34,16 @@ function SimpleSelect(props) {
 
 export default SimpleSelect
 
-/*<option value="1">mieszkania</option>
+/*
+
+.simple-select{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+<option value="1">mieszkania</option>
           <option value="2">domy</option>
           <option value="3">komercyjne</option>
           <option value="4">działki</option>

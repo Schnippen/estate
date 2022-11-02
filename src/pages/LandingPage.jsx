@@ -1,10 +1,11 @@
 import React from 'react'
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
-import '../styles/LandingPage.css'
+import styles from'../styles/LandingPage.module.css'
 import backgroundImg from "../assets/backgroundPhoto2.jpg";
 import Card from '../components/Card';
 import SimpleSelect from '../components/SimpleSelect';
+import NumberSelect from '../components/NumberSelect';
 
 function LandingPage() {
   let Lorem= 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!'
@@ -12,17 +13,18 @@ function LandingPage() {
   return (
     <>
       <Navbar />
-      <section className="landing__page-section">
-        <div className="landing__page-photo">
-          <img src={backgroundImg} alt="background image" />
+      <section className={styles.landing__page_section}>
+        <div className={styles.landing__page_photo}>
+          <img src={backgroundImg} alt="Violet house" />
         </div>
-        <div className="landing__page-section-searchbar">
+        <div className={styles.landing__page_section_searchbar}>
           <SimpleSelect title="Rodzaj nieruchomości" />
           <SimpleSelect title="Rodzaj Transakcji" />
+          <NumberSelect />
         </div>
       </section>
-      <section className="landing__page-card-section">
-        <ul className="landing__page-card-section-list">
+      <section className={styles.landing__page_card_section}>
+        <ul className={styles.landing__page_card_section_list}>
           <Card
             title="Kup Nieruchomość"
             description={Lorem}

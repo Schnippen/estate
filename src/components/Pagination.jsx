@@ -2,10 +2,26 @@ import React from 'react'
 import styles from './Pagination.module.css'
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 
-function Pagination({currentPage,pages,handleFirstButton,handleLastButton,handleNextButton,handleNextPlusOneButton,handlePrevButton,handlePrevMinusOneButton}) {
+function Pagination({ pages, currentPage, setCurrentPage }) {
+  const handlePrevButton = () => {
+    setCurrentPage(prev => currentPage - 1);
+  };
+  const handleFirstButton = () => {
+    setCurrentPage(prev => pages[0] - 1);
+  };
+  const handlePrevMinusOneButton = () => {
+    setCurrentPage(prev => currentPage - 2);
+  };
+  const handleNextButton = () => {
+    setCurrentPage(prev => currentPage + 1);
+  };
+  const handleNextPlusOneButton = () => {
+    setCurrentPage(prev=> currentPage + 2);
+  };
+  const handleLastButton = () => {
+    setCurrentPage(prev => pages.length - 0);
+  };
 
-// wrzuc funkcje
-  
   return (
     <nav className={styles.pagination}>
       <ul className={styles.pagination__list}>
@@ -17,7 +33,10 @@ function Pagination({currentPage,pages,handleFirstButton,handleLastButton,handle
           >
             <HiArrowLeft />
           </button>
-          <button className={styles.pagination__list_btn} onClick={handleFirstButton}>
+          <button
+            className={styles.pagination__list_btn}
+            onClick={handleFirstButton}
+          >
             {pages[0]}
           </button>
         </li>
@@ -37,7 +56,9 @@ function Pagination({currentPage,pages,handleFirstButton,handleLastButton,handle
           >
             {currentPage < pages[0] ? <span> </span> : currentPage}
           </button>
-          <button className={styles.pagination__list_btn}>{currentPage + 1}</button>
+          <button className={styles.pagination__list_btn}>
+            {currentPage + 1}
+          </button>
           <button
             className={styles.pagination__list_btn}
             disabled={currentPage >= pages.length - 0}
@@ -55,7 +76,10 @@ function Pagination({currentPage,pages,handleFirstButton,handleLastButton,handle
         </li>
         <li>...</li>
         <li>
-          <button className={styles.pagination__list_btn} onClick={handleLastButton}>
+          <button
+            className={styles.pagination__list_btn}
+            onClick={handleLastButton}
+          >
             {pages.length + 1}
           </button>
           <button

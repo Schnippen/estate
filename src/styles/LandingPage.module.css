@@ -1,0 +1,29 @@
+
+.landing__page_photo{
+    width: 100%; 
+}
+
+.landing__page_photo img{
+    width: 100%;
+    height: 800px;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.landing__page_section_searchbar{
+    position: absolute;
+    right: 50%;
+    bottom:50%;
+    background-color: aqua;
+    display:flex;
+}
+
+.landing__page_card_section{
+    margin: 40px 4rem;
+}
+
+.landing__page_card_section_list{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
