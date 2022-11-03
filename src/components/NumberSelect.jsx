@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./NumberSelect.module.css";
 import { useState } from "react";
+import NumberSelectItem from "./NumberSelectItem";
 
-function NumberSelect({}) {
+function NumberSelect() {
   const [isActive, setIsActive] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [selected, setSelected] = useState(0);
@@ -32,7 +33,7 @@ function NumberSelect({}) {
     setSelected(choosed=>choosed);
     console.log(choosed)
   };
-  
+
   return (
     <div className={styles.back}>
       <label>cena gówna</label>
@@ -51,14 +52,15 @@ function NumberSelect({}) {
             onMouseLeave={handleOutOfFocus}
             className={isFocused ? styles.list_item_active : styles.list_item}
             onClick={handleSelect}
-            value={Values[0]}
+            //value={Values[0]}
           >
             Dowolna
           </li>
-          <li onClick={handleSelect} value={Values[1]}>
+          <li onClick={handleSelect} //value={Values[1]}
+          >
             50 000
           </li>
-          <li>100 000</li>
+          <NumberSelectItem handleFocus={handleFocus} setIsFocused={setIsFocused} dupa={handleOutOfFocus} isFocused={isFocused}/>
           <li>150 000</li>
           <li>200 000</li>
           <li>250 000</li>

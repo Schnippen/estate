@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './ItemInfoDescription.module.css';
 import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
 
 function ItemInfoDescription({...props}) {
@@ -18,7 +19,7 @@ function ItemInfoDescription({...props}) {
   }
 
   return (
-    <div>
+    <div className={styles.div}>
       <h2>Informacje szczegółowe</h2>
       <table>
         <tr>
@@ -35,8 +36,9 @@ function ItemInfoDescription({...props}) {
       <div>
         <p>{propa.descriptionInfo}</p>
       </div>
-      <div>
+      <div className={styles.div_maps}>
         <iframe
+          className={styles.maps}
           src={`https://maps.google.com/maps?q=${parseFloat(
             propa.googleMapsInfo[0].split("").slice(0, -2).join("")
           )},${parseFloat(
