@@ -15,16 +15,14 @@ function ItemSideArticle() {
               <img
                 className={styles.profilePicture}
                 src={profilePicture}
-                alt="Profile picture of realtor"
+                alt="Profile of realtor"
               />
               <address>
                 <strong>Paulina Floryańska </strong>
                 <span>LOCO Real Estate</span>
                 <span class="phoneNr">
                   tel.
-                  <span class="phone">
-                    +48 574 78 78 38
-                  </span>
+                  <span class="phone">+48 574 78 78 38</span>
                 </span>
               </address>
             </div>
@@ -56,21 +54,30 @@ function ItemSideArticle() {
                     className={styles.inputText}
                   />
                 </div>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-                <div>
-                  zgadzam się na otrzymywanie
+                <textarea name="" id="" cols="30" rows="10">
+                  Chcę poznać więcej szczegółów na temat oferty lub umówić się
+                  na spotkanie albo wideoprezentację. Proszę o kontakt.
+                </textarea>
+                <div className={styles.form_additionalContact_wrapper}>
+                  <p>Zgadzam się też na otrzymywanie:</p>
                   <div>
-                    <input type="checkbox" />
-                    <label htmlFor="*">zgadzam się</label>
+                    <input type="checkbox" className={styles.checkbox} />
+                    <label htmlFor="*">
+                      propozycji kontaktu w sprawie kredytu
+                    </label>
                   </div>
                   <div>
-                    <input type="checkbox" />
-                    <label htmlFor="*">jasne byczqu</label>
+                    <input type="checkbox" className={styles.checkbox} />
+                    <label htmlFor="*">
+                      informacji o promocjach i usługach
+                    </label>
                   </div>
                   <div>
-                    <input type="submit" />
+                    <input type="submit" className={styles.submit} />
                   </div>
-                  <div>terms of agreement</div>
+                  <div>
+                    <p>terms of agreement</p>
+                  </div>
                 </div>
               </form>
             </div>
@@ -83,7 +90,7 @@ function ItemSideArticle() {
           <label>okres spłaty</label>
           <input type="text" />
           <button>oblicza rate</button>
-          <div>ikonki manku</div>
+          <div>ikonki banku</div>
         </div>
       </section>
     </article>

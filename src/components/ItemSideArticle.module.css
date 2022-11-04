@@ -38,8 +38,8 @@
     width: 4rem;
     height: 4rem;
     object-fit: cover;
-      top:50%;
-  transform: translateY(-50%);
+    top:50%;
+    transform: translateY(-50%);
 }
 
 address{
@@ -87,6 +87,50 @@ padding: 0.5rem 0;
     outline:#daa520;
 }
 
+.form_additionalContact_wrapper{
+    padding: 10px 0;
+}
+
+.form_additionalContact_wrapper>div{
+    padding: 10px 0;
+}
+
+.form_additionalContact_wrapper>div>label{
+    font-size: 16px;
+    color:#fff;
+    padding-left: 10px;
+}
+
+.checkbox{
+    height: 1rem;
+    width: 1rem;
+    appearance: auto;
+    background-color: aqua;
+    vertical-align: middle;
+}
+
+.submit{
+    vertical-align: middle;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 32px;
+    border-radius: 5px;
+    background-color: #8AC6D0;
+    border-style: none;
+    transition: all 0.3s ease 0s;
+    font-weight: bold;
+    color: white;
+}
+
+.submit:hover{
+    background-color: #36213e;
+    color: #daa520;
+}
+
+.form_additionalContact_wrapper p{
+    text-align: center;
+    color:#fff;
+}
 
 .section_div_credit{
     margin: 1rem 0;

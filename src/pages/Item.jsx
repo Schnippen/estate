@@ -3,7 +3,10 @@ import Navbar from '../components/Navbar';
 import styles from '../styles/Item.module.css'
 import { HiHeart } from "react-icons/hi";
 import Button from "../components/Button";
-import interiorImg from "../assets/interior1.jpg";
+import interiorImg1 from "../assets/interior1.jpg";
+import interiorImg2 from "../assets/interior2.jpg";
+import interiorImg3 from "../assets/interior3.jpg";
+import interiorImg4 from "../assets/interior4.jpg";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import ItemInfoDescription from '../components/ItemInfoDescription';
 import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
@@ -66,7 +69,7 @@ function Item(props) {
                 >
                   <HiArrowLeft />
                 </button>
-                <img src={interiorImg}></img>
+                <img src={interiorImg1} alt="Big Thumbnail"></img>
                 <button
                   className={styles.container_article_main_bigImage_arrowNext}
                 >
@@ -79,19 +82,31 @@ function Item(props) {
                 >
                   <HiArrowLeft />
                 </button>
-                <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
+                <ul className={styles.thumbnails}>
+                  <li>
+                    <img src={interiorImg2} alt="thumbnail"></img>
+                  </li>
+                  <li>
+                    <img src={interiorImg3} alt="thumbnail"></img>
+                  </li>
+                  <li>
+                    <img src={interiorImg4} alt="thumbnail"></img>
+                  </li>
+                  <li>
+                    <img src={interiorImg1} alt="thumbnail"></img>
+                  </li>
+                  <li>
+                    <img src={interiorImg3} alt="thumbnail"></img>
+                  </li>
+                  <li>
+                    <img src={interiorImg4} alt="thumbnail"></img>
+                  </li>
+                </ul>
                 <button
                   className={styles.container_article_main_bigImage_arrowNext}
                 >
                   <HiArrowRight />
                 </button>
-                </ul>
               </div>
             </div>
           </section>

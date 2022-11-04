@@ -1,4 +1,12 @@
 
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#root{
+  background-color:#f5f8fb;
+}
+
 .landing__page_photo{
     width: 100%; 
 }
