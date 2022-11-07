@@ -38,3 +38,7 @@
   text-decoration: underline red;
   font-weight: 700;
 }
+
+.list_item:nth-child(3){
+  text-decoration: dashed violet;
+}
