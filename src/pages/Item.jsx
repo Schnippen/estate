@@ -37,7 +37,7 @@ function Item(props) {
                 <div className={styles.container_article_main_categories}>
                   <ul>
                     <li>
-                      cena<em>{prop.priceInfo}</em>
+                      Cena<em>{prop.priceInfo}</em>
                     </li>
                     <li>
                       Cena za m²<em>{prop.areaPriceInfo}</em>

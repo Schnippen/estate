@@ -24,7 +24,17 @@
     bottom:50%;
     background-color: aqua;
     display:flex;
+    height: 4rem;
+    align-items: center;
+    background-color:rgba(99, 118, 141, 1);
+    border-radius: 5px;
 }
+
+.landing__page_section_searchbar>div{
+    background-color: aqua;
+    padding: 0 1rem;
+}
+
 
 .landing__page_card_section{
     margin: 40px 4rem;

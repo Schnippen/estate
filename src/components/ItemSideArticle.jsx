@@ -1,8 +1,9 @@
-import React from 'react'
-import styles from './ItemSideArticle.module.css'
+import React from "react";
+import styles from "./ItemSideArticle.module.css";
 import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
 import profilePicture from "../assets/profile.jpg";
+import ItemSideArticleCredit from "./ItemSideArticleCredit";
 
 function ItemSideArticle() {
   return (
@@ -61,14 +62,22 @@ function ItemSideArticle() {
                 <div className={styles.form_additionalContact_wrapper}>
                   <p>Zgadzam się też na otrzymywanie:</p>
                   <div>
-                    <input type="checkbox" className={styles.checkbox} />
-                    <label htmlFor="*">
+                    <input
+                      type="checkbox"
+                      id="cb1"
+                      className={styles.checkbox}
+                    />
+                    <label htmlFor="cb1">
                       propozycji kontaktu w sprawie kredytu
                     </label>
                   </div>
                   <div>
-                    <input type="checkbox" className={styles.checkbox} />
-                    <label htmlFor="*">
+                    <input
+                      type="checkbox"
+                      id="cb2"
+                      className={styles.checkbox}
+                    />
+                    <label htmlFor="cb2">
                       informacji o promocjach i usługach
                     </label>
                   </div>
@@ -83,18 +92,10 @@ function ItemSideArticle() {
             </div>
           </div>
         </div>
-        <div className={styles.section_div_credit}>
-          <h3>Wybierz najkorzystniej</h3>
-          <label>wartosc nieruchomosic</label>
-          <input type="number" />
-          <label>okres spłaty</label>
-          <input type="text" />
-          <button>oblicza rate</button>
-          <div>ikonki banku</div>
-        </div>
+        <ItemSideArticleCredit/>
       </section>
     </article>
   );
 }
 
-export default ItemSideArticle
+export default ItemSideArticle;

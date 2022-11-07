@@ -143,6 +143,7 @@
   margin: 1rem 0;
   position: relative;
   background-color: rgba(245, 248, 251, 1);
+  border-radius: 5px;
 }
 
 .thumbnails {
