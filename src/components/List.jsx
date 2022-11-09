@@ -1,4 +1,4 @@
-import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
+import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
 import "./List.css";
 import { useState } from "react";

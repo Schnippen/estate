@@ -4,8 +4,12 @@ import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
 import profilePicture from "../assets/profile.jpg";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
+import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
 function ItemSideArticle() {
+
+  const database = Database[10]
+
   return (
     <article className={styles.container_article_side}>
       <section className={styles.section_sidebar}>
@@ -19,11 +23,13 @@ function ItemSideArticle() {
                 alt="Profile of realtor"
               />
               <address>
-                <strong>Paulina Floryańska </strong>
-                <span>LOCO Real Estate</span>
+                <span>
+                  <strong>{database.sellerInfo}</strong>
+                </span>
+                <span>{database.estateAgencyInfo}</span>
                 <span class="phoneNr">
                   tel.
-                  <span class="phone">+48 574 78 78 38</span>
+                  <span class="phone">{database.telephoneNumberInfo}</span>
                 </span>
               </address>
             </div>
@@ -92,7 +98,7 @@ function ItemSideArticle() {
             </div>
           </div>
         </div>
-        <ItemSideArticleCredit/>
+        <ItemSideArticleCredit />
       </section>
     </article>
   );

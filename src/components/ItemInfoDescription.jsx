@@ -1,9 +1,8 @@
 import React from "react";
-import styles from './ItemInfoDescription.module.css';
-import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
+import styles from "./ItemInfoDescription.module.css";
+import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
-function ItemInfoDescription({...props}) {
-  
+function ItemInfoDescription({ ...props }) {
   const propa = Database[1];
 
   function TableRow({ name }) {
@@ -18,8 +17,10 @@ function ItemInfoDescription({...props}) {
     return <table></table>;
   }
 
+  console.log(propa.descriptionInfo);
+  //<div>dangerouslySetInnerHTML={{__html:propa.descriptionInfo}}</div>
   return (
-    <div className={styles.div}>
+    <div className={styles.description_container}>
       <h2>Informacje szczegółowe</h2>
       <table>
         <tr>
@@ -36,7 +37,7 @@ function ItemInfoDescription({...props}) {
       <div>
         <p>{propa.descriptionInfo}</p>
       </div>
-      <div className={styles.div_maps}>
+      <div className={styles.description_container_maps}>
         <iframe
           className={styles.maps}
           src={`https://maps.google.com/maps?q=${parseFloat(

@@ -1,6 +1,5 @@
 
 .section_container_credit {
-  color: white;
   margin: 1rem 0;
   background-color: #554971;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
@@ -11,6 +10,7 @@
 
 .section_container_credit > header {
   padding: 10px 0;
+  color: #fff;
 }
 
 .credit_wrapper {
@@ -19,6 +19,7 @@
 
 .credit_input > label {
   display: block;
+  color:#fff;
   padding: 0.5rem 0;
 }
 
@@ -35,11 +36,42 @@
   outline: solid #daa520;
 }
 
+.input{
+  color:black;
+}
+
+.submit {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 32px;
+  border-radius: 5px;
+  background-color: #8ac6d0;
+  border-style: none;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #36213e;
+  color: #daa520;
+  box-shadow: 0 0 2px 2px #daa520;
+}
+
+.submit:active {
+  background-color: #051034;
+  color: #daa520;
+  box-shadow: 0 0 2px 8px #daa520;
+}
+
+
 .bankWrapper {
   padding: 1rem 0;
 }
 .bankWrapper > h6 {
   padding: 10px 0;
+  color:#fff;
 }
 
 .bankWrapper_List {

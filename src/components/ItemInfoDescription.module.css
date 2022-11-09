@@ -1,12 +1,17 @@
-.div{
-    padding: 0 2rem;
-}
-.div_maps{
-    position: relative;
-    padding:0 3rem;
+.description_container {
+  padding: 0 2rem;
 }
 
-.maps{
-    width:100%;
-    height: 372px;
+.description_container > h2 {
+  padding: 1rem 0;
+}
+
+.description_container_maps {
+  position: relative;
+  padding: 0 3rem;
+}
+
+.maps {
+  width: 100%;
+  height: 372px;
 }

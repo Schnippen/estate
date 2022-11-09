@@ -7,8 +7,20 @@
   border:none;
   background-color: #fff;
   outline:none;
-  height: 25px;
   padding-left: 8px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.input_active{
+  border:none;
+  background-color: #fff;
+  outline:none;
+  padding-left: 8px;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .list {

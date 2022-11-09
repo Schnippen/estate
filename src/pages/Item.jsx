@@ -3,13 +3,9 @@ import Navbar from '../components/Navbar';
 import styles from '../styles/Item.module.css'
 import { HiHeart } from "react-icons/hi";
 import Button from "../components/Button";
-import interiorImg1 from "../assets/interior1.jpg";
-import interiorImg2 from "../assets/interior2.jpg";
-import interiorImg3 from "../assets/interior3.jpg";
-import interiorImg4 from "../assets/interior4.jpg";
-import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
+import ItemPhotos from '../components/ItemPhotos';
 import ItemInfoDescription from '../components/ItemInfoDescription';
-import Database from "../data/rybnik_Nieruchomosci_Morizon_21.09.2022.json";
+import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 import ItemSideArticle from '../components/ItemSideArticle';
 
 
@@ -27,8 +23,8 @@ function Item(props) {
       </div>
       <div className={styles.container}>
         <article className={styles.container_article_main}>
-          <section className={styles.section_photos}>
-            <div className={styles.section_photos_div}>
+          <section className={styles.section_item}>
+            <div className={styles.section_item_div}>
               <header>
                 <div>
                   <h1>{prop.offerTitle}</h1>
@@ -63,51 +59,7 @@ function Item(props) {
                   </li>
                 </ul>
               </div>
-              <div className={styles.container_article_main_bigImage}>
-                <button
-                  className={styles.container_article_main_bigImage_arrowPrev}
-                >
-                  <HiArrowLeft />
-                </button>
-                <img src={interiorImg1} alt="Big Thumbnail"></img>
-                <button
-                  className={styles.container_article_main_bigImage_arrowNext}
-                >
-                  <HiArrowRight />
-                </button>
-              </div>
-              <div className={styles.container_article_main_thumbnail}>
-                <button
-                  className={styles.container_article_main_bigImage_arrowPrev}
-                >
-                  <HiArrowLeft />
-                </button>
-                <ul className={styles.thumbnails}>
-                  <li>
-                    <img src={interiorImg2} alt="thumbnail"></img>
-                  </li>
-                  <li>
-                    <img src={interiorImg3} alt="thumbnail"></img>
-                  </li>
-                  <li>
-                    <img src={interiorImg4} alt="thumbnail"></img>
-                  </li>
-                  <li>
-                    <img src={interiorImg1} alt="thumbnail"></img>
-                  </li>
-                  <li>
-                    <img src={interiorImg3} alt="thumbnail"></img>
-                  </li>
-                  <li>
-                    <img src={interiorImg4} alt="thumbnail"></img>
-                  </li>
-                </ul>
-                <button
-                  className={styles.container_article_main_bigImage_arrowNext}
-                >
-                  <HiArrowRight />
-                </button>
-              </div>
+              <ItemPhotos />
             </div>
           </section>
           <section className={styles.section_information}>
