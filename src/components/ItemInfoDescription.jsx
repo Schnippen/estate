@@ -3,7 +3,7 @@ import styles from "./ItemInfoDescription.module.css";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
 function ItemInfoDescription({ ...props }) {
-  const propa = Database[1];
+  const propa = Database[2];
 
   function TableRow({ name }) {
     return <th>{name}</th>;
@@ -17,6 +17,8 @@ function ItemInfoDescription({ ...props }) {
     return <table></table>;
   }
 
+  const description= propa.descriptionInfo
+  
   console.log(propa.descriptionInfo);
   //<div>dangerouslySetInnerHTML={{__html:propa.descriptionInfo}}</div>
   return (
@@ -24,7 +26,7 @@ function ItemInfoDescription({ ...props }) {
       <h2>Informacje szczegółowe</h2>
       <table>
         <tr>
-          <th>powierzchnia</th>
+          <th>Powierzchnia</th>
           <td>{propa.areaInfo}</td>
         </tr>
         <tr>
@@ -32,13 +34,18 @@ function ItemInfoDescription({ ...props }) {
           <TableData prop={propa.windowWoodworkInfo} />
         </tr>
       </table>
-      <h3>Opis nieruchomości</h3>
-      <div></div>
-      <div>
-        <p>{propa.descriptionInfo}</p>
+      <div className={styles.description_wrapper}>
+        <h3>Opis nieruchomości</h3>
+        <div>
+          <p dangerouslySetInnerHTML={{ __html: description }} />
+        </div>
+        <div className={styles.description_published}>
+          <p>Ogłoszenie zostało dodane {propa.publishedInfo}</p>
+        </div>
       </div>
       <div className={styles.description_container_maps}>
         <iframe
+          title="Google map for a listing"
           className={styles.maps}
           src={`https://maps.google.com/maps?q=${parseFloat(
             propa.googleMapsInfo[0].split("").slice(0, -2).join("")

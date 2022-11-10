@@ -1,5 +1,5 @@
 .description_container {
-  padding: 0 2rem;
+  padding: 0 2rem 10px;
 }
 
 .description_container > h2 {
@@ -11,7 +11,30 @@
   padding: 0 3rem;
 }
 
+.description_wrapper{
+  background-color: #f5f8fb;
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+.description_wrapper > h3{
+  padding: 1rem 0;
+}
+
+.description_published{
+  padding: 1rem 0;
+  font-size: 16px;
+}
+
+.description_container_maps{
+    background-color: #f5f8fb;
+  border-radius: 5px;
+  padding: 1rem;
+    margin: 1rem 0;
+}
+
 .maps {
   width: 100%;
   height: 372px;
+  border-radius: 5px;
 }

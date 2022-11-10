@@ -6,6 +6,7 @@ import interiorImg2 from "../assets/interior2.jpg";
 import interiorImg3 from "../assets/interior3.jpg";
 import interiorImg4 from "../assets/interior4.jpg";
 import { useState } from "react";
+import FullscreenPhotosGallery from "./BigPhotosGallery";
 
 function ItemPhotos() {
   const photos = [
@@ -20,10 +21,7 @@ function ItemPhotos() {
   ];
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
-
-  const handleSelectedPhoto = (e) => {
-    console.log();
-  };
+  const [isOpened, setIsOpened] = useState(false);
 
   const photosList = photos.map((n, i) => (
     <li
@@ -35,35 +33,51 @@ function ItemPhotos() {
     </li>
   ));
 
-  console.log(photosList[selectedPhoto].props.children.props.src);
-  console.log(photos.length);
+  const photosLength = photos.length;
+  const duga = photos.length * 166;
+
+  //console.log(duga);
+  console.log(isOpened);
   return (
     <>
       <div className={styles.container_photos_bigPhoto}>
         <button
           className={styles.container_photos_bigPhoto_arrowPrev}
           disabled={selectedPhoto === 0}
-          onClick={() => setSelectedPhoto((prev) => selectedPhoto - 1)}
+          onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto - 1)}
         >
           <HiArrowLeft />
         </button>
-        <img
-          src={photosList[selectedPhoto].props.children.props.src}
-          alt="Big Thumbnail"
-        ></img>
         <button
           className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={selectedPhoto === photos.length - 1}
-          onClick={() => setSelectedPhoto((prev) => selectedPhoto + 1)}
+          disabled={selectedPhoto === photosLength - 1}
+          onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto + 1)}
         >
           <HiArrowRight />
         </button>
+        <FullscreenPhotosGallery
+          isOpened={isOpened}
+          setIsOpened={setIsOpened}
+          photosList={photosList}
+          selectedPhoto={selectedPhoto}
+          setSelectedPhoto={setSelectedPhoto}
+          photosLength={photosLength}
+        ></FullscreenPhotosGallery>
+        <img
+          onClick={() => setIsOpened((isOpened) => !isOpened)}
+          src={photosList[selectedPhoto].props.children.props.src}
+          alt="Big Thumbnail"
+        ></img>
       </div>
       <div className={styles.container_photos_thumbnails}>
         <button className={styles.container_photos_bigPhoto_arrowPrev}>
           <HiArrowLeft />
         </button>
-        <ul className={styles.thumbnails}>{photosList}</ul>
+        <div>
+          <ul style={{ width: duga }} className={styles.thumbnails}>
+            {photosList}
+          </ul>
+        </div>
         <button className={styles.container_photos_bigPhoto_arrowNext}>
           <HiArrowRight />
         </button>
