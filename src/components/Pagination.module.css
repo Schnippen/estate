@@ -30,8 +30,10 @@
 
 .pagination__list_btn > svg {
   transition: all 0.3s ease 0s;
-  vertical-align: middle;
+  
   color: white;
+  display: block;
+  margin: auto;
 }
 .pagination__list_btn:hover,
 .pagination__list_btn:hover svg {

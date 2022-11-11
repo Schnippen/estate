@@ -57,6 +57,14 @@
 .modal_list{
     color:white;
     list-style: none;
+    text-align: center;
+}
+.modal_list > li{
+  cursor: pointer;
+}
+.modal_list > li:hover{
+    color:#daa520;
+    transition: all 0.3s ease 0s;
 }
 
 /*(!e.target) ?  setIsOpened((isOpened) => !isOpened): null*/

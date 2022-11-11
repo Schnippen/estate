@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { HiDotsHorizontal } from "react-icons/hi";
+import {
+  HiDotsHorizontal,
+  HiMail,
+  HiHeart,
+  HiCog,
+  HiOfficeBuilding,
+} from "react-icons/hi";
 import styles from './UserInterface.module.css'
 
 function UserInterface() {
@@ -21,13 +27,25 @@ const [isOpened,setIsOpened] = useState(false)
       </button>
       <div
         className={isOpened ? styles.modal_Opened : styles.modal}
-        onClick={(e) => console.log(e) }
+        onClick={(e) => console.log(e)}
       >
         <ul className={styles.modal_list}>
-          <li>ogłoszenia </li>
-          <li>wiadomosci</li>
-          <li>obserwowane</li>
-          <li>ustawienia</li>
+          <li>
+            <HiOfficeBuilding />
+            Ogłoszenia{" "}
+          </li>
+          <li>
+            <HiMail />
+            Wiadomosci
+          </li>
+          <li>
+            <HiHeart />
+            Obserwowane
+          </li>
+          <li>
+            <HiCog />
+            Ustawienia
+          </li>
         </ul>
       </div>
     </div>

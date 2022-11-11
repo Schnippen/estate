@@ -8,7 +8,7 @@ import Offers from "./pages/Offers";
 function App(){
     return (
       <>
-        <Item/>
+        <Offers/>
       </>
     );
 }
