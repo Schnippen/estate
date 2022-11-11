@@ -36,8 +36,6 @@ function ItemPhotos() {
   const photosLength = photos.length;
   const duga = photos.length * 166;
 
-  //console.log(duga);
-  console.log(isOpened);
   return (
     <>
       <div className={styles.container_photos_bigPhoto}>

@@ -15,6 +15,7 @@ function BigPhotosGallery({
   setSelectedPhoto,
   photosLength,
 }) {
+
   return (
     <div
       className={
@@ -40,9 +41,8 @@ function BigPhotosGallery({
         </button>
       </div>
       <div className={styles.bigPhoto}>
-        <img
-          src={photosList[selectedPhoto].props.children.props.src}
-          alt="Big Photo"
+        <img  src={photosList[selectedPhoto].props.children.props.src}
+          alt="Fullscreen"
         />
       </div>
       <button

@@ -1,13 +1,11 @@
-import './Navbar.css'
-import { HiDotsHorizontal } from "react-icons/hi";
-
-//<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"></link>
+import styles from "./Navbar.module.css";
+import UserInterface from "./UserInterface";
 
 function Navbar() {
   return (
-    <div className="nav">
-      <div className="Logo">Anytown Real Estate</div>
-      <ul className="nav__links">
+    <div className={styles.nav}>
+      <div className={styles.logo}>Anytown Real Estate</div>
+      <ul className={styles.nav__links}>
         <li>
           <a href="*">buy</a>
         </li>
@@ -24,16 +22,9 @@ function Navbar() {
           <a href="*">blog</a>
         </li>
       </ul>
-      <div className="btn__group">
-        <button type="button" className="btn btn1">
-          Sign In
-        </button>
-        <button type="button" className="btn btn2">
-          <HiDotsHorizontal className="hdh" />
-        </button>
-      </div>
+      <UserInterface />
     </div>
   );
 }
 
-export default Navbar
+export default Navbar;

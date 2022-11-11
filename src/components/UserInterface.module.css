@@ -1,0 +1,62 @@
+.btn__group {
+  background-color: aqua;
+  display: inline-block;
+  position: relative;
+  width: 300px;
+}
+
+.btn {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  height: 2.15rem;
+  padding: 10px 32px;
+  color: white;
+  background-color: #554971;
+  transition: all 0.3s ease 0s;
+  overflow: hidden;
+}
+
+.btn1 {
+  border-radius: 5px 0px 0px 5px;
+  width: 60%;
+}
+.btn2 {
+  border-radius: 0px 5px 5px 0px;
+  width: 40%;
+}
+
+.btn>svg{
+    margin: auto;
+}
+
+.btn:hover {
+  background-color: #36213e;
+  color: #daa520;
+}
+
+.btn:active {
+  background-color: #051034;
+}
+
+.modal {
+  display: none;
+}
+.modal_Opened {
+  display: block;
+  height: 300px;
+  background-color: #36213e;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+}
+
+.modal_list{
+    color:white;
+    list-style: none;
+}
+
+/*(!e.target) ?  setIsOpened((isOpened) => !isOpened): null*/

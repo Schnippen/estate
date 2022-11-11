@@ -12,8 +12,7 @@ import ItemSideArticle from '../components/ItemSideArticle';
 function Item(props) {
   let intiger = 1
   const prop = Database[intiger]
-  console.dir(prop)
-
+  
   return (
     <>
       <Navbar />

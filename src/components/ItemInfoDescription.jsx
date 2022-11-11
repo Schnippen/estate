@@ -1,39 +1,17 @@
 import React from "react";
 import styles from "./ItemInfoDescription.module.css";
+import Table from "./Table";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
 function ItemInfoDescription({ ...props }) {
-  const propa = Database[2];
+  const propa = Database[1];
 
-  function TableRow({ name }) {
-    return <th>{name}</th>;
-  }
-
-  function TableData({ prop }) {
-    return prop !== "" ? <td>{prop}</td> : null;
-  }
-
-  function TableBig({ prop }) {
-    return <table></table>;
-  }
-
-  const description= propa.descriptionInfo
-  
-  console.log(propa.descriptionInfo);
+  const description = Database[1].descriptionInfo;
   //<div>dangerouslySetInnerHTML={{__html:propa.descriptionInfo}}</div>
   return (
     <div className={styles.description_container}>
       <h2>Informacje szczegółowe</h2>
-      <table>
-        <tr>
-          <th>Powierzchnia</th>
-          <td>{propa.areaInfo}</td>
-        </tr>
-        <tr>
-          <TableRow name="Ilość okien" />
-          <TableData prop={propa.windowWoodworkInfo} />
-        </tr>
-      </table>
+      <Table />
       <div className={styles.description_wrapper}>
         <h3>Opis nieruchomości</h3>
         <div>
@@ -96,3 +74,12 @@ Ogrzewanie
 Udogodnienia
 Opis
 Mapa*/
+/*        <tr>
+          <th>Powierzchnia</th>
+          <td>{propa.areaInfo}</td>
+        </tr>
+        <tr>
+          <TableRow name="Ilość okien" />
+          <TableData prop={propa.windowWoodworkInfo} />
+        </tr>
+        */
