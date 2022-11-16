@@ -5,12 +5,12 @@ import Offers from "./pages/Offers";
 
 /* <Route path='/' element={<Home/>}/> */
 
-function App(){
-    return (
-      <>
-        <Offers/>
-      </>
-    );
+function App() {
+  return (
+    <>
+      <Item />
+    </>
+  );
 }
 
 export default App;

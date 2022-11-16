@@ -7,9 +7,10 @@ import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
 function ItemSideArticle() {
+  const database = Database[10];
 
-  const database = Database[10]
-
+  //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
+  //wyslij wiadomosc gdzies na serwer  sprawdz se jak sie to robi
   return (
     <article className={styles.container_article_side}>
       <section className={styles.section_sidebar}>
@@ -36,7 +37,12 @@ function ItemSideArticle() {
           </header>
           <div>
             <div className={styles.form_container}>
-              <form>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("Submitting!");
+                }}
+              >
                 <div className={styles.form_div_wrapper}>
                   <BsPersonFill className={styles.svg} />
                   <input
