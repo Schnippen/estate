@@ -44,13 +44,14 @@
   cursor: pointer;
   user-select: none;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container_photos_bigPhoto_arrowPrev > svg,
 .container_photos_bigPhoto_arrowNext > svg {
   transition: all 0.3s ease 0s;
-  display: block;
-  margin: auto;
   color: white;
 }
 .container_photos_bigPhoto_arrowPrev:hover,

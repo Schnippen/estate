@@ -8,18 +8,17 @@ import {
 } from "react-icons/hi";
 
 function BigPhotosGallery({
-  isOpened,
-  setIsOpened,
+  isActive,
+  setIsActive,
   photosList,
   selectedPhoto,
   setSelectedPhoto,
   photosLength,
 }) {
-
   return (
     <div
       className={
-        isOpened ? styles.container_bigPhoto_opened : styles.container_bigPhoto
+        isActive ? styles.container_bigPhoto_opened : styles.container_bigPhoto
       }
     >
       <div className={styles.ornament_prev}>
@@ -41,18 +40,17 @@ function BigPhotosGallery({
         </button>
       </div>
       <div className={styles.bigPhoto}>
-        <img  src={photosList[selectedPhoto].props.children.props.src}
+        <img
+          src={photosList[selectedPhoto].props.children.props.src}
           alt="Fullscreen"
         />
       </div>
-      <button
-        className={styles.buttonExit}
-        onClick={() => setIsOpened((isOpened) => !isOpened)}
-      >
+      <button className={styles.buttonExit} onClick={setIsActive}>
         <HiOutlineX />
       </button>
       <div className={styles.counter}>
-        {selectedPhoto + 1}/{photosLength}<HiOutlinePhotograph/>
+        {selectedPhoto + 1}/{photosLength}
+        <HiOutlinePhotograph />
       </div>
     </div>
   );

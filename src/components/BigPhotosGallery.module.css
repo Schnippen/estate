@@ -41,6 +41,9 @@
   cursor: pointer;
   user-select: none;
   z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bigPhoto_arrowPrev {
@@ -59,8 +62,6 @@
 .bigPhoto_arrowPrev > svg,
 .bigPhoto_arrowNext > svg {
   transition: all 0.3s ease 0s;
-  display: block;
-  margin: auto;
   width: 2em;
   height: 2em;
 }

@@ -26,14 +26,14 @@
   font-weight:600;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination__list_btn > svg {
   transition: all 0.3s ease 0s;
-  
   color: white;
-  display: block;
-  margin: auto;
 }
 .pagination__list_btn:hover,
 .pagination__list_btn:hover svg {

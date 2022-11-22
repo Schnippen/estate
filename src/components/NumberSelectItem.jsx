@@ -1,23 +1,15 @@
 import React from "react";
 import styles from "./NumberSelect.module.css";
-import { useState } from "react";
+import useActive from "./useActive";
 
 function NumberSelectItem({ title, index }) {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useActive(false);
   //const [selected, setSelected] = useState(0);
-
-  const handleFocus = () => {
-    setIsFocused((current) => !current);
-  };
-
-  const handleOutOfFocus = () => {
-    setIsFocused((current) => !current);
-  };
 
   return (
     <li
-      onMouseEnter={handleFocus}
-      onMouseLeave={handleOutOfFocus}
+      onMouseEnter={setIsFocused}
+      onMouseLeave={setIsFocused}
       className={isFocused ? styles.list_item_active : styles.list_item}
     >
       {title}

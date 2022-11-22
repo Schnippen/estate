@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
   HiDotsHorizontal,
   HiMail,
@@ -7,26 +6,36 @@ import {
   HiOfficeBuilding,
 } from "react-icons/hi";
 import styles from './UserInterface.module.css'
+import useActive from './useActive';
 
 function UserInterface() {
-
-const [isOpened,setIsOpened] = useState(false)
-    console.log(isOpened);
+  const [Active,setActive] = useActive(false)
 
   return (
     <div className={styles.btn__group}>
-      <button type="button" className={`${styles.btn} ${styles.btn1}`}>
+      <button
+        type="button"
+        className={
+          Active
+            ? `${styles.btn} ${styles.btn1_btn2_Opened}`
+            : `${styles.btn} ${styles.btn1}`
+        }
+      >
         Sign In
       </button>
       <button
         type="button"
-        className={`${styles.btn} ${styles.btn2}`}
-        onClick={() => setIsOpened((isOpened) => !isOpened)}
+        className={
+          Active
+            ? `${styles.btn} ${styles.btn2_Opened}`
+            : `${styles.btn} ${styles.btn2}`
+        }
+        onClick={setActive}
       >
         <HiDotsHorizontal />
       </button>
       <div
-        className={isOpened ? styles.modal_Opened : styles.modal}
+        className={Active ? styles.modal_Opened : styles.modal}
         onClick={(e) => console.log(e)}
       >
         <ul className={styles.modal_list}>

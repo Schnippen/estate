@@ -7,6 +7,7 @@ import interiorImg3 from "../assets/interior3.jpg";
 import interiorImg4 from "../assets/interior4.jpg";
 import { useState } from "react";
 import FullscreenPhotosGallery from "./BigPhotosGallery";
+import useActive from "./useActive";
 
 function ItemPhotos() {
   const photos = [
@@ -21,7 +22,8 @@ function ItemPhotos() {
   ];
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
-  const [isOpened, setIsOpened] = useState(false);
+  const [isActive, setIsActive] = useActive(false);
+
 
   const photosList = photos.map((n, i) => (
     <li
@@ -54,15 +56,15 @@ function ItemPhotos() {
           <HiArrowRight />
         </button>
         <FullscreenPhotosGallery
-          isOpened={isOpened}
-          setIsOpened={setIsOpened}
+          isActive={isActive}
+          setIsActive={setIsActive}
           photosList={photosList}
           selectedPhoto={selectedPhoto}
           setSelectedPhoto={setSelectedPhoto}
           photosLength={photosLength}
         ></FullscreenPhotosGallery>
         <img
-          onClick={() => setIsOpened((isOpened) => !isOpened)}
+          onClick={setIsActive}
           src={photosList[selectedPhoto].props.children.props.src}
           alt="Big Thumbnail"
         ></img>

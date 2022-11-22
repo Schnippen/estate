@@ -1,14 +1,10 @@
 import React from "react";
 import styles from "./NumberSelect.module.css";
-import { useState } from "react";
 import NumberSelectItem from "./NumberSelectItem";
+import useActive from "./useActive";
 
 function NumberSelect({ placeholder, number }) {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleActiveDropDown = () => {
-    setIsActive((current) => !current);
-  };
+  const [isActive, setIsActive] = useActive(false);
 
   /*const Values = {
     0: 0,
@@ -28,7 +24,7 @@ function NumberSelect({ placeholder, number }) {
           className={isActive ? styles.input_active : styles.input}
           type="text"
           placeholder={placeholder}
-          onClick={handleActiveDropDown}
+          onClick={setIsActive}
           //value={0}
         />
         <ul className={isActive ? styles.list_active : styles.list}>
