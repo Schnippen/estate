@@ -4,10 +4,18 @@ import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
 import profilePicture from "../assets/profile.jpg";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
+//import { useState } from "react";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
+import {useRef} from 'react'
 
 function ItemSideArticle() {
   const database = Database[10];
+
+  //const [items,setItems] = useState([]);
+  const inputRef = useRef();
+  
+
+ //let statuses = ["empty", "typing", "submitting", "success", "error"];
 
   //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
   //wyslij wiadomosc gdzies na serwer  sprawdz se jak sie to robi
@@ -46,6 +54,7 @@ function ItemSideArticle() {
                 <div className={styles.form_div_wrapper}>
                   <BsPersonFill className={styles.svg} />
                   <input
+                    ref={inputRef}
                     type="text"
                     placeholder="wpisz imię"
                     className={styles.inputText}
@@ -67,10 +76,13 @@ function ItemSideArticle() {
                     className={styles.inputText}
                   />
                 </div>
-                <textarea name="" id="" cols="30" rows="10">
-                  Chcę poznać więcej szczegółów na temat oferty lub umówić się
-                  na spotkanie albo wideoprezentację. Proszę o kontakt.
-                </textarea>
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder={`Chcę poznać więcej szczegółów na temat oferty lub umówić się na spotkanie albo wideoprezentację.           Proszę o kontakt.`}
+                ></textarea>
                 <div className={styles.form_additionalContact_wrapper}>
                   <p>Zgadzam się też na otrzymywanie:</p>
                   <div>

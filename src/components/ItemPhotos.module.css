@@ -89,20 +89,24 @@
   border-radius: 5px;
 }
 
+.thumbnails_wrapper{
+  display: flex;
+  justify-content: center;
+}
+
 .thumbnails {
   display: flex;
   position: absolute;
-  left: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .thumbnails > li {
-  width: 142px;
-  height: 100px;
+  width: 162px;
+  height: 124px;
   cursor: pointer;
   list-style: none;
-  margin: 0 24px 0 0;
+  margin: 0 12px 0 12px;
   background-color: rgba(201, 201, 201, 0.5);
   position: relative;
 }

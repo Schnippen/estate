@@ -14,7 +14,8 @@ function Table() {
   ));
 
   const pofiltr = Object.entries(data);
-  console.table(pofiltr.map((n) => n.filter((i) => i !== "")));
+  console.table(
+    pofiltr.map((arr) => arr));
   //      <div>{Object.keys(data)}</div>
   //  console.log(pofiltr.map(n=>n.length>1?n:"hówno"))
 

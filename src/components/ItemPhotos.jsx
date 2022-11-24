@@ -11,19 +11,37 @@ import useActive from "./useActive";
 
 function ItemPhotos() {
   const photos = [
+    
     interiorImg1,
     interiorImg2,
     interiorImg3,
     interiorImg4,
     interiorImg1,
+    interiorImg1,
     interiorImg2,
     interiorImg3,
     interiorImg4,
+    "https://picsum.photos/500/500?random=1",
+    "https://picsum.photos/500/500?random=2",
+    "https://picsum.photos/500/500?random=3",
+    "https://picsum.photos/500/500?random=4",
+    "https://picsum.photos/500/500?random=5",
+    "https://picsum.photos/500/500?random=6",
+    "https://picsum.photos/500/500?random=7",
+    "https://picsum.photos/500/500?random=8",
+    "https://picsum.photos/500/500?random=9",
+    "https://picsum.photos/500/500?random=10",
   ];
+  /* Array.from(    { length: 40 },    () =>      `https://picsum.photos/500/500?random=${Math.floor(Math.random() * 40)}`
+  );*/
+
+  //stestuj thumnaile i dlugosc photos array
+  //zdjecia >= photos.length - 4 ? photos.length - 4 : zdjecia,
+  //photos.length > 5 ? 5 + zdjecia : photos.length;
 
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [isActive, setIsActive] = useActive(false);
-
+  const [zdjecia, setZdjecia] = useState(0);
 
   const photosList = photos.map((n, i) => (
     <li
@@ -35,8 +53,15 @@ function ItemPhotos() {
     </li>
   ));
 
+  const photosVisible = photosList.slice(
+    zdjecia,
+    photos.length >= 5 ? 5 + zdjecia : photos.length
+  );
+
   const photosLength = photos.length;
-  const duga = photos.length * 166;
+  console.log(selectedPhoto, "selectedphoto");
+  console.log(zdjecia, "zdjecia");
+  console.log(photos.length, "length");
 
   return (
     <>
@@ -50,7 +75,7 @@ function ItemPhotos() {
         </button>
         <button
           className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={selectedPhoto === photosLength - 1}
+          disabled={selectedPhoto === photos.length - 1}
           onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto + 1)}
         >
           <HiArrowRight />
@@ -70,15 +95,21 @@ function ItemPhotos() {
         ></img>
       </div>
       <div className={styles.container_photos_thumbnails}>
-        <button className={styles.container_photos_bigPhoto_arrowPrev}>
+        <button
+          className={styles.container_photos_bigPhoto_arrowPrev}
+          disabled={zdjecia <= 0}
+          onClick={() => setZdjecia((zdjecia) => zdjecia - 1)}
+        >
           <HiArrowLeft />
         </button>
-        <div>
-          <ul style={{ width: duga }} className={styles.thumbnails}>
-            {photosList}
-          </ul>
+        <div className={styles.thumbnails_wrapper}>
+          <ul className={styles.thumbnails}>{photosVisible}</ul>
         </div>
-        <button className={styles.container_photos_bigPhoto_arrowNext}>
+        <button
+          className={styles.container_photos_bigPhoto_arrowNext}
+          disabled={zdjecia >= photos.length || zdjecia >= photos.length - 5}
+          onClick={() => setZdjecia((zdjecia) => zdjecia + 1)}
+        >
           <HiArrowRight />
         </button>
       </div>
