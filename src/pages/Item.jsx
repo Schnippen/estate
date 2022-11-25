@@ -1,24 +1,40 @@
-import React from 'react'
-import Navbar from '../components/Navbar';
-import styles from '../styles/Item.module.css'
+import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+import styles from "../styles/Item.module.css";
 import { HiHeart } from "react-icons/hi";
+import useActive from "../components/useActive";
 import Button from "../components/Button";
-import ItemPhotos from '../components/ItemPhotos';
-import ItemInfoDescription from '../components/ItemInfoDescription';
+import ItemPhotos from "../components/ItemPhotos";
+import ItemInfoDescription from "../components/ItemInfoDescription";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
-import ItemSideArticle from '../components/ItemSideArticle';
-
+import ItemSideArticle from "../components/ItemSideArticle";
+import GoogleMaps from "../components/GoogleMaps";
 
 function Item(props) {
-  let intiger = 1
-  const prop = Database[intiger]
+
+  const [Intiger, setIntiger] = useState(0);
+  const prop = Database[Intiger];
   
+  const [isActive, setIsActive] = useActive(true);
+
   return (
     <>
       <Navbar />
       <div className={styles.breadcrumbs}>
         <div>wróć</div>
         Bread crumbs?
+        <button
+          onClick={() => setIntiger((Intiger) => Intiger + 1)}
+          style={{ height: "50px", width: "50px", position: "fixed",left:'50px' }}
+        >
+          +
+        </button>
+        <button
+          onClick={() => setIntiger((Intiger) => Intiger - 1)}
+          style={{ height: "50px", width: "50px", position: "fixed" }}
+        >
+          -
+        </button>
       </div>
       <div className={styles.container}>
         <article className={styles.container_article_main}>
@@ -46,29 +62,49 @@ function Item(props) {
                   </ul>
                 </div>
               </header>
-              <div className={styles.container_article_main_categories}>
+              <div className={styles.container_article_multimedia_categories}>
                 <ul>
-                  <li>zdjęcia</li>
-                  <li>mapy</li>
-                  <li>
+                  <li
+                    className={
+                      isActive
+                        ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
+                        : `${styles.multimedia_categories}`
+                    }
+                    onClick={setIsActive}
+                  >
+                    Zdjęcia<span></span>
+                  </li>
+                  <li
+                    className={
+                      !isActive
+                        ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
+                        : `${styles.multimedia_categories}`
+                    }
+                    onClick={setIsActive}
+                  >
+                    Mapa<span></span>
+                  </li>
+                  <div>
                     <span>dodaj do ulubionych </span>
                     <Button>
                       <HiHeart />
                     </Button>
-                  </li>
+                  </div>
                 </ul>
               </div>
-              <ItemPhotos />
+              <div className={styles.multimedia_container}>
+                {isActive ? <ItemPhotos /> : <GoogleMaps prop={prop}/>}
+              </div>
             </div>
           </section>
           <section className={styles.section_information}>
-            <ItemInfoDescription />
+            <ItemInfoDescription prop={prop} />
           </section>
         </article>
-        <ItemSideArticle />
+        <ItemSideArticle prop={prop} />
       </div>
     </>
   );
 }
 
-export default Item
+export default Item;

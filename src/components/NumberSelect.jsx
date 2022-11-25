@@ -2,9 +2,23 @@ import React from "react";
 import styles from "./NumberSelect.module.css";
 import NumberSelectItem from "./NumberSelectItem";
 import useActive from "./useActive";
+import { useEffect,useRef} from 'react';
 
 function NumberSelect({ placeholder, number }) {
   const [isActive, setIsActive] = useActive(false);
+  const ref = useRef();
+
+useEffect(() => {  
+  const handleClose = (e) =>{
+    if(isActive && ref.current && !ref.current.contains(e.target)){
+      setIsActive()
+    }
+  }
+  document.addEventListener("click",handleClose);
+  return () => {
+   document.removeEventListener("click",handleClose);
+  };
+}, [isActive])
 
   /*const Values = {
     0: 0,
@@ -26,8 +40,9 @@ function NumberSelect({ placeholder, number }) {
           placeholder={placeholder}
           onClick={setIsActive}
           //value={0}
-        />
-        <ul className={isActive ? styles.list_active : styles.list}>
+          //czy lepiej renderowac czy miec display none? \/
+        /> 
+        <ul ref={ref} className={isActive ? styles.list_active : styles.list}>
           {numberList}
         </ul>
       </div>
@@ -36,3 +51,6 @@ function NumberSelect({ placeholder, number }) {
 }
 
 export default NumberSelect;
+
+/*        {isActive && <ul ref={ref} className={ styles.list_active}>           {numberList}
+        </ul>} */

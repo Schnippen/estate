@@ -31,10 +31,11 @@
   border-radius: 5px;
   padding: 1rem;
     margin: 1rem 0;
+    height: 518px;
 }
 
 .maps {
   width: 100%;
-  height: 372px;
+  height: 100%;
   border-radius: 5px;
 }

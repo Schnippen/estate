@@ -3,22 +3,22 @@ import styles from "./ItemInfoDescription.module.css";
 import Table from "./Table";
 import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
-function ItemInfoDescription({ ...props }) {
-  const propa = Database[1];
+function ItemInfoDescription({ prop }) {
+  //const prop = Database[1];
 
   const description = Database[1].descriptionInfo;
-  //<div>dangerouslySetInnerHTML={{__html:propa.descriptionInfo}}</div>
+  //<div>dangerouslySetInnerHTML={{__html:prop.descriptionInfo}}</div>
   return (
     <div className={styles.description_container}>
       <h2>Informacje szczegółowe</h2>
-      <Table />
+      <Table prop={prop}/>
       <div className={styles.description_wrapper}>
         <h3>Opis nieruchomości</h3>
         <div>
           <p dangerouslySetInnerHTML={{ __html: description }} />
         </div>
         <div className={styles.description_published}>
-          <p>Ogłoszenie zostało dodane {propa.publishedInfo}</p>
+          <p>Ogłoszenie zostało dodane {prop.publishedInfo}</p>
         </div>
       </div>
       <div className={styles.description_container_maps}>
@@ -26,9 +26,9 @@ function ItemInfoDescription({ ...props }) {
           title="Google map for a listing"
           className={styles.maps}
           src={`https://maps.google.com/maps?q=${parseFloat(
-            propa.googleMapsInfo[0].split("").slice(0, -2).join("")
+            prop.googleMapsInfo[0].split("").slice(0, -2).join("")
           )},${parseFloat(
-            propa.googleMapsInfo[1].split("").slice(0, -2).join("")
+            prop.googleMapsInfo[1].split("").slice(0, -2).join("")
           )}&hl=es;&output=embed`}
         ></iframe>
       </div>
@@ -38,36 +38,6 @@ function ItemInfoDescription({ ...props }) {
 
 export default ItemInfoDescription;
 
-let shit = {
-  titleKategoria: "Mieszkanie na sprzedaż",
-  currentOfferURL:
-    "https://www.morizon.pl/oferta/sprzedaz-mieszkanie-rybnik-sosnowa-39m2-mzn2040991273",
-  offerID: 1663790324057,
-  offerTitle: "Rybnik, Sosnowa 20E",
-  priceInfo: "253 936 zł",
-  areaPriceInfo: "6449,99 zł",
-  areaInfo: "39,37 m²",
-  numberOfRoomsInfo: "2",
-  usableArea: "39,37 m²",
-  floorInfo: "parter / 3",
-  numbersOfFloorsInfo: "3",
-  numberOfBathroomsInfo: "1",
-  typeOfKitchenInfo: "aneks",
-  isBathroomSeparateInfo: "",
-  windowWoodworkInfo: "",
-  marketInfo: "pierwotny",
-  formOfPropertyInfo: "własność",
-  typeOfBuildingInfo: "",
-  yearOfConstructionInfo: "",
-  conditionOfThePropertyInfo: "",
-  heatingInfo: "Ogrzewanie (gazowe)",
-  balconyInfo: "Nie",
-  balconyAreaInfo: "",
-  numberOfOfferInfo: "morizon-gratka-26039909",
-  publishedInfo: "3 maja 2022",
-  googleMapsInfo: ["50.105 N", "18.5796 E"],
-};
-
 /*Informajce szczegółowe
 Budynek
 Ogrzewanie
@@ -76,10 +46,10 @@ Opis
 Mapa*/
 /*        <tr>
           <th>Powierzchnia</th>
-          <td>{propa.areaInfo}</td>
+          <td>{prop.areaInfo}</td>
         </tr>
         <tr>
           <TableRow name="Ilość okien" />
-          <TableData prop={propa.windowWoodworkInfo} />
+          <TableData prop={prop.windowWoodworkInfo} />
         </tr>
         */

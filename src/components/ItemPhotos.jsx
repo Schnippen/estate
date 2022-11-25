@@ -36,12 +36,10 @@ function ItemPhotos() {
   );*/
 
   //stestuj thumnaile i dlugosc photos array
-  //zdjecia >= photos.length - 4 ? photos.length - 4 : zdjecia,
-  //photos.length > 5 ? 5 + zdjecia : photos.length;
-
+  
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [isActive, setIsActive] = useActive(false);
-  const [zdjecia, setZdjecia] = useState(0);
+  const [thumbnail, setThumbnail] = useState(0);
 
   const photosList = photos.map((n, i) => (
     <li
@@ -54,13 +52,13 @@ function ItemPhotos() {
   ));
 
   const photosVisible = photosList.slice(
-    zdjecia,
-    photos.length >= 5 ? 5 + zdjecia : photos.length
+    thumbnail,
+    photos.length >= 5 ? 5 + thumbnail : photos.length
   );
 
   const photosLength = photos.length;
   console.log(selectedPhoto, "selectedphoto");
-  console.log(zdjecia, "zdjecia");
+  console.log(thumbnail, "thumbnail");
   console.log(photos.length, "length");
 
   return (
@@ -97,8 +95,8 @@ function ItemPhotos() {
       <div className={styles.container_photos_thumbnails}>
         <button
           className={styles.container_photos_bigPhoto_arrowPrev}
-          disabled={zdjecia <= 0}
-          onClick={() => setZdjecia((zdjecia) => zdjecia - 1)}
+          disabled={thumbnail <= 0}
+          onClick={() => setThumbnail((thumbnail) => thumbnail - 1)}
         >
           <HiArrowLeft />
         </button>
@@ -107,8 +105,8 @@ function ItemPhotos() {
         </div>
         <button
           className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={zdjecia >= photos.length || zdjecia >= photos.length - 5}
-          onClick={() => setZdjecia((zdjecia) => zdjecia + 1)}
+          disabled={thumbnail >= photos.length || thumbnail >= photos.length - 5}
+          onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
         >
           <HiArrowRight />
         </button>

@@ -1,22 +1,20 @@
 import React from "react";
-import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
-function Table() {
-  let intiger = 0;
-  const data = Database[intiger];
-  //console.log(data.keys);
-  //console.table(data);
+function Table({prop}) {
+  
+  //console.log(prop.keys);
+  //console.table(prop);
 
-  const lista = Object.entries(data).map((item, index) => (
+  const lista = Object.entries(prop).map((item, index) => (
     <div key={index}>
       <h3>{item}</h3>
     </div>
   ));
 
-  const pofiltr = Object.entries(data);
+  const pofiltr = Object.entries(prop);
   console.table(
     pofiltr.map((arr) => arr));
-  //      <div>{Object.keys(data)}</div>
+  //      <div>{Object.keys(prop)}</div>
   //  console.log(pofiltr.map(n=>n.length>1?n:"hówno"))
 
   return (

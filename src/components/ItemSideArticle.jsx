@@ -5,17 +5,15 @@ import { HiPhone, HiMail } from "react-icons/hi";
 import profilePicture from "../assets/profile.jpg";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
 //import { useState } from "react";
-import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
-import {useRef} from 'react'
+import { useRef } from "react";
 
-function ItemSideArticle() {
-  const database = Database[10];
+function ItemSideArticle({ prop }) {
+  //const prop = Database[10];
 
   //const [items,setItems] = useState([]);
   const inputRef = useRef();
-  
 
- //let statuses = ["empty", "typing", "submitting", "success", "error"];
+  //let statuses = ["empty", "typing", "submitting", "success", "error"];
 
   //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
   //wyslij wiadomosc gdzies na serwer  sprawdz se jak sie to robi
@@ -33,12 +31,12 @@ function ItemSideArticle() {
               />
               <address>
                 <span>
-                  <strong>{database.sellerInfo}</strong>
+                  <strong>{prop.sellerInfo}</strong>
                 </span>
-                <span>{database.estateAgencyInfo}</span>
+                <span>{prop.estateAgencyInfo}</span>
                 <span class="phoneNr">
                   tel.
-                  <span class="phone">{database.telephoneNumberInfo}</span>
+                  <span class="phone">{prop.telephoneNumberInfo}</span>
                 </span>
               </address>
             </div>
