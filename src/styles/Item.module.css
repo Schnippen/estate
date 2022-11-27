@@ -33,6 +33,11 @@
 .section_item header > div {
   padding: 0.5rem;
 }
+
+.section_item header > div> h3 {
+  margin: 10px 0;
+}
+
 .section_item header > div > ul > li {
   display: inline-block;
   padding-right: 2rem;

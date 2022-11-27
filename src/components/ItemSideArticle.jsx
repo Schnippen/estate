@@ -33,7 +33,9 @@ function ItemSideArticle({ prop }) {
                 <span>
                   <strong>{prop.sellerInfo}</strong>
                 </span>
-                <span>{prop.estateAgencyInfo}</span>
+                {prop.estateAgencyInfo.includes("tel.") ? null : (
+                  <span>{prop.estateAgencyInfo}</span>
+                )}
                 <span class="phoneNr">
                   tel.
                   <span class="phone">{prop.telephoneNumberInfo}</span>

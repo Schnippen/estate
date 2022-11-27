@@ -6,7 +6,7 @@
   background: linear-gradient(#fff, rgba(99, 118, 141, 1));
 }
 
-.pagination__list {
+.pagination__list >li {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;

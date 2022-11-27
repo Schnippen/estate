@@ -3,9 +3,11 @@ import styles from "./NumberSelect.module.css";
 import NumberSelectItem from "./NumberSelectItem";
 import useActive from "./useActive";
 import { useEffect,useRef} from 'react';
+import { useState } from "react";
 
-function NumberSelect({ placeholder, number }) {
+function NumberSelect({ placeholder, number, value }) {
   const [isActive, setIsActive] = useActive(false);
+  //const [state,setState]=useState('')
   const ref = useRef();
 
 useEffect(() => {  
@@ -28,7 +30,11 @@ useEffect(() => {
   };*/
 
   const numberList = [...number].map((n, i) => (
-    <NumberSelectItem title={[...number][i]} index={i} />
+    <NumberSelectItem
+      title={[...number][i]}
+      index={i}
+      value={value}
+    />
   ));
 
   return (
@@ -41,10 +47,12 @@ useEffect(() => {
           onClick={setIsActive}
           //value={0}
           //czy lepiej renderowac czy miec display none? \/
-        /> 
-        <ul ref={ref} className={isActive ? styles.list_active : styles.list}>
-          {numberList}
-        </ul>
+        />
+        {isActive && (
+          <ul ref={ref} className={styles.list_active}>
+            {numberList}
+          </ul>
+        )}
       </div>
     </div>
   );

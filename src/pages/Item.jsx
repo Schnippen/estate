@@ -6,7 +6,7 @@ import useActive from "../components/useActive";
 import Button from "../components/Button";
 import ItemPhotos from "../components/ItemPhotos";
 import ItemInfoDescription from "../components/ItemInfoDescription";
-import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
+import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ItemSideArticle from "../components/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 
@@ -17,6 +17,8 @@ function Item(props) {
   
   const [isActive, setIsActive] = useActive(true);
 
+  console.log(prop)
+
   return (
     <>
       <Navbar />
@@ -25,7 +27,12 @@ function Item(props) {
         Bread crumbs?
         <button
           onClick={() => setIntiger((Intiger) => Intiger + 1)}
-          style={{ height: "50px", width: "50px", position: "fixed",left:'50px' }}
+          style={{
+            height: "50px",
+            width: "50px",
+            position: "fixed",
+            left: "50px",
+          }}
         >
           +
         </button>
@@ -42,23 +49,38 @@ function Item(props) {
             <div className={styles.section_item_div}>
               <header>
                 <div>
-                  <h1>{prop.offerTitle}</h1>
+                  <h1>
+                    {prop.offerTitle
+                      .split(" ")
+                      .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
+                      .join(" ")}
+                  </h1>
                   <h3>{prop.titleKategoria}</h3>
                 </div>
                 <div className={styles.container_article_main_categories}>
                   <ul>
-                    <li>
-                      Cena<em>{prop.priceInfo}</em>
-                    </li>
+                    {prop.priceInfo === "Zapytaj o cenę" ? (
+                      <li>
+                        <a href="*">{prop.priceInfo}</a>
+                      </li>
+                    ) : (
+                      <li>
+                        Cena<em>{prop.priceInfo}</em>
+                      </li>
+                    )}
                     <li>
                       Cena za m²<em>{prop.areaPriceInfo}</em>
                     </li>
-                    <li>
-                      Powierzchnia<em>{prop.areaInfo}</em>
-                    </li>
-                    <li>
-                      Pokoje<em>{prop.numberOfRoomsInfo}</em>
-                    </li>
+                    {typeof prop.numberOfRoomsInfo === "string" ? (
+                      <li>
+                        Powierzchnia<em>{prop.areaInfo}</em>
+                      </li>
+                    ) : null}
+                    {typeof prop.numberOfRoomsInfo === "string" ? (
+                      <li>
+                        Pokoje<em>{prop.numberOfRoomsInfo}</em>
+                      </li>
+                    ) : null}
                   </ul>
                 </div>
               </header>
@@ -93,7 +115,7 @@ function Item(props) {
                 </ul>
               </div>
               <div className={styles.multimedia_container}>
-                {isActive ? <ItemPhotos /> : <GoogleMaps prop={prop}/>}
+                {isActive ? <ItemPhotos /> : <GoogleMaps prop={prop} />}
               </div>
             </div>
           </section>
@@ -106,5 +128,6 @@ function Item(props) {
     </>
   );
 }
+
 
 export default Item;

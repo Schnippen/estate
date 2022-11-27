@@ -23,11 +23,6 @@
   border-radius: 5px 5px 0px 0px;
 }
 
-.list {
-  list-style: none;
-  display: none;
-}
-
 .containter > ul > li {
   background-color: #fff;
 }

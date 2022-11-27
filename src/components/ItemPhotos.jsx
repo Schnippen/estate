@@ -57,9 +57,9 @@ function ItemPhotos() {
   );
 
   const photosLength = photos.length;
-  console.log(selectedPhoto, "selectedphoto");
-  console.log(thumbnail, "thumbnail");
-  console.log(photos.length, "length");
+  //console.log(selectedPhoto, "selectedphoto");
+  //console.log(thumbnail, "thumbnail");
+  //console.log(photos.length, "length");
 
   return (
     <>
