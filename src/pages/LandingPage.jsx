@@ -10,7 +10,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 function LandingPage() {
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
-
+  //useSearchParams()
   return (
     <>
       <Navbar />
@@ -109,16 +109,19 @@ function LandingPage() {
             title="Kup Nieruchomość"
             description={Lorem}
             buttonDescription="Srawdź Nieruchomości"
+            alt="Kup Nieruchomość"
           ></Card>
           <Card
             title="Sprzedaj Nieruchomość"
             description={Lorem}
             buttonDescription="Zobacz swoje możliwości"
+            alt="Sprzedaj Nieruchomość"
           ></Card>
           <Card
             title="Srawdź Mapę"
             description={Lorem}
             buttonDescription="Przyjżyj się dokładnie"
+            alt="Srawdź Mapę"
           ></Card>
         </ul>
       </section>

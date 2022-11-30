@@ -6,7 +6,7 @@ import interiorImg2 from "../assets/interior2.jpg";
 import interiorImg3 from "../assets/interior3.jpg";
 import interiorImg4 from "../assets/interior4.jpg";
 import { useState } from "react";
-import FullscreenPhotosGallery from "./BigPhotosGallery";
+import FullscreenPhotosGallery from "./FullscreenPhotosGallery";
 import useActive from "./useActive";
 
 function ItemPhotos() {
@@ -90,6 +90,7 @@ function ItemPhotos() {
           onClick={setIsActive}
           src={photosList[selectedPhoto].props.children.props.src}
           alt="Big Thumbnail"
+          loading="lazy"
         ></img>
       </div>
       <div className={styles.container_photos_thumbnails}>
@@ -105,7 +106,9 @@ function ItemPhotos() {
         </div>
         <button
           className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={thumbnail >= photos.length || thumbnail >= photos.length - 5}
+          disabled={
+            thumbnail >= photos.length || thumbnail >= photos.length - 5
+          }
           onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
         >
           <HiArrowRight />

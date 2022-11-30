@@ -1,13 +1,16 @@
 import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <div className={styles.nav}>
-      <div className={styles.logo}>Anytown Real Estate</div>
+      <Link to="/">
+        <div className={styles.logo}>Anytown Real Estate</div>
+      </Link>
       <ul className={styles.nav__links}>
         <li>
-          <a href="*">buy</a>
+          <Link to="/Offers">Buy</Link>
         </li>
         <li>
           <a href="*">rent</a>

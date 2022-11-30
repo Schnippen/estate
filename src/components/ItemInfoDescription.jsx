@@ -5,7 +5,7 @@ import Table from "./Table";
 function ItemInfoDescription({ prop }) {
   //const prop = Database[1];
 
-  const description = prop.descriptionInfo;
+  //const description = prop.descriptionInfo;
   //<div>dangerouslySetInnerHTML={{__html:prop.descriptionInfo}}</div>
   return (
     <div className={styles.description_container}>

@@ -1,4 +1,4 @@
-import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
+import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
 import "./List.css";
 import { useState } from "react";
@@ -10,6 +10,7 @@ function List() {
   const [databaseState, setDatabaseState] = useState(Database);
 
   //prevstate => prevstate xx
+  // Database bedzie łączyć sie z serverem useFetch
 
   const pagesVisited = currentPage * itemsPerPage;
 
@@ -23,7 +24,8 @@ function List() {
     setItemsPerPage((itemsPerPage) => parseInt(e.target.value));
   };
 
-  const handleDatabaseState = (e) => {
+  //Sorting
+  const handleSortingDatabaseState = (e) => {
     const sortBy = parseInt(e.target.value);
     if (sortBy === 1) {
       console.log("domyslnie");
@@ -89,7 +91,7 @@ function List() {
     <>
       <section className="section__main">
         <div>
-          <select onChange={handleDatabaseState}>
+          <select onChange={handleSortingDatabaseState}>
             <option value={1}>Domyślnie</option>
             <option value={2}>cena od najniższej</option>
             <option value={3}>cena od najwyższej</option>

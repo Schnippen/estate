@@ -11,6 +11,7 @@ function Footer() {
             <FiFacebook />
             <FiTwitter />
             <FiFacebook />
+            <FiInstagram/>
           </div>
         </div>
         <div className="footer__container-opinions">opinie klientów</div>

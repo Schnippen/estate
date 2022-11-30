@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./ItemSideArticle.module.css";
 import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
-import profilePicture from "../assets/profile.jpg";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
+import RealtorData from "./ItemRealtorData";
 //import { useState } from "react";
 import { useRef } from "react";
 
@@ -21,28 +21,7 @@ function ItemSideArticle({ prop }) {
     <article className={styles.container_article_side}>
       <section className={styles.section_sidebar}>
         <div className={styles.section_div}>
-          <header className={styles.section_header}>
-            <h2>Skontakuj się</h2>
-            <div className={styles.contact}>
-              <img
-                className={styles.profilePicture}
-                src={profilePicture}
-                alt="Profile of realtor"
-              />
-              <address>
-                <span>
-                  <strong>{prop.sellerInfo}</strong>
-                </span>
-                {prop.estateAgencyInfo.includes("tel.") ? null : (
-                  <span>{prop.estateAgencyInfo}</span>
-                )}
-                <span class="phoneNr">
-                  tel.
-                  <span class="phone">{prop.telephoneNumberInfo}</span>
-                </span>
-              </address>
-            </div>
-          </header>
+          <RealtorData prop={prop}/>
           <div>
             <div className={styles.form_container}>
               <form

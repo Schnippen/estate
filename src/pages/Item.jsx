@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Item.module.css";
 import { HiHeart } from "react-icons/hi";
@@ -6,26 +5,21 @@ import useActive from "../components/useActive";
 import Button from "../components/Button";
 import ItemPhotos from "../components/ItemPhotos";
 import ItemInfoDescription from "../components/ItemInfoDescription";
-import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ItemSideArticle from "../components/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
+import { useLocation } from "react-router-dom";
 
-function Item(props) {
+//import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
+//import React, { useState } from "react";
 
-  const [Intiger, setIntiger] = useState(0);
-  const prop = Database[Intiger];
-  
-  const [isActive, setIsActive] = useActive(true);
+function Item() {
+  //console.log(item)
+  //console.log(props.location.state)
+  //console.log(location.state);
+  //const [Intiger, setIntiger] = useState(0);
+  //Database[Intiger];
 
-  console.log(prop)
-
-  return (
-    <>
-      <Navbar />
-      <div className={styles.breadcrumbs}>
-        <div>wróć</div>
-        Bread crumbs?
-        <button
+  /*        <button
           onClick={() => setIntiger((Intiger) => Intiger + 1)}
           style={{
             height: "50px",
@@ -41,7 +35,18 @@ function Item(props) {
           style={{ height: "50px", width: "50px", position: "fixed" }}
         >
           -
-        </button>
+        </button>*/
+
+  const location = useLocation();
+  const prop = location.state;
+  const [isActive, setIsActive] = useActive(true);
+
+  return (
+    <>
+      <Navbar />
+      <div className={styles.breadcrumbs}>
+        <div>wróć</div>
+        Bread crumbs?
       </div>
       <div className={styles.container}>
         <article className={styles.container_article_main}>
@@ -128,6 +133,5 @@ function Item(props) {
     </>
   );
 }
-
 
 export default Item;
