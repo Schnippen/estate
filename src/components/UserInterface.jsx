@@ -13,7 +13,6 @@ function UserInterface() {
   const [isActive, setIsActive] = useActive(false);
 
   const ref = useRef();
-  console.log(ref, isActive);
 
   useEffect(() => {
     const handleClose = (e) => {
@@ -28,7 +27,7 @@ function UserInterface() {
   }, [isActive]);
 
   return (
-    <div className={styles.btn__group}>
+    <div className={styles.btn__group} ref={ref}>
       <button
         type="button"
         className={
@@ -40,7 +39,6 @@ function UserInterface() {
         Sign In
       </button>
       <button
-        ref={ref}
         type="button"
         className={
           isActive

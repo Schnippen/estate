@@ -28,6 +28,7 @@ function ItemSideArticleCredit() {
           <label>okres kredytu</label>
           <NumberSelect
             number={["5 lat", "10 lat", "15 lat", "20 lat", "25 lat", "30 lat"]}
+            checkMark={false}
           />
         </div>
       </div>

@@ -1,8 +1,9 @@
 import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
-import "./List.css";
 import { useState } from "react";
 import Pagination from "./Pagination";
+import NumberSelect from "./NumberSelect";
+import styles from "./List.module.css";
 
 function List() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -89,25 +90,46 @@ function List() {
 
   return (
     <>
-      <section className="section__main">
-        <div>
-          <select onChange={handleSortingDatabaseState}>
-            <option value={1}>Domyślnie</option>
-            <option value={2}>cena od najniższej</option>
-            <option value={3}>cena od najwyższej</option>
-            <option value={4}>Najniższej ceny za m²</option>
-            <option value={5}>Najwyższej ceny za m²</option>
-          </select>
-        </div>
-        <div>
-          Ilość ofert na stronie
-          <select onChange={handleSetItemsPerPage}>
-            <option value={5}>5</option>
-            <option value={1}>1</option>
-            <option value={3}>3</option>
-          </select>
-        </div>
-        <ul className="list__container">{items}</ul>
+      <section className={styles.section__main}>
+        <section className={styles.section__options}>
+          <div>
+            <select onChange={handleSortingDatabaseState}>
+              <option value={1}>Domyślnie</option>
+              <option value={2}>Cena od najniższej</option>
+              <option value={3}>Cena od najwyższej</option>
+              <option value={4}>Najniższej ceny za m²</option>
+              <option value={5}>Najwyższej ceny za m²</option>
+            </select>
+          </div>
+          <div>
+            Ilość ofert na stronie
+            <select onChange={handleSetItemsPerPage}>
+              <option value={5}>5</option>
+              <option value={1}>1</option>
+              <option value={3}>3</option>
+            </select>
+          </div>
+          <div style={{ width: "200px" }}>
+            <NumberSelect
+              placeholder={"Sortuj"}
+              number={[
+                "Domyślnie",
+                "Cena od najniższej",
+                "Cena od najwyższej",
+                "Najniższej ceny za m²",
+                "Najwyższej ceny za m²",
+              ]}
+            />
+          </div>
+          <div style={{ width: "200px", position:"relative" }}>
+            <NumberSelect 
+              placeholder={"Ilośc ofert na stronie"}
+              number={["5", "1", "3"]}
+            />
+          </div>
+          <div>Liczba ogłoszeń: <strong>{Database.length}</strong></div>
+        </section>
+        <ul className={styles.list__container}>{items}</ul>
         <Pagination
           pages={pages}
           setCurrentPage={setCurrentPage}

@@ -1,10 +1,9 @@
 import styles from "./SearchForm.module.css";
 import { useState } from "react";
 import { HiSearch } from "react-icons/hi";
-import Database from "../data/rybnik_Nieruchomosci_Morizon_08.11.2022.json";
 
 function SearchForm() {
-  const [selects, setSelects] = useState(Database);
+  const [selects, setSelects] = useState();
 
   //Dopisać Inne Kategorie
   const category = {

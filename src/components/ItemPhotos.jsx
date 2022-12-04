@@ -32,7 +32,7 @@ function ItemPhotos() {
     "https://picsum.photos/500/500?random=9",
     "https://picsum.photos/500/500?random=10",
   ];
-  /* Array.from(    { length: 40 },    () =>      `https://picsum.photos/500/500?random=${Math.floor(Math.random() * 40)}`
+  /* Array.from(    { length: 40 },    () =>      `https://picsum.photos/500/500?random=${Math.floor(Math.random() * 10)}`
   );*/
 
   //stestuj thumnaile i dlugosc photos array

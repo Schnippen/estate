@@ -1,20 +1,39 @@
 import React from "react";
 import styles from "./NumberSelect.module.css";
 import useActive from "./useActive";
+import { HiCheck } from "react-icons/hi";
 
-function NumberSelectItem({ title, index, value }) {
+function NumberSelectItem({
+  title,
+  index,
+  value,
+  setState,
+  setSelected,
+  selected,
+  checkMark,
+}) {
   const [isFocused, setIsFocused] = useActive(false);
-  //const [selected, setSelected] = useState(0);
+  //styles.list_item_active
+  //styles.list_item //isFocused
 
   return (
     <li
       onMouseEnter={setIsFocused}
       onMouseLeave={setIsFocused}
-      className={isFocused ? styles.list_item_active : styles.list_item}
+      className={
+        selected === index ? styles.list_item_active:
+        isFocused?  styles.list_item_active : styles.list_item
+      }
       value={value}
+      onClick={() => {
+        setState(() => title);
+        setSelected(() => index);
+      }}
     >
       {title}
-      {index}
+      {checkMark && selected === index ? (
+        <HiCheck className={styles.checkMark} />
+      ) : null}
     </li>
   );
 }

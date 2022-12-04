@@ -1,0 +1,14 @@
+.section__main{
+  display: block;
+}
+
+.section__options{
+  display: flex;
+}
+
+.list__container {
+  background-color: rgba(184, 243, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -15,6 +15,11 @@
     align-items: center;
 }
 
+.card_svg>svg{
+    height: 96px;
+    width: 96px;
+}
+
 .card_section_item:hover{
     transform: scale(1.05);
 }
@@ -22,6 +27,7 @@
 .card_section_item:active{
     transform: scale(1.03);
     transition: 0.1s;
+    box-shadow: 0 0 2px 2px #daa520;
 }
 
 .card_section_item:hover button{

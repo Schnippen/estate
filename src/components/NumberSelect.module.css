@@ -48,3 +48,9 @@
   text-decoration: underline #daa520;
   font-weight: 700;
 }
+
+.checkMark{
+  vertical-align: middle;
+  position:absolute; 
+  right:0;
+}

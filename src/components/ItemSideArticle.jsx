@@ -6,13 +6,15 @@ import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import RealtorData from "./ItemRealtorData";
 //import { useState } from "react";
 import { useRef } from "react";
+import useActive from "./useActive";
 
 function ItemSideArticle({ prop }) {
   //const prop = Database[10];
 
   //const [items,setItems] = useState([]);
   const inputRef = useRef();
-
+  const [isActive, setIsActive] = useActive(false);
+  console.log(isActive)
   //let statuses = ["empty", "typing", "submitting", "success", "error"];
 
   //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
@@ -87,8 +89,8 @@ function ItemSideArticle({ prop }) {
                   <div>
                     <input type="submit" className={styles.submit} />
                   </div>
-                  <div>
-                    <p>terms of agreement</p>
+                  <div className={styles.terms}>
+                    <p onClick={setIsActive}>terms of agreement</p>
                   </div>
                 </div>
               </form>

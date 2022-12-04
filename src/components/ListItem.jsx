@@ -12,15 +12,20 @@ function ListItem({item}) {
 
   return (
     <li key={item.offerID}>
-      <Link to="/Item" state={item}>
+      <Link to="/Item" state={item} className={styles.Link}>
         <div className={styles.listing__item}>
           <div className={styles.listing__photos}>
-            <img src="." alt="listing" loading="lazy"></img>
+            <img src={`https://picsum.photos/500/500?random=${Math.floor(Math.random() * 100)}`} alt="listing" loading="lazy"></img>
           </div>
           <section className={styles.listing__section}>
             <header className={styles.listing__section_header}>
               <div>
-                <h2>{item.offerTitle}</h2>
+                <h2>
+                  {item.offerTitle
+                    .split(" ")
+                    .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
+                    .join(" ")}
+                </h2>
                 <h3>{item.titleKategoria}</h3>
               </div>
               <div className={styles.listing__section_price}>

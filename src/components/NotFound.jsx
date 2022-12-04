@@ -5,17 +5,30 @@ import {useNavigate} from 'react-router-dom';
 
 function NotFound() {
 
+    const style = {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+      width: "100vw",
+      userSelect: "none",
+      backgroundColor: "#554971",
+      color: "#fff",
+    };
+
     const navigate = useNavigate()
 
     useEffect(()=>{
     setTimeout(()=>{
         navigate(-1)
-    },2000)
+    },1000)
     },[])
 
   return (
-    <div>
-      <h1>NotFound</h1>
+    <div style={style}>
+      <div>
+        <h1>Not Found</h1>
+      </div>
     </div>
   );
 }
