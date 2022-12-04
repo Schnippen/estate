@@ -29,6 +29,7 @@
   height: 40px;
   box-sizing: border-box;
   border-radius: 5px;
+    text-align: center;
 }
 
 .credit_input > input[type="text"]:focus,

@@ -4,6 +4,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import RealtorData from "./ItemRealtorData";
+import TermsOfService from "./TermsOfService";
 //import { useState } from "react";
 import { useRef } from "react";
 import useActive from "./useActive";
@@ -14,7 +15,7 @@ function ItemSideArticle({ prop }) {
   //const [items,setItems] = useState([]);
   const inputRef = useRef();
   const [isActive, setIsActive] = useActive(false);
-  console.log(isActive)
+  console.log(isActive);
   //let statuses = ["empty", "typing", "submitting", "success", "error"];
 
   //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
@@ -23,7 +24,7 @@ function ItemSideArticle({ prop }) {
     <article className={styles.container_article_side}>
       <section className={styles.section_sidebar}>
         <div className={styles.section_div}>
-          <RealtorData prop={prop}/>
+          <RealtorData prop={prop} />
           <div>
             <div className={styles.form_container}>
               <form
@@ -89,11 +90,12 @@ function ItemSideArticle({ prop }) {
                   <div>
                     <input type="submit" className={styles.submit} />
                   </div>
-                  <div className={styles.terms}>
-                    <p onClick={setIsActive}>terms of agreement</p>
-                  </div>
                 </div>
               </form>
+              <div className={styles.terms}>
+                <p onClick={setIsActive}>Terms of service</p>
+                {isActive ? <TermsOfService setIsActive={setIsActive} isActive={isActive}/> : null}
+              </div>
             </div>
           </div>
         </div>

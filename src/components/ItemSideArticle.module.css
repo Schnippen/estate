@@ -120,4 +120,7 @@ label {
 .terms{
   user-select: none;
   cursor:pointer;
+  text-align: center;
+  color: #fff;
+  margin: 0.5rem 0;
 }

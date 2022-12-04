@@ -121,13 +121,16 @@ function List() {
               ]}
             />
           </div>
-          <div style={{ width: "200px", position:"relative" }}>
-            <NumberSelect 
+          <div style={{ width: "200px", position: "relative" }}>
+            <NumberSelect
               placeholder={"Ilośc ofert na stronie"}
               number={["5", "1", "3"]}
+              value={[5,1,3]}
             />
           </div>
-          <div>Liczba ogłoszeń: <strong>{Database.length}</strong></div>
+          <div>
+            Liczba ogłoszeń: <strong>{Database.length}</strong>
+          </div>
         </section>
         <ul className={styles.list__container}>{items}</ul>
         <Pagination

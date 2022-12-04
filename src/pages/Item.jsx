@@ -7,6 +7,7 @@ import ItemPhotos from "../components/ItemPhotos";
 import ItemInfoDescription from "../components/ItemInfoDescription";
 import ItemSideArticle from "../components/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
+import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
 
 //import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
@@ -44,10 +45,7 @@ function Item() {
   return (
     <>
       <Navbar />
-      <div className={styles.breadcrumbs}>
-        <div>wróć</div>
-        Bread crumbs?
-      </div>
+      <BreadCrumbs/>
       <div className={styles.container}>
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>

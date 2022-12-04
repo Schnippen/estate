@@ -21,11 +21,11 @@ function ItemSideArticleCredit() {
       </header>
       <div className={styles.credit_wrapper}>
         <div className={styles.credit_input}>
-          <label>wartość nieruchomości</label>
-          <input type="number" placeholder="123 000" />
+          <label>Wartość nieruchomości</label>
+          <input type="number" placeholder="0" />
         </div>
         <div className={styles.credit_input}>
-          <label>okres kredytu</label>
+          <label>Okres kredytu</label>
           <NumberSelect
             number={["5 lat", "10 lat", "15 lat", "20 lat", "25 lat", "30 lat"]}
             checkMark={false}

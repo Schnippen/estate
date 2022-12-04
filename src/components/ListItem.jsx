@@ -12,10 +12,27 @@ function ListItem({item}) {
 
   return (
     <li key={item.offerID}>
-      <Link to="/Item" state={item} className={styles.Link}>
+      <Link
+        to="/Item"
+        state={item}
+        className={styles.Link}
+        onClick={() => {
+          window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+          });
+        }}
+      >
         <div className={styles.listing__item}>
           <div className={styles.listing__photos}>
-            <img src={`https://picsum.photos/500/500?random=${Math.floor(Math.random() * 100)}`} alt="listing" loading="lazy"></img>
+            <img
+              src={`https://picsum.photos/500/500?random=${Math.floor(
+                Math.random() * 100
+              )}`}
+              alt="listing"
+              loading="lazy"
+            ></img>
           </div>
           <section className={styles.listing__section}>
             <header className={styles.listing__section_header}>

@@ -1,0 +1,39 @@
+.breadcrumbs {
+  width: 100%;
+  padding:10px 0;
+}
+
+.breadcrumbs nav {
+  margin: auto;
+  width: 75%;
+}
+
+.breadcrumbs ul {
+  display: flex;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  user-select: none;
+  font-size: 24px;
+}
+
+.breadcrumbs li:hover {
+  text-decoration: underline #daa520;
+}
+
+.breadcrumbs li:after {
+  content: "/";
+  margin: 0 10px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.breadcrumbs li:last-child:after {
+  content: "";
+}
+
+.breadcrumbs a:visited {
+  text-decoration: none;
+}
+
