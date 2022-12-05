@@ -2,7 +2,7 @@ import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
 import { useState } from "react";
 import Pagination from "./Pagination";
-import NumberSelect from "./NumberSelect";
+import OptionSelect from "./OptionSelect";
 import styles from "./List.module.css";
 
 function List() {
@@ -12,6 +12,7 @@ function List() {
 
   //prevstate => prevstate xx
   // Database bedzie łączyć sie z serverem useFetch
+  //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
 
   const pagesVisited = currentPage * itemsPerPage;
 
@@ -21,13 +22,10 @@ function List() {
     pages.push(i);
   }
 
-  const handleSetItemsPerPage = (e) => {
-    setItemsPerPage((itemsPerPage) => parseInt(e.target.value));
-  };
-
   //Sorting
   const handleSortingDatabaseState = (e) => {
-    const sortBy = parseInt(e.target.value);
+    const sortBy = parseInt(e);
+    console.log(sortBy, "jestem sort by");
     if (sortBy === 1) {
       console.log("domyslnie");
       setDatabaseState([...Database]);
@@ -92,7 +90,46 @@ function List() {
     <>
       <section className={styles.section__main}>
         <section className={styles.section__options}>
+          <div style={{ width: "200px" }}>
+            <OptionSelect
+              placeholder={"Sortuj"}
+              option={[
+                "Domyślnie",
+                "Cena od najniższej",
+                "Cena od najwyższej",
+                "Najniższej ceny za m²",
+                "Najwyższej ceny za m²",
+              ]}
+              value={[1, 2, 3, 4, 5]}
+              setState={handleSortingDatabaseState}
+            />
+          </div>
+          <div style={{ width: "200px", position: "relative" }}>
+            <OptionSelect
+              placeholder={"Ilośc ofert na stronie"}
+              option={[3, 5, 10]}
+              value={[3, 5, 100]}
+              setState={setItemsPerPage}
+            />
+          </div>
           <div>
+            Liczba ogłoszeń: <strong>{Database.length}</strong>
+          </div>
+        </section>
+        <ul className={styles.list__container}>{items}</ul>
+        <Pagination
+          pages={pages}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      </section>
+    </>
+  );
+}
+
+export default List;
+
+/*          <div>
             <select onChange={handleSortingDatabaseState}>
               <option value={1}>Domyślnie</option>
               <option value={2}>Cena od najniższej</option>
@@ -108,40 +145,4 @@ function List() {
               <option value={1}>1</option>
               <option value={3}>3</option>
             </select>
-          </div>
-          <div style={{ width: "200px" }}>
-            <NumberSelect
-              placeholder={"Sortuj"}
-              number={[
-                "Domyślnie",
-                "Cena od najniższej",
-                "Cena od najwyższej",
-                "Najniższej ceny za m²",
-                "Najwyższej ceny za m²",
-              ]}
-            />
-          </div>
-          <div style={{ width: "200px", position: "relative" }}>
-            <NumberSelect
-              placeholder={"Ilośc ofert na stronie"}
-              number={["5", "1", "3"]}
-              value={[5,1,3]}
-            />
-          </div>
-          <div>
-            Liczba ogłoszeń: <strong>{Database.length}</strong>
-          </div>
-        </section>
-        <ul className={styles.list__container}>{items}</ul>
-        <Pagination
-          pages={pages}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-          handleSetItemsPerPage={handleSetItemsPerPage}
-        />
-      </section>
-    </>
-  );
-}
-
-export default List;
+          </div>*/

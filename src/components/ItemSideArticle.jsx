@@ -5,21 +5,36 @@ import { HiPhone, HiMail } from "react-icons/hi";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import RealtorData from "./ItemRealtorData";
 import TermsOfService from "./TermsOfService";
+import FormInput from "./FormInput";
 //import { useState } from "react";
 import { useRef } from "react";
 import useActive from "./useActive";
+import { useState } from "react";
 
 function ItemSideArticle({ prop }) {
   //const prop = Database[10];
 
-  //const [items,setItems] = useState([]);
   const inputRef = useRef();
   const [isActive, setIsActive] = useActive(false);
-  console.log(isActive);
-  //let statuses = ["empty", "typing", "submitting", "success", "error"];
+  const [inputValues, setInputValues] = useState({
+    name: "",
+    telephone: "",
+    email: "",
+    textmessage: "",
+  });
 
+  const inputTemplate={}
+  //let statuses = ["empty", "typing", "submitting", "success", "error"];
   //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
   //wyslij wiadomosc gdzies na serwer  sprawdz se jak sie to robi
+  //    const data = new FormData(e.target)
+  //console.log(Object.fromEntries(data.entries()));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Submitting!");
+  };
+
   return (
     <article className={styles.container_article_side}>
       <section className={styles.section_sidebar}>
@@ -27,16 +42,12 @@ function ItemSideArticle({ prop }) {
           <RealtorData prop={prop} />
           <div>
             <div className={styles.form_container}>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Submitting!");
-                }}
-              >
+              <form onSubmit={handleSubmit}>
+                <FormInput svg={<BsPersonFill className={styles.svg} />} />
                 <div className={styles.form_div_wrapper}>
                   <BsPersonFill className={styles.svg} />
                   <input
-                    ref={inputRef}
+                    name="name"
                     type="text"
                     placeholder="wpisz imię"
                     className={styles.inputText}
@@ -46,6 +57,7 @@ function ItemSideArticle({ prop }) {
                   <HiPhone className={styles.svg} />
                   <input
                     type="tel"
+                    name="telephone"
                     placeholder="nr telefonu"
                     className={styles.inputText}
                   />
@@ -54,12 +66,13 @@ function ItemSideArticle({ prop }) {
                   <HiMail className={styles.svg} />
                   <input
                     type="email"
+                    name="email"
                     placeholder="wpisz e-mail"
                     className={styles.inputText}
                   />
                 </div>
                 <textarea
-                  name=""
+                  name="textmessage"
                   id=""
                   cols="30"
                   rows="10"
@@ -94,7 +107,12 @@ function ItemSideArticle({ prop }) {
               </form>
               <div className={styles.terms}>
                 <p onClick={setIsActive}>Terms of service</p>
-                {isActive ? <TermsOfService setIsActive={setIsActive} isActive={isActive}/> : null}
+                {isActive ? (
+                  <TermsOfService
+                    setIsActive={setIsActive}
+                    isActive={isActive}
+                  />
+                ) : null}
               </div>
             </div>
           </div>

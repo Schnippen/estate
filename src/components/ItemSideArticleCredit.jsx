@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ItemSideArticleCredit.module.css";
-import NumberSelect from "../components/NumberSelect";
+import OptionSelect from "../components/OptionSelect";
 import bank1 from "../assets/banks/alior.png";
 import bank2 from "../assets/banks/bgz.png";
 import bank3 from "../assets/banks/bos.png";
@@ -26,9 +26,10 @@ function ItemSideArticleCredit() {
         </div>
         <div className={styles.credit_input}>
           <label>Okres kredytu</label>
-          <NumberSelect
-            number={["5 lat", "10 lat", "15 lat", "20 lat", "25 lat", "30 lat"]}
+          <OptionSelect
+            option={["5 lat", "10 lat", "15 lat", "20 lat", "25 lat", "30 lat"]}
             checkMark={false}
+            value={[1,2,3,4,5,6]}
           />
         </div>
       </div>

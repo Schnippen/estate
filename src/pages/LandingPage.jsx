@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import styles from "../styles/LandingPage.module.css";
 import backgroundImg from "../assets/backgroundPhoto2.jpg";
 import Card from "../components/Card";
-import NumberSelect from "../components/NumberSelect";
+import OptionSelect from "../components/OptionSelect";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
@@ -32,9 +32,9 @@ function LandingPage() {
           </div>
           <div>
             <label htmlFor="TypeOfRealRstate">Rodzaj Nieruchomości</label>
-            <NumberSelect
+            <OptionSelect
               placeholder={"Rodzaj Nieruchomości"}
-              number={[
+              option={[
                 "Mieszkania",
                 "Domy",
                 "Komercyjne",
@@ -44,23 +44,25 @@ function LandingPage() {
               ]}
               name={"TypeOfRealRstate"}
               checkMark={true}
+              value={[1, 2, 3, 4, 5, 6]}
             />
           </div>
           <div>
             <label htmlFor="TypeOfTransaction">Rodzaj Transakcji</label>
-            <NumberSelect
+            <OptionSelect
               placeholder={"Rodzaj Transakscji"}
-              number={["Dowolny", "Pierwotny", "Wtórny"]}
+              option={["Dowolny", "Pierwotny", "Wtórny"]}
               name={"TypeOfTransaction"}
               checkMark={true}
+              value={[1, 2, 3]}
             />
           </div>
           <div className={styles.number_select}>
             <label>Cena w zł</label>
             <div>
-              <NumberSelect
+              <OptionSelect
                 placeholder="Od"
-                number={[
+                option={[
                   "100 000",
                   "150 000",
                   "200 000",
@@ -77,10 +79,11 @@ function LandingPage() {
                   "4 000 000",
                 ]}
                 name={"PriceFrom"}
+                value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]}
               />
-              <NumberSelect
+              <OptionSelect
                 placeholder="Do"
-                number={[
+                option={[
                   "100 000",
                   "150 000",
                   "200 000",
@@ -97,6 +100,7 @@ function LandingPage() {
                   "4 000 000",
                 ]}
                 name={"PriceTo"}
+                value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]}
               />
             </div>
           </div>
