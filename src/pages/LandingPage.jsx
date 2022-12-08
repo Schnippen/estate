@@ -5,7 +5,8 @@ import styles from "../styles/LandingPage.module.css";
 import backgroundImg from "../assets/backgroundPhoto2.jpg";
 import Card from "../components/Card";
 import OptionSelect from "../components/OptionSelect";
-import { HiOutlineLocationMarker } from "react-icons/hi";
+import Button from "../components/Button";
+import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
@@ -14,6 +15,12 @@ function LandingPage() {
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
   //useSearchParams()
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      alert("Submitting!");
+    };
+
   return (
     <>
       <Navbar />
@@ -21,7 +28,7 @@ function LandingPage() {
         <div className={styles.landing__page_photo}>
           <img src={backgroundImg} alt="Violet house" />
         </div>
-        <form className={styles.section_searchbar}>
+        <form className={styles.section_searchbar} onSubmit={handleSubmit}>
           <div className={styles.form_div_wrapper}>
             <HiOutlineLocationMarker className={styles.svg} />
             <input
@@ -55,14 +62,17 @@ function LandingPage() {
               name={"TypeOfTransaction"}
               checkMark={true}
               value={[1, 2, 3]}
+              onChangeActive={false}
             />
           </div>
           <div className={styles.number_select}>
             <label>Cena w zł</label>
             <div>
               <OptionSelect
+              
                 placeholder="Od"
                 option={[
+                  "Dowolna",
                   "100 000",
                   "150 000",
                   "200 000",
@@ -79,11 +89,15 @@ function LandingPage() {
                   "4 000 000",
                 ]}
                 name={"PriceFrom"}
-                value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]}
+                value={[
+                  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                ]}
+                onChangeActive={true}
               />
               <OptionSelect
                 placeholder="Do"
                 option={[
+                  "Dowolna",
                   "100 000",
                   "150 000",
                   "200 000",
@@ -100,10 +114,16 @@ function LandingPage() {
                   "4 000 000",
                 ]}
                 name={"PriceTo"}
-                value={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]}
+                value={[
+                  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                ]}
+                onChangeActive={true}
               />
             </div>
           </div>
+          <Button>
+            <HiSearch />
+          </Button>
         </form>
       </section>
       <section className={styles.landing__page_card_section}>

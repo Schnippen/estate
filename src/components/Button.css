@@ -7,12 +7,11 @@
     width:40px;
     height: 40px;
     cursor: pointer;
+        display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.small-button> svg{
-    display: block;
-    margin: auto;
-}
 .small-button:hover{
     color:#DAA520;
     background-color: #36213e;

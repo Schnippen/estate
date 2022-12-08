@@ -11,9 +11,10 @@ function OptionSelect({
   name,
   checkMark,
   setState,
+  onChangeActive
 }) {
   const [isActive, setIsActive] = useActive(false);
-  const [InputTitle, setInputTitleState] = useState(0);
+  const [InputTitle, setInputTitleState] = useState();
   const [selectedOption, setSelectedOption] = useState(0);
   const ref = useRef();
 
@@ -30,6 +31,10 @@ function OptionSelect({
       document.removeEventListener("click", handleClose);
     };
   }, [isActive]);
+  
+        const handleChange = (e) => {
+          setInputTitleState(e.target.value);
+        };
 
   const optionList = [...option].map((n, i) => (
     <OptionSelectItem
@@ -53,6 +58,7 @@ function OptionSelect({
           type="text"
           placeholder={placeholder}
           onClick={setIsActive}
+          onChange={onChangeActive? handleChange:null}
           value={InputTitle}
           name={name}
         />

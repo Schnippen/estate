@@ -32,7 +32,7 @@
 .section_searchbar > div {
   background-color: #554971;
   margin: 0 1rem;
-  color:white;
+  border-radius: 5px;
 }
 
 .form_div_wrapper {

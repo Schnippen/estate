@@ -50,11 +50,12 @@ form {
   outline: solid #daa520;
 }
 
-textarea {
+.textarea {
   width: 100%;
   outline: none;
-  transition: all 0.3s ease 0s;
   border-radius: 5px;
+  height: 196px;
+  resize: none;
 }
 
 textarea:focus {

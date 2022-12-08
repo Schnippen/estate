@@ -1,6 +1,7 @@
 import styles from "./SearchForm.module.css";
 import { useState } from "react";
 import { HiSearch } from "react-icons/hi";
+import Button from "./Button";
 
 function SearchForm() {
   const [selects, setSelects] = useState();
@@ -109,9 +110,9 @@ function SearchForm() {
           placeholder="powierzchnia maksymalna"
         ></input>
       </div>
-      <button className={styles.search__form_btn}>
+      <Button>
         <HiSearch />
-      </button>
+      </Button>
     </div>
   );
 }
