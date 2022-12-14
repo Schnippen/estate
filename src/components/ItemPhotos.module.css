@@ -3,6 +3,7 @@
   background-color: #f5f8fb;
   border-radius: 5px;
   position: relative;
+  cursor:-webkit-zoom-in;
 }
 
 .container_photos_bigPhoto > img {
