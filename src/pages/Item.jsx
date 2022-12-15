@@ -45,7 +45,7 @@ function Item() {
   return (
     <>
       <Navbar />
-      <BreadCrumbs/>
+      <BreadCrumbs />
       <div className={styles.container}>
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>
@@ -81,7 +81,13 @@ function Item() {
                     ) : null}
                     {typeof prop.numberOfRoomsInfo === "string" ? (
                       <li>
-                        Pokoje<em>{prop.numberOfRoomsInfo}</em>
+                        <em>{prop.numberOfRoomsInfo}</em>
+                        {prop.numberOfRoomsInfo === 1
+                          ? " Pokój"
+                          : prop.numberOfRoomsInfo > 1 &&
+                            prop.numberOfRoomsInfo < 5
+                          ? " Pokoje"
+                          : " Pokoi"}
                       </li>
                     ) : null}
                   </ul>

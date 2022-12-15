@@ -86,7 +86,7 @@ function SignUp() {
                 Apple
               </button>
             </div>
-            <h5>lub zarejestruj sie przez</h5>
+            <h5 style={{margin:"0 0 10px 0"}}>lub zarejestruj sie przez</h5>
           </div>
           <div className={styles.authentication_panel}>
             <label htmlFor="email">E-mail:</label>

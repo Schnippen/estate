@@ -57,6 +57,10 @@
   position: relative;
   font-size: larger;
 }
+.authentication_button:hover {
+  box-shadow: 0 0 2px 2px #daa520;
+  transition: all 0.3s ease 0s;
+}
 
 .authentication_button:nth-child(1) {
   background-color: #fff;
