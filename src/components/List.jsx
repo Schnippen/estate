@@ -90,7 +90,7 @@ function List() {
     <>
       <section className={styles.section__main}>
         <section className={styles.section__options}>
-          <div style={{ width: "200px" }}>
+          <div style={{ width: "250px", textAlign:"center"}}>
             <OptionSelect
               placeholder={"Sortuj"}
               option={[
@@ -104,10 +104,10 @@ function List() {
               setState={handleSortingDatabaseState}
             />
           </div>
-          <div style={{ width: "200px", position: "relative" }}>
+          <div style={{ width: "200px", position: "relative", textAlign:"center" }}>
             <OptionSelect
               placeholder={"Ilośc ofert na stronie"}
-              option={[3, 5, 10]}
+              option={[3, 5, 100]}
               value={[3, 5, 100]}
               setState={setItemsPerPage}
             />

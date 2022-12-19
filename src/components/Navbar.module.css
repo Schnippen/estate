@@ -17,16 +17,17 @@
 }
 
 .nav__links li {
+    height: 2.15rem;
   vertical-align: middle;
   display: inline-block;
   padding: 10px 32px;
-  margin: 5px;
+  margin:0 5px;
   border-radius: 5px;
   background-color: #554971;
   transition: all 0.3s ease 0s;
 }
 
-.nav__links li a {
+.nav__links li  {
   color: white;
   text-decoration: none;
 }
@@ -35,13 +36,10 @@
   background-color: #36213e;
 }
 
-.nav__links li:hover a {
+.nav__links li:hover  {
   color: #daa520;
 }
 
-.nav__links li {
-  padding: 0 25px;
-}
 
 
 /*#8AC6D0

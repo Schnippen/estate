@@ -28,8 +28,9 @@ function ItemSideArticleCredit() {
           <label>Okres kredytu</label>
           <OptionSelect
             option={["5 lat", "10 lat", "15 lat", "20 lat", "25 lat", "30 lat"]}
+            placeholder={"Okres kredytu"}
             checkMark={false}
-            value={[1,2,3,4,5,6]}
+            value={[1, 2, 3, 4, 5, 6]}
           />
         </div>
       </div>

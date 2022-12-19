@@ -9,20 +9,22 @@ function Navbar() {
         <div className={styles.logo}>Anytown Real Estate</div>
       </Link>
       <ul className={styles.nav__links}>
+        <Link to="/Offers">
+          <li>
+            Buy
+          </li>
+        </Link>
         <li>
-          <Link to="/Offers">Buy</Link>
+          <a href="*">Rent</a>
         </li>
         <li>
-          <a href="*">rent</a>
+          <a href="*">Kredyty</a>
         </li>
         <li>
-          <a href="*">kredyty</a>
+          <a href="*">Overseas</a>
         </li>
         <li>
-          <a href="*">overseas</a>
-        </li>
-        <li>
-          <a href="*">blog</a>
+          <a href="*">Blog</a>
         </li>
       </ul>
       <UserInterface />

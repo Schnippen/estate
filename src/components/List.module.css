@@ -4,7 +4,9 @@
 
 .section__options{
   display: flex;
-
+  height: 60px;
+  align-items: center;
+  background-color: #554971;
 }
 
 .list__container {
