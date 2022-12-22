@@ -32,8 +32,9 @@ function OptionSelectItem({
       onClick={() => {
         setInputTitleState(() => title);
         setSelectedOption(() => index);
-        setState(value);
+       // setState(value=>value);
       }}
+      key={index}
     >
       {title}
       {checkMark && selectedOption === index ? (

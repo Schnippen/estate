@@ -4,7 +4,7 @@ import { BsPersonFill } from "react-icons/bs";
 import { HiPhone, HiMail } from "react-icons/hi";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import RealtorData from "./ItemRealtorData";
-import TermsOfService from "./TermsOfService";
+import FullscreenModal from "./FullscreenModal";
 import useActive from "./useActive";
 import { useState } from "react";
 
@@ -80,7 +80,8 @@ function ItemSideArticle({ prop }) {
                     required
                   />
                 </div>
-                <textarea className={styles.textarea}
+                <textarea
+                  className={styles.textarea}
                   name="textmessage"
                   id=""
                   cols="30"
@@ -124,7 +125,7 @@ function ItemSideArticle({ prop }) {
               <div className={styles.terms}>
                 <p onClick={setIsActive}>Terms of service</p>
                 {isActive ? (
-                  <TermsOfService
+                  <FullscreenModal
                     setIsActive={setIsActive}
                     isActive={isActive}
                   />

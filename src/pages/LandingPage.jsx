@@ -10,16 +10,31 @@ import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
+  const [queryDetails, setQueryDetails] = useState({
+    city: "",
+    TypeOfRealRstate: "",
+    TypeOfTransaction: "",
+    PriceFrom: "",
+    PriceTo: "",
+  });
+
+  const handleChange = (e) => {
+    setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
+  };
+  console.table(queryDetails);
+
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
   //useSearchParams()
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      alert("Submitting!");
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Submitting!");
+  };
 
   return (
     <>
@@ -34,6 +49,7 @@ function LandingPage() {
             <input
               type="text"
               placeholder="np. miasto"
+              name="city"
               className={styles.inputText}
             />
           </div>
@@ -51,7 +67,8 @@ function LandingPage() {
               ]}
               name={"TypeOfRealRstate"}
               checkMark={true}
-              value={[1, 2, 3, 4, 5, 6]}
+              value={["Mieszkanie", 2, 3, 4, 5, 6]}
+              setState={handleChange}
             />
           </div>
           <div>
@@ -69,7 +86,6 @@ function LandingPage() {
             <label>Cena w zł</label>
             <div>
               <OptionSelect
-              
                 placeholder="Od"
                 option={[
                   "Dowolna",
@@ -121,20 +137,22 @@ function LandingPage() {
               />
             </div>
           </div>
-          <Button>
+          <Button type="submit" onClick={handleSubmit}>
             <HiSearch />
           </Button>
         </form>
       </section>
       <section className={styles.landing__page_card_section}>
         <ul className={styles.landing__page_card_section_list}>
-          <Card
-            title="Kup Nieruchomość"
-            description={Lorem}
-            buttonDescription="Srawdź Nieruchomości"
-            alt="Kup Nieruchomość"
-            svg={<MdOutlineMapsHomeWork />}
-          ></Card>
+          <Link to="/Offers">
+            <Card
+              title="Kup Nieruchomość"
+              description={Lorem}
+              buttonDescription="Srawdź Nieruchomości"
+              alt="Kup Nieruchomość"
+              svg={<MdOutlineMapsHomeWork />}
+            ></Card>
+          </Link>
           <Card
             title="Sprzedaj Nieruchomość"
             description={Lorem}
@@ -142,13 +160,15 @@ function LandingPage() {
             alt="Sprzedaj Nieruchomość"
             svg={<BsCashCoin />}
           ></Card>
-          <Card
-            title="Srawdź Mapę"
-            description={Lorem}
-            buttonDescription="Przyjżyj się dokładnie"
-            alt="Srawdź Mapę"
-            svg={<TbMap2 />}
-          ></Card>
+          <Link to="/Leaflet">
+            <Card
+              title="Srawdź Mapę"
+              description={Lorem}
+              buttonDescription="Przyjżyj się dokładnie"
+              alt="Srawdź Mapę"
+              svg={<TbMap2 />}
+            ></Card>
+          </Link>
         </ul>
       </section>
       <Footer />

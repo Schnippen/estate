@@ -34,6 +34,7 @@ function OptionSelect({
   
         const handleChange = (e) => {
           setInputTitleState(e.target.value);
+          setState(e)
         };
 
   const optionList = [...option].map((n, i) => (
@@ -41,12 +42,12 @@ function OptionSelect({
       title={[...option][i]}
       index={i}
       value={value[i]}
-      key={n.id}
+      key={n}
       setInputTitleState={setInputTitleState}
       setSelectedOption={setSelectedOption}
       selectedOption={selectedOption}
       checkMark={checkMark}
-      setState={setState}
+      //setState={setState}
     />
   ));
 

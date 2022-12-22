@@ -1,19 +1,33 @@
 import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from "./Pagination";
 import OptionSelect from "./OptionSelect";
+import Loading from "./Loading";
 import styles from "./List.module.css";
+import useActive from "./useActive";
 
 function List() {
+  const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [databaseState, setDatabaseState] = useState(Database);
+  const [databaseState, setDatabaseState] = useState([]);
 
-  //prevstate => prevstate xx
   // Database bedzie łączyć sie z serverem useFetch
-  //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
+  useEffect(() => {
+    fetchDatabase();
+  }, []);
 
+  console.log(isLoading);
+
+  const fetchDatabase = async () => {
+    const response = await fetch(`http://localhost:3000/items`);
+    const data = await response.json();
+    setDatabaseState(data);
+    setIsLoading(false);
+  };
+
+  //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
   const pagesVisited = currentPage * itemsPerPage;
 
   let pages = [];
@@ -90,7 +104,13 @@ function List() {
     <>
       <section className={styles.section__main}>
         <section className={styles.section__options}>
-          <div style={{ width: "250px", textAlign:"center"}}>
+          <div
+            style={{
+              width: "250px",
+              textAlign: "center",
+              margin: "0 10px 0 10px",
+            }}
+          >
             <OptionSelect
               placeholder={"Sortuj"}
               option={[
@@ -104,7 +124,14 @@ function List() {
               setState={handleSortingDatabaseState}
             />
           </div>
-          <div style={{ width: "200px", position: "relative", textAlign:"center" }}>
+          <div
+            style={{
+              width: "200px",
+              position: "relative",
+              textAlign: "center",
+              margin: "0 10px 0 0",
+            }}
+          >
             <OptionSelect
               placeholder={"Ilośc ofert na stronie"}
               option={[3, 5, 100]}
@@ -112,11 +139,20 @@ function List() {
               setState={setItemsPerPage}
             />
           </div>
-          <div>
+          <div
+            style={{
+              color: "#fff",
+              textAlign: "center",
+            }}
+          >
             Liczba ogłoszeń: <strong>{Database.length}</strong>
           </div>
         </section>
-        <ul className={styles.list__container}>{items}</ul>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <ul className={styles.list__container}>{items}</ul>
+        )}
         <Pagination
           pages={pages}
           setCurrentPage={setCurrentPage}
