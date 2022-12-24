@@ -12,6 +12,7 @@ import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Select from "../components/Select";
 
 function LandingPage() {
   const [queryDetails, setQueryDetails] = useState({
@@ -25,6 +26,16 @@ function LandingPage() {
   const handleChange = (e) => {
     setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
   };
+
+  const TypeOfRealRstate = [
+    { value: "option1", label: "Mieszkania" },
+    { value: "option2", label: "Domy" },
+    { value: "option3", label: "Komercyjne" },
+    { value: "option4", label: "Działki" },
+    { value: "option5", label: "Garaże" },
+    { value: "option6", label: "Dowolny" },
+  ];
+
   console.table(queryDetails);
 
   let Lorem =
@@ -53,6 +64,14 @@ function LandingPage() {
               className={styles.inputText}
             />
           </div>
+          <Select
+            data={TypeOfRealRstate}
+            handleChange={handleChange}
+            name={"TypeOfRealRstate"}
+            label={"TypeOfRealRstate"}
+            labelText={"Rodzaj Nieruchomości"}
+            placeholder={"Wybierz rodzaj nieruchomości"}
+          ></Select>
           <div>
             <label htmlFor="TypeOfRealRstate">Rodzaj Nieruchomości</label>
             <OptionSelect

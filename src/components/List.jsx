@@ -6,6 +6,7 @@ import OptionSelect from "./OptionSelect";
 import Loading from "./Loading";
 import styles from "./List.module.css";
 import useActive from "./useActive";
+import { TbMap2 } from "react-icons/tb";
 
 function List() {
   const [isLoading, setIsLoading] = useActive(true);
@@ -17,8 +18,6 @@ function List() {
   useEffect(() => {
     fetchDatabase();
   }, []);
-
-  console.log(isLoading);
 
   const fetchDatabase = async () => {
     const response = await fetch(`http://localhost:3000/items`);
@@ -146,6 +145,10 @@ function List() {
             }}
           >
             Liczba ogłoszeń: <strong>{Database.length}</strong>
+          </div>
+          <div>
+            zobacz na mapie
+            <TbMap2 />
           </div>
         </section>
         {isLoading ? (

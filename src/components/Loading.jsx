@@ -6,8 +6,6 @@ import { useState, useEffect } from "react";
 function Loading() {
   const [time, setTime] = useState("");
 
-  let number = 0;
-
   useEffect(() => {
     const interval = setInterval(() => {
       if (time === "...") {

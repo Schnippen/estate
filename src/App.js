@@ -2,10 +2,11 @@ import LandingPage from "./pages/LandingPage";
 import Item from "./pages/Item";
 import Offers from "./pages/Offers";
 import NotFound from "./components/NotFound";
-import Leaflet from "./components/Leaflet";
+import Leaflet from "./Leaflet/Leaflet";
 //import SignUp from "./components/SignUp";
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
+import "./App.css"
 
 /* <Route path='/' element={<Home/>}/> */
 
