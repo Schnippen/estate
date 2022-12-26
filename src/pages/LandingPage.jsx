@@ -70,7 +70,6 @@ function LandingPage() {
             name={"TypeOfRealRstate"}
             label={"TypeOfRealRstate"}
             labelText={"Rodzaj Nieruchomości"}
-            placeholder={"Wybierz rodzaj nieruchomości"}
           ></Select>
           <div>
             <label htmlFor="TypeOfRealRstate">Rodzaj Nieruchomości</label>

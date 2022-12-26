@@ -11,14 +11,13 @@ function OptionSelectItem({
   setSelectedOption,
   selectedOption,
   checkMark,
-  setState,
 }) {
   const [isFocused, setIsFocused] = useActive(false);
   //styles.list_item_active
   //styles.list_item //isFocused
 
   return (
-    <li
+    <li 
       onMouseEnter={setIsFocused}
       onMouseLeave={setIsFocused}
       className={

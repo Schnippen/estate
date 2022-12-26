@@ -1,5 +1,7 @@
 import React from "react";
 import { HiCheck } from "react-icons/hi";
+import styles from "./Select.module.css"
+
 
 function Select({ data, handleChange, label, labelText, name, placeholder }) {
   return (
@@ -10,7 +12,7 @@ function Select({ data, handleChange, label, labelText, name, placeholder }) {
         </div>
       ) : null}
       <select onChange={handleChange} id={label} name={name}>
-        <option value="" disabled selected hidden>
+        <option className={styles.chuj} value="" disabled selected hidden>
           {placeholder}
         </option>
         {data.map((i) => (
