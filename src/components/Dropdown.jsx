@@ -4,14 +4,14 @@ import useActive from "./useActive";
 import { useState, useRef, useEffect } from "react";
 import { HiCheck } from "react-icons/hi";
 
-function Dropdown({ data, handleChange, placeholder, label,name }) {
+function Dropdown({ data, handleChange, placeholder, label, name }) {
   const [isOpened, setIsOpened] = useActive(false);
   const [InputTitle, setInputTitleState] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [highlighted, setHighlighted] = useState("");
   const ref = useRef();
-  const inputRef = useRef();
-  
+  const inputRef = useRef(0);
+
   useEffect(() => {
     const handleClose = (e) => {
       if (isOpened && ref.current && !ref.current?.contains(e.target)) {
@@ -29,7 +29,7 @@ function Dropdown({ data, handleChange, placeholder, label,name }) {
     return () =>
       inputRef.current.removeEventListener("change", handleChange(inputRef));
   }, [selectedOption]);
-
+  //console.log(selectedOption)
   return (
     <div style={{ position: "relative" }} ref={ref}>
       {label ? <label htmlFor={label}>{label}</label> : null}
@@ -41,12 +41,7 @@ function Dropdown({ data, handleChange, placeholder, label,name }) {
         placeholder={placeholder}
         value={InputTitle}
       />
-      <input
-        type="hidden"
-        value={selectedOption}
-        ref={inputRef}
-        name={name}
-      />
+      <input type="hidden" value={selectedOption} ref={inputRef} name={name} />
       {isOpened && (
         <ul className={styles.list_active}>
           {data.map((item, index) => (

@@ -1,10 +1,9 @@
-import React from 'react'
-import Dropdown from './Dropdown'
-import { useState } from "react";
+import React from "react";
+import Dropdown from "./Dropdown";
 
-function Price({data,handleChange}) {
+function Price({ data, handleChange }) {
   return (
-    <div style={{display:"flex", width:"300px"}}>
+    <div style={{ display: "flex", width: "300px" }}>
       <Dropdown
         data={data}
         name={"PriceFrom"}
@@ -21,4 +20,4 @@ function Price({data,handleChange}) {
   );
 }
 
-export default Price
+export default Price;

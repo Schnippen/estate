@@ -2,11 +2,11 @@ import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
 import { useState, useEffect } from "react";
 import Pagination from "./Pagination";
-import OptionSelect from "./OptionSelect";
 import Loading from "./Loading";
 import styles from "./List.module.css";
 import useActive from "./useActive";
 import { TbMap2 } from "react-icons/tb";
+import Dropdown from "./Dropdown";
 
 function List() {
   const [isLoading, setIsLoading] = useActive(true);
@@ -36,14 +36,11 @@ function List() {
   }
 
   //Sorting
-  const handleSortingDatabaseState = (e) => {
-    const sortBy = parseInt(e);
-    console.log(sortBy, "jestem sort by");
+  const handleSortingDatabaseState = (ref) => {
+    const sortBy = parseInt(ref.current.value);
     if (sortBy === 1) {
-      console.log("domyslnie");
       setDatabaseState([...Database]);
     } else if (sortBy === 2) {
-      console.log("cena od najnizszej");
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
@@ -52,7 +49,6 @@ function List() {
         )
       );
     } else if (sortBy === 3) {
-      console.log("cena od najwyzszej");
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
@@ -61,7 +57,6 @@ function List() {
         )
       );
     } else if (sortBy === 4) {
-      console.log("Najniższej ceny za m²");
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
@@ -77,7 +72,6 @@ function List() {
         )
       );
     } else if (sortBy === 5) {
-      console.log("Najwyższej ceny za m²");
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
@@ -95,49 +89,50 @@ function List() {
     }
   };
 
+  const handleNumberOfOffers = (ref) => {
+    const Number = parseInt(ref.current.value);
+    console.log(Number);
+    if (isNaN(Number)) {
+      setItemsPerPage(() => itemsPerPage);
+      console.log(itemsPerPage);
+    } else {
+      setItemsPerPage(() => Number);
+      console.log(itemsPerPage, "zmienilem number");
+    }
+  };
+
   const items = [...databaseState]
     .slice(pagesVisited, itemsPerPage + pagesVisited)
     .map((item) => <ListItem key={item.offerID} item={item} />);
+
+  const SortPrice = [
+    { value: 1, label: "Domyślnie" },
+    { value: 2, label: "Cena od najniższej" },
+    { value: 3, label: "Cena od najwyższej" },
+    { value: 4, label: "Najniższej ceny za m²" },
+    { value: 5, label: "Najwyższej ceny za m²" },
+  ];
+  const NumberOfOffers = [
+    { value: 3, label: "3" },
+    { value: 5, label: "5" },
+    { value: 20, label: "20" },
+    { value: 100, label: "100" },
+  ];
 
   return (
     <>
       <section className={styles.section__main}>
         <section className={styles.section__options}>
-          <div
-            style={{
-              width: "250px",
-              textAlign: "center",
-              margin: "0 10px 0 10px",
-            }}
-          >
-            <OptionSelect
-              placeholder={"Sortuj"}
-              option={[
-                "Domyślnie",
-                "Cena od najniższej",
-                "Cena od najwyższej",
-                "Najniższej ceny za m²",
-                "Najwyższej ceny za m²",
-              ]}
-              value={[1, 2, 3, 4, 5]}
-              setState={handleSortingDatabaseState}
-            />
-          </div>
-          <div
-            style={{
-              width: "200px",
-              position: "relative",
-              textAlign: "center",
-              margin: "0 10px 0 0",
-            }}
-          >
-            <OptionSelect
-              placeholder={"Ilośc ofert na stronie"}
-              option={[3, 5, 100]}
-              value={[3, 5, 100]}
-              setState={setItemsPerPage}
-            />
-          </div>
+          <Dropdown
+            data={SortPrice}
+            placeholder={"Sortuj"}
+            handleChange={handleSortingDatabaseState}
+          ></Dropdown>
+          <Dropdown
+            data={NumberOfOffers}
+            placeholder={"Ilość ofert na stronie"}
+            handleChange={handleNumberOfOffers}
+          ></Dropdown>
           <div
             style={{
               color: "#fff",

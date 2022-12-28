@@ -13,12 +13,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
 import Price from "../components/Price";
-import { useEffect } from "react";
+import { useEffect,useRef } from "react";
 
 function LandingPage() {
   const [renderError, setRenderError] = useState(false);
   const [queryDetails, setQueryDetails] = useState({
-    city: "",
+    City: "",
     TypeOfRealEstate: "",
     TypeOfTransaction: "",
     PriceFrom: "",
@@ -27,6 +27,10 @@ function LandingPage() {
 
   const handleChange = (ref) => {
     setQueryDetails({ ...queryDetails, [ref.current.name]: ref.current.value });
+  };
+
+    const handleInput = (e) => {
+    setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
   };
 
   const TypeOfRealEstate = [
@@ -64,25 +68,18 @@ function LandingPage() {
 
   //renderError
   useEffect(() => {
-    if (
-      queryDetails.PriceFrom > queryDetails.PriceTo &&
-      queryDetails.PriceTo === 0
-    ) {
+    let x = parseInt(queryDetails.PriceFrom);
+    let y = parseInt(queryDetails.PriceTo);
+    if (x > y && y === 0) {
       setRenderError(() => false);
-    } else if (
-      queryDetails.PriceFrom > queryDetails.PriceTo &&
-      queryDetails.PriceTo > 0
-    ) {
+    } else if (x > y && y > 0) {
       setRenderError(() => true);
-    } else if (queryDetails.PriceFrom === queryDetails.PriceTo) {
+    } else if (x === y) {
       setRenderError(() => true);
     } else {
       setRenderError(() => false);
     }
   }, [queryDetails.PriceFrom, queryDetails.PriceTo]);
-
-  console.table(queryDetails);
-  //console.log(renderError);
 
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
@@ -91,7 +88,8 @@ function LandingPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Submitting!");
-    console.log(queryDetails);
+    console.table(queryDetails);
+    fetch(`http://localhost:3100/items`);
   };
 
   const errorMessage = {
@@ -114,8 +112,9 @@ function LandingPage() {
             <input
               type="text"
               placeholder="np. miasto"
-              name="city"
+              name="City"
               className={styles.inputText}
+              onChange={handleInput}
             />
           </div>
           <Dropdown
