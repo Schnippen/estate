@@ -28,6 +28,27 @@
   background-color: rgba(99, 118, 141, 1);
   border-radius: 5px;
 }
+.section_searchbar > div > label {
+  display: flex;
+      justify-content: center;
+  color: white;
+  padding: 5px 10px;
+}
+
+.errorDiv {
+  background-color: rgba(99, 118, 141, 1);
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: auto;
+  position: absolute;
+  bottom: 25%;
+  left: 40%;
+  border-radius: 5px;
+  color: #fff;
+  user-select: none;
+  padding: 0 1rem;
+}
 
 .section_searchbar > div {
   background-color: #554971;

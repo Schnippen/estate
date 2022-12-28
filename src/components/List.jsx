@@ -20,7 +20,7 @@ function List() {
   }, []);
 
   const fetchDatabase = async () => {
-    const response = await fetch(`http://localhost:3000/items`);
+    const response = await fetch(`http://localhost:3100/items`);
     const data = await response.json();
     setDatabaseState(data);
     setIsLoading(false);

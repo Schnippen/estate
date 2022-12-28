@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import styles from "../styles/LandingPage.module.css";
 import backgroundImg from "../assets/backgroundPhoto2.jpg";
 import Card from "../components/Card";
-import OptionSelect from "../components/OptionSelect";
 import Button from "../components/Button";
 import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
@@ -12,22 +11,25 @@ import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Select from "../components/Select";
+import Dropdown from "../components/Dropdown";
+import Price from "../components/Price";
+import { useEffect } from "react";
 
 function LandingPage() {
+  const [renderError, setRenderError] = useState(false);
   const [queryDetails, setQueryDetails] = useState({
     city: "",
-    TypeOfRealRstate: "",
+    TypeOfRealEstate: "",
     TypeOfTransaction: "",
     PriceFrom: "",
     PriceTo: "",
   });
 
-  const handleChange = (e) => {
-    setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
+  const handleChange = (ref) => {
+    setQueryDetails({ ...queryDetails, [ref.current.name]: ref.current.value });
   };
 
-  const TypeOfRealRstate = [
+  const TypeOfRealEstate = [
     { value: "option1", label: "Mieszkania" },
     { value: "option2", label: "Domy" },
     { value: "option3", label: "Komercyjne" },
@@ -36,7 +38,51 @@ function LandingPage() {
     { value: "option6", label: "Dowolny" },
   ];
 
+  const TypeOfTransaction = [
+    { value: "option1", label: "Pierwotny" },
+    { value: "option2", label: "Wtórny" },
+    { value: "option3", label: "Dowolny" },
+  ];
+
+  const PriceData = [
+    { value: 0, label: "Dowolna" },
+    { value: 100000, label: "100 000" },
+    { value: 150000, label: "150 000" },
+    { value: 200000, label: "200 000" },
+    { value: 250000, label: "250 000" },
+    { value: 300000, label: "300 000" },
+    { value: 350000, label: "350 000" },
+    { value: 400000, label: "400 000" },
+    { value: 450000, label: "450 000" },
+    { value: 500000, label: "500 000" },
+    { value: 600000, label: "600 000" },
+    { value: 800000, label: "800 000" },
+    { value: 1000000, label: "1 000 000" },
+    { value: 2000000, label: "2 000 000" },
+    { value: 4000000, label: "4 000 000" },
+  ];
+
+  //renderError
+  useEffect(() => {
+    if (
+      queryDetails.PriceFrom > queryDetails.PriceTo &&
+      queryDetails.PriceTo === 0
+    ) {
+      setRenderError(() => false);
+    } else if (
+      queryDetails.PriceFrom > queryDetails.PriceTo &&
+      queryDetails.PriceTo > 0
+    ) {
+      setRenderError(() => true);
+    } else if (queryDetails.PriceFrom === queryDetails.PriceTo) {
+      setRenderError(() => true);
+    } else {
+      setRenderError(() => false);
+    }
+  }, [queryDetails.PriceFrom, queryDetails.PriceTo]);
+
   console.table(queryDetails);
+  //console.log(renderError);
 
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
@@ -45,6 +91,11 @@ function LandingPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Submitting!");
+    console.log(queryDetails);
+  };
+
+  const errorMessage = {
+    message1: "Błąd: Wartość 1 jest większa od Warości 2",
   };
 
   return (
@@ -54,6 +105,9 @@ function LandingPage() {
         <div className={styles.landing__page_photo}>
           <img src={backgroundImg} alt="Violet house" />
         </div>
+        {renderError ? (
+          <div className={styles.errorDiv}>{errorMessage.message1}</div>
+        ) : null}
         <form className={styles.section_searchbar} onSubmit={handleSubmit}>
           <div className={styles.form_div_wrapper}>
             <HiOutlineLocationMarker className={styles.svg} />
@@ -64,98 +118,25 @@ function LandingPage() {
               className={styles.inputText}
             />
           </div>
-          <Select
-            data={TypeOfRealRstate}
+          <Dropdown
+            data={TypeOfRealEstate}
+            name={"TypeOfRealEstate"}
             handleChange={handleChange}
-            name={"TypeOfRealRstate"}
-            label={"TypeOfRealRstate"}
-            labelText={"Rodzaj Nieruchomości"}
-          ></Select>
+            placeholder={"Rodzaj Nieruchomości"}
+            label={"Rodzaj Nieruchomości"}
+          ></Dropdown>
+          <Dropdown
+            data={TypeOfTransaction}
+            name={"TypeOfTransaction"}
+            handleChange={handleChange}
+            placeholder={"Rodzaj Transakscji"}
+            label={"Rodzaj Transakscji"}
+          ></Dropdown>
           <div>
-            <label htmlFor="TypeOfRealRstate">Rodzaj Nieruchomości</label>
-            <OptionSelect
-              placeholder={"Rodzaj Nieruchomości"}
-              option={[
-                "Mieszkania",
-                "Domy",
-                "Komercyjne",
-                "Działki",
-                "Garaże",
-                "Dowolny",
-              ]}
-              name={"TypeOfRealRstate"}
-              checkMark={true}
-              value={["Mieszkanie", 2, 3, 4, 5, 6]}
-              setState={handleChange}
-            />
+            <label htmlFor="">Cena w zł</label>
+            <Price data={PriceData} handleChange={handleChange} />
           </div>
-          <div>
-            <label htmlFor="TypeOfTransaction">Rodzaj Transakcji</label>
-            <OptionSelect
-              placeholder={"Rodzaj Transakscji"}
-              option={["Dowolny", "Pierwotny", "Wtórny"]}
-              name={"TypeOfTransaction"}
-              checkMark={true}
-              value={[1, 2, 3]}
-              onChangeActive={false}
-            />
-          </div>
-          <div className={styles.number_select}>
-            <label>Cena w zł</label>
-            <div>
-              <OptionSelect
-                placeholder="Od"
-                option={[
-                  "Dowolna",
-                  "100 000",
-                  "150 000",
-                  "200 000",
-                  "250 000",
-                  "300 000",
-                  "350 000",
-                  "400 000",
-                  "450 000",
-                  "500 000",
-                  "600 000",
-                  "800 000",
-                  "1 000 000",
-                  "2 000 000",
-                  "4 000 000",
-                ]}
-                name={"PriceFrom"}
-                value={[
-                  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                ]}
-                onChangeActive={true}
-              />
-              <OptionSelect
-                placeholder="Do"
-                option={[
-                  "Dowolna",
-                  "100 000",
-                  "150 000",
-                  "200 000",
-                  "250 000",
-                  "300 000",
-                  "350 000",
-                  "400 000",
-                  "450 000",
-                  "500 000",
-                  "600 000",
-                  "800 000",
-                  "1 000 000",
-                  "2 000 000",
-                  "4 000 000",
-                ]}
-                name={"PriceTo"}
-                value={[
-                  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                ]}
-                onChangeActive={true}
-              />
-            </div>
-          </div>
-          <Button type="submit" onClick={handleSubmit}>
+          <Button type="submit" onClick={handleSubmit} disabled={true}>
             <HiSearch />
           </Button>
         </form>
