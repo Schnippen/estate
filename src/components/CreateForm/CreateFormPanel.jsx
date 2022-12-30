@@ -2,11 +2,15 @@ import { svg } from "leaflet";
 import React from "react";
 import styles from "./CreateForm.module.css";
 
-function CreateFormPanel({  panel, onClick }) {
+function CreateFormPanel({ panel, handleCategory, panelSelected }) {
   return (
     <li>
       <label htmlFor={panel.label}>
-        <div className={styles.panel}>
+        <div
+          className={
+            panelSelected === panel.value ? styles.panel_active : styles.panel
+          }
+        >
           <div className={styles.svg}>{panel.svg}</div>
           <p>{panel.text}</p>
         </div>
@@ -17,7 +21,7 @@ function CreateFormPanel({  panel, onClick }) {
         id={panel.label}
         name={panel.name}
         value={panel.value}
-        onClick={onClick}
+        onClick={handleCategory}
       />
     </li>
   );
