@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
 import Price from "../components/Price";
-import { useEffect,useRef } from "react";
+import { useEffect } from "react";
 
 function LandingPage() {
   const [renderError, setRenderError] = useState(false);
@@ -29,7 +29,7 @@ function LandingPage() {
     setQueryDetails({ ...queryDetails, [ref.current.name]: ref.current.value });
   };
 
-    const handleInput = (e) => {
+  const handleInput = (e) => {
     setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
   };
 
@@ -89,7 +89,13 @@ function LandingPage() {
     e.preventDefault();
     alert("Submitting!");
     console.table(queryDetails);
-    fetch(`http://localhost:3100/items`);
+    fetch(`http://localhost:3100/items`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(queryDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   const errorMessage = {
@@ -135,7 +141,7 @@ function LandingPage() {
             <label htmlFor="">Cena w zł</label>
             <Price data={PriceData} handleChange={handleChange} />
           </div>
-          <Button type="submit" onClick={handleSubmit} disabled={true}>
+          <Button type="submit" onClick={handleSubmit} disabled={renderError}>
             <HiSearch />
           </Button>
         </form>

@@ -1,0 +1,110 @@
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_panel {
+  background-color: aquamarine;
+  width: 50%;
+}
+
+.section_transaction {
+  height: 100px;
+  width: 50%;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+}
+
+.section_transaction > div {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  background-color: aqua;
+  border-radius: 5px;
+}
+
+.section_transaction_container {
+  background-color: #554971;
+  height: 40px;
+  width: 200px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: #fff;
+}
+.section_transaction_container:hover {
+  color: #daa520;
+}
+
+.section_transaction_container:checked {
+  color: #daa520;
+}
+
+.section_transaction_container > input {
+  display: none;
+}
+
+.section_transaction_container > input:checked + .custom_checkmark {
+  display: inline-block;
+  width: calc(100%-10px);
+  height: calc(100%-6px);
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+  background-color: #daa520;
+}
+
+.custom_checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.panel_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.panel_container > li {
+  list-style: none;
+}
+
+.panel {
+  width: 244px;
+  height: 244px;
+  background-color: #554971;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+}
+.panel:hover {
+  color: #daa520;
+}
+
+.svg > svg {
+  height: 80px;
+  width: 80px;
+  margin: 1rem;
+}
+
+.panel_input {
+  visibility: inherit;
+}

@@ -1,8 +1,8 @@
 import './Button.css'
 
-function Button({children}) {
+function Button({children,disabled}) {
   return (
-    <button className='small-button'>{children}</button>
+    <button className='small-button' disabled={disabled}>{children}</button>
   )
 }
 

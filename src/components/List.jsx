@@ -91,13 +91,10 @@ function List() {
 
   const handleNumberOfOffers = (ref) => {
     const Number = parseInt(ref.current.value);
-    console.log(Number);
     if (isNaN(Number)) {
       setItemsPerPage(() => itemsPerPage);
-      console.log(itemsPerPage);
     } else {
       setItemsPerPage(() => Number);
-      console.log(itemsPerPage, "zmienilem number");
     }
   };
 
@@ -123,16 +120,20 @@ function List() {
     <>
       <section className={styles.section__main}>
         <section className={styles.section__options}>
-          <Dropdown
-            data={SortPrice}
-            placeholder={"Sortuj"}
-            handleChange={handleSortingDatabaseState}
-          ></Dropdown>
-          <Dropdown
-            data={NumberOfOffers}
-            placeholder={"Ilość ofert na stronie"}
-            handleChange={handleNumberOfOffers}
-          ></Dropdown>
+          <div>
+            <Dropdown
+              data={SortPrice}
+              placeholder={"Sortuj"}
+              handleChange={handleSortingDatabaseState}
+            ></Dropdown>
+          </div>
+          <div>
+            <Dropdown
+              data={NumberOfOffers}
+              placeholder={"Ilość ofert na stronie"}
+              handleChange={handleNumberOfOffers}
+            ></Dropdown>
+          </div>
           <div
             style={{
               color: "#fff",

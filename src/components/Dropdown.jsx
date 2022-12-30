@@ -20,14 +20,14 @@ function Dropdown({ data, handleChange, placeholder, label, name }) {
     };
     document.addEventListener("click", handleClose);
     return () => {
-      document.removeEventListener("click", handleClose);
+    document.removeEventListener("click", handleClose);
     };
   }, [isOpened]);
 
   useEffect(() => {
     inputRef.current.addEventListener("change", handleChange(inputRef));
     return () =>
-      inputRef.current.removeEventListener("change", handleChange(inputRef));
+    inputRef.current &&  inputRef.current.removeEventListener("change", handleChange(inputRef));
   }, [selectedOption]);
   //console.log(selectedOption)
   return (

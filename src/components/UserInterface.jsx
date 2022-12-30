@@ -4,7 +4,6 @@ import {
   HiHeart,
   HiCog,
   HiOfficeBuilding,
-  HiUserCircle,
 } from "react-icons/hi";
 import styles from "./UserInterface.module.css";
 import useActive from "./useActive";
@@ -140,20 +139,37 @@ function UserInterface() {
         {isActiveSmall ? (
           <ul className={styles.menu_list}>
             <li>
-              <HiOfficeBuilding />
-              Ogłoszenia{" "}
+              <div>
+                <HiOfficeBuilding />
+              </div>
+              <div>
+                <p>Ogłoszenia</p>
+              </div>
             </li>
             <li>
-              <HiMail />
+              <div>
+                <HiMail />
+              </div>
+              <div>
+                <p></p>
+              </div>
               Wiadomosci
             </li>
             <li>
-              <HiHeart />
-              Obserwowane
+              <div>
+                <HiHeart />
+              </div>
+              <div>
+                <p>Obserwowane</p>
+              </div>
             </li>
             <li>
-              <HiCog />
-              Ustawienia
+              <div>
+                <HiCog />
+              </div>
+              <div>
+                <p>Ustawienia</p>
+              </div>
             </li>
           </ul>
         ) : null}
