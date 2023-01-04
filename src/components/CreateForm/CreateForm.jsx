@@ -6,13 +6,13 @@ import { BiLandscape, BiHome } from "react-icons/bi";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { FaRegBuilding } from "react-icons/fa";
 import CreateFormPanel from "./CreateFormPanel";
-import CreateFormText from "./CreateFormText";
 import CreateFormContactDetails from "./CreateFormContactDetails";
+import CreateFormBasicInfromation from "./CreateFormBasicInfromation";
 
 function CreateForm() {
   const [inputValues, setInputValues] = useState({
     titleKategoria: "",
-    offerTitle: "" /*
+    offerTitle: "",
     priceInfo: "",
     areaPriceInfo: "",
     numberOfRoomsInfo: "",
@@ -37,7 +37,8 @@ function CreateForm() {
     googleMapsInfo: [],
     telephoneNumberInfo: "",
     sellerInfo: "",
-    estateAgencyInfo: "",*/,
+    estateAgencyInfo: "",
+    sellerInfoEmail: "",
   });
 
   const panelData = [
@@ -109,7 +110,9 @@ function CreateForm() {
       panelSelected={category.string1}
     />
   ));
+
   console.table(inputValues);
+
   return (
     <main className={styles.main}>
       <section className={styles.section_transaction}>
@@ -161,12 +164,8 @@ function CreateForm() {
           {inputValues.titleKategoria === "Mieszkanie na sprzedaż" ? (
             <p>CHUJ</p>
           ) : null}
-          <CreateFormText
-            flatData={inputValues.offerTitle}
-            handleChange={handleChange}
-          />
         </div>
-        <div>informacje podstawowe</div>
+        <CreateFormBasicInfromation/>
         <div>powierzchnia</div>
         <div>liczba pokoi</div>
         <div>cena</div>
@@ -180,7 +179,10 @@ function CreateForm() {
         <div> tytuł opis</div>
         <div>Informacje szczegółowe Accordeon</div>
         <div>Dane kontaktowe zawsze takie same</div>
-        <CreateFormContactDetails />
+        <CreateFormContactDetails
+          inputValues={inputValues}
+          handleChange={handleChange}
+        />
       </section>
     </main>
   );

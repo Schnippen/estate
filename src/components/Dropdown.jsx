@@ -74,11 +74,3 @@ function Dropdown({ data, handleChange, placeholder, label, name }) {
 
 export default Dropdown;
 
-/*  const TypeOfRealRstate = [
-    { value: "option1", label: "Mieszkania" },
-    { value: "option2", label: "Domy" },
-    { value: "option3", label: "Komercyjne" },
-    { value: "option4", label: "Działki" },
-    { value: "option5", label: "Garaże" },
-    { value: "option6", label: "Dowolny" },
-  ];*/

@@ -8,18 +8,13 @@
   align-items: center;
 }
 
-.section_panel {
-  background-color: aquamarine;
-  width: 50%;
-  padding: 1.25rem 0;
-}
-
 .section_transaction {
   height: 100px;
   width: 50%;
   background-color: brown;
   display: flex;
   justify-content: center;
+  margin: 20px 0 10px 0;
 }
 
 .section_transaction > div {
@@ -28,7 +23,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: aqua;
+  background-color: white;
   border-radius: 5px;
 }
 
@@ -65,6 +60,14 @@
   display: inline-block;
   transition: opacity 0.3s ease;
   background-color: #daa520;
+}
+
+.section_panel {
+  background-color: white;
+  width: 50%;
+  padding: 1.25rem 0;
+  margin: 10px 0 10px 0;
+  border-radius: 5px;
 }
 
 .custom_checkmark {
@@ -130,6 +133,7 @@
 .section_details {
   background-color: burlywood;
   width: 50%;
+  margin: 10px 0 20px 0 ;
 }
 
 .errorParagraph {

@@ -1,34 +1,79 @@
 import React from "react";
 import Dropdown from "../Dropdown";
 import styles from "./CreateFormContactDetails.module.css";
-import { useState } from "react";
+import useActive from "../useActive";
+import { useState, useEffect } from "react";
 
-function CreateFormContactDetails() {
+function CreateFormContactDetails({ handleChange, inputValues }) {
+  //handle Email
+  const [emailValid, setEmailValid] = useActive(false);
+  const [email, setEmail] = useState("");
+  const EMAIL_REGEX = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
+
+  const handleSpace = (e) => {
+    e.key === " " && e.preventDefault();
+  };
+
+  useEffect(() => {
+    setEmailValid(EMAIL_REGEX.test(email));
+  }, [email]);
+
+  console.log(email);
   return (
     <article className={styles.article}>
       <h3>Dane kontaktowe</h3>
-      <section>
-        <div>
+      <section className={styles.article_section}>
+        <div className={styles.section_inputContainer}>
           <label htmlFor="nazwa">Nazwa ogłoszeniodawcy</label>
-          <input type="text" name="sellerInfo" id="nazwa" value="imie" />
+          <input
+            type="text"
+            name="sellerInfo"
+            id="nazwa"
+            placeholder="Wpisz imię"
+            value={inputValues.sellerInfo}
+            onChange={handleChange}
+            className={styles.input}
+          />
         </div>
-        <div>
+        <div className={styles.section_inputContainer}>
           <label htmlFor="email">Adres E-mail</label>
           <input
             type="email"
-            name="email"
+            name="sellerInfoEmail"
             id="email"
-            value="email"
             placeholder="Wpisz e-mail"
+            onChange={(e) => {
+              setEmail(e.target.value.trim());
+              if (emailValid) {
+                handleChange(e);
+              }
+            }}
+            onKeyDown={handleSpace}
+            className={styles.input}
+            required
           />
+          {!email || emailValid ? null : (
+            <div className={styles.errorParagraph}>
+              <p>
+                To pole musi zawierać poprawny adres e-mail (np.
+                jan.kowalski@mail.com).
+              </p>
+            </div>
+          )}
         </div>
-        <div>
+        <div className={styles.section_inputContainer}>
           <label htmlFor="telefon">Numer telefonu</label>
           <input
             type="tel"
             name="telephoneNumberInfo"
             id="telefon"
-            value="telefon"
+            value={inputValues.telephoneNumberInfo}
+            placeholder="Wpisz numer telefonu"
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            className={styles.input}
+            pattern="[0-9]*"
           />
         </div>
         <div>
