@@ -1,7 +1,7 @@
 import React from "react";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 
-function Price({ data, handleChange }) {
+function DropdownNumberOfFloors({ data, handleChange }) {
   return (
     <div
       style={{
@@ -13,19 +13,18 @@ function Price({ data, handleChange }) {
     >
       <Dropdown
         data={data}
-        name={"PriceFrom"}
+        name={"floorFrom"}
         handleChange={handleChange}
-        placeholder={"Cena od..."}
+        placeholder={"Wybierz"}
       ></Dropdown>
       <div style={{ height: "40px", border: "solid #554971" }}></div>
       <Dropdown
         data={data}
-        name={"PriceTo"}
+        name={"floorTo"}
         handleChange={handleChange}
-        placeholder={"Cena do..."}
+        placeholder={"Wybierz"}
       ></Dropdown>
     </div>
   );
 }
-
-export default Price;
+export default DropdownNumberOfFloors;

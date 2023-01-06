@@ -14,6 +14,7 @@ function CreateForm() {
     titleKategoria: "",
     offerTitle: "",
     priceInfo: "",
+    areaInfo:"",
     areaPriceInfo: "",
     numberOfRoomsInfo: "",
     usableArea: "",
@@ -102,6 +103,13 @@ function CreateForm() {
 
   const handleClick = () => {};
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Submitting!");
+    //console.log(inputValues);
+    //setInputValues({ name: "", telephone: "", email: "", textmessage: "" });
+  };
+
   const panelList = panelData.map((item, index) => (
     <CreateFormPanel
       panel={item}
@@ -165,7 +173,7 @@ function CreateForm() {
             <p>CHUJ</p>
           ) : null}
         </div>
-        <CreateFormBasicInfromation/>
+        <CreateFormBasicInfromation handleChange={handleChange} />
         <div>powierzchnia</div>
         <div>liczba pokoi</div>
         <div>cena</div>
@@ -183,6 +191,7 @@ function CreateForm() {
           inputValues={inputValues}
           handleChange={handleChange}
         />
+        <input type="submit" value="submit" onSubmit={handleSubmit}></input>
       </section>
     </main>
   );

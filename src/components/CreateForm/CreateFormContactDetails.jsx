@@ -72,8 +72,13 @@ function CreateFormContactDetails({ handleChange, inputValues }) {
             onChange={(e) => {
               handleChange(e);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Backspace" || !/[0-9]/.test(e.key)) {
+                e.preventDefault();
+              }
+              console.log(e.key)
+            }}
             className={styles.input}
-            pattern="[0-9]*"
           />
         </div>
         <div>
