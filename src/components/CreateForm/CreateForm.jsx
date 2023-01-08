@@ -8,13 +8,15 @@ import { FaRegBuilding } from "react-icons/fa";
 import CreateFormPanel from "./CreateFormPanel";
 import CreateFormContactDetails from "./CreateFormContactDetails";
 import CreateFormBasicInfromation from "./CreateFormBasicInfromation";
+import CreateFormLocation from "./CreateFormLocation";
+import CreateFormDescription from "./CreateFormDescription";
 
 function CreateForm() {
   const [inputValues, setInputValues] = useState({
     titleKategoria: "",
     offerTitle: "",
     priceInfo: "",
-    areaInfo:"",
+    areaInfo: "",
     areaPriceInfo: "",
     numberOfRoomsInfo: "",
     usableArea: "",
@@ -97,11 +99,44 @@ function CreateForm() {
     }
   }, [category.string1, category.string2]);
 
+  //areaPriceInfo
+  useEffect(() => {
+    if (inputValues.priceInfo.length > 0 && inputValues.areaInfo.length > 0) {
+      setInputValues({
+        ...inputValues,
+        areaPriceInfo:
+          Math.floor(
+            Number(inputValues.priceInfo) / Number(inputValues.areaInfo)
+          ) + " zł",
+      });
+    }
+  }, [inputValues.priceInfo, inputValues.areaInfo]);
+
   const handleChange = (e) => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
   const handleClick = () => {};
+
+  //floorInfo
+  const handleFloorInfo = (value) => {
+    setInputValues({ ...inputValues, [inputValues.floorInfo]: value });
+  };
+
+  const handleKeyDown = (e) => {
+    if (
+      e.key === "Backspace" ||
+      e.key === "Delete" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight" ||
+      e.key === "Tab"
+    ) {
+      return;
+    }
+    if (e.key < "0" || e.key > "9") {
+      e.preventDefault();
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -151,7 +186,6 @@ function CreateForm() {
               }}
             >
               <p>Wynajmę</p>
-
               <input
                 type="radio"
                 value="na wynajem"
@@ -173,23 +207,23 @@ function CreateForm() {
             <p>CHUJ</p>
           ) : null}
         </div>
-        <CreateFormBasicInfromation handleChange={handleChange} />
-        <div>powierzchnia</div>
-        <div>liczba pokoi</div>
-        <div>cena</div>
-        <div>i tu sie pokazuje cena za metr</div>
-        <div>checkbox z ceną do negocjacji</div>
-        <div>liczba pięter na dropdown</div>
+        <CreateFormBasicInfromation
+          handleChange={handleChange}
+          handleFloorInfo={handleFloorInfo}
+          handleKeyDown={handleKeyDown}
+          inputValues={inputValues.areaPriceInfo}
+        />
         <div>lokalizacja</div>
         <div>kod pocztowy, wojewodztwo</div>
+        <CreateFormLocation />
         <div> multimedia - zdjęcia</div>
-        <div>tytuł i opis</div>
-        <div> tytuł opis</div>
+        <CreateFormDescription /> 
         <div>Informacje szczegółowe Accordeon</div>
         <div>Dane kontaktowe zawsze takie same</div>
         <CreateFormContactDetails
           inputValues={inputValues}
           handleChange={handleChange}
+          handleKeyDown={handleKeyDown}
         />
         <input type="submit" value="submit" onSubmit={handleSubmit}></input>
       </section>

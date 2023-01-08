@@ -2,19 +2,28 @@ import React from "react";
 import CreateFormInput from "./CreateFormInput";
 import DropdownNumberOfFloors from "./DropdownNumberOfFloors";
 import styles from "./CreateFormContactDetails.module.css";
-import { useState } from "react";
+import stylesInput from "./CreateFormInput.module.css";
+import { useState, useEffect } from "react";
+import useActive from "../useActive";
+import { BiErrorAlt } from "react-icons/bi";
 
-function CreateFormBasicInfromation({ handleChange }) {
+function CreateFormBasicInfromation({
+  handleChange,
+  handleFloorInfo,
+  inputValues,
+  handleKeyDown,
+}) {
   const basicData = [
     {
       label: "Powierzchnia",
       name: "areaInfo",
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia (m²)",
+      f: handleKeyDown,
     },
     {
       label: "LiczbaPokoi",
-      name: "numbersOfFloorsInfo",
+      name: "numberOfRoomsInfo",
       placeholder: "Wpisz liczbę pokoi",
       labelText: "Liczba Pokoi",
     },
@@ -23,8 +32,11 @@ function CreateFormBasicInfromation({ handleChange }) {
       name: "priceInfo",
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
+      f: handleKeyDown,
     },
   ];
+
+  const [checked, setChecked] = useActive(false);
 
   const [numberOfFloor, setNumberOfFloor] = useState({
     floorFrom: "",
@@ -43,38 +55,120 @@ function CreateFormBasicInfromation({ handleChange }) {
     });
   };
 
+  const [renderError, setRenderError] = useState(false);
+
+  useEffect(() => {
+    let x = parseInt(numberOfFloor.floorFrom);
+    let y = parseInt(numberOfFloor.floorTo);
+    if (x > y && y === 0) {
+      setRenderError(() => false);
+    } else if (x > y && y > 0) {
+      setRenderError(() => true);
+    } else if (x === y) {
+      setRenderError(() => false);
+    } else {
+      setRenderError(() => false);
+    }
+    if (
+      !renderError &&
+      numberOfFloor.floorFrom.length > 0 &&
+      numberOfFloor.floorTo.length > 0
+    ) {
+      handleFloorInfo(numberOfFloor.floorFrom + " / " + numberOfFloor.floorTo);
+    }
+  }, [numberOfFloor.floorFrom, numberOfFloor.floorTo]);
+
   return (
     <article className={styles.article}>
       <h3>Informacje podstawowe</h3>
       <section className={styles.article_section}>
         {basicData.map((item) => (
-          <CreateFormInput data={item} handleChange={handleChange} />
+          <CreateFormInput
+            data={item}
+            handleChange={handleChange}
+            key={item.id}
+          />
         ))}
-        <div>
-          <label htmlFor="negotiatedPrice">Cena do negocjacji</label>
-          <input type="checkbox" id="negotiatedPrice" />
+        <div className={stylesInput.form_input_container}>
+          <label>Cena za m²</label>
+          <input
+            type="text"
+            disabled
+            value={inputValues}
+            className={stylesInput.form_input}
+          />
         </div>
-        <div>
+        <div className={styles.negotiation_wrapper}>
+          <label htmlFor="negotiation">
+            <div
+              className={styles.section_negotiation_container}
+              style={{ color: checked ? "#daa520" : "#fff" }}
+            >
+              <p>Cena do negocjacji</p>
+              <input
+                type="radio"
+                value="negotiation"
+                id="negotiation"
+                name="negotiation"
+                onChange={setChecked}
+                checked={checked}
+              />
+              <span className={styles.custom_checkmark}></span>
+            </div>
+          </label>
+        </div>
+        <div className={styles.negotiation_description}>
           <p>
             Twoje ogłoszenie zostanie oznaczone jako “do negocjacji”, dzięki
             temu kupujący będą mogli proponować swoje oferty cenowe.
           </p>
         </div>
-        <div
-          style={{
-            backgroundColor: " #554971",
-            width: "320px",
-            height: "60px",
-            borderRadius: "5px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <DropdownNumberOfFloors
-            handleChange={handleChangeNumberOfFloors}
-            data={numberOfFloorsData}
-          />
+        <div style={{ padding: "10px 0", position: "relative" }}>
+          {renderError ? <BiErrorAlt className={styles.errorSvg} /> : null}
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "10px",
+              userSelect: "none",
+            }}
+          >
+            Piętro / liczba pięter
+          </p>
+          <div
+            style={{
+              backgroundColor: " #554971",
+              width: "300px",
+              height: "60px",
+              borderRadius: "5px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              boxShadow: renderError ? "0px 0px 1px 3px #ED4F32" : null,
+            }}
+          >
+            <DropdownNumberOfFloors
+              id="pietro"
+              handleChange={handleChangeNumberOfFloors}
+              data={numberOfFloorsData}
+            />
+          </div>
+          {renderError ? (
+            <div
+              style={{
+                width: "300px",
+                backgroundColor: "black",
+                color: "#fff",
+                textAlign: "justify",
+                borderRadius: "5px",
+                padding: "10px",
+                userSelect: "none",
+                margin: "5px 0 0 0",
+              }}
+            >
+              Pole `piętro` nie może być większe od pola `liczba pięter`
+            </div>
+          ) : null}
         </div>
       </section>
     </article>

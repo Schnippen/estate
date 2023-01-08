@@ -38,6 +38,8 @@
   cursor: pointer;
   user-select: none;
   border-radius: 0 0 5px 5px;
+  overflow-y: scroll;
+  height: 200px;
 }
 
 .list_item {

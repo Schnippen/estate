@@ -6,7 +6,7 @@ function DropdownNumberOfFloors({ data, handleChange }) {
     <div
       style={{
         display: "flex",
-        width: "300px",
+        width: "280px",
         backgroundColor: "#fff",
         borderRadius: "5px",
       }}

@@ -9,9 +9,9 @@ function CreateFormInput({ data, handleChange }) {
         type="text"
         name={data.name}
         id={data.label}
-        //value={data.value}
         placeholder={data.placeholder}
         onChange={handleChange}
+        onKeyDown={data.f}
         className={styles.form_input}
       />
     </div>

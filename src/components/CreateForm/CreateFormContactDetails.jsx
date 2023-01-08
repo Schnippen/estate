@@ -4,7 +4,11 @@ import styles from "./CreateFormContactDetails.module.css";
 import useActive from "../useActive";
 import { useState, useEffect } from "react";
 
-function CreateFormContactDetails({ handleChange, inputValues }) {
+function CreateFormContactDetails({
+  handleChange,
+  inputValues,
+  handleKeyDown,
+}) {
   //handle Email
   const [emailValid, setEmailValid] = useActive(false);
   const [email, setEmail] = useState("");
@@ -18,7 +22,6 @@ function CreateFormContactDetails({ handleChange, inputValues }) {
     setEmailValid(EMAIL_REGEX.test(email));
   }, [email]);
 
-  console.log(email);
   return (
     <article className={styles.article}>
       <h3>Dane kontaktowe</h3>
@@ -72,12 +75,7 @@ function CreateFormContactDetails({ handleChange, inputValues }) {
             onChange={(e) => {
               handleChange(e);
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Backspace" || !/[0-9]/.test(e.key)) {
-                e.preventDefault();
-              }
-              console.log(e.key)
-            }}
+            onKeyDown={handleKeyDown}
             className={styles.input}
           />
         </div>
