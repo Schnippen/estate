@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./CreateFormContactDetails.module.css";
 import { useState } from "react";
 
-function CreateFormDescription({}) {
+function CreateFormDescription({ handleChange }) {
+  const [titleState, setTitleState] = useState("");
   const [textState, setTextState] = useState("");
 
   const divStyle = {
@@ -15,9 +16,10 @@ function CreateFormDescription({}) {
   const labelStyle = {
     padding: "5px 0",
   };
-
-  const handleTextChange = (e) => {
-    setTextState(e.target.value);
+  const digitsStyle = {
+    display: "flex",
+    width: "600px",
+    justifyContent: "flex-end",
   };
 
   console.log(textState);
@@ -37,9 +39,11 @@ function CreateFormDescription({}) {
               height: "40px",
               borderRadius: "5px",
             }}
+            onChange={(e) => setTitleState(e.target.value)}
+            maxLength={100}
           />
-          <div>
-            <p>cyferki</p>
+          <div style={digitsStyle}>
+            <p>{titleState.length}/100</p>
           </div>
         </div>
         <div style={divStyle}>
@@ -53,14 +57,15 @@ function CreateFormDescription({}) {
             rows="10"
             style={{
               width: "600px",
-              height: "400px",
+              height: "300px",
               borderRadius: "5px",
             }}
-            onChange={handleTextChange}
+            onChange={(e) => setTextState(e.target.value)}
+            maxLength={6000}
           ></textarea>
-          <div>
-            <p>cyferki</p>
-          </div>
+        </div>
+        <div style={digitsStyle}>
+          <p>{textState.length}/6000</p>
         </div>
       </section>
     </article>

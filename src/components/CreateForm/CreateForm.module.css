@@ -25,6 +25,7 @@
   align-items: center;
   background-color: white;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
 }
 
 .section_transaction_container {
@@ -74,6 +75,7 @@
   padding: 1.25rem 0;
   margin: 10px 0 10px 0;
   border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
 }
 
 .panel_container {

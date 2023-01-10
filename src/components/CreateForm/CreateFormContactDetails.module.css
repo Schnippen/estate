@@ -49,17 +49,17 @@
   margin: 10px 0 0 0;
 }
 
-.errorSvg{
+.errorSvg {
   position: absolute;
-    width: 30px;
-    height: 30px;
-    left: 110%;
-    top: 50%;
-    color: #ED4F32;
+  width: 30px;
+  height: 30px;
+  left: 110%;
+  top: 50%;
+  color: #ed4f32;
 }
 
-.negotiation_wrapper{
-    padding: 5px;
+.negotiation_wrapper {
+  padding: 5px;
 }
 
 .section_negotiation_container {
@@ -99,13 +99,34 @@
   margin-left: 20px;
 }
 
-.negotiation_description{
+.negotiation_description {
   padding: 5px;
   width: 300px;
 }
 
-.negotiation_description>p{
+.negotiation_description > p {
   font-size: 16px;
   text-align: justify;
   user-select: none;
+}
+
+.dropdown {
+  position: relative;
+  background-color: #554971;
+  margin: 1rem 0;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  list-style: none;
+}
+
+.dropdown > div {
+  height: 100%;
+  padding: 0 10px;
+}
+.dropdown > div > label {
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 5px 10px;
 }

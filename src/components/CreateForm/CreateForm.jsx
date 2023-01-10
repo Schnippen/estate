@@ -10,6 +10,7 @@ import CreateFormContactDetails from "./CreateFormContactDetails";
 import CreateFormBasicInfromation from "./CreateFormBasicInfromation";
 import CreateFormLocation from "./CreateFormLocation";
 import CreateFormDescription from "./CreateFormDescription";
+import CreateFormDetailedInformation from "./CreateFormDetailedInformation";
 
 function CreateForm() {
   const [inputValues, setInputValues] = useState({
@@ -22,6 +23,7 @@ function CreateForm() {
     usableArea: "",
     floorInfo: "",
     descriptionInfo: "",
+    buildingMaterialInfo: "",
     numbersOfFloorsInfo: "",
     numberOfBathroomsInfo: "",
     typeOfKitchenInfo: "",
@@ -33,7 +35,9 @@ function CreateForm() {
     yearOfConstructionInfo: "",
     conditionOfThePropertyInfo: "",
     heatingInfo: "",
+    parkingInfo: "",
     balconyInfo: "",
+    elevatorInfo:"",
     balconyAreaInfo: "",
     numberOfOfferInfo: "",
     publishedInfo: "",
@@ -116,11 +120,19 @@ function CreateForm() {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
-  const handleClick = () => {};
+  //const handleClick = () => {};
 
   //floorInfo
   const handleFloorInfo = (value) => {
     setInputValues({ ...inputValues, [inputValues.floorInfo]: value });
+  };
+  //handle dropdown inputs
+  const handleDropdown = (ref) => {
+    setInputValues({
+      ...inputValues,
+      [ref.current.name]: ref.current.value,
+    });
+    console.log(ref.current);
   };
 
   const handleKeyDown = (e) => {
@@ -155,6 +167,7 @@ function CreateForm() {
   ));
 
   console.table(inputValues);
+  console.table(inputValues.buildingMaterialInfo);
 
   return (
     <main className={styles.main}>
@@ -217,8 +230,9 @@ function CreateForm() {
         <div>kod pocztowy, wojewodztwo</div>
         <CreateFormLocation />
         <div> multimedia - zdjęcia</div>
-        <CreateFormDescription /> 
+        <CreateFormDescription handleChange={handleChange} />
         <div>Informacje szczegółowe Accordeon</div>
+        <CreateFormDetailedInformation handleDropdown={handleDropdown} />
         <div>Dane kontaktowe zawsze takie same</div>
         <CreateFormContactDetails
           inputValues={inputValues}
