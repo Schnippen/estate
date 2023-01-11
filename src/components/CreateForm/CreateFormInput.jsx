@@ -13,6 +13,7 @@ function CreateFormInput({ data, handleChange }) {
         onChange={handleChange}
         onKeyDown={data.f}
         className={styles.form_input}
+
       />
     </div>
   );

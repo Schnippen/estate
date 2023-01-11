@@ -12,7 +12,7 @@ function CreateFormBasicInfromation({
   handleFloorInfo,
   inputValues,
   handleKeyDown,
-  data
+  type,
 }) {
   const flatData = [
     {
@@ -191,17 +191,55 @@ function CreateFormBasicInfromation({
     }
   }, [numberOfFloor.floorFrom, numberOfFloor.floorTo]);
 
-  return (
-    <article className={styles.article}>
-      <h3>Informacje podstawowe</h3>
-      <section className={styles.article_section}>
-        {flatData.map((item) => (
+  function typeInputForm(type) {
+    return type === "Mieszkanie na sprzedaż"
+      ? flatData.map((item) => (
           <CreateFormInput
             data={item}
             handleChange={handleChange}
             key={item.id}
           />
-        ))}
+        ))
+      : type === "Dom na sprzedaż"
+      ? houseData.map((item) => (
+          <CreateFormInput
+            data={item}
+            handleChange={handleChange}
+            key={item.id}
+          />
+        ))
+      : type === "Nieruchomość Komercyjna na sprzedaż"
+      ? commercialPropertyData.map((item) => (
+          <CreateFormInput
+            data={item}
+            handleChange={handleChange}
+            key={item.id}
+          />
+        ))
+      : type === "Działka na sprzedaż"
+      ? plotOfLandData.map((item) => (
+          <CreateFormInput
+            data={item}
+            handleChange={handleChange}
+            key={item.id}
+          />
+        ))
+      : type === "Garaż na sprzedaż"
+      ? garageData.map((item) => (
+          <CreateFormInput
+            data={item}
+            handleChange={handleChange}
+            key={item.id}
+          />
+        ))
+      : null;
+  }
+
+  return (
+    <article className={styles.article}>
+      <h3>Informacje podstawowe</h3>
+      <section className={styles.article_section}>
+        {typeInputForm(type)}
         <div className={stylesInput.form_input_container}>
           <label>Cena za m²</label>
           <input
@@ -236,53 +274,55 @@ function CreateFormBasicInfromation({
             temu kupujący będą mogli proponować swoje oferty cenowe.
           </p>
         </div>
-        <div style={{ padding: "10px 0", position: "relative" }}>
-          {renderError ? <BiErrorAlt className={styles.errorSvg} /> : null}
-          <p
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "10px",
-              userSelect: "none",
-            }}
-          >
-            Piętro / liczba pięter
-          </p>
-          <div
-            style={{
-              backgroundColor: " #554971",
-              width: "300px",
-              height: "60px",
-              borderRadius: "5px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              boxShadow: renderError ? "0px 0px 1px 3px #ED4F32" : null,
-            }}
-          >
-            <DropdownNumberOfFloors
-              id="pietro"
-              handleChange={handleChangeNumberOfFloors}
-              data={numberOfFloorsData}
-            />
-          </div>
-          {renderError ? (
-            <div
+        {type === "Mieszkanie na sprzedaż" ? (
+          <div style={{ padding: "10px 0", position: "relative" }}>
+            {renderError ? <BiErrorAlt className={styles.errorSvg} /> : null}
+            <p
               style={{
-                width: "300px",
-                backgroundColor: "black",
-                color: "#fff",
-                textAlign: "justify",
-                borderRadius: "5px",
+                display: "flex",
+                justifyContent: "center",
                 padding: "10px",
                 userSelect: "none",
-                margin: "5px 0 0 0",
               }}
             >
-              Pole `piętro` nie może być większe od pola `liczba pięter`
+              Piętro / liczba pięter
+            </p>
+            <div
+              style={{
+                backgroundColor: " #554971",
+                width: "300px",
+                height: "60px",
+                borderRadius: "5px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: renderError ? "0px 0px 1px 3px #ED4F32" : null,
+              }}
+            >
+              <DropdownNumberOfFloors
+                id="pietro"
+                handleChange={handleChangeNumberOfFloors}
+                data={numberOfFloorsData}
+              />
             </div>
-          ) : null}
-        </div>
+            {renderError ? (
+              <div
+                style={{
+                  width: "300px",
+                  backgroundColor: "black",
+                  color: "#fff",
+                  textAlign: "justify",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  userSelect: "none",
+                  margin: "5px 0 0 0",
+                }}
+              >
+                Pole `piętro` nie może być większe od pola `liczba pięter`
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </section>
     </article>
   );

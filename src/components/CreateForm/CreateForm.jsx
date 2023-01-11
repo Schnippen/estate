@@ -94,14 +94,6 @@ function CreateForm() {
     },
   ];
 
-  const dataForms={
-    flat:,
-    house:,
-    commercialProperty:,
-    plotOfLand:,
-    garage:,
-  }
-
   const [category, setTitleCategory] = useState({
     string1: "",
     string2: "",
@@ -172,6 +164,16 @@ function CreateForm() {
     //console.log(inputValues);
     //setInputValues({ name: "", telephone: "", email: "", textmessage: "" });
   };
+
+  function isValidTitleKategoria(titleKategoria) {
+    return (
+      titleKategoria === "Mieszkanie na sprzedaż" ||
+      titleKategoria === "Dom na sprzedaż" ||
+      titleKategoria === "Nieruchomość Komercyjna na sprzedaż" ||
+      titleKategoria === "Działka na sprzedaż" ||
+      titleKategoria === "Garaż na sprzedaż"
+    );
+  }
 
   const panelList = panelData.map((item, index) => (
     <CreateFormPanel
@@ -244,29 +246,41 @@ function CreateForm() {
             <p>Garaż na sprzedaż</p>
           ) : null}
         </div>
-        <CreateFormBasicInfromation
-          handleChange={handleChange}
-          handleFloorInfo={handleFloorInfo}
-          handleKeyDown={handleKeyDown}
-          inputValues={inputValues.areaPriceInfo}
-        />
-        <CreateFormLocation />
-        <div> multimedia - zdjęcia</div>
-        <CreateFormDescription
-          handleChange={handleChange}
-          handleKeyDown={handleKeyDown}
-        />
-
-        <CreateFormDetailedInformation
-          handleDropdown={handleDropdown}
-          inputValues={inputValues}
-        />
-        <div>Dane kontaktowe zawsze takie same</div>
-        <CreateFormContactDetails
-          inputValues={inputValues}
-          handleChange={handleChange}
-          handleKeyDown={handleKeyDown}
-        />
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <CreateFormBasicInfromation
+            handleChange={handleChange}
+            handleFloorInfo={handleFloorInfo}
+            handleKeyDown={handleKeyDown}
+            inputValues={inputValues.areaPriceInfo}
+            type={inputValues.titleKategoria}
+          />
+        )}
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <CreateFormLocation />
+        )}
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <div> multimedia - zdjęcia</div>
+        )}
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <CreateFormDescription
+            handleChange={handleChange}
+            handleKeyDown={handleKeyDown}
+          />
+        )}
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <CreateFormDetailedInformation
+            handleDropdown={handleDropdown}
+            inputValues={inputValues}
+            type={inputValues.titleKategoria}
+          />
+        )}
+        {isValidTitleKategoria(inputValues.titleKategoria) && (
+          <CreateFormContactDetails
+            inputValues={inputValues}
+            handleChange={handleChange}
+            handleKeyDown={handleKeyDown}
+          />
+        )}
         <input type="submit" value="submit" onSubmit={handleSubmit}></input>
       </section>
     </main>

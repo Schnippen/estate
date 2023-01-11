@@ -9,6 +9,7 @@ function CreateFormDetailedInformation({
   handleDropdown,
   handleKeyDown,
   handleChange,
+  type,
 }) {
   const [isOpened, setIsOpened] = useActive(true);
 
@@ -22,7 +23,7 @@ function CreateFormDetailedInformation({
     },
   ];
 
-  const dropDownTemplateData = [
+  const flatDropdownData = [
     {
       data: [
         { value: "cegła", label: "cegła" },
@@ -79,7 +80,6 @@ function CreateFormDetailedInformation({
       placeholder: "Budynek",
       label: "Rodzaj budynku",
     },
-
     {
       data: [
         { value: "bardzo dobry", label: "bardzo dobry" },
@@ -265,6 +265,44 @@ function CreateFormDetailedInformation({
   const houseDropdownData = [
     {
       data: [
+        { value: "Wolnostojący", label: "Wolnostojący" },
+        {
+          value: "Bliźniak",
+          label: "Bliźniak",
+        },
+        { value: "Szeregowiec", label: "Szeregowiec" },
+        {
+          value: "kamienica",
+          label: "kamienica",
+        },
+        {
+          value: "Pałac / dworek",
+          label: "Pałac / dworek",
+        },
+        {
+          value: "Gospodarstwo",
+          label: "Gospodarstwo",
+        },
+        {
+          value: "Letniskowy",
+          label: "Letniskowy",
+        },
+        {
+          value: "Atrialny",
+          label: "Atrialny",
+        },
+        {
+          value: "Inny",
+          label: "Inny",
+        },
+      ],
+      name: "typeOfBuildingInfo",
+      handleChange: handleDropdown,
+      placeholder: "dom",
+      label: "Rodzaj domu",
+    },
+    {
+      data: [
         { value: "1", label: "1" },
         {
           value: "2",
@@ -360,8 +398,8 @@ function CreateFormDetailedInformation({
       ],
       name: "conditionOfThePropertyInfo",
       handleChange: handleDropdown,
-      placeholder: "Stan mieszkania",
-      label: "Stan mieszkania",
+      placeholder: "Stan domu",
+      label: "Stan domu",
     },
     {
       data: [
@@ -639,18 +677,74 @@ function CreateFormDetailedInformation({
     <CreateFormInput data={item} handleChange={handleChange} key={item.id} />
   ));
 
-  const dropdownList = dropDownTemplateData.map((item, i) => (
+  const dropdownList = flatDropdownData.map((item, i) => (
     <li className={styles.dropdown}>
       <Dropdown
-        data={dropDownTemplateData[i].data}
-        name={dropDownTemplateData[i].name}
-        handleChange={dropDownTemplateData[i].handleChange}
-        placeholder={dropDownTemplateData[i].placeholder}
-        label={dropDownTemplateData[i].label}
+        data={flatDropdownData[i].data}
+        name={flatDropdownData[i].name}
+        handleChange={flatDropdownData[i].handleChange}
+        placeholder={flatDropdownData[i].placeholder}
+        label={flatDropdownData[i].label}
         key={item.id}
       />
     </li>
   ));
+
+  function typeDropdownForm(type) {
+    return type === "Mieszkanie na sprzedaż"
+      ? flatDropdownData.map((item, i) => (
+          <li className={styles.dropdown}>
+            <Dropdown
+              data={flatDropdownData[i].data}
+              name={flatDropdownData[i].name}
+              handleChange={flatDropdownData[i].handleChange}
+              placeholder={flatDropdownData[i].placeholder}
+              label={flatDropdownData[i].label}
+              key={item.id}
+            />
+          </li>
+        ))
+      : type === "Dom na sprzedaż"
+      ? houseDropdownData.map((item, i) => (
+          <li className={styles.dropdown}>
+            <Dropdown
+              data={houseDropdownData[i].data}
+              name={houseDropdownData[i].name}
+              handleChange={houseDropdownData[i].handleChange}
+              placeholder={houseDropdownData[i].placeholder}
+              label={houseDropdownData[i].label}
+              key={item.id}
+            />
+          </li>
+        ))
+      : type === "Nieruchomość Komercyjna na sprzedaż"
+      ? commercialPropertyDropdownData.map((item, i) => (
+          <li className={styles.dropdown}>
+            <Dropdown
+              data={commercialPropertyDropdownData[i].data}
+              name={commercialPropertyDropdownData[i].name}
+              handleChange={commercialPropertyDropdownData[i].handleChange}
+              placeholder={commercialPropertyDropdownData[i].placeholder}
+              label={commercialPropertyDropdownData[i].label}
+              key={item.id}
+            />
+          </li>
+        ))
+      : type === "Działka na sprzedaż"
+      ? plotOfLandDropdownData.map((item, i) => (
+          <li className={styles.dropdown}>
+            <Dropdown
+              data={plotOfLandDropdownData[i].data}
+              name={plotOfLandDropdownData[i].name}
+              handleChange={plotOfLandDropdownData[i].handleChange}
+              placeholder={plotOfLandDropdownData[i].placeholder}
+              label={plotOfLandDropdownData[i].label}
+              key={item.id}
+            />
+          </li>
+        ))
+      : null;
+  }
 
   return (
     <article className={styles.article}>
@@ -704,7 +798,7 @@ function CreateFormDetailedInformation({
             margin: "20px",
           }}
         >
-          {dropdownList}
+          {typeDropdownForm(type)}
           {createFormText}
         </ul>
       ) : null}
