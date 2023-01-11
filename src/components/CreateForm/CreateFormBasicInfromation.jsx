@@ -12,8 +12,9 @@ function CreateFormBasicInfromation({
   handleFloorInfo,
   inputValues,
   handleKeyDown,
+  data
 }) {
-  const basicData = [
+  const flatData = [
     {
       label: "Powierzchnia",
       name: "areaInfo",
@@ -26,6 +27,118 @@ function CreateFormBasicInfromation({
       name: "numberOfRoomsInfo",
       placeholder: "Wpisz liczbę pokoi",
       labelText: "Liczba Pokoi",
+    },
+    {
+      label: "Cena",
+      name: "priceInfo",
+      placeholder: "Wpisz Cenę",
+      labelText: "Cena",
+      f: handleKeyDown,
+    },
+  ];
+
+  const houseData = [
+    {
+      label: "Powierzchnia",
+      name: "areaInfo",
+      placeholder: "Wpisz Powierzchnię",
+      labelText: "Powierzchnia mieszkalna (m²)",
+      f: handleKeyDown,
+    },
+    {
+      label: "PowierzchniaUzy",
+      name: "usableArea",
+      placeholder: "powierzchnia użytkowa",
+      labelText: "Powierzchnia użytkowa",
+      f: handleKeyDown,
+    },
+    {
+      label: "dzialka",
+      name: "landAreaInfo",
+      placeholder: "powierzchnia działki",
+      labelText: "Powierzchnia działki (m²)",
+      f: handleKeyDown,
+    },
+    {
+      label: "LiczbaPokoi",
+      name: "numberOfRoomsInfo",
+      placeholder: "Wpisz liczbę pokoi",
+      labelText: "Liczba Pokoi",
+      f: handleKeyDown,
+    },
+    {
+      label: "Cena",
+      name: "priceInfo",
+      placeholder: "Wpisz Cenę",
+      labelText: "Cena",
+      f: handleKeyDown,
+    },
+    {
+      label: "pietra",
+      name: "numbersOfFloorsInfo",
+      placeholder: "liczba pięter",
+      labelText: "Liczba pięter budynku",
+      f: handleKeyDown,
+    },
+  ];
+
+  const plotOfLandData = [
+    {
+      label: "Powierzchnia",
+      name: "areaInfo",
+      placeholder: "Wpisz Powierzchnię",
+      labelText: "Powierzchnia działki (m²)",
+      f: handleKeyDown,
+    },
+    {
+      label: "Cena",
+      name: "priceInfo",
+      placeholder: "Wpisz Cenę",
+      labelText: "Cena",
+      f: handleKeyDown,
+    },
+  ];
+
+  const commercialPropertyData = [
+    {
+      label: "Powierzchnia",
+      name: "areaInfo",
+      placeholder: "Wpisz Powierzchnię",
+      labelText: "Powierzchnia Całkowita (m²)",
+      f: handleKeyDown,
+    },
+    {
+      label: "dzialka",
+      name: "landAreaInfo",
+      placeholder: "powierzchnia działki",
+      labelText: "Powierzchnia działki (m²)",
+      f: handleKeyDown,
+    },
+    {
+      label: "LiczbaPokoi",
+      name: "numberOfRoomsInfo",
+      placeholder: "Wpisz liczbę pomieszczeń",
+      labelText: "Liczba Pomieszczeń",
+      f: handleKeyDown,
+    },
+    {
+      label: "Cena",
+      name: "priceInfo",
+      placeholder: "Wpisz Cenę",
+      labelText: "Cena",
+      f: handleKeyDown,
+    },
+  ];
+  //do negocjacji
+  //duzo type of building
+
+  const garageData = [
+    {
+      label: "Powierzchnia",
+      name: "areaInfo",
+      placeholder: "Wpisz Powierzchnię",
+      labelText: "Powierzchnia Całkowita (m²)",
+      f: handleKeyDown,
     },
     {
       label: "Cena",
@@ -82,7 +195,7 @@ function CreateFormBasicInfromation({
     <article className={styles.article}>
       <h3>Informacje podstawowe</h3>
       <section className={styles.article_section}>
-        {basicData.map((item) => (
+        {flatData.map((item) => (
           <CreateFormInput
             data={item}
             handleChange={handleChange}

@@ -27,25 +27,33 @@ function CreateForm() {
     numbersOfFloorsInfo: "",
     numberOfBathroomsInfo: "",
     typeOfKitchenInfo: "",
+    numbersOfBedroomsInfo: "",
     isBathroomSeparateInfo: "",
     windowWoodworkInfo: "",
     marketInfo: "",
     formOfPropertyInfo: "",
     typeOfBuildingInfo: "",
+    plotTypeInfo: "",
     yearOfConstructionInfo: "",
     conditionOfThePropertyInfo: "",
     heatingInfo: "",
     parkingInfo: "",
     balconyInfo: "",
-    elevatorInfo:"",
+    elevatorInfo: "",
     balconyAreaInfo: "",
+    gardenAreaInfo: "",
+    landAreaInfo: "",
+    plotLengthInfo: "",
+    plotWidthInfo: "",
     numberOfOfferInfo: "",
     publishedInfo: "",
+    //amenities: [],
     googleMapsInfo: [],
     telephoneNumberInfo: "",
     sellerInfo: "",
     estateAgencyInfo: "",
     sellerInfoEmail: "",
+    offerID: "",
   });
 
   const panelData = [
@@ -85,6 +93,15 @@ function CreateForm() {
       svg: <GiHomeGarage />,
     },
   ];
+
+  const dataForms={
+    flat:,
+    house:,
+    commercialProperty:,
+    plotOfLand:,
+    garage:,
+  }
+
   const [category, setTitleCategory] = useState({
     string1: "",
     string2: "",
@@ -132,7 +149,6 @@ function CreateForm() {
       ...inputValues,
       [ref.current.name]: ref.current.value,
     });
-    console.log(ref.current);
   };
 
   const handleKeyDown = (e) => {
@@ -167,7 +183,6 @@ function CreateForm() {
   ));
 
   console.table(inputValues);
-  console.table(inputValues.buildingMaterialInfo);
 
   return (
     <main className={styles.main}>
@@ -217,7 +232,16 @@ function CreateForm() {
       <section className={styles.section_details}>
         <div>
           {inputValues.titleKategoria === "Mieszkanie na sprzedaż" ? (
-            <p>CHUJ</p>
+            <p>Mieszkanie na sprzedaż</p>
+          ) : inputValues.titleKategoria === "Dom na sprzedaż" ? (
+            <p>Dom na sprzedaż</p>
+          ) : inputValues.titleKategoria ===
+            "Nieruchomość Komercyjna na sprzedaż" ? (
+            <p>Nieruchomość Komercyjna na sprzedaż</p>
+          ) : inputValues.titleKategoria === "Działka na sprzedaż" ? (
+            <p>Działka na sprzedaż</p>
+          ) : inputValues.titleKategoria === "Garaż na sprzedaż" ? (
+            <p>Garaż na sprzedaż</p>
           ) : null}
         </div>
         <CreateFormBasicInfromation
@@ -226,13 +250,17 @@ function CreateForm() {
           handleKeyDown={handleKeyDown}
           inputValues={inputValues.areaPriceInfo}
         />
-        <div>lokalizacja</div>
-        <div>kod pocztowy, wojewodztwo</div>
         <CreateFormLocation />
         <div> multimedia - zdjęcia</div>
-        <CreateFormDescription handleChange={handleChange} />
-        <div>Informacje szczegółowe Accordeon</div>
-        <CreateFormDetailedInformation handleDropdown={handleDropdown} />
+        <CreateFormDescription
+          handleChange={handleChange}
+          handleKeyDown={handleKeyDown}
+        />
+
+        <CreateFormDetailedInformation
+          handleDropdown={handleDropdown}
+          inputValues={inputValues}
+        />
         <div>Dane kontaktowe zawsze takie same</div>
         <CreateFormContactDetails
           inputValues={inputValues}

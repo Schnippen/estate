@@ -20,18 +20,19 @@ function Dropdown({ data, handleChange, placeholder, label, name }) {
     };
     document.addEventListener("click", handleClose);
     return () => {
-    document.removeEventListener("click", handleClose);
+      document.removeEventListener("click", handleClose);
     };
   }, [isOpened]);
 
   useEffect(() => {
     inputRef.current.addEventListener("change", handleChange(inputRef));
     return () =>
-    inputRef.current &&  inputRef.current.removeEventListener("change", handleChange(inputRef));
+      inputRef.current &&
+      inputRef.current.removeEventListener("change", handleChange(inputRef));
   }, [selectedOption]);
   //console.log(selectedOption)
   return (
-    <div style={{ position: "relative" }} ref={ref}>
+    <div className={styles.container} ref={ref}>
       {label ? <label htmlFor={label}>{label}</label> : null}
       <input
         id={label}
@@ -73,4 +74,3 @@ function Dropdown({ data, handleChange, placeholder, label, name }) {
 }
 
 export default Dropdown;
-
