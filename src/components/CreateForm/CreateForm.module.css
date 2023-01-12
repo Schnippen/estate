@@ -145,3 +145,34 @@
   border-radius: 5px;
   padding: 5px;
 }
+.submit_wrapper{
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.submit {
+  vertical-align: middle;
+  display: inline-block;
+  width: 300px;
+  padding: 10px 32px;
+  border-radius: 5px;
+  background-color: #8ac6d0;
+  border-style: none;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #36213e;
+  color: #daa520;
+  box-shadow: 0 0 2px 2px #daa520;
+}
+
+.submit:active {
+  background-color: #051034;
+  color: #daa520;
+  box-shadow: 0 0 2px 8px #daa520;
+}

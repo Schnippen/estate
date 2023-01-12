@@ -9,17 +9,19 @@ function CreateFormDetailedInformation({
   handleDropdown,
   handleKeyDown,
   handleChange,
+  handleMax,
   type,
 }) {
   const [isOpened, setIsOpened] = useActive(true);
 
   const basicData = [
     {
-      label: "yearOfConstructionInfo",
-      name: "areaInfo",
+      label: "rokbudowy",
+      name: "yearOfConstructionInfo",
       placeholder: "...",
       labelText: "Rok budowy",
       f: handleKeyDown,
+      limit: 4,
     },
   ];
 
@@ -672,78 +674,48 @@ function CreateFormDetailedInformation({
       label: "Parking",
     },
   ];
-  //liczba pieter rok budowy
-  const createFormText = basicData.map((item) => (
-    <CreateFormInput data={item} handleChange={handleChange} key={item.id} />
-  ));
-
-  const dropdownList = flatDropdownData.map((item, i) => (
-    <li className={styles.dropdown}>
-      <Dropdown
-        data={flatDropdownData[i].data}
-        name={flatDropdownData[i].name}
-        handleChange={flatDropdownData[i].handleChange}
-        placeholder={flatDropdownData[i].placeholder}
-        label={flatDropdownData[i].label}
-        key={item.id}
-      />
-    </li>
-  ));
+  //liczba pieter
 
   function typeDropdownForm(type) {
-    return type === "Mieszkanie na sprzedaż"
-      ? flatDropdownData.map((item, i) => (
-          <li className={styles.dropdown}>
-            <Dropdown
-              data={flatDropdownData[i].data}
-              name={flatDropdownData[i].name}
-              handleChange={flatDropdownData[i].handleChange}
-              placeholder={flatDropdownData[i].placeholder}
-              label={flatDropdownData[i].label}
-              key={item.id}
-            />
-          </li>
-        ))
-      : type === "Dom na sprzedaż"
-      ? houseDropdownData.map((item, i) => (
-          <li className={styles.dropdown}>
-            <Dropdown
-              data={houseDropdownData[i].data}
-              name={houseDropdownData[i].name}
-              handleChange={houseDropdownData[i].handleChange}
-              placeholder={houseDropdownData[i].placeholder}
-              label={houseDropdownData[i].label}
-              key={item.id}
-            />
-          </li>
-        ))
-      : type === "Nieruchomość Komercyjna na sprzedaż"
-      ? commercialPropertyDropdownData.map((item, i) => (
-          <li className={styles.dropdown}>
-            <Dropdown
-              data={commercialPropertyDropdownData[i].data}
-              name={commercialPropertyDropdownData[i].name}
-              handleChange={commercialPropertyDropdownData[i].handleChange}
-              placeholder={commercialPropertyDropdownData[i].placeholder}
-              label={commercialPropertyDropdownData[i].label}
-              key={item.id}
-            />
-          </li>
-        ))
-      : type === "Działka na sprzedaż"
-      ? plotOfLandDropdownData.map((item, i) => (
-          <li className={styles.dropdown}>
-            <Dropdown
-              data={plotOfLandDropdownData[i].data}
-              name={plotOfLandDropdownData[i].name}
-              handleChange={plotOfLandDropdownData[i].handleChange}
-              placeholder={plotOfLandDropdownData[i].placeholder}
-              label={plotOfLandDropdownData[i].label}
-              key={item.id}
-            />
-          </li>
-        ))
-      : null;
+    const data = {
+      "Mieszkanie na sprzedaż": flatDropdownData,
+      "Dom na sprzedaż": houseDropdownData,
+      "Nieruchomość Komercyjna na sprzedaż": commercialPropertyDropdownData,
+      "Działka na sprzedaż": plotOfLandDropdownData,
+    };
+
+    const items = data[type];
+    if (!items) return null;
+
+    return items.map((item, i) => (
+      <li className={styles.dropdown}>
+        <Dropdown
+          data={items[i].data}
+          name={items[i].name}
+          handleChange={items[i].handleChange}
+          placeholder={items[i].placeholder}
+          label={items[i].label}
+          key={item.id}
+        />
+      </li>
+    ));
+  }
+  function yearOfConstruction(type) {
+    const data = {
+      "Mieszkanie na sprzedaż": basicData,
+      "Dom na sprzedaż": basicData,
+      "Nieruchomość Komercyjna na sprzedaż": basicData,
+    };
+    const item = data[type];
+    if (!item) return null;
+    return item.map((item) => (
+      <CreateFormInput
+        data={item}
+        handleChange={handleChange}
+        handleMax={handleMax}
+        key={item.id}
+      />
+    ));
   }
 
   return (
@@ -799,7 +771,7 @@ function CreateFormDetailedInformation({
           }}
         >
           {typeDropdownForm(type)}
-          {createFormText}
+          {yearOfConstruction(type)}
         </ul>
       ) : null}
 

@@ -8,6 +8,8 @@ function CreateFormContactDetails({
   handleChange,
   inputValues,
   handleKeyDown,
+  handleDropdown,
+  handleMax,
 }) {
   //handle Email
   const [emailValid, setEmailValid] = useActive(false);
@@ -22,6 +24,24 @@ function CreateFormContactDetails({
     setEmailValid(EMAIL_REGEX.test(email));
   }, [email]);
 
+  const dropdown = [
+    {
+      data: [
+        {
+          value: "właściciel - osoba prywatna",
+          label: "właściciel - osoba prywatna",
+        },
+        { value: "pośrednik", label: "pośrednik" },
+        { value: "deweloper", label: "deweloper" },
+        { value: "właściciel - firma", label: "właściciel - firma" },
+      ],
+      name: "estateAgencyInfo",
+      handleChange: handleDropdown,
+      placeholder: "...",
+      label: "Zgłoszenie wysyła",
+    },
+  ];
+
   return (
     <article className={styles.article}>
       <h3>Dane kontaktowe</h3>
@@ -34,7 +54,10 @@ function CreateFormContactDetails({
             id="nazwa"
             placeholder="Wpisz imię"
             value={inputValues.sellerInfo}
-            onChange={handleChange}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 25);
+            }}
             className={styles.input}
           />
         </div>
@@ -74,6 +97,7 @@ function CreateFormContactDetails({
             placeholder="Wpisz numer telefonu"
             onChange={(e) => {
               handleChange(e);
+              handleMax(e, 10);
             }}
             onKeyDown={handleKeyDown}
             className={styles.input}
@@ -83,8 +107,19 @@ function CreateFormContactDetails({
           obługa w jezyku
           <input type="checkbox" name="" id="" value="" />
         </div>
-        <div></div>
-        <p>DROPDOWN z włascicielem</p>
+
+        {dropdown.map((item, i) => (
+          <div className={styles.dropdown}>
+            <Dropdown
+              data={dropdown[i].data}
+              name={dropdown[i].name}
+              handleChange={dropdown[i].handleChange}
+              placeholder={dropdown[i].placeholder}
+              label={dropdown[i].label}
+              key={item.id}
+            />
+          </div>
+        ))}
         <div>
           spam
           <input type="checkbox" name="" id="" value="" />

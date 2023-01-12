@@ -27,6 +27,7 @@ function CreateFormBasicInfromation({
       name: "numberOfRoomsInfo",
       placeholder: "Wpisz liczbę pokoi",
       labelText: "Liczba Pokoi",
+      f: handleKeyDown,
     },
     {
       label: "Cena",
@@ -192,47 +193,20 @@ function CreateFormBasicInfromation({
   }, [numberOfFloor.floorFrom, numberOfFloor.floorTo]);
 
   function typeInputForm(type) {
-    return type === "Mieszkanie na sprzedaż"
-      ? flatData.map((item) => (
-          <CreateFormInput
-            data={item}
-            handleChange={handleChange}
-            key={item.id}
-          />
-        ))
-      : type === "Dom na sprzedaż"
-      ? houseData.map((item) => (
-          <CreateFormInput
-            data={item}
-            handleChange={handleChange}
-            key={item.id}
-          />
-        ))
-      : type === "Nieruchomość Komercyjna na sprzedaż"
-      ? commercialPropertyData.map((item) => (
-          <CreateFormInput
-            data={item}
-            handleChange={handleChange}
-            key={item.id}
-          />
-        ))
-      : type === "Działka na sprzedaż"
-      ? plotOfLandData.map((item) => (
-          <CreateFormInput
-            data={item}
-            handleChange={handleChange}
-            key={item.id}
-          />
-        ))
-      : type === "Garaż na sprzedaż"
-      ? garageData.map((item) => (
-          <CreateFormInput
-            data={item}
-            handleChange={handleChange}
-            key={item.id}
-          />
-        ))
-      : null;
+    const data = {
+      "Mieszkanie na sprzedaż": flatData,
+      "Dom na sprzedaż": houseData,
+      "Nieruchomość Komercyjna na sprzedaż": commercialPropertyData,
+      "Działka na sprzedaż": plotOfLandData,
+      "Garaż na sprzedaż": garageData,
+    };
+
+    const items = data[type];
+    if (!items) return null;
+
+    return items.map((item) => (
+      <CreateFormInput data={item} handleChange={handleChange} key={item.id} />
+    ));
   }
 
   return (

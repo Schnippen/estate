@@ -129,6 +129,13 @@ function CreateForm() {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
+  const handleMax = (e, limit) => {
+    setInputValues({
+      ...inputValues,
+      [e.target.name]: e.target.value.slice(0, limit),
+    });
+  };
+
   //const handleClick = () => {};
 
   //floorInfo
@@ -232,20 +239,6 @@ function CreateForm() {
         <ul className={styles.panel_container}>{panelList}</ul>
       </section>
       <section className={styles.section_details}>
-        <div>
-          {inputValues.titleKategoria === "Mieszkanie na sprzedaż" ? (
-            <p>Mieszkanie na sprzedaż</p>
-          ) : inputValues.titleKategoria === "Dom na sprzedaż" ? (
-            <p>Dom na sprzedaż</p>
-          ) : inputValues.titleKategoria ===
-            "Nieruchomość Komercyjna na sprzedaż" ? (
-            <p>Nieruchomość Komercyjna na sprzedaż</p>
-          ) : inputValues.titleKategoria === "Działka na sprzedaż" ? (
-            <p>Działka na sprzedaż</p>
-          ) : inputValues.titleKategoria === "Garaż na sprzedaż" ? (
-            <p>Garaż na sprzedaż</p>
-          ) : null}
-        </div>
         {isValidTitleKategoria(inputValues.titleKategoria) && (
           <CreateFormBasicInfromation
             handleChange={handleChange}
@@ -272,6 +265,9 @@ function CreateForm() {
             handleDropdown={handleDropdown}
             inputValues={inputValues}
             type={inputValues.titleKategoria}
+            handleChange={handleChange}
+            handleKeyDown={handleKeyDown}
+            handleMax={handleMax}
           />
         )}
         {isValidTitleKategoria(inputValues.titleKategoria) && (
@@ -279,9 +275,18 @@ function CreateForm() {
             inputValues={inputValues}
             handleChange={handleChange}
             handleKeyDown={handleKeyDown}
+            handleDropdown={handleDropdown}
+            handleMax={handleMax}
           />
         )}
-        <input type="submit" value="submit" onSubmit={handleSubmit}></input>
+        <div className={styles.submit_wrapper}>
+          <input
+            type="submit"
+            value="Opublikuj"
+            onSubmit={handleSubmit}
+            className={styles.submit}
+          ></input>
+        </div>
       </section>
     </main>
   );
