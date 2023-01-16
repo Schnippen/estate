@@ -9,6 +9,7 @@ import CreateFormPanel from "./CreateFormPanel";
 import CreateFormContactDetails from "./CreateFormContactDetails";
 import CreateFormBasicInfromation from "./CreateFormBasicInfromation";
 import CreateFormLocation from "./CreateFormLocation";
+import CreateFormMedia from "./CreateFormMedia";
 import CreateFormDescription from "./CreateFormDescription";
 import CreateFormDetailedInformation from "./CreateFormDetailedInformation";
 
@@ -140,7 +141,11 @@ function CreateForm() {
 
   //floorInfo
   const handleFloorInfo = (value) => {
-    setInputValues({ ...inputValues, [inputValues.floorInfo]: value });
+    setInputValues({
+      ...inputValues,
+      [inputValues.numbersOfFloorsInfo]: value,
+    });
+    console.log(inputValues, "jestem value");
   };
   //handle dropdown inputs
   const handleDropdown = (ref) => {
@@ -168,7 +173,7 @@ function CreateForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Submitting!");
-    //console.log(inputValues);
+    console.log(inputValues);
     //setInputValues({ name: "", telephone: "", email: "", textmessage: "" });
   };
 
@@ -191,7 +196,7 @@ function CreateForm() {
     />
   ));
 
-  console.table(inputValues);
+  //console.table(inputValues);
 
   return (
     <main className={styles.main}>
@@ -244,6 +249,7 @@ function CreateForm() {
             handleChange={handleChange}
             handleFloorInfo={handleFloorInfo}
             handleKeyDown={handleKeyDown}
+            handleMax={handleMax}
             inputValues={inputValues.areaPriceInfo}
             type={inputValues.titleKategoria}
           />
@@ -252,12 +258,14 @@ function CreateForm() {
           <CreateFormLocation />
         )}
         {isValidTitleKategoria(inputValues.titleKategoria) && (
-          <div> multimedia - zdjęcia</div>
+          <CreateFormMedia />
         )}
         {isValidTitleKategoria(inputValues.titleKategoria) && (
           <CreateFormDescription
             handleChange={handleChange}
             handleKeyDown={handleKeyDown}
+            titleState={inputValues.offerTitle}
+            textState={inputValues.descriptionInfo}
           />
         )}
         {isValidTitleKategoria(inputValues.titleKategoria) && (
@@ -285,6 +293,15 @@ function CreateForm() {
             value="Opublikuj"
             onSubmit={handleSubmit}
             className={styles.submit}
+            disabled={
+              inputValues.titleKategoria &&
+              inputValues.priceInfo &&
+              inputValues.areaInfo &&
+              inputValues.offerTitle &&
+              inputValues.descriptionInfo.length > 100
+                ? false
+                : true
+            }
           ></input>
         </div>
       </section>

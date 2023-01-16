@@ -5,7 +5,8 @@ import NotFound from "./components/NotFound";
 import Leaflet from "./Leaflet/Leaflet";
 import SignUp from "./components/SignUp";
 import { Routes, Route } from "react-router-dom";
-import { lazy } from "react";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./App.css"
 import CreateForm from "./components/CreateForm/CreateForm";
 /* <Route path='/' element={<Home/>}/> */
@@ -14,6 +15,7 @@ import CreateForm from "./components/CreateForm/CreateForm";
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/Offers" element={<Offers />} />
@@ -23,6 +25,7 @@ function App() {
         <Route path="/Leaflet" element={<Leaflet />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </>
   );
 }

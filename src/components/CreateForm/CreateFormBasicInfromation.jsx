@@ -12,6 +12,7 @@ function CreateFormBasicInfromation({
   handleFloorInfo,
   inputValues,
   handleKeyDown,
+  handleMax,
   type,
 }) {
   const flatData = [
@@ -21,6 +22,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia (m²)",
       f: handleKeyDown,
+      limit: 5,
     },
     {
       label: "LiczbaPokoi",
@@ -28,6 +30,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz liczbę pokoi",
       labelText: "Liczba Pokoi",
       f: handleKeyDown,
+      limit: 2,
     },
     {
       label: "Cena",
@@ -35,6 +38,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
       f: handleKeyDown,
+      limit: 10,
     },
   ];
 
@@ -45,6 +49,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia mieszkalna (m²)",
       f: handleKeyDown,
+      limit: 5,
     },
     {
       label: "PowierzchniaUzy",
@@ -52,6 +57,7 @@ function CreateFormBasicInfromation({
       placeholder: "powierzchnia użytkowa",
       labelText: "Powierzchnia użytkowa",
       f: handleKeyDown,
+      limit: 5,
     },
     {
       label: "dzialka",
@@ -59,6 +65,7 @@ function CreateFormBasicInfromation({
       placeholder: "powierzchnia działki",
       labelText: "Powierzchnia działki (m²)",
       f: handleKeyDown,
+      limit: 6,
     },
     {
       label: "LiczbaPokoi",
@@ -66,6 +73,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz liczbę pokoi",
       labelText: "Liczba Pokoi",
       f: handleKeyDown,
+      limit: 2,
     },
     {
       label: "Cena",
@@ -73,6 +81,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
       f: handleKeyDown,
+      limit: 10,
     },
     {
       label: "pietra",
@@ -80,6 +89,7 @@ function CreateFormBasicInfromation({
       placeholder: "liczba pięter",
       labelText: "Liczba pięter budynku",
       f: handleKeyDown,
+      limit: 2,
     },
   ];
 
@@ -90,6 +100,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia działki (m²)",
       f: handleKeyDown,
+      limit: 6,
     },
     {
       label: "Cena",
@@ -97,6 +108,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
       f: handleKeyDown,
+      limit: 10,
     },
   ];
 
@@ -107,6 +119,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia Całkowita (m²)",
       f: handleKeyDown,
+      limit: 6,
     },
     {
       label: "dzialka",
@@ -114,6 +127,7 @@ function CreateFormBasicInfromation({
       placeholder: "powierzchnia działki",
       labelText: "Powierzchnia działki (m²)",
       f: handleKeyDown,
+      limit: 6,
     },
     {
       label: "LiczbaPokoi",
@@ -121,6 +135,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz liczbę pomieszczeń",
       labelText: "Liczba Pomieszczeń",
       f: handleKeyDown,
+      limit: 2,
     },
     {
       label: "Cena",
@@ -128,6 +143,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
       f: handleKeyDown,
+      limit: 10,
     },
   ];
   //do negocjacji
@@ -140,6 +156,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Powierzchnię",
       labelText: "Powierzchnia Całkowita (m²)",
       f: handleKeyDown,
+      limit: 6,
     },
     {
       label: "Cena",
@@ -147,6 +164,7 @@ function CreateFormBasicInfromation({
       placeholder: "Wpisz Cenę",
       labelText: "Cena",
       f: handleKeyDown,
+      limit: 10,
     },
   ];
 
@@ -188,7 +206,8 @@ function CreateFormBasicInfromation({
       numberOfFloor.floorFrom.length > 0 &&
       numberOfFloor.floorTo.length > 0
     ) {
-      handleFloorInfo(numberOfFloor.floorFrom + " / " + numberOfFloor.floorTo);
+      let result = numberOfFloor.floorFrom + "/" + numberOfFloor.floorTo;
+      handleFloorInfo(result);
     }
   }, [numberOfFloor.floorFrom, numberOfFloor.floorTo]);
 
@@ -205,7 +224,12 @@ function CreateFormBasicInfromation({
     if (!items) return null;
 
     return items.map((item) => (
-      <CreateFormInput data={item} handleChange={handleChange} key={item.id} />
+      <CreateFormInput
+        data={item}
+        handleChange={handleChange}
+        handleMax={handleMax}
+        key={item.id}
+      />
     ));
   }
 
@@ -303,6 +327,3 @@ function CreateFormBasicInfromation({
 }
 
 export default CreateFormBasicInfromation;
-
-//naprawić zeby Backspace działał
-//onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}

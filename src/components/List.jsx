@@ -163,21 +163,3 @@ function List() {
 }
 
 export default List;
-
-/*          <div>
-            <select onChange={handleSortingDatabaseState}>
-              <option value={1}>Domyślnie</option>
-              <option value={2}>Cena od najniższej</option>
-              <option value={3}>Cena od najwyższej</option>
-              <option value={4}>Najniższej ceny za m²</option>
-              <option value={5}>Najwyższej ceny za m²</option>
-            </select>
-          </div>
-          <div>
-            Ilość ofert na stronie
-            <select onChange={handleSetItemsPerPage}>
-              <option value={5}>5</option>
-              <option value={1}>1</option>
-              <option value={3}>3</option>
-            </select>
-          </div>*/

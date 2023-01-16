@@ -1,11 +1,7 @@
 import React from "react";
 import styles from "./CreateFormContactDetails.module.css";
-import { useState } from "react";
 
-function CreateFormDescription({ handleChange }) {
-  const [titleState, setTitleState] = useState("");
-  const [textState, setTextState] = useState("");
-
+function CreateFormDescription({ handleChange, textState, titleState }) {
   const divStyle = {
     display: "flex",
     flexDirection: "column",
@@ -16,13 +12,7 @@ function CreateFormDescription({ handleChange }) {
   const labelStyle = {
     padding: "5px 0",
   };
-  const digitsStyle = {
-    display: "flex",
-    width: "600px",
-    justifyContent: "flex-end",
-  };
 
-  console.log(textState);
   return (
     <article className={styles.article}>
       <h3>Tytuł i Opis</h3>
@@ -34,39 +24,46 @@ function CreateFormDescription({ handleChange }) {
           <input
             type="text"
             id="title"
-            style={{
-              width: "600px",
-              height: "40px",
-              borderRadius: "5px",
+            name="offerTitle"
+            className={styles.descriptionTitle}
+            onChange={(e) => {
+              handleChange(e);
             }}
-            onChange={(e) => setTitleState(e.target.value)}
             maxLength={100}
           />
-          <div style={digitsStyle}>
+          <div className={styles.digitsStyle}>
             <p>{titleState.length}/100</p>
           </div>
+          {titleState.length > 0 && titleState.length < 20 ? (
+            <div className={styles.errorParagraph}>
+              <p>Opis powienien mieć przynajmniej 20 znaków</p>
+            </div>
+          ) : null}
         </div>
         <div style={divStyle}>
           <label htmlFor="description" style={labelStyle}>
             Opis
           </label>
           <textarea
-            name=""
             id="description"
             cols="30"
             rows="10"
-            style={{
-              width: "600px",
-              height: "300px",
-              borderRadius: "5px",
+            className={styles.descriptionText}
+            name="descriptionInfo"
+            onChange={(e) => {
+              handleChange(e);
             }}
-            onChange={(e) => setTextState(e.target.value)}
             maxLength={6000}
           ></textarea>
         </div>
-        <div style={digitsStyle}>
+        <div className={styles.digitsStyle}>
           <p>{textState.length}/6000</p>
         </div>
+        {textState.length > 0 && textState.length < 100 ? (
+          <div className={styles.errorParagraph}>
+            <p>Opis powienien mieć przynajmniej 100 znaków</p>
+          </div>
+        ) : null}
       </section>
     </article>
   );

@@ -12,7 +12,7 @@ function CreateFormDetailedInformation({
   handleMax,
   type,
 }) {
-  const [isOpened, setIsOpened] = useActive(true);
+  const [isOpened, setIsOpened] = useActive(false);
 
   const basicData = [
     {
@@ -695,7 +695,7 @@ function CreateFormDetailedInformation({
           handleChange={items[i].handleChange}
           placeholder={items[i].placeholder}
           label={items[i].label}
-          key={item.id}
+          key={item.i}
         />
       </li>
     ));
@@ -727,37 +727,14 @@ function CreateFormDetailedInformation({
         <h3>
           Informacje szczegółowe
           <div
-            style={{
-              position: "absolute",
-              fontSize: "12px",
-              top: "50%",
-              right: "50px",
-              transform: "translate(-50%, -50%)",
-              textAlign: "center",
-              userSelect: "none",
-              transition: "opacity 0.5s",
-              opacity: isOpened ? "0" : "1",
-            }}
+            className={isOpened ? styles.moreInfoClosed : styles.moreInfoOpened}
           >
             kliknij aby rozwinąć
           </div>
         </h3>
 
         <div
-          style={{
-            position: "absolute",
-            right: "40px",
-            top: "-5px",
-            width: "40px",
-            height: "40px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            transition: "transform 0.5s ease-in-out",
-            transform: isOpened ? "rotate(180deg)" : "rotate(0deg)",
-            cursor: "pointer",
-          }}
-        >
+          className={isOpened ? styles.moreInfoArrowClosed : styles.moreInfoArrowOpened}>
           <HiChevronDown />
         </div>
       </header>
@@ -774,17 +751,8 @@ function CreateFormDetailedInformation({
           {yearOfConstruction(type)}
         </ul>
       ) : null}
-
-      <section className={styles.article_section}></section>
     </article>
   );
 }
 
 export default CreateFormDetailedInformation;
-/*Mieszkanie
-    oferta z rynku pierwotnego check if to od kiedy dostepne
-    udogodnienia CHECK
-    Mednia check
-<div style={{ display: "flex" }}>{dropdownList}</div>
-
-*/

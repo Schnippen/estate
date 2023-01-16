@@ -14,6 +14,7 @@ function CreateFormInput({ data, handleChange, handleMax }) {
           handleChange(e);
           handleMax(e, data.limit);
         }}
+        maxlength={data.limit}
         onKeyDown={data.f}
         className={styles.form_input}
       />

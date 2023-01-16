@@ -10,9 +10,6 @@ import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
 
-//import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
-//import React, { useState } from "react";
-
 function Item() {
   //console.log(item)
   //console.log(props.location.state)
@@ -46,7 +43,7 @@ function Item() {
     <>
       <Navbar />
       <BreadCrumbs />
-      <div className={styles.container}>
+      <div className={styles.container} >
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>
             <div className={styles.section_item_div}>

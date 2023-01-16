@@ -7,6 +7,9 @@
   margin: 10px 0 10px 0;
 }
 
+.article > :not(h3) {
+  text-align: center;
+}
 .article_section {
   display: flex;
   flex-direction: column;
@@ -130,4 +133,108 @@
   justify-content: center;
   color: white;
   padding: 5px 10px;
+}
+
+.descriptionTitle {
+  width: 600px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.descriptionText {
+  width: 600px;
+  height: 300px;
+  border-radius: 5px;
+  resize: none;
+  line-height: 150%;
+}
+.digitsStyle {
+  display: flex;
+  width: 600px;
+  justify-content: flex-end;
+}
+.moreInfoOpened {
+  position: absolute;
+  font-size: 12px;
+  top: 50%;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.moreInfoClosed {
+  position: absolute;
+  font-size: 12px;
+  top: 50%;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.moreInfoArrowOpened {
+  position: absolute;
+  right: 40px;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+.moreInfoArrowClosed {
+  position: absolute;
+  right: 40px;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .article > header {
+    text-align: center;
+  }
+  .descriptionTitle {
+    width: 280px;
+  }
+
+  .descriptionText {
+    width: 280px;
+  }
+  .digitsStyle {
+    width: 280px;
+  }
+  .moreInfoOpened {
+    top: 50%;
+    right: 50px;
+    transform: translate(0px, 30px);
+  }
+  .moreInfoClosed {
+    top: 50%;
+    right: 50px;
+    transform: translate(0px, 30px);
+  }
+
+  .moreInfoArrowOpened {
+    right: -30px;
+    top: 10px;
+  }
+
+  .moreInfoArrowClosed {
+    right: -30px;
+    top: 10px;
+  }
 }

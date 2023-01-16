@@ -1,6 +1,4 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import styles from "../styles/LandingPage.module.css";
 import backgroundImg from "../assets/backgroundPhoto2.jpg";
 import Card from "../components/Card";
@@ -104,7 +102,6 @@ function LandingPage() {
 
   return (
     <>
-      <Navbar />
       <section className={styles.landing__page_section}>
         <div className={styles.landing__page_photo}>
           <img src={backgroundImg} alt="Violet house" />
@@ -175,7 +172,6 @@ function LandingPage() {
           </Link>
         </ul>
       </section>
-      <Footer />
     </>
   );
 }

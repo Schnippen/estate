@@ -1,15 +1,16 @@
-.section__main{
+.section__main {
   display: block;
+  margin-top: 200px;
 }
 
-.section__options{
+.section__options {
   display: flex;
   height: 60px;
   align-items: center;
   background-color: #554971;
 }
-.section__options>div{
-  margin:0 10px;
+.section__options > div {
+  margin: 0 10px;
 }
 
 .list__container {

@@ -20,7 +20,7 @@ function Leaflet() {
   
   //console.log(database2[1].googleMapsInfo.map((n) => n.slice(0, -2)));
   //console.log(database2. map((item) => item.googleMapsInfo));
-  console.log(Database.slice(0, 10));
+  //console.log(Database.slice(0, 10));
   return (
     <div className="leaflet_container">
       <MapContainer center={[50.3, 19.01187]} zoom={14} scrollWheelZoom={true}>

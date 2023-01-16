@@ -145,7 +145,7 @@
   border-radius: 5px;
   padding: 5px;
 }
-.submit_wrapper{
+.submit_wrapper {
   height: 40px;
   width: 100%;
   display: flex;
@@ -175,4 +175,47 @@
   background-color: #051034;
   color: #daa520;
   box-shadow: 0 0 2px 8px #daa520;
+}
+
+.submit:disabled {
+  background-color: #57555e;
+}
+
+@media (max-width: 800px) {
+
+  .section_transaction {
+    width: 80%;
+  }
+
+  .section_transaction > div {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .section_panel {
+    width: 80%;
+  }
+
+  .panel {
+    width: 122px;
+    height: 122px;
+  }
+  .panel_container > li:nth-child(4) {
+    font-size: 12px;
+  }
+
+  .panel_active {
+    width: 122px;
+    height: 122px;
+  }
+
+  .svg > svg {
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+  }
+
+  .section_details{
+    width: 80%;
+  }
 }

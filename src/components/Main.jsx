@@ -1,14 +1,12 @@
-import './Main.css'
-import List from './List'
-import Footer from './Footer'
+import "./Main.css";
+import List from "./List";
 
 function Main() {
   return (
     <main>
-        <List/>
-        <Footer/>
+      <List />
     </main>
-  )
+  );
 }
 
-export default Main
+export default Main;

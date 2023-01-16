@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import styles from "./CreateFormContactDetails.module.css";
+
 
 function CreateFormLocation() {
+
+
+
   return (
-    <div>CreateFormLocation</div>
-  )
+    <article className={styles.article}>
+      <h3>Lokalizacja</h3>
+      <section className={styles.article_section}>
+ 
+      </section>
+    </article>
+  );
 }
 
-export default CreateFormLocation
+export default CreateFormLocation;
