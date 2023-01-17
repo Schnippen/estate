@@ -2,6 +2,7 @@ import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import useActive from "./useActive";
 
 import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";
 
@@ -12,17 +13,32 @@ function Navbar() {
     const query = window.matchMedia("(max-width: 800px)");
     if (query.matches) {
       setIsMobile(true);
-      console.log("mobile");
     } else setIsMobile(false);
   }, []);
 
+  const [isOpened, setIsOpened] = useActive(true);
+
+  const Logo = (
+    <Link to="/">
+      <div className={styles.logo}>Anytown Real Estate</div>
+    </Link>
+  );
+  //console.log(isMobile)
   return (
     <div className={styles.nav}>
-      <TbArrowBarRight />
-      <TbArrowBarToLeft />
-      <Link to="/">
-        <div className={styles.logo}>Anytown Real Estate</div>
-      </Link>
+      {isMobile ? (
+        <div onClick={setIsOpened}>
+          {isOpened ? (
+            <TbArrowBarToLeft />
+          ) : (
+            <TbArrowBarRight className={styles.svg} />
+          )}
+        </div>
+      ) : (
+        Logo
+      )}
+
+      {isOpened?<section className={styles.sidebarOpened}> sidebar </section>:null}
       {isMobile ? null : (
         <ul className={styles.nav__links}>
           <Link to="/Offers">
@@ -48,3 +64,4 @@ function Navbar() {
 
 export default Navbar;
 //<UserInterface />
+//{isOpened ? <section className={styles.sidebar}>sidebar</section> : null}

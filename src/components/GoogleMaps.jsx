@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ItemInfoDescription.module.css";
+import styles from "./Item/ItemInfoDescription.module.css";
 
 function GoogleMaps({ prop }) {
   //const prop = Database[1];

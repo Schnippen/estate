@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useEffect } from "react";
 import ButtonExit from "../Buttons/ButtonExit";
-import styles from "./ItemSideArticleCredit.module.css";
+import styles from "../components/Item/ItemSideArticleCredit.module.css";
 
 function TermsOfService({ setIsActive, isActive }) {
   const ref = useRef();
@@ -9,7 +9,7 @@ function TermsOfService({ setIsActive, isActive }) {
   useEffect(() => {
     const handleClose = (e) => {
       console.log(ref.current, e.target);
-      if (isActive && ref.current ===e.target) {
+      if (isActive && ref.current === e.target) {
         setIsActive();
       }
     };
@@ -20,7 +20,8 @@ function TermsOfService({ setIsActive, isActive }) {
   }, [isActive]);
 
   return (
-    <div ref={ref}
+    <div
+      ref={ref}
       style={{
         width: "100vw",
         height: "100vh",
@@ -36,7 +37,6 @@ function TermsOfService({ setIsActive, isActive }) {
     >
       <ButtonExit setIsActive={setIsActive} />
       <div
-        
         style={{
           backgroundColor: "#554971",
           height: "580px",
