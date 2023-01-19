@@ -13,7 +13,7 @@
   height: 2.15rem;
   padding: 10px 32px;
   color: white;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   transition: all 0.1s ease 0s;
   overflow: hidden;
 }
@@ -32,12 +32,12 @@
 }
 
 .btn:hover {
-  background-color: #36213e;
-  color: #daa520;
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
 }
 
 .btn:active {
-  background-color: #051034;
+  background-color: var(--quaternary-color);
 }
 
 .btnBig_btnSmall_Opened {
@@ -53,19 +53,19 @@
 .btnBig_Opened {
   border-radius: 5px 0px 0px 0px;
   width: 60%;
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
 }
 
 .btnSmall_Opened {
   border-radius: 0px 5px 0px 0px;
   width: 40%;
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
 }
 
 .menu_btnBig_Opened {
   display: block;
   height: 320px;
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
   border-radius: 0 0 10px 10px;
   width: 100%;
   position: absolute;
@@ -74,7 +74,7 @@
 .menu_btnSmall_Opened {
   display: block;
   height: 320px;
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
   border-radius: 0 0 10px 10px;
   width: 100%;
   position: absolute;
@@ -97,7 +97,7 @@
   justify-content: center;
 }
 .menu_list > li:hover {
-  color: #daa520;
+  color: var(--tertiary-color);
   transition: all 0.3s ease 0s;
 }
 .form {
@@ -131,7 +131,7 @@
 }
 
 .inputText:focus {
-  outline: solid #daa520;
+  outline: solid var(--tertiary-color);
 }
 
 .submit {
@@ -148,15 +148,15 @@
 }
 
 .submit:hover {
-  background-color: #554971;
-  color: #daa520;
-  box-shadow: 0 0 2px 2px #daa520;
+  background-color: var(--secondary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
 }
 
 .submit:active {
-  background-color: #051034;
-  color: #daa520;
-  box-shadow: 0 0 2px 8px #daa520;
+  background-color: var(--quaternary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 8px var(--tertiary-color);
 }
 
 .form > p {

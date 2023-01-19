@@ -4,7 +4,7 @@
 
 .input {
   border: none;
-  background-color: #fff;
+  background-color: var(--article);
   outline: none;
   padding-left: 8px;
   width: 100%;
@@ -15,7 +15,7 @@
 
 .input_active {
   border: none;
-  background-color: #fff;
+  background-color: var(--article);
   outline: none;
   padding-left: 8px;
   width: 100%;
@@ -25,7 +25,7 @@
 }
 
 .containter > ul > li {
-  background-color: #fff;
+  background-color: var(--article);
 }
 
 .list_active {
@@ -33,7 +33,7 @@
   display: block;
   position: absolute;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--article);
   cursor: pointer;
   user-select: none;
   border-radius: 0 0 5px 5px;
@@ -48,13 +48,13 @@
 
 .list_item:hover {
   padding: 4px 0 4px 8px;
-  text-decoration: underline #daa520;
+  text-decoration: underline var(--tertiary-text-color);
   font-weight: 700;
 }
 
 .list_item_active {
   padding: 4px 0 4px 8px;
-  text-decoration: underline #daa520;
+  text-decoration: underline var(--tertiary-text-color);
   font-weight: 700;
 }
 

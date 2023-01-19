@@ -3,7 +3,7 @@
     height: 488px;
     width: 366px;
     padding: 24px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary-text-color);
     box-shadow:rgb(209 209 213) 0px 5px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -27,19 +27,19 @@
 .card_section_item:active{
     transform: scale(1.03);
     transition: 0.1s;
-    box-shadow: 0 0 2px 2px #daa520;
+    box-shadow: 0 0 2px 2px var(--tertiary-text-color);
 }
 
 .card_section_item:hover button{
-    background-color: #36213e;
-    color:#daa520;
+    background-color: var(--tertiary-color);
+    color:var(--tertiary-text-color);
 }
 
 .card_section_button{
     padding:1rem;
     border-radius: 5px;
     border: none;
-    background-color: #554971;
-    color:white;
+    background-color: var(--secondary-color);
+    color:var(--article);
 }
 

@@ -3,7 +3,7 @@
 }
 
 .container_bigPhoto_opened {
-  background-color: #f5f8fb;
+  background-color: var(--text-background);
   position: fixed;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   margin: 10px 10px;
   border-radius: 50%;
   border: 2px solid white;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   color: white;
   transition: all 0.3s ease 0s;
   vertical-align: middle;
@@ -68,12 +68,12 @@
 
 .bigPhoto_arrowPrev:hover,
 .bigPhoto_arrowNext:hover {
-  border: 2px solid #daa520;
+  border: 2px solid var(--tertiary-text-color);
 }
 
 .bigPhoto_arrowPrev:hover svg,
 .bigPhoto_arrowNext:hover svg {
-  color: #daa520;
+  color: var(--tertiary-text-color);
 }
 
 .bigPhoto_arrowPrev:active > svg,
@@ -84,12 +84,12 @@
 
 .bigPhoto_arrowPrev:active,
 .bigPhoto_arrowNext:active {
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
 }
 .bigPhoto_arrowPrev:disabled,
 .bigPhoto_arrowNext:disabled {
-  background-color: #57555e;
-  border: 2px solid black;
+  background-color: var(--disabled);
+  border: 2px solid var(--secondary-text-color);
 }
 
 
@@ -119,7 +119,7 @@
   user-select: none;
   border: none;
   border-radius: 5px;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   color: #fff;
   transition: all 0.3s ease 0s;
   width: 40px;
@@ -140,16 +140,16 @@
 }
 
 .buttonExit:hover {
- box-shadow: 5px 5px  #daa520;
+ box-shadow: 5px 5px  var(--tertiary-text-color);
   transition: all 0.3s ease 0s;
 }
 
 .buttonExit>svg:hover{
-  color:#daa520;
+  color:var(--tertiary-text-color);
 }
 
 .buttonExit:active{
-  background-color: #051034;
+  background-color: var(--quaternary-color);
     transform: scale(0.8, 0.8);
   transition: 0.05s;
 }

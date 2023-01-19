@@ -29,7 +29,7 @@
   padding: 0.5rem;
 }
 
-.section_item header > div> h3 {
+.section_item header > div > h3 {
   margin: 10px 0;
 }
 
@@ -56,6 +56,7 @@
   margin-right: 2rem;
   list-style: none;
 }
+
 .container_article_multimedia_categories {
   margin: 0px 0 30px;
 }

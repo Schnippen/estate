@@ -8,40 +8,85 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 10px 10%;
-  background-color: rgba(99, 118, 141, 1);
+  background-color: var(--primary-color);
   z-index: 10;
 }
 
-.svg{
+.svg {
   cursor: pointer;
-      width: 40px;
+  width: 40px;
   height: 40px;
 }
-
 
 .logo {
   cursor: pointer;
 }
-
-.sidebarClosed{
-  position: absolute;
-  top:100px;
-  left:0;
+.modal {
+  position: fixed;
+  top: 100px;
+  left: 0;
   height: 100vh;
-  width: 220px;
-  background-color: aqua;
-  transition: 0.5s ease translate;
-  transform: translateX(-220px);
+  width: 100vw;
+  background-color: #00000045;
 }
-.sidebarOpened{
+
+.sidebar {
   position: absolute;
-  top:100px;
-  left:0;
+  left: 0;
   height: 100vh;
-  width: 220px;
-  background-color: aqua;
-  transition: 0.5s ease translate;
-  transform: translateX(0px);
+  width: 75%;
+}
+.sidebarContainer {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarUser {
+  height: 125px;
+  width: 100%;  
+  position: relative;
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: 4px solid var(--article);
+}
+
+.profilePicture {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+}
+.sidebarListWrapper {
+  margin: 10px 0;
+}
+.sidebarList {
+  width: 100%;
+}
+
+.sidebarList > li {
+  width: 100%;
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  border-bottom: 1px solid var(--article);
+}
+
+.sidebarListSvg {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px 0 15px;
+  color: var(--article);
+}
+
+.sidebarList > li> p{
+  color: var(--article);
 }
 
 .nav__links {
@@ -49,33 +94,40 @@
 }
 
 .nav__links li {
-    height: 2.15rem;
+  height: 2.15rem;
   vertical-align: middle;
   display: inline-block;
   padding: 10px 32px;
-  margin:0 5px;
+  margin: 0 5px;
   border-radius: 5px;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   transition: all 0.3s ease 0s;
 }
 
-.nav__links li  {
+.nav__links li {
   color: white;
   text-decoration: none;
 }
 
 .nav__links li:hover {
-  background-color: #36213e;
+  background-color: var(--tertiary-color);
 }
 
-.nav__links li:hover  {
-  color: #daa520;
+.nav__links li:hover {
+  color: var(--tertiary-text-color);
 }
 
 @media (max-width: 800px) {
-
+  .nav {
+    display: flex;
+    justify-content: center;
+  }
+  .showSidebar {
+    position: absolute;
+    left: 25px;
+    top: 30%;
+  }
 }
-
 
 /*#8AC6D0
 #B8F3FF

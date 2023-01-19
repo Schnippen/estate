@@ -15,7 +15,7 @@
 }
 
 .form_container {
-  background-color: #554971;
+  background-color: var(--secondary-color);
   border-radius: 0 0 5px 5px;
   padding: 10px 1rem;
 }
@@ -47,7 +47,7 @@ form {
   outline: none;
 }
 .inputText:focus {
-  outline: solid #daa520;
+  outline: solid var(--tertiary-text-color);
 }
 
 .textarea {
@@ -59,7 +59,7 @@ form {
 }
 
 textarea:focus {
-  outline: solid #daa520;
+  outline: solid var(--tertiary-text-color);
 }
 
 .form_additionalContact_wrapper {
@@ -72,7 +72,7 @@ textarea:focus {
 
 .form_additionalContact_wrapper > div > label {
   font-size: 16px;
-  color: #fff;
+  color: var(--primary-text-color);
   padding-left: 10px;
 }
 
@@ -102,26 +102,26 @@ label {
 }
 
 .submit:hover {
-  background-color: #36213e;
-  color: #daa520;
-  box-shadow: 0 0 2px 2px #daa520;
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
 }
 
 .submit:active {
-  background-color: #051034;
-  color: #daa520;
-  box-shadow: 0 0 2px 8px #daa520;
+  background-color: var(--quaternary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 8px var(--tertiary-text-color);
 }
 
 .form_additionalContact_wrapper p {
   text-align: center;
-  color: #fff;
+  color: var(--primary-text-color);
 }
 
 .terms{
   user-select: none;
   cursor:pointer;
   text-align: center;
-  color: #fff;
+  color: var(--primary-text-color);
   margin: 0.5rem 0;
 }

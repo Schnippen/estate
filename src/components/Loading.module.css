@@ -20,7 +20,7 @@
   width: 100px;
   height: 100px;
   animation: spin 0.8s linear infinite;
-  color: #36213e;
+  color: var(--tertiary-color);
 }
 
 @keyframes spin {

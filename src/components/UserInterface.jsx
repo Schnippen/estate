@@ -14,7 +14,6 @@ function UserInterface() {
   const [isActiveBig, setIsActiveBig] = useActive(false);
   const [isActiveSmall, setIsActive] = useActive(false);
 
-
   const ref = useRef();
 
   useEffect(() => {
@@ -62,9 +61,6 @@ function UserInterface() {
       <button
         type="button"
         className={
-          //isActive
-          //  ? `${styles.btn} ${styles.btnBig_btnSmall_Opened}`
-          //  : `${styles.btn} ${styles.btnBig}`
           isActiveBig
             ? `${styles.btn} ${styles.btnBig_Opened} `
             : isActiveSmall
@@ -125,18 +121,14 @@ function UserInterface() {
             <p>Forgot your password?</p>
             <div className={styles.form_div_actions}>
               <p>Dont have Account?</p>
-              <Link to="/SignUp">
+              <Link to="/SignUp" style={{padding:"10px 0",color:"white"}}>
                 <p>Sign Up!</p>
               </Link>
             </div>
           </form>
         ) : null}
       </div>
-      <div
-        className={isActiveSmall ? styles.menu_btnSmall_Opened : null}
-        onClick={(e) => console.log(e)}
-        //Modal dla button 2
-      >
+      <div className={isActiveSmall ? styles.menu_btnSmall_Opened : null}>
         {isActiveSmall ? (
           <ul className={styles.menu_list}>
             <li>
@@ -152,9 +144,8 @@ function UserInterface() {
                 <HiMail />
               </div>
               <div>
-                <p></p>
+                <p>Wiadomosci</p>
               </div>
-              Wiadomosci
             </li>
             <li>
               <div>

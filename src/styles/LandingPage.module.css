@@ -30,7 +30,7 @@
 }
 .section_searchbar > div > label {
   display: flex;
-      justify-content: center;
+  justify-content: center;
   color: white;
   padding: 5px 10px;
 }

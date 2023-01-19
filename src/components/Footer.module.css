@@ -14,13 +14,13 @@
 .container_social{
     display: block;
     padding: 1rem;
-    background-color: #554971;
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }
 
 .container_social>label{
     font-weight: 600;
-    color: white;
+    color: var(--primary-text-color);
 }
 
 .container_social_links{

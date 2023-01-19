@@ -17,7 +17,7 @@
   text-align: center;
 }
 .form_input:focus {
-  outline: solid #daa520;
+  outline: solid var(--tertiary-color);
 }
 
 .form_input_container > label {

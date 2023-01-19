@@ -12,7 +12,7 @@
 }
 
 .description_wrapper{
-  background-color: #f5f8fb;
+  background-color: var(--text-background);
   border-radius: 5px;
   margin: 1rem 0;
 }
@@ -27,7 +27,7 @@
 }
 
 .description_container_maps{
-    background-color: #f5f8fb;
+    background-color: var(--text-background);
   border-radius: 5px;
   padding: 1rem;
     margin: 1rem 0;

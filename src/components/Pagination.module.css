@@ -37,15 +37,15 @@
 }
 .pagination__list_btn:hover,
 .pagination__list_btn:hover svg {
-  color: #daa520;
+  color: var(--tertiary-color);
 }
 
 .pagination__list_btn:hover {
-  border: 2px solid #daa520;
+  border: 2px solid var(--tertiary-color);
 }
 
 .pagination__list_btn:disabled {
-  background-color: #57555e;
+  background-color: var(--disabled);
   border: 2px solid black;
 }
 

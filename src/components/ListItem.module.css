@@ -4,7 +4,7 @@
 }
 a {
   text-decoration: none;
-  color: black;
+  color: var(--secondary-text-color);
 }
 
 .grid_container {

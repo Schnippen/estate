@@ -20,7 +20,7 @@
 }
 
 .breadcrumbs li:hover {
-  text-decoration: underline #daa520;
+  text-decoration: underline var(--tertiary-text-color);
 }
 
 .breadcrumbs li:after {

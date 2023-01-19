@@ -145,7 +145,6 @@ function CreateForm() {
       ...inputValues,
       [inputValues.numbersOfFloorsInfo]: value,
     });
-    console.log(inputValues, "jestem value");
   };
   //handle dropdown inputs
   const handleDropdown = (ref) => {
@@ -174,7 +173,65 @@ function CreateForm() {
     e.preventDefault();
     alert("Submitting!");
     console.log(inputValues);
-    //setInputValues({ name: "", telephone: "", email: "", textmessage: "" });
+    let UUID = Date.now();
+    setInputValues({ ...inputValues, [inputValues.offerID]: UUID });
+
+    fetch("http://localhost:3100/items", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputValues),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+    setInputValues({
+      titleKategoria: "",
+      offerTitle: "",
+      priceInfo: "",
+      areaInfo: "",
+      areaPriceInfo: "",
+      numberOfRoomsInfo: "",
+      usableArea: "",
+      floorInfo: "",
+      descriptionInfo: "",
+      buildingMaterialInfo: "",
+      numbersOfFloorsInfo: "",
+      numberOfBathroomsInfo: "",
+      typeOfKitchenInfo: "",
+      numbersOfBedroomsInfo: "",
+      isBathroomSeparateInfo: "",
+      windowWoodworkInfo: "",
+      marketInfo: "",
+      formOfPropertyInfo: "",
+      typeOfBuildingInfo: "",
+      plotTypeInfo: "",
+      yearOfConstructionInfo: "",
+      conditionOfThePropertyInfo: "",
+      heatingInfo: "",
+      parkingInfo: "",
+      balconyInfo: "",
+      elevatorInfo: "",
+      balconyAreaInfo: "",
+      gardenAreaInfo: "",
+      landAreaInfo: "",
+      plotLengthInfo: "",
+      plotWidthInfo: "",
+      numberOfOfferInfo: "",
+      publishedInfo: "",
+      //amenities: [],
+      googleMapsInfo: [],
+      telephoneNumberInfo: "",
+      sellerInfo: "",
+      estateAgencyInfo: "",
+      sellerInfoEmail: "",
+      offerID: "",
+    });
   };
 
   function isValidTitleKategoria(titleKategoria) {
@@ -199,7 +256,7 @@ function CreateForm() {
   //console.table(inputValues);
 
   return (
-    <main className={styles.main}>
+    <form className={styles.main} onSubmit={handleSubmit}>
       <section className={styles.section_transaction}>
         <div>
           <label htmlFor="Sprzedaż">
@@ -291,13 +348,13 @@ function CreateForm() {
           <input
             type="submit"
             value="Opublikuj"
-            onSubmit={handleSubmit}
             className={styles.submit}
             disabled={
               inputValues.titleKategoria &&
               inputValues.priceInfo &&
               inputValues.areaInfo &&
               inputValues.offerTitle &&
+              inputValues.sellerInfo &&
               inputValues.descriptionInfo.length > 100
                 ? false
                 : true
@@ -305,7 +362,7 @@ function CreateForm() {
           ></input>
         </div>
       </section>
-    </main>
+    </form>
   );
 }
 

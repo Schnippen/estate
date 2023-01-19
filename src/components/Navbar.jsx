@@ -1,8 +1,9 @@
 import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import useActive from "./useActive";
+import Sidebar from "./Sidebar";
 
 import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";
 
@@ -16,7 +17,7 @@ function Navbar() {
     } else setIsMobile(false);
   }, []);
 
-  const [isOpened, setIsOpened] = useActive(true);
+  const [isOpened, setIsOpened] = useActive(false);
 
   const Logo = (
     <Link to="/">
@@ -24,21 +25,28 @@ function Navbar() {
     </Link>
   );
   //console.log(isMobile)
+
   return (
-    <div className={styles.nav}>
+    <nav className={styles.nav}>
       {isMobile ? (
-        <div onClick={setIsOpened}>
-          {isOpened ? (
-            <TbArrowBarToLeft />
-          ) : (
-            <TbArrowBarRight className={styles.svg} />
-          )}
+        <div style={{backgroundColor:"red"}}>
+          <div onClick={setIsOpened} className={styles.showSidebar}>
+            {isOpened ? (
+              <TbArrowBarToLeft className={styles.svg} />
+            ) : (
+              <TbArrowBarRight className={styles.svg} />
+            )}
+          </div>
+          <div>{Logo}</div>
         </div>
       ) : (
         Logo
       )}
 
-      {isOpened?<section className={styles.sidebarOpened}> sidebar </section>:null}
+      {isOpened ? (
+        <Sidebar isOpened={isOpened} setIsOpened={setIsOpened} />
+      ) : null}
+
       {isMobile ? null : (
         <ul className={styles.nav__links}>
           <Link to="/Offers">
@@ -58,10 +66,11 @@ function Navbar() {
           </li>
         </ul>
       )}
-    </div>
+      {isMobile ? null : <UserInterface />}
+    </nav>
   );
 }
 
 export default Navbar;
-//<UserInterface />
+//
 //{isOpened ? <section className={styles.sidebar}>sidebar</section> : null}

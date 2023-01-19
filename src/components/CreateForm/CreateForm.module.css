@@ -1,5 +1,6 @@
 .main {
   width: 100%;
+  margin-top: 100px;
   height: 100%;
   background-color: antiquewhite;
   display: flex;
@@ -11,25 +12,24 @@
 .section_transaction {
   height: 100px;
   width: 50%;
-  background-color: brown;
   display: flex;
   justify-content: center;
   margin: 20px 0 10px 0;
 }
 
 .section_transaction > div {
-  width: 80%;
+  width: 100%;
   height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
+  background-color: var(--background-color);
   border-radius: 5px;
   box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
 }
 
 .section_transaction_container {
-  background-color: #554971;
+  background-color: var(--secondary-color);
   height: 40px;
   width: 200px;
   border-radius: 5px;
@@ -37,16 +37,16 @@
   justify-content: center;
   align-items: center;
   user-select: none;
-  color: #fff;
+  color: var(--primary-text-color);
   cursor: pointer;
 }
 
 .section_transaction_container:hover {
-  color: #daa520;
+  color: var(--tertiary-color);
 }
 
 .section_transaction_container:checked {
-  color: #daa520;
+  color: var(--tertiary-color);
 }
 
 .section_transaction_container > input {
@@ -58,19 +58,19 @@
   border-radius: 50%;
   display: inline-block;
   transition: opacity 0.3s ease;
-  background-color: #daa520;
+  background-color: var(--tertiary-text-color);
 }
 
 .custom_checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid var(--primary-text-color);
   border-radius: 50%;
   margin-left: 20px;
 }
 
 .section_panel {
-  background-color: white;
+  background-color: var(--article);
   width: 50%;
   padding: 1.25rem 0;
   margin: 10px 0 10px 0;
@@ -90,23 +90,23 @@
 .panel {
   width: 244px;
   height: 244px;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 5px;
-  color: #fff;
+  color: var(--primary-text-color);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease 0s;
   cursor: pointer;
 }
 .panel_active {
-  color: #daa520;
+  color: var(--tertiary-text-color);
   width: 244px;
   height: 244px;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,7 +118,7 @@
   cursor: pointer;
 }
 .panel:hover {
-  color: #daa520;
+  color: var(--tertiary-text-color);
 }
 
 .svg > svg {
@@ -131,13 +131,12 @@
   visibility: hidden;
 }
 .section_details {
-  background-color: burlywood;
   width: 50%;
   margin: 10px 0 20px 0;
 }
 
 .errorParagraph {
-  color: #fff;
+  color: var(--primary-text-color);
   font-size: 16px;
   text-align: center;
   overflow: hidden;
@@ -166,29 +165,30 @@
 }
 
 .submit:hover {
-  background-color: #36213e;
-  color: #daa520;
-  box-shadow: 0 0 2px 2px #daa520;
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
 }
 
 .submit:active {
-  background-color: #051034;
-  color: #daa520;
-  box-shadow: 0 0 2px 8px #daa520;
+  background-color: var(--quaternary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 8px var(--tertiary-text-color);
 }
 
 .submit:disabled {
-  background-color: #57555e;
+  background-color: var(--disabled);
 }
 
 @media (max-width: 800px) {
-
   .section_transaction {
     width: 80%;
+    height: 120px;
   }
 
   .section_transaction > div {
     width: 100%;
+    height: 120px;
     flex-direction: column;
   }
 
@@ -215,7 +215,7 @@
     margin: 10px;
   }
 
-  .section_details{
+  .section_details {
     width: 80%;
   }
 }

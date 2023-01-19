@@ -8,7 +8,6 @@ function TermsOfService({ setIsActive, isActive }) {
 
   useEffect(() => {
     const handleClose = (e) => {
-      console.log(ref.current, e.target);
       if (isActive && ref.current === e.target) {
         setIsActive();
       }

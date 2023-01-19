@@ -1,6 +1,6 @@
 .article {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--article);
   border-radius: 5px;
   padding: 1rem 2rem;
   box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
@@ -35,7 +35,7 @@
   text-align: center;
 }
 .input:focus {
-  outline: solid #daa520;
+  outline: solid var(--tertiary-text-color);
 }
 
 .section_inputContainer > label {
@@ -43,7 +43,7 @@
 }
 
 .errorParagraph {
-  color: #fff;
+  color: var(--article);
   font-size: 16px;
   text-align: center;
   overflow: hidden;
@@ -67,7 +67,7 @@
 }
 
 .section_negotiation_container {
-  background-color: #554971;
+  background-color: var(--secondary-color);
   height: 40px;
   width: 280px;
   border-radius: 5px;
@@ -75,12 +75,12 @@
   justify-content: center;
   align-items: center;
   user-select: none;
-  color: #fff;
+  color: var(--article);
   cursor: pointer;
 }
 
 .section_negotiation_container:checked {
-  color: #daa520;
+  color: var(--tertiary-text-color);
 }
 
 .section_negotiation_container > input {
@@ -92,13 +92,13 @@
   border-radius: 50%;
   display: inline-block;
   transition: opacity 0.3s ease;
-  background-color: #daa520;
+  background-color: var(--tertiary-text-color);
 }
 
 .custom_checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #fff;
+  border: 2px solid var(--article);
   border-radius: 50%;
   margin-left: 20px;
 }
@@ -116,7 +116,7 @@
 
 .dropdown {
   position: relative;
-  background-color: #554971;
+  background-color: var(--secondary-color);
   margin: 1rem 0;
   border-radius: 5px;
   width: 300px;
@@ -131,7 +131,7 @@
 .dropdown > div > label {
   display: flex;
   justify-content: center;
-  color: white;
+  color: var(--primary-text-color);
   padding: 5px 10px;
 }
 
