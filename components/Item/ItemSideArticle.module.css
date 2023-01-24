@@ -1,0 +1,127 @@
+.container_article_side {
+  width: 25%;
+}
+
+.section_sidebar {
+  width: 100%;
+  height: 600px;
+  margin: 1rem 0;
+}
+
+.section_div {
+  background-color: aliceblue;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.form_container {
+  background-color: var(--secondary-color);
+  border-radius: 0 0 5px 5px;
+  padding: 10px 1rem;
+}
+
+form {
+  position: relative;
+}
+
+.form_div_wrapper {
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.svg {
+  position: absolute;
+  box-sizing: border-box;
+  top: 50%;
+  left: 6px;
+  transform: translateY(-50%);
+}
+
+.inputText {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding-left: 1.5rem;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+  outline: none;
+}
+.inputText:focus {
+  outline: solid var(--tertiary-text-color);
+}
+
+.textarea {
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  height: 196px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: solid var(--tertiary-text-color);
+}
+
+.form_additionalContact_wrapper {
+  padding: 10px 0;
+}
+
+.form_additionalContact_wrapper > div {
+  padding: 10px 0;
+}
+
+.form_additionalContact_wrapper > div > label {
+  font-size: 16px;
+  color: var(--primary-text-color);
+  padding-left: 10px;
+}
+
+.checkbox {
+  height: 1rem;
+  width: 1rem;
+  appearance: auto;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+label {
+  user-select: none;
+}
+
+.submit {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 32px;
+  border-radius: 5px;
+  background-color: #8ac6d0;
+  border-style: none;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+  color: white;
+}
+
+.submit:hover {
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
+}
+
+.submit:active {
+  background-color: var(--quaternary-color);
+  color: var(--tertiary-text-color);
+  box-shadow: 0 0 2px 8px var(--tertiary-text-color);
+}
+
+.form_additionalContact_wrapper p {
+  text-align: center;
+  color: var(--primary-text-color);
+}
+
+.terms{
+  user-select: none;
+  cursor:pointer;
+  text-align: center;
+  color: var(--primary-text-color);
+  margin: 0.5rem 0;
+}
