@@ -3,7 +3,6 @@ import styles from "./Navbar.module.css";
 import { useEffect, useRef } from "react";
 import profilePicture from "../assets/profile.jpg";
 import {
-  HiDotsHorizontal,
   HiMail,
   HiHeart,
   HiCog,
@@ -24,6 +23,26 @@ function Sidebar({ isOpened, setIsOpened }) {
       document.removeEventListener("click", handleClose);
     };
   }, [isOpened]);
+
+  const Notification = (
+    <div
+      style={{
+        backgroundColor: "red",
+        height: "30px",
+        width: "30px",
+        right: "0",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: "50%",
+        verticalAlign: "middle",
+        gridColumn: "3",
+        justifySelf: "center",
+      }}
+    >
+      1
+    </div>
+  );
 
   return (
     <aside>
@@ -55,7 +74,7 @@ function Sidebar({ isOpened, setIsOpened }) {
                 <li>
                   <HiHeart className={styles.sidebarListSvg} />
                   <p>Obserwowane</p>
-                  <div style={{backgroundColor:"red",height:"30px",width:"30px", right:"0", display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"50%",verticalAlign:"middle"}}>1</div>
+                  {Notification}
                 </li>
                 <li>
                   <HiCog className={styles.sidebarListSvg} />
