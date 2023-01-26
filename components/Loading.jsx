@@ -3,7 +3,7 @@ import styles from "./Loading.module.css";
 import { AiOutlineLoading } from "react-icons/ai";
 import { useState, useEffect } from "react";
 
-function Loading() {
+function Loading({color,svgColor,top,left}) {
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -21,8 +21,8 @@ function Loading() {
 
   return (
     <div className={styles.loading_container}>
-      <AiOutlineLoading className={styles.svg} />
-      <div>{`Loading${time}`}</div>
+      <AiOutlineLoading className={styles.svg} style={{color:`${svgColor}`}}/>
+      <div style={{color:`${color}`, top:`${top}%`,left:`${left}%`,}}>{`Loading${time}`}</div>
     </div>
   );
 }

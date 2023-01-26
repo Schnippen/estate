@@ -1,7 +1,7 @@
 import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import useActive from "./useActive";
 import Sidebar from "./Sidebar";
 
@@ -21,7 +21,7 @@ function Navbar() {
 
   const Logo = (
     <Link to="/">
-      <div className={styles.logo}>Anytown Real Estate</div>
+      <div>Anytown Real Estate</div>
     </Link>
   );
   //console.log(isMobile)
@@ -29,7 +29,9 @@ function Navbar() {
   return (
     <nav className={styles.nav}>
       {isMobile ? (
-        <div style={{backgroundColor:"red"}}>
+        <>
+          <div className={styles.logo}>{Logo}</div>
+
           <div onClick={setIsOpened} className={styles.showSidebar}>
             {isOpened ? (
               <TbArrowBarToLeft className={styles.svg} />
@@ -37,8 +39,7 @@ function Navbar() {
               <TbArrowBarRight className={styles.svg} />
             )}
           </div>
-          <div>{Logo}</div>
-        </div>
+        </>
       ) : (
         Logo
       )}

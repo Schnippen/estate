@@ -217,14 +217,14 @@
 .modalWrapper > h1 {
   color: var(--primary-text-color);
 }
-.successModal{
-color: #4BB543;
-height: 200px;
-width: 200px;
+.successModal {
+  color: #4bb543;
+  height: 200px;
+  width: 200px;
 }
 
-.errorModal{
-color: #ff3333;
-height: 200px;
-width: 200px;
+.errorModal {
+  color: #ff3333;
+  height: 200px;
+  width: 200px;
 }

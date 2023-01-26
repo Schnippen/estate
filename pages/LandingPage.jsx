@@ -32,18 +32,18 @@ function LandingPage() {
   };
 
   const TypeOfRealEstate = [
-    { value: "option1", label: "Mieszkania" },
-    { value: "option2", label: "Domy" },
-    { value: "option3", label: "Komercyjne" },
-    { value: "option4", label: "Działki" },
-    { value: "option5", label: "Garaże" },
+    { value: "Mieszkanie%20na%20sprzedaż", label: "Mieszkania" },
+    { value: "Dom%20na%20sprzedaż", label: "Domy" },
+    { value: "Komercyjne%20na%20sprzedaż", label: "Komercyjne" },
+    { value: "Działka%20na%20sprzedaż", label: "Działki" },
+    { value: "Garaż%20na%20sprzedaż", label: "Garaże" },
     { value: "option6", label: "Dowolny" },
   ];
 
   const TypeOfTransaction = [
-    { value: "option1", label: "Pierwotny" },
-    { value: "option2", label: "Wtórny" },
-    { value: "option3", label: "Dowolny" },
+    { value: "pierwotny", label: "Pierwotny" },
+    { value: "wtórny", label: "Wtórny" },
+    { value: "", label: "Dowolny" },
   ];
 
   const PriceData = [
@@ -68,7 +68,9 @@ function LandingPage() {
   useEffect(() => {
     let x = parseInt(queryDetails.PriceFrom);
     let y = parseInt(queryDetails.PriceTo);
-    if (x > y && y === 0) {
+    if (x === 0 && y === 0) {
+      setRenderError(false);
+    } else if (x > y && y === 0) {
       setRenderError(() => false);
     } else if (x > y && y > 0) {
       setRenderError(() => true);
@@ -82,18 +84,49 @@ function LandingPage() {
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
   //useSearchParams()
-
+  let query = "http://localhost:3100/items?";
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Submitting!");
     console.table(queryDetails);
-    fetch(`http://localhost:3100/items`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(queryDetails),
-    })
+    const props = [
+      "City",
+      "TypeOfRealEstate",
+      "TypeOfTransaction",
+      "PriceFrom",
+      "PriceTo",
+    ];
+    props.forEach((prop) => {
+      if (queryDetails[prop].length > 0) {
+        switch (prop) {
+          case "City":
+            break;
+          case "TypeOfRealEstate":
+            query += "&titleKategoria=" + queryDetails[prop];
+            break;
+          case "TypeOfTransaction":
+            query += "&marketInfo=" + queryDetails[prop];
+            break;
+          case "PriceFrom":
+            query += "&priceInfo_gt=" + queryDetails[prop];
+            break;
+          case "PriceTo":
+            query += "&priceInfo_lt=" + queryDetails[prop];
+            break;
+        }
+      }
+    });
+    fetch(query)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        console.log(query);
+        // update the state with the filtered data
+        //this.setState({ products: data });
+      })
+      .catch((err) => {
+        console.log(query);
+        // handle any errors
+      });
   };
 
   const errorMessage = {
@@ -120,21 +153,25 @@ function LandingPage() {
               onChange={handleInput}
             />
           </div>
-          <Dropdown
-            data={TypeOfRealEstate}
-            name={"TypeOfRealEstate"}
-            handleChange={handleChange}
-            placeholder={"Rodzaj Nieruchomości"}
-            label={"Rodzaj Nieruchomości"}
-          ></Dropdown>
-          <Dropdown
-            data={TypeOfTransaction}
-            name={"TypeOfTransaction"}
-            handleChange={handleChange}
-            placeholder={"Rodzaj Transakscji"}
-            label={"Rodzaj Transakscji"}
-          ></Dropdown>
-          <div style={{padding:"0 10px"}}>
+          <div className={styles.dropdown}>
+            <Dropdown
+              data={TypeOfRealEstate}
+              name={"TypeOfRealEstate"}
+              handleChange={handleChange}
+              placeholder={"Rodzaj Nieruchomości"}
+              label={"Rodzaj Nieruchomości"}
+            ></Dropdown>
+          </div>
+          <div className={styles.dropdown}>
+            <Dropdown
+              data={TypeOfTransaction}
+              name={"TypeOfTransaction"}
+              handleChange={handleChange}
+              placeholder={"Rodzaj Transakscji"}
+              label={"Rodzaj Transakscji"}
+            ></Dropdown>
+          </div>
+          <div className={styles.dropdown} style={{width:"320px"}}>
             <label htmlFor="">Cena w zł</label>
             <Price data={PriceData} handleChange={handleChange} />
           </div>
@@ -177,3 +214,5 @@ function LandingPage() {
 }
 
 export default LandingPage;
+//GET /products?price_gte=50&price_lte=100
+///items?titleKategoria=Mieszkanie%20na%20sprzedaż

@@ -120,13 +120,20 @@
 
 @media (max-width: 800px) {
   .nav {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 4fr 1fr;
+    padding: 0;
   }
+
+  .logo{
+     grid-column: 2/3;
+     position: absolute;
+  }
+
   .showSidebar {
-    position: absolute;
-    left: 25px;
-    top: 30%;
+        grid-column: 1/2;
+    
   }
 }
 

@@ -1,4 +1,3 @@
-import Database from "../data/katowice_Nieruchomosci_Morizon_08.11.2022.json";
 import ListItem from "./ListItem";
 import { useState, useEffect } from "react";
 import Pagination from "./Pagination";
@@ -31,7 +30,7 @@ function List() {
 
   let pages = [];
 
-  for (let i = 1; i <= Math.floor(Database.length / itemsPerPage); i++) {
+  for (let i = 1; i <= Math.floor(databaseState.length / itemsPerPage); i++) {
     pages.push(i);
   }
 
@@ -39,7 +38,7 @@ function List() {
   const handleSortingDatabaseState = (ref) => {
     const sortBy = parseInt(ref.current.value);
     if (sortBy === 1) {
-      setDatabaseState([...Database]);
+      setDatabaseState([...databaseState]);
     } else if (sortBy === 2) {
       setDatabaseState(
         [...databaseState].sort(
@@ -140,7 +139,7 @@ function List() {
               textAlign: "center",
             }}
           >
-            Liczba ogłoszeń: <strong>{Database.length}</strong>
+            Liczba ogłoszeń: <strong>{databaseState.length}</strong>
           </div>
           <div>
             zobacz na mapie
@@ -148,7 +147,9 @@ function List() {
           </div>
         </section>
         {isLoading ? (
-          <Loading />
+          <body style={{ height: "800px" }}>
+            <Loading color={"#141212"} svgColor="#554971" top={58} left={47} />
+          </body>
         ) : (
           <ul className={styles.list__container}>{items}</ul>
         )}
