@@ -1,0 +1,44 @@
+.search__form{
+    position: relative;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #8AC6D0 ;
+}
+
+.search__form-select{
+    padding: 8px;
+    margin:0px 5px;
+    border-radius: 5px;
+}
+
+.search__form-input{
+    padding: 8px;
+    margin:0px 5px;
+    border-radius: 5px;
+}
+
+
+.search__form-btn{
+    border: none;
+    border-radius: 5px;
+    background-color: #554971;
+    color:#fff;
+    transition: all 0.3s ease 0s;
+    width:40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.search__form-btn > svg{
+    vertical-align: middle;
+}
+.search__form-btn:hover{
+    color:#DAA520;
+    background-color: #36213e;
+}
+.search__form-btn:active{
+    transform: scale(0.8, 0.8);
+    transition: 0.15s;
+}

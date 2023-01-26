@@ -1,0 +1,88 @@
+
+.section_container_credit {
+  margin: 1rem 0;
+  background-color: var(--secondary-color);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px 1rem;
+  text-align: center;
+}
+
+.section_container_credit > header {
+  padding: 10px 0;
+  color: var(--primary-text-color);
+}
+
+.credit_wrapper {
+  padding: 1rem 0;
+}
+
+.credit_input > label {
+  display: block;
+  color:var(--primary-text-color);
+  padding: 0.5rem 0;
+}
+
+.credit_input > label,
+.credit_input > input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+    text-align: center;
+}
+
+.credit_input > input[type="text"]:focus,
+.credit_input > input[type="number"]:focus {
+  outline: solid #daa520;
+}
+
+.input{
+  color:black;
+}
+
+.submit {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 32px;
+  border-radius: 5px;
+  background-color: #8ac6d0;
+  border-style: none;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+  color: white;
+}
+
+.submit:hover {
+  background-color: #36213e;
+  color: #daa520;
+  box-shadow: 0 0 2px 2px #daa520;
+}
+
+.submit:active {
+  background-color: #051034;
+  color: #daa520;
+  box-shadow: 0 0 2px 8px #daa520;
+}
+
+
+.bankWrapper {
+  padding: 1rem 0;
+}
+.bankWrapper > h6 {
+  padding: 10px 0;
+  color:var(--primary-text-color);
+}
+
+.bankWrapper_List {
+  display: flex;
+  justify-content: center;
+}
+
+.bankWrapper_List > img {
+  height: 36px;
+  width: 36px;
+  margin: 4px;
+  border-radius: 50%;
+}

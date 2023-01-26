@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --primary-color: #63768d;
+  --secondary-color: #554971;
+  --tertiary-color: #36213e;
+  --quaternary-color: #051034;
+  --background-color: white;
+  --article: #fff;
+  --text-background: #f5f8fb;
+  --disabled: #57555e;
+  --primary-text-color: #efe7e7;
+  --secondary-text-color: #141212;
+  --tertiary-text-color: #daa520;
+}
+/*
+layout
+primary color  szary rgb(99 118 141) #63768d
+secondary color  lekki fiolet #554971
+tertiary color   mocny fiolet hover #36213e
+quaternary color   active #051034
+primary text color       prawie bialy
+secondary text color     czarny/prawie czarny
+tertiary te color      gold color
+*/
