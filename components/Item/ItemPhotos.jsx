@@ -5,13 +5,12 @@ import interiorImg1 from "../../assets/interior1.jpg";
 import interiorImg2 from "../../assets/interior2.jpg";
 import interiorImg3 from "../../assets/interior3.jpg";
 import interiorImg4 from "../../assets/interior4.jpg";
-import { useState } from "react";
+import { useState,  } from "react";
 import FullscreenPhotosGallery from "../FullscreenPhotosGallery";
 import useActive from "./../useActive";
 
-function ItemPhotos() {
+function ItemPhotos({ isMobile }) {
   const photos = [
-    
     interiorImg1,
     interiorImg2,
     interiorImg3,
@@ -32,11 +31,7 @@ function ItemPhotos() {
     "https://picsum.photos/500/500?random=9",
     "https://picsum.photos/500/500?random=10",
   ];
-  /* Array.from(    { length: 40 },    () =>      `https://picsum.photos/500/500?random=${Math.floor(Math.random() * 10)}`
-  );*/
 
-  //stestuj thumnaile i dlugosc photos array
-  
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [isActive, setIsActive] = useActive(false);
   const [thumbnail, setThumbnail] = useState(0);
@@ -57,9 +52,6 @@ function ItemPhotos() {
   );
 
   const photosLength = photos.length;
-  //console.log(selectedPhoto, "selectedphoto");
-  //console.log(thumbnail, "thumbnail");
-  //console.log(photos.length, "length");
 
   return (
     <>
@@ -93,27 +85,29 @@ function ItemPhotos() {
           loading="lazy"
         ></img>
       </div>
-      <div className={styles.container_photos_thumbnails}>
-        <button
-          className={styles.container_photos_bigPhoto_arrowPrev}
-          disabled={thumbnail <= 0}
-          onClick={() => setThumbnail((thumbnail) => thumbnail - 1)}
-        >
-          <HiArrowLeft />
-        </button>
-        <div className={styles.thumbnails_wrapper}>
-          <ul className={styles.thumbnails}>{photosVisible}</ul>
+      {isMobile ? null : (
+        <div className={styles.container_photos_thumbnails}>
+          <button
+            className={styles.container_photos_bigPhoto_arrowPrev}
+            disabled={thumbnail <= 0}
+            onClick={() => setThumbnail((thumbnail) => thumbnail - 1)}
+          >
+            <HiArrowLeft />
+          </button>
+          <div className={styles.thumbnails_wrapper}>
+            <ul className={styles.thumbnails}>{photosVisible}</ul>
+          </div>
+          <button
+            className={styles.container_photos_bigPhoto_arrowNext}
+            disabled={
+              thumbnail >= photos.length || thumbnail >= photos.length - 5
+            }
+            onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
+          >
+            <HiArrowRight />
+          </button>
         </div>
-        <button
-          className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={
-            thumbnail >= photos.length || thumbnail >= photos.length - 5
-          }
-          onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
-        >
-          <HiArrowRight />
-        </button>
-      </div>
+      )}
     </>
   );
 }

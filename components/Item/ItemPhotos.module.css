@@ -100,6 +100,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  width: 800px;
 }
 
 .thumbnails > li {
@@ -126,4 +127,15 @@
   margin: 0 auto;
   height: 100%;
   width: 100%;
+}
+
+@media (max-width: 800px) {
+.container_photos_bigPhoto{
+  height: 200px;
+  background-color: blueviolet;
+}
+.container_photos_bigPhoto > img{
+  height: 200px;
+  background-color: aqua;
+}
 }

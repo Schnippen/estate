@@ -143,7 +143,7 @@ function CreateForm() {
   const handleFloorInfo = (value) => {
     setInputValues({
       ...inputValues,
-      [inputValues.numbersOfFloorsInfo]: value,
+      numbersOfFloorsInfo: value,
     });
   };
   //handle dropdown inputs
@@ -174,14 +174,12 @@ function CreateForm() {
     alert("Submitting!");
     console.log(inputValues);
     let UUID = Date.now();
-    setInputValues({ ...inputValues, [inputValues.offerID]: UUID });
-
+    setInputValues({ ...inputValues, offerID: UUID });
+    const data = { ...inputValues };
     fetch("http://localhost:3100/items", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inputValues),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((result) => {
@@ -190,48 +188,6 @@ function CreateForm() {
       .catch((error) => {
         console.error("Error:", error);
       });
-    setInputValues({
-      titleKategoria: "",
-      offerTitle: "",
-      priceInfo: "",
-      areaInfo: "",
-      areaPriceInfo: "",
-      numberOfRoomsInfo: "",
-      usableArea: "",
-      floorInfo: "",
-      descriptionInfo: "",
-      buildingMaterialInfo: "",
-      numbersOfFloorsInfo: "",
-      numberOfBathroomsInfo: "",
-      typeOfKitchenInfo: "",
-      numbersOfBedroomsInfo: "",
-      isBathroomSeparateInfo: "",
-      windowWoodworkInfo: "",
-      marketInfo: "",
-      formOfPropertyInfo: "",
-      typeOfBuildingInfo: "",
-      plotTypeInfo: "",
-      yearOfConstructionInfo: "",
-      conditionOfThePropertyInfo: "",
-      heatingInfo: "",
-      parkingInfo: "",
-      balconyInfo: "",
-      elevatorInfo: "",
-      balconyAreaInfo: "",
-      gardenAreaInfo: "",
-      landAreaInfo: "",
-      plotLengthInfo: "",
-      plotWidthInfo: "",
-      numberOfOfferInfo: "",
-      publishedInfo: "",
-      //amenities: [],
-      googleMapsInfo: [],
-      telephoneNumberInfo: "",
-      sellerInfo: "",
-      estateAgencyInfo: "",
-      sellerInfoEmail: "",
-      offerID: "",
-    });
   };
 
   function isValidTitleKategoria(titleKategoria) {
@@ -253,7 +209,7 @@ function CreateForm() {
     />
   ));
 
-  //console.table(inputValues);
+  console.table(inputValues);
 
   return (
     <form className={styles.main} onSubmit={handleSubmit}>

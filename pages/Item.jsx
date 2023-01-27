@@ -9,6 +9,7 @@ import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
+import { useEffect,useState } from "react";
 
 function Item() {
   //console.log(item)
@@ -39,11 +40,28 @@ function Item() {
   const prop = location.state;
   const [isActive, setIsActive] = useActive(true);
 
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+      const query = window.matchMedia("(max-width: 800px)");
+      if (query.matches) {
+        setIsMobile(true);
+      } else setIsMobile(false);
+    }, []);
+
+    const AddToFavorites = (
+      <div className={styles.addToFavorites}>
+        <label htmlFor="addToFavorites">Dodaj do ulubionych </label>
+        <Button id="addToFavorites">
+          <HiHeart />
+        </Button>
+      </div>
+    );
+
   return (
     <>
       <Navbar />
       <BreadCrumbs />
-      <div className={styles.container} >
+      <div className={styles.container}>
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>
             <div className={styles.section_item_div}>
@@ -58,7 +76,7 @@ function Item() {
                   <h3>{prop.titleKategoria}</h3>
                 </div>
                 <div className={styles.container_article_main_categories}>
-                  <ul>
+                  <ul className={styles.container_article_main_categories_list}>
                     {prop.priceInfo === "Zapytaj o cenę" ? (
                       <li>
                         <a href="*">{prop.priceInfo}</a>
@@ -78,55 +96,63 @@ function Item() {
                     ) : null}
                     {typeof prop.numberOfRoomsInfo === "string" ? (
                       <li>
-                        <em>{prop.numberOfRoomsInfo}</em>
                         {prop.numberOfRoomsInfo === 1
                           ? " Pokój"
                           : prop.numberOfRoomsInfo > 1 &&
                             prop.numberOfRoomsInfo < 5
                           ? " Pokoje"
                           : " Pokoi"}
+                        <em>{prop.numberOfRoomsInfo}</em>
                       </li>
                     ) : null}
                   </ul>
                 </div>
               </header>
-              <div className={styles.container_article_multimedia_categories}>
-                <ul>
-                  <li
-                    className={
-                      isActive
-                        ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
-                        : `${styles.multimedia_categories}`
-                    }
-                    onClick={setIsActive}
-                  >
-                    Zdjęcia<span></span>
-                  </li>
-                  <li
-                    className={
-                      !isActive
-                        ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
-                        : `${styles.multimedia_categories}`
-                    }
-                    onClick={setIsActive}
-                  >
-                    Mapa<span></span>
-                  </li>
-                  <div>
-                    <span>dodaj do ulubionych </span>
-                    <Button>
-                      <HiHeart />
-                    </Button>
-                  </div>
-                </ul>
-              </div>
+              {isMobile ? (
+                AddToFavorites
+              ) : (
+                <div className={styles.container_article_multimedia_categories}>
+                  <ul>
+                    <li
+                      className={
+                        isActive
+                          ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
+                          : `${styles.multimedia_categories}`
+                      }
+                      onClick={setIsActive}
+                    >
+                      Zdjęcia<span></span>
+                    </li>
+                    <li
+                      className={
+                        !isActive
+                          ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
+                          : `${styles.multimedia_categories}`
+                      }
+                      onClick={setIsActive}
+                    >
+                      Mapa<span></span>
+                    </li>
+                    <div>
+                      <span>dodaj do ulubionych </span>
+                      <Button>
+                        <HiHeart />
+                      </Button>
+                    </div>
+                  </ul>
+                </div>
+              )}
               <div className={styles.multimedia_container}>
-                {isActive ? <ItemPhotos /> : <GoogleMaps prop={prop} />}
+                {isActive ? (
+                  <ItemPhotos isMobile={isMobile} />
+                ) : (
+                  <GoogleMaps prop={prop} />
+                )}
               </div>
             </div>
           </section>
           <section className={styles.section_information}>
-            <ItemInfoDescription prop={prop} />
+            <ItemInfoDescription prop={prop} isMobile={isMobile} />
           </section>
         </article>
         <ItemSideArticle prop={prop} />

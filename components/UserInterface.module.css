@@ -97,7 +97,7 @@
   justify-content: center;
 }
 .menu_list > li:hover {
-  color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
   transition: all 0.3s ease 0s;
 }
 .form {
@@ -173,8 +173,6 @@
   color: var(--tertiary-text-color);
   box-shadow: 0 0 2px 8px var(--tertiary-color);
 }
-
-
 
 .form > p {
   margin: 10px 0;

@@ -113,15 +113,24 @@ label {
   box-shadow: 0 0 2px 8px var(--tertiary-text-color);
 }
 
+.submit:disabled {
+  background-color: var(--disabled);
+}
+
 .form_additionalContact_wrapper p {
   text-align: center;
   color: var(--primary-text-color);
 }
 
-.terms{
+.terms {
   user-select: none;
-  cursor:pointer;
+  cursor: pointer;
   text-align: center;
   color: var(--primary-text-color);
   margin: 0.5rem 0;
+}
+
+.terms > p:hover {
+  transition: all 0.3s ease 0s;
+  color: var(--tertiary-text-color);
 }

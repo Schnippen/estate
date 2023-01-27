@@ -1,18 +1,16 @@
-import React from 'react'
-import styles from "./BreadCrumbs.module.css"
-import { Link} from "react-router-dom";
+import React from "react";
+import styles from "./BreadCrumbs.module.css";
+import { Link } from "react-router-dom";
 
 function BreadCrumbs({}) {
-
-
   return (
     <div className={styles.breadcrumbs}>
-      <nav>
+      <nav className={styles.breadcrumbs_nav}>
         <ul>
-        <Link to={-1}>
-          <li>Wróć</li>
+          <Link to={-1}>
+            <li>Wróć</li>
           </Link>
-          <li>Kategoria </li>
+          <li>Kategoria</li>
           <li>Województwo</li>
           <li>Miasto</li>
         </ul>
@@ -21,4 +19,4 @@ function BreadCrumbs({}) {
   );
 }
 
-export default BreadCrumbs
+export default BreadCrumbs;

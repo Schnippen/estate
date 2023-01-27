@@ -51,7 +51,7 @@ function SignUp() {
 
   //console.table(passwordValid, password, passwordMatched, passwordMatchedValid);
 
-  //go back after succes or error
+  //go back after success or error
   const navigate = useNavigate();
   useEffect(() => {
     if (showSuccessModal || showErrorModal) {

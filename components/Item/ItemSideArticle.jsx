@@ -118,6 +118,14 @@ function ItemSideArticle({ prop }) {
                       value="Wyślij wiadomość"
                       type="submit"
                       className={styles.submit}
+                      disabled={
+                        inputValues.name &&
+                        inputValues.telephone &&
+                        inputValues.email &&
+                        inputValues.textmessage
+                          ? false
+                          : true
+                      }
                     />
                   </div>
                 </div>

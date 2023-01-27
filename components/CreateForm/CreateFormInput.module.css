@@ -1,6 +1,5 @@
 .form_input_container {
-  padding: 10px;
-  width: 300px;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -17,7 +16,7 @@
   text-align: center;
 }
 .form_input:focus {
-  outline: solid var(--tertiary-color);
+  outline: solid var(--tertiary-text-color);
 }
 
 .form_input_container > label {

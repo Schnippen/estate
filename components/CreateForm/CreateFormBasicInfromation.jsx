@@ -224,12 +224,14 @@ function CreateFormBasicInfromation({
     if (!items) return null;
 
     return items.map((item) => (
-      <CreateFormInput
-        data={item}
-        handleChange={handleChange}
-        handleMax={handleMax}
-        key={item.id}
-      />
+      <div style={{ width: "300px", padding: "10px" }}>
+        <CreateFormInput
+          data={item}
+          handleChange={handleChange}
+          handleMax={handleMax}
+          key={item.id}
+        />
+      </div>
     ));
   }
 
@@ -239,13 +241,15 @@ function CreateFormBasicInfromation({
       <section className={styles.article_section}>
         {typeInputForm(type)}
         <div className={stylesInput.form_input_container}>
-          <label>Cena za m²</label>
-          <input
-            type="text"
-            disabled
-            value={inputValues}
-            className={stylesInput.form_input}
-          />
+          <div style={{ width: "300px", padding: "10px" }}>
+            <label>Cena za m²</label>
+            <input
+              type="text"
+              disabled
+              value={inputValues}
+              className={stylesInput.form_input}
+            />
+          </div>
         </div>
         <div className={styles.negotiation_wrapper}>
           <label htmlFor="negotiation">
