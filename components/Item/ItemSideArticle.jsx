@@ -19,12 +19,6 @@ function ItemSideArticle({ prop }) {
     textmessage: "",
   });
 
-  //let statuses = ["empty", "typing", "submitting", "success", "error"];
-  //w formie zrób potiwerdzenie ze wiadomosc jest w drodze, jesli sie nie wysle to pierdolij error xD div usestate loading etc
-  //wyslij wiadomosc gdzies na serwer  sprawdz se jak sie to robi
-  //    const data = new FormData(e.target)
-  //console.log(Object.fromEntries(data.entries()));
-
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Submitting!");
@@ -34,6 +28,21 @@ function ItemSideArticle({ prop }) {
 
   const handleChange = (e) => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
+  };
+
+  const handleKeyDown = (e) => {
+    if (
+      e.key === "Backspace" ||
+      e.key === "Delete" ||
+      e.key === "ArrowLeft" ||
+      e.key === "ArrowRight" ||
+      e.key === "Tab"
+    ) {
+      return;
+    }
+    if (e.key < "0" || e.key > "9") {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -65,6 +74,7 @@ function ItemSideArticle({ prop }) {
                     className={styles.inputText}
                     value={inputValues.telephone}
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                     required
                   />
                 </div>
@@ -93,22 +103,16 @@ function ItemSideArticle({ prop }) {
                 ></textarea>
                 <div className={styles.form_additionalContact_wrapper}>
                   <p>Zgadzam się też na otrzymywanie:</p>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="cb1"
-                      className={styles.checkbox}
-                    />
+                  <div className={styles.additionalContact_container}>
+                    <input type="checkbox" id="cb1" />
+                    <span className={styles.custom_checkmark}></span>
                     <label htmlFor="cb1">
                       propozycji kontaktu w sprawie kredytu
                     </label>
                   </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="cb2"
-                      className={styles.checkbox}
-                    />
+                  <div className={styles.additionalContact_container}>
+                    <input type="checkbox" id="cb2" />
+                    <span className={styles.custom_checkmark}></span>
                     <label htmlFor="cb2">
                       informacji o promocjach i usługach
                     </label>

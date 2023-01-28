@@ -5,7 +5,7 @@ import interiorImg1 from "../../assets/interior1.jpg";
 import interiorImg2 from "../../assets/interior2.jpg";
 import interiorImg3 from "../../assets/interior3.jpg";
 import interiorImg4 from "../../assets/interior4.jpg";
-import { useState,  } from "react";
+import { useState } from "react";
 import FullscreenPhotosGallery from "../FullscreenPhotosGallery";
 import useActive from "./../useActive";
 
@@ -53,63 +53,84 @@ function ItemPhotos({ isMobile }) {
 
   const photosLength = photos.length;
 
+  const BigPhotosGallery = (
+    <div className={styles.container_photos_bigPhoto}>
+      <button
+        className={styles.container_photos_bigPhoto_arrowPrev}
+        disabled={selectedPhoto === 0}
+        onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto - 1)}
+      >
+        <HiArrowLeft />
+      </button>
+      <button
+        className={styles.container_photos_bigPhoto_arrowNext}
+        disabled={selectedPhoto === photos.length - 1}
+        onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto + 1)}
+      >
+        <HiArrowRight />
+      </button>
+      <FullscreenPhotosGallery
+        isActive={isActive}
+        setIsActive={setIsActive}
+        photosList={photosList}
+        selectedPhoto={selectedPhoto}
+        setSelectedPhoto={setSelectedPhoto}
+        photosLength={photosLength}
+      ></FullscreenPhotosGallery>
+      <img
+        onClick={setIsActive}
+        src={photosList[selectedPhoto].props.children.props.src}
+        alt="Big Thumbnail"
+        loading="lazy"
+      ></img>
+    </div>
+  );
+
+  const ThumbnailsCarousel = (
+    <div className={styles.container_photos_thumbnails}>
+      <button
+        className={styles.container_photos_bigPhoto_arrowPrev}
+        disabled={thumbnail <= 0}
+        onClick={() => setThumbnail((thumbnail) => thumbnail - 1)}
+      >
+        <HiArrowLeft />
+      </button>
+      <div className={styles.thumbnails_wrapper}>
+        <ul className={styles.thumbnails}>{photosVisible}</ul>
+      </div>
+      <button
+        className={styles.container_photos_bigPhoto_arrowNext}
+        disabled={thumbnail >= photos.length || thumbnail >= photos.length - 5}
+        onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
+      >
+        <HiArrowRight />
+      </button>
+    </div>
+  );
+
+  const MobileGallery = (
+    <div className={styles.mobile_gallery}>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+      <div className={styles.mobile_gallery_more}>qwe</div>
+    </div>
+  );
+
   return (
     <>
-      <div className={styles.container_photos_bigPhoto}>
-        <button
-          className={styles.container_photos_bigPhoto_arrowPrev}
-          disabled={selectedPhoto === 0}
-          onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto - 1)}
-        >
-          <HiArrowLeft />
-        </button>
-        <button
-          className={styles.container_photos_bigPhoto_arrowNext}
-          disabled={selectedPhoto === photos.length - 1}
-          onClick={() => setSelectedPhoto((selectedPhoto) => selectedPhoto + 1)}
-        >
-          <HiArrowRight />
-        </button>
-        <FullscreenPhotosGallery
-          isActive={isActive}
-          setIsActive={setIsActive}
-          photosList={photosList}
-          selectedPhoto={selectedPhoto}
-          setSelectedPhoto={setSelectedPhoto}
-          photosLength={photosLength}
-        ></FullscreenPhotosGallery>
-        <img
-          onClick={setIsActive}
-          src={photosList[selectedPhoto].props.children.props.src}
-          alt="Big Thumbnail"
-          loading="lazy"
-        ></img>
-      </div>
-      {isMobile ? null : (
-        <div className={styles.container_photos_thumbnails}>
-          <button
-            className={styles.container_photos_bigPhoto_arrowPrev}
-            disabled={thumbnail <= 0}
-            onClick={() => setThumbnail((thumbnail) => thumbnail - 1)}
-          >
-            <HiArrowLeft />
-          </button>
-          <div className={styles.thumbnails_wrapper}>
-            <ul className={styles.thumbnails}>{photosVisible}</ul>
-          </div>
-          <button
-            className={styles.container_photos_bigPhoto_arrowNext}
-            disabled={
-              thumbnail >= photos.length || thumbnail >= photos.length - 5
-            }
-            onClick={() => setThumbnail((thumbnail) => thumbnail + 1)}
-          >
-            <HiArrowRight />
-          </button>
-        </div>
-      )}
+      {isMobile ? MobileGallery : BigPhotosGallery}
+      {isMobile ? null : ThumbnailsCarousel}
     </>
   );
 }
 
 export default ItemPhotos;
+/*      <img
+        src={photosList[selectedPhoto].props.children.props.src}
+        alt="Mobile Thumbnail Photo"
+        loading="lazy"
+        className={styles.mobile_gallery_img}
+      ></img>*/

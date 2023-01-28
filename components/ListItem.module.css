@@ -147,3 +147,9 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 800px) {
+.grid_container{
+  width: 300px;
+}
+}

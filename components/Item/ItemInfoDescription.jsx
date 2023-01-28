@@ -3,7 +3,7 @@ import GoogleMaps from "../GoogleMaps";
 import styles from "../Item/ItemInfoDescription.module.css";
 import Table from "./../Table";
 import useActive from "../useActive";
-import { HiChevronDown } from "react-icons/hi";
+import { HiChevronDown, HiOutlineX } from "react-icons/hi";
 import { GrMapLocation } from "react-icons/gr";
 
 function ItemInfoDescription({ prop, isMobile }) {
@@ -47,14 +47,43 @@ function ItemInfoDescription({ prop, isMobile }) {
     </>
   );
 
-  const MobileGoogleMaps = (
-    <div className={styles.mobileMaps_svg} onClick={setIsMapOpened}>
-      <GrMapLocation />
-      <h4>Zobacz na mapie</h4>
+  const Exit = (
+    <div className={styles.mobileMaps_nav_exit}>
+      <HiOutlineX />
     </div>
   );
-  console.log(isMapOpened);
-  //<GoogleMaps prop={prop} />
+
+  const MobileGoogleMaps = (
+    <>
+      {isMapOpened ? (
+        <>
+          <nav className={styles.mobileMaps_nav}>
+            <div
+              className={styles.mobileMaps_nav_exit}
+              onClick={setIsMapOpened}
+            >
+              <HiOutlineX />
+            </div>
+            <h4 className={styles.mobileMaps_nav_offerTitle}>
+              {prop.offerTitle
+                .split(" ")
+                .map((n) => n.charAt(0).toUpperCase() + n.slice(1))
+                .join(" ")}
+            </h4>
+          </nav>
+          <div className={styles.mobileMaps_fullscreen}>
+            <GoogleMaps prop={prop} />
+          </div>
+        </>
+      ) : (
+        <div className={styles.mobileMaps_svg} onClick={setIsMapOpened}>
+          <GrMapLocation />
+          <h4>Zobacz na mapie</h4>
+        </div>
+      )}
+    </>
+  );
+
   return (
     <div className={styles.description_container}>
       <Table prop={prop} />
