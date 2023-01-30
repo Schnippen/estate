@@ -56,12 +56,7 @@ function ItemPhotosMobileGallery({ photos }) {
       <section className={styles.mobile_grid_gallery_section}>
         <div className={styles.mobile_grid_gallery}>
           {photos.map((n, i) => (
-            <img
-              src={n}
-              alt={`thumnail_${i}`}
-              key={i}
-              className={styles.mobile_grid_gallery_item}
-            ></img>
+            <div className={styles.mobile_grid_gallery_item}></div>
           ))}
         </div>
       </section>

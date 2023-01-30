@@ -255,6 +255,7 @@
     height: 100%;
     z-index: 9998;
     background-color: var(--article);
+    
   }
   .mobile_grid_gallery {
     width: 100%;
@@ -265,9 +266,20 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     gap: 1rem;
+    overflow-y: scroll;
+  }
+  .mobile_grid_item {
+    object-fit: cover;
+    
   }
   .mobile_grid_gallery_item {
-    object-fit: cover;
-    aspect-ratio: 4/3;
+    background-color: cadetblue;
+  }
+
+  .mobile_grid_gallery_item:nth-child(n) {
+    grid-area: span 1 / span;
+  }
+  .mobile_grid_gallery_item:nth-child(3n + 1) {
+    grid-area: span 1 / span 2;
   }
 }

@@ -7,7 +7,7 @@ import useActive from "./useActive";
 import { TbMap2 } from "react-icons/tb";
 import Dropdown from "./Dropdown";
 
-function List() {
+function List({ isMobile }) {
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -99,7 +99,7 @@ function List() {
 
   const items = [...databaseState]
     .slice(pagesVisited, itemsPerPage + pagesVisited)
-    .map((item) => <ListItem key={item.offerID} item={item} />);
+    .map((item) => <ListItem key={item.offerID} item={item} isMobile={isMobile} />);
 
   const SortPrice = [
     { value: 1, label: "Domyślnie" },

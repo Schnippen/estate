@@ -1,15 +1,27 @@
-import React from 'react'
-import Main from "../components/Main";
-import Header from "../components/Header";
-//import Footer from "../components/Footer";
+import React from "react";
+
+import { useState, useEffect } from "react";
+import SearchForm from "../components/SearchForm";
+import List from "../components/List";
 
 function Offers() {
+  
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 800px)");
+    if (query.matches) {
+      setIsMobile(true);
+    } else setIsMobile(false);
+  }, []);
+
   return (
     <>
-      <Header />
-      <Main />
+      <SearchForm />
+      <main>
+        <List isMobile={isMobile} />
+      </main>
     </>
   );
 }
 
-export default Offers
+export default Offers;
