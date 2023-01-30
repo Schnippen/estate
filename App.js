@@ -9,15 +9,16 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./App.css";
 import CreateForm from "./components/CreateForm/CreateForm";
-import { createContext } from "react";
-import { useState } from "react";
-/* <Route path='/' element={<Home/>}/> */
+import React, { createContext, useState } from "react";
 
 //user context
 function App() {
+  /*
   const [user, setUser] = useState();
-  const [isLogged,setIsLogged] = useState();
+  const [isLogged, setIsLogged] = useState();
   const UserContext = createContext(null);
+  isMobile???
+  */
 
   return (
     <>

@@ -1,9 +1,11 @@
-import './Button.css'
+import "./Button.css";
 
-function Button({children,disabled}) {
+function Button({ children, disabled }) {
   return (
-    <button className='small-button' disabled={disabled}>{children}</button>
-  )
+    <button className="small-button" disabled={disabled}>
+      {children}
+    </button>
+  );
 }
 
-export default Button
+export default Button;

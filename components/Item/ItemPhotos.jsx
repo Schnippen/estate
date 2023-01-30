@@ -1,25 +1,13 @@
 import React from "react";
 import styles from "../Item/ItemPhotos.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
-import interiorImg1 from "../../assets/interior1.jpg";
-import interiorImg2 from "../../assets/interior2.jpg";
-import interiorImg3 from "../../assets/interior3.jpg";
-import interiorImg4 from "../../assets/interior4.jpg";
 import { useState } from "react";
 import FullscreenPhotosGallery from "../FullscreenPhotosGallery";
+import ItemPhotosMobileGallery from "./ItemPhotosMobileGallery";
 import useActive from "./../useActive";
 
 function ItemPhotos({ isMobile }) {
   const photos = [
-    interiorImg1,
-    interiorImg2,
-    interiorImg3,
-    interiorImg4,
-    interiorImg1,
-    interiorImg1,
-    interiorImg2,
-    interiorImg3,
-    interiorImg4,
     "https://picsum.photos/500/500?random=1",
     "https://picsum.photos/500/500?random=2",
     "https://picsum.photos/500/500?random=3",
@@ -108,29 +96,16 @@ function ItemPhotos({ isMobile }) {
     </div>
   );
 
-  const MobileGallery = (
-    <div className={styles.mobile_gallery}>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-      <div className={styles.mobile_gallery_more}>qwe</div>
-    </div>
-  );
-
   return (
     <>
-      {isMobile ? MobileGallery : BigPhotosGallery}
+      {isMobile ? (
+        <ItemPhotosMobileGallery photos={photos} />
+      ) : (
+        BigPhotosGallery
+      )}
       {isMobile ? null : ThumbnailsCarousel}
     </>
   );
 }
 
 export default ItemPhotos;
-/*      <img
-        src={photosList[selectedPhoto].props.children.props.src}
-        alt="Mobile Thumbnail Photo"
-        loading="lazy"
-        className={styles.mobile_gallery_img}
-      ></img>*/

@@ -9,7 +9,7 @@ import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
 function Item() {
   //console.log(item)
@@ -40,22 +40,22 @@ function Item() {
   const prop = location.state;
   const [isActive, setIsActive] = useActive(true);
 
-    const [isMobile, setIsMobile] = useState(false);
-    useEffect(() => {
-      const query = window.matchMedia("(max-width: 800px)");
-      if (query.matches) {
-        setIsMobile(true);
-      } else setIsMobile(false);
-    }, []);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 800px)");
+    if (query.matches) {
+      setIsMobile(true);
+    } else setIsMobile(false);
+  }, []);
 
-    const AddToFavorites = (
-      <div className={styles.addToFavorites}>
-        <label htmlFor="addToFavorites">Dodaj do ulubionych </label>
-        <Button id="addToFavorites">
-          <HiHeart />
-        </Button>
-      </div>
-    );
+  const AddToFavorites = (
+    <div className={styles.addToFavorites}>
+      <label htmlFor="addToFavorites">Dodaj do ulubionych </label>
+      <Button id="addToFavorites">
+        <HiHeart />
+      </Button>
+    </div>
+  );
 
   return (
     <>
