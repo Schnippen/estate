@@ -157,6 +157,7 @@ function List({ isMobile }) {
           pages={pages}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
+          isMobile={isMobile}
         />
       </section>
     </>
