@@ -7,8 +7,12 @@
 }
 
 .container {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+.container_social {
+  grid-column: 1/2;
 }
 
 .container_social > :first-child {

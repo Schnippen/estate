@@ -14,6 +14,14 @@ import Price from "../components/Price";
 import { useEffect } from "react";
 
 function LandingPage() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 800px)");
+    if (query.matches) {
+      setIsMobile(true);
+    } else setIsMobile(false);
+  }, []);
+
   const [renderError, setRenderError] = useState(false);
   const [queryDetails, setQueryDetails] = useState({
     City: "",
@@ -83,7 +91,7 @@ function LandingPage() {
 
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
-  //useSearchParams()
+
   let query = "http://localhost:3100/items?";
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -142,47 +150,49 @@ function LandingPage() {
         {renderError ? (
           <div className={styles.errorDiv}>{errorMessage.message1}</div>
         ) : null}
-        <form className={styles.section_searchbar} onSubmit={handleSubmit}>
-          <div className={styles.form_div_wrapper}>
-            <HiOutlineLocationMarker className={styles.svg} />
-            <input
-              type="text"
-              placeholder="np. miasto"
-              name="City"
-              className={styles.inputText}
-              onChange={handleInput}
-            />
-          </div>
-          <div className={styles.dropdown}>
-            <Dropdown
-              data={TypeOfRealEstate}
-              name={"TypeOfRealEstate"}
-              handleChange={handleChange}
-              placeholder={"Rodzaj Nieruchomości"}
-              label={"Rodzaj Nieruchomości"}
-            ></Dropdown>
-          </div>
-          <div className={styles.dropdown}>
-            <Dropdown
-              data={TypeOfTransaction}
-              name={"TypeOfTransaction"}
-              handleChange={handleChange}
-              placeholder={"Rodzaj Transakscji"}
-              label={"Rodzaj Transakscji"}
-            ></Dropdown>
-          </div>
-          <div className={styles.dropdown} style={{width:"320px"}}>
-            <label htmlFor="">Cena w zł</label>
-            <Price data={PriceData} handleChange={handleChange} />
-          </div>
-          <Button type="submit" onClick={handleSubmit} disabled={renderError}>
-            <HiSearch />
-          </Button>
-        </form>
+        {isMobile ? null : (
+          <form className={styles.section_searchbar} onSubmit={handleSubmit}>
+            <div className={styles.form_div_wrapper}>
+              <HiOutlineLocationMarker className={styles.svg} />
+              <input
+                type="text"
+                placeholder="np. miasto"
+                name="City"
+                className={styles.inputText}
+                onChange={handleInput}
+              />
+            </div>
+            <div className={styles.dropdown}>
+              <Dropdown
+                data={TypeOfRealEstate}
+                name={"TypeOfRealEstate"}
+                handleChange={handleChange}
+                placeholder={"Rodzaj Nieruchomości"}
+                label={"Rodzaj Nieruchomości"}
+              ></Dropdown>
+            </div>
+            <div className={styles.dropdown}>
+              <Dropdown
+                data={TypeOfTransaction}
+                name={"TypeOfTransaction"}
+                handleChange={handleChange}
+                placeholder={"Rodzaj Transakscji"}
+                label={"Rodzaj Transakscji"}
+              ></Dropdown>
+            </div>
+            <div className={styles.dropdown} style={{ width: "320px" }}>
+              <label htmlFor="">Cena w zł</label>
+              <Price data={PriceData} handleChange={handleChange} />
+            </div>
+            <Button type="submit" onClick={handleSubmit} disabled={renderError}>
+              <HiSearch />
+            </Button>
+          </form>
+        )}
       </section>
       <section className={styles.landing__page_card_section}>
-        <ul className={styles.landing__page_card_section_list}>
-          <Link to="/Offers">
+        {isMobile ? (
+          <div className={styles.landing__page_card_section_wrapper}>
             <Card
               title="Kup Nieruchomość"
               description={Lorem}
@@ -190,15 +200,15 @@ function LandingPage() {
               alt="Kup Nieruchomość"
               svg={<MdOutlineMapsHomeWork />}
             ></Card>
-          </Link>
-          <Card
-            title="Sprzedaj Nieruchomość"
-            description={Lorem}
-            buttonDescription="Zobacz swoje możliwości"
-            alt="Sprzedaj Nieruchomość"
-            svg={<BsCashCoin />}
-          ></Card>
-          <Link to="/Leaflet">
+
+            <Card
+              title="Sprzedaj Nieruchomość"
+              description={Lorem}
+              buttonDescription="Zobacz swoje możliwości"
+              alt="Sprzedaj Nieruchomość"
+              svg={<BsCashCoin />}
+            ></Card>
+
             <Card
               title="Srawdź Mapę"
               description={Lorem}
@@ -206,8 +216,36 @@ function LandingPage() {
               alt="Srawdź Mapę"
               svg={<TbMap2 />}
             ></Card>
-          </Link>
-        </ul>
+          </div>
+        ) : (
+          <ul className={styles.landing__page_card_section_list}>
+            <Link to="/Offers">
+              <Card
+                title="Kup Nieruchomość"
+                description={Lorem}
+                buttonDescription="Srawdź Nieruchomości"
+                alt="Kup Nieruchomość"
+                svg={<MdOutlineMapsHomeWork />}
+              ></Card>
+            </Link>
+            <Card
+              title="Sprzedaj Nieruchomość"
+              description={Lorem}
+              buttonDescription="Zobacz swoje możliwości"
+              alt="Sprzedaj Nieruchomość"
+              svg={<BsCashCoin />}
+            ></Card>
+            <Link to="/Leaflet">
+              <Card
+                title="Srawdź Mapę"
+                description={Lorem}
+                buttonDescription="Przyjżyj się dokładnie"
+                alt="Srawdź Mapę"
+                svg={<TbMap2 />}
+              ></Card>
+            </Link>
+          </ul>
+        )}
       </section>
     </>
   );

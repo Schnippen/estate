@@ -43,7 +43,7 @@
 .dropdown label {
   display: flex;
   justify-content: center;
-  
+
   color: white;
   padding: 5px 10px;
 }
@@ -113,4 +113,46 @@
   display: flex;
   justify-content: space-evenly;
   list-style: none;
+}
+
+@media (max-width: 800px) {
+  .landing__page_card_section {
+    margin: 20px 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  .landing__page_card_section_wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    width: 340px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .landing__page_card_section_wrapper > li {
+    width: 300px;
+    margin: 0 20px;
+    scroll-snap-align: center;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 5px;
+    border-radius: 16px;
+    background-color: var(--secondary-color);
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0);
+  }
 }

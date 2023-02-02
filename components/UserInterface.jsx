@@ -4,13 +4,14 @@ import {
   HiHeart,
   HiCog,
   HiOfficeBuilding,
-  HiLockClosed,
+  HiUserCircle,
 } from "react-icons/hi";
 import styles from "./UserInterface.module.css";
 import useActive from "./useActive";
 import { useRef, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Loading from "./Loading";
+import UserSignIn from "./UserSignIn";
+import { UserAuth } from "../context/AuthContext";
 
 function UserInterface() {
   const [isActiveBig, setIsActiveBig] = useActive(false);
@@ -26,7 +27,7 @@ function UserInterface() {
   };
 
   const ref = useRef();
-
+  //Opening tabs
   useEffect(() => {
     const handleClose = (e) => {
       if (isActiveSmall && ref.current && !ref.current?.contains(e.target)) {
@@ -62,83 +63,25 @@ function UserInterface() {
     }
   };
 
+  //Signing In
+  const { signIn, userData, logOut, userLoggedIn } = UserAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Loging In!");
+    alert("Signing In!");
     setIsLoading(true);
     console.table(userLogin);
     console.log("Proceed login");
     try {
-      const res = await fetch("http://localhost:3200/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userLogin),
-      });
-      const data = await res.json();
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        // update the state to indicate that the user is logged in
-        
-      }
-    } catch (err) {
+      await signIn(userLogin.email, userLogin.password);
+    } catch (error) {
+      console.log(error);
       console.log("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const Form = (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.form_div_wrapper}>
-        <label htmlFor="email" className={styles.form_div_label}>
-          E-mail
-        </label>
-        <div className={styles.inputWrapper}>
-          <HiMail className={styles.svg} />
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="E-mail"
-            className={styles.inputText}
-            onChange={handleLogin}
-            required
-          />
-        </div>
-      </div>
-      <div className={styles.form_div_wrapper}>
-        <label htmlFor="password" className={styles.form_div_label}>
-          Password
-        </label>
-        <div className={styles.inputWrapper}>
-          <HiLockClosed className={styles.svg} />
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            className={styles.inputText}
-            onChange={handleLogin}
-            required
-          />
-        </div>
-      </div>
-      <input
-        value="Sign In"
-        type="submit"
-        className={styles.submit}
-        disabled={userLogin.email && userLogin.password ? false : true}
-      />
-      <p>Forgot your password?</p>
-      <div className={styles.form_div_actions}>
-        <p>Don't have an Account?</p>
-        <Link to="/SignUp" className={styles.signup}>
-          <p>Sign Up!</p>
-        </Link>
-      </div>
-    </form>
-  );
   const ListItem = ({ icon: Icon, text }) => (
     <li>
       <div>
@@ -149,6 +92,7 @@ function UserInterface() {
       </div>
     </li>
   );
+
   const List = () => (
     <ul className={styles.menu_list}>
       <ListItem icon={HiOfficeBuilding} text="Ogłoszenia" />
@@ -171,7 +115,7 @@ function UserInterface() {
         }
         onClick={openBtn1Big}
       >
-        Sign In
+        {userLoggedIn ? <HiUserCircle/> : "Sign In"}
       </button>
       <button
         type="button"
@@ -193,11 +137,18 @@ function UserInterface() {
               <Loading
                 color={"#efe7e7"}
                 svgColor={"#daa520"}
-                top={69}
+                top={59}
                 left={28}
               />
             ) : (
-              Form
+              <UserSignIn
+                handleSubmit={handleSubmit}
+                handleLogin={handleLogin}
+                userLogin={userLogin}
+                userLoggedIn={userLoggedIn}
+                logOut={logOut}
+                userData={userData}
+              />
             )}
           </>
         ) : null}

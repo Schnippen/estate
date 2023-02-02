@@ -24,6 +24,7 @@ function ItemPhotos({ isMobile }) {
   const [isActive, setIsActive] = useActive(false);
   const [thumbnail, setThumbnail] = useState(0);
 
+  //thumnails list
   const photosList = photos.map((n, i) => (
     <li
       className={selectedPhoto === i ? styles.selected : null}
@@ -34,7 +35,7 @@ function ItemPhotos({ isMobile }) {
     </li>
   ));
 
-  const photosVisible = photosList.slice(
+  const visibleThumnailsPhotos = photosList.slice(
     thumbnail,
     photos.length >= 5 ? 5 + thumbnail : photos.length
   );
@@ -84,7 +85,7 @@ function ItemPhotos({ isMobile }) {
         <HiArrowLeft />
       </button>
       <div className={styles.thumbnails_wrapper}>
-        <ul className={styles.thumbnails}>{photosVisible}</ul>
+        <ul className={styles.thumbnails}>{visibleThumnailsPhotos}</ul>
       </div>
       <button
         className={styles.container_photos_bigPhoto_arrowNext}

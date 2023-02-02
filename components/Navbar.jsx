@@ -3,7 +3,7 @@ import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useActive from "./useActive";
-import Sidebar from "./Sidebar";
+import SidebarMobile from "./SidebarMobile";
 
 import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";
 
@@ -45,7 +45,7 @@ function Navbar() {
       )}
 
       {isOpened ? (
-        <Sidebar isOpened={isOpened} setIsOpened={setIsOpened} />
+        <SidebarMobile isOpened={isOpened} setIsOpened={setIsOpened} />
       ) : null}
 
       {isMobile ? null : (
@@ -67,6 +67,7 @@ function Navbar() {
           </li>
         </ul>
       )}
+
       {isMobile ? null : <UserInterface />}
     </nav>
   );

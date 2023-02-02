@@ -6,7 +6,7 @@
   cursor: -webkit-zoom-in;
 }
 
-.container_photos_bigPhoto > img {
+.photo {
   padding: 1rem 0;
   object-fit: contain;
   position: absolute;
@@ -255,7 +255,6 @@
     height: 100%;
     z-index: 9998;
     background-color: var(--article);
-    
   }
   .mobile_grid_gallery {
     width: 100%;
@@ -270,7 +269,6 @@
   }
   .mobile_grid_item {
     object-fit: cover;
-    
   }
   .mobile_grid_gallery_item {
     background-color: cadetblue;
