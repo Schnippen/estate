@@ -137,7 +137,7 @@ function UserInterface() {
               <Loading
                 color={"#efe7e7"}
                 svgColor={"#daa520"}
-                top={59}
+                top={69}
                 left={28}
               />
             ) : (

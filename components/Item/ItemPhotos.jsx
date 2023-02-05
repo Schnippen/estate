@@ -71,6 +71,7 @@ function ItemPhotos({ isMobile }) {
         src={photosList[selectedPhoto].props.children.props.src}
         alt="Big Thumbnail"
         loading="lazy"
+        className={styles.photo}
       ></img>
     </div>
   );

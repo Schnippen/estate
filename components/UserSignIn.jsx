@@ -10,7 +10,8 @@ const UserSignIn = ({
   logOut,
   userLoggedIn,
   userData,
-  HiUserCircle,
+  HiOutlineEyeOff,
+  HiOutlineEye,
 }) => {
   //Loging Out
   const handleLogOut = async () => {
@@ -74,7 +75,7 @@ const UserSignIn = ({
                 onChange={handleLogin}
                 required
               />
-            </div>
+                          </div>
           </div>
           <input
             value="Sign In"
@@ -96,3 +97,5 @@ const UserSignIn = ({
 };
 
 export default UserSignIn;
+//<HiOutlineEye className={styles.svgPassword} />
+//<HiOutlineEyeOff className={styles.svgPassword} />

@@ -224,7 +224,6 @@
   }
   .mobile_grid_gallery_nav_title {
     grid-column-start: 2;
-    grid-column-end: 4;
     grid-row-start: 2;
     color: var(--primary-text-color);
   }
@@ -259,24 +258,29 @@
   .mobile_grid_gallery {
     width: 100%;
     height: 100%;
-    background-color: aqua;
-    padding: 10px;
+    background-color: var(--article);
+    padding: 0 5px 100px 5px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    gap: 1rem;
+    grid-gap: 5px;
+    gap: 10px;
     overflow-y: scroll;
   }
   .mobile_grid_item {
     object-fit: cover;
   }
+
   .mobile_grid_gallery_item {
-    background-color: cadetblue;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: var(--text-background);
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
   }
 
-  .mobile_grid_gallery_item:nth-child(n) {
-    grid-area: span 1 / span;
-  }
+
   .mobile_grid_gallery_item:nth-child(3n + 1) {
     grid-area: span 1 / span 2;
   }

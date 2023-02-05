@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiCursorClick, HiCamera, HiOutlineX } from "react-icons/hi";
 import styles from "../Item/ItemPhotos.module.css";
 import useActive from "../useActive";
 
 function ItemPhotosMobileGallery({ photos }) {
   const [isOpened, setIsOpened] = useActive(true);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [fullscreen, setFullscreen] = useActive(false);
+
+  const handleImageClick = (i) => {
+    setSelectedPhoto(i);
+    setFullscreen();
+    console.log(selectedPhoto);
+    console.log(fullscreen);
+  };
 
   const MobileGallery = (
     <ul className={styles.mobile_gallery}>
@@ -54,11 +63,22 @@ function ItemPhotosMobileGallery({ photos }) {
         <div className={styles.mobile_grid_gallery_nav_title}>Galeria</div>
       </nav>
       <section className={styles.mobile_grid_gallery_section}>
-        <div className={styles.mobile_grid_gallery}>
-          {photos.map((n, i) => (
-            <div className={styles.mobile_grid_gallery_item}></div>
-          ))}
-        </div>
+        {fullscreen ? (
+          <div>qwe</div>
+        ) : (
+          <ul className={styles.mobile_grid_gallery}>
+            {photos.map((n, i) => (
+              <li key={i} className={styles.mobile_grid_gallery_item}>
+                <img
+                  src={n}
+                  alt={`thumnail_${i}`}
+                  className={styles.mobile_grid_gallery_item}
+                  onClick={() => handleImageClick(i)}
+                ></img>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </div>
   );
