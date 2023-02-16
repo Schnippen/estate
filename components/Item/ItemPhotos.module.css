@@ -285,3 +285,18 @@
     grid-area: span 1 / span 2;
   }
 }
+
+.infinite_gallery{
+  background-color: brown;
+  width: 100%;
+  height: 100%;
+}
+.infinite_gallery_item{
+  width: 250px;
+  height: 250px;
+  background-color: aqua;
+}
+
+.infinite_gallery_item_photo{
+display: none;
+}
