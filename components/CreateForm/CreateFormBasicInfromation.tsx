@@ -7,6 +7,15 @@ import { useState, useEffect } from "react";
 import useActive from "../useActive";
 import { BiErrorAlt } from "react-icons/bi";
 
+type CreateFormBasicInfromationTypes={
+    handleChange:   (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleFloorInfo:(value: string) => void;
+  inputValues:string;
+  handleKeyDown:(e: React.KeyboardEvent) => void;
+  handleMax:(e: React.ChangeEvent<HTMLInputElement>, limit: number) => void;
+  type:string;
+}
+
 function CreateFormBasicInfromation({
   handleChange,
   handleFloorInfo,
@@ -14,7 +23,7 @@ function CreateFormBasicInfromation({
   handleKeyDown,
   handleMax,
   type,
-}) {
+}:CreateFormBasicInfromationTypes) {
 
   interface Data {
     label: string;
@@ -223,8 +232,12 @@ function CreateFormBasicInfromation({
     }
   }, [numberOfFloor.floorFrom, numberOfFloor.floorTo]);
 
+    type DataType = {
+    [key: string]: Data[];
+  };
+
   function typeInputForm(type:string) {
-    const data = {
+    const data:DataType = {
       "Mieszkanie na sprzedaż": flatData,
       "Dom na sprzedaż": houseData,
       "Nieruchomość Komercyjna na sprzedaż": commercialPropertyData,
@@ -241,7 +254,7 @@ function CreateFormBasicInfromation({
           data={item}
           handleChange={handleChange}
           handleMax={handleMax}
-          key={item.id}
+          key={item.name}
         />
       </div>
     ));
@@ -275,7 +288,7 @@ function CreateFormBasicInfromation({
                 value="negotiation"
                 id="negotiation"
                 name="negotiation"
-                onChange={setChecked}
+                onChange={()=>setChecked}
                 checked={checked}
               />
               <span className={styles.custom_checkmark}></span>
@@ -310,11 +323,11 @@ function CreateFormBasicInfromation({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                boxShadow: renderError ? "0px 0px 1px 3px #ED4F32" : null,
+                boxShadow: renderError ? "0px 0px 1px 3px #ED4F32" : undefined,
               }}
             >
               <DropdownNumberOfFloors
-                id="pietro"
+                //id="pietro"
                 handleChange={handleChangeNumberOfFloors}
                 data={numberOfFloorsData}
               />

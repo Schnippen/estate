@@ -5,10 +5,10 @@ import { useState, useRef, useEffect } from "react";
 import { HiCheck } from "react-icons/hi";
 
 interface DropdownProps {
-  data: { value: string; label: string }[];
+  data: { value: string|number; label: string }[];
   handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
   placeholder: string;
-  label: string;
+  label?: string;
   name: string;
 }
 
@@ -21,7 +21,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpened, setIsOpened] = useActive(false);
   const [InputTitle, setInputTitleState] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState<string|number>("");
   const [highlighted, setHighlighted] = useState<number>();
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);

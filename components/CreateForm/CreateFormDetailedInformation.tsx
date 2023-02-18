@@ -5,16 +5,35 @@ import { HiChevronDown } from "react-icons/hi";
 import Dropdown from "../Dropdown";
 import CreateFormInput from "./CreateFormInput";
 
+type CreateFormDetailedInformationTypes = {
+  handleDropdown: (ref: React.RefObject<HTMLInputElement>) => void;
+  handleKeyDown: (e: React.KeyboardEvent) => void;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  handleMax: (e: React.ChangeEvent<HTMLInputElement>, limit: number) => void;
+  type: string;
+};
+
 function CreateFormDetailedInformation({
   handleDropdown,
   handleKeyDown,
   handleChange,
   handleMax,
   type,
-}) {
+}: CreateFormDetailedInformationTypes) {
   const [isOpened, setIsOpened] = useActive(false);
 
-  const basicData = [
+  type yearOfConstructionInfoDataTypes = {
+    label: string;
+    name: string;
+    placeholder: string;
+    labelText: string;
+    f: (e: React.KeyboardEvent<Element>) => void;
+    limit: number;
+  };
+
+  const yearOfConstructionInfoData: yearOfConstructionInfoDataTypes[] = [
     {
       label: "rokbudowy",
       name: "yearOfConstructionInfo",
@@ -25,7 +44,15 @@ function CreateFormDetailedInformation({
     },
   ];
 
-  const flatDropdownData = [
+  type DropdownProps = {
+    data: { value: string; label: string }[];
+    name: string;
+    handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
+    placeholder: string;
+    label: string;
+  };
+
+  const flatDropdownData: DropdownProps[] = [
     {
       data: [
         { value: "cegła", label: "cegła" },
@@ -264,7 +291,7 @@ function CreateFormDetailedInformation({
     },
   ];
 
-  const houseDropdownData = [
+  const houseDropdownData: DropdownProps[] = [
     {
       data: [
         { value: "Wolnostojący", label: "Wolnostojący" },
@@ -541,11 +568,11 @@ function CreateFormDetailedInformation({
   //udogodnienia //media
   //rok budowy, szerokosc dziąłki długosc dziąlki
 
-  const plotOfLandDropdownData = [];
+  const plotOfLandDropdownData: DropdownProps[] = [];
   //udogodnienia
   //rok budowy, szerokosc dziąłki długosc dziąlki
 
-  const commercialPropertyDropdownData = [
+  const commercialPropertyDropdownData: DropdownProps[] = [
     {
       data: [
         { value: "własność", label: "własność" },
@@ -675,9 +702,11 @@ function CreateFormDetailedInformation({
     },
   ];
   //liczba pieter
-
-  function typeDropdownForm(type) {
-    const data = {
+  type DataType = {
+    [key: string]: DropdownProps[];
+  };
+  function typeDropdownForm(type: string) {
+    const data: DataType = {
       "Mieszkanie na sprzedaż": flatDropdownData,
       "Dom na sprzedaż": houseDropdownData,
       "Nieruchomość Komercyjna na sprzedaż": commercialPropertyDropdownData,
@@ -687,25 +716,28 @@ function CreateFormDetailedInformation({
     const items = data[type];
     if (!items) return null;
 
-    return items.map((item, i) => (
-      <li className={styles.dropdown}>
+    return items.map((item, i: number) => (
+      <li className={styles.dropdown} key={i}>
         <Dropdown
           data={items[i].data}
           name={items[i].name}
           handleChange={items[i].handleChange}
           placeholder={items[i].placeholder}
           label={items[i].label}
-          key={item.i}
         />
       </li>
     ));
   }
 
-  function yearOfConstruction(type) {
-    const data = {
-      "Mieszkanie na sprzedaż": basicData,
-      "Dom na sprzedaż": basicData,
-      "Nieruchomość Komercyjna na sprzedaż": basicData,
+  type yearOfConstructionDataType = {
+    [key: string]: yearOfConstructionInfoDataTypes[];
+  };
+
+  function yearOfConstruction(type: string) {
+    const data: yearOfConstructionDataType = {
+      "Mieszkanie na sprzedaż": yearOfConstructionInfoData,
+      "Dom na sprzedaż": yearOfConstructionInfoData,
+      "Nieruchomość Komercyjna na sprzedaż": yearOfConstructionInfoData,
     };
     const item = data[type];
     if (!item) return null;
@@ -714,7 +746,7 @@ function CreateFormDetailedInformation({
         data={item}
         handleChange={handleChange}
         handleMax={handleMax}
-        key={item.id}
+        key={item.name}
       />
     ));
   }
@@ -723,7 +755,7 @@ function CreateFormDetailedInformation({
     <article className={styles.article}>
       <header
         style={{ position: "relative", width: "100%" }}
-        onClick={setIsOpened}
+        onClick={() => setIsOpened(!isOpened)}
       >
         <h3>
           Informacje szczegółowe

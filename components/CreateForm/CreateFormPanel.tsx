@@ -1,14 +1,31 @@
-import { svg } from "leaflet";
 import React from "react";
 import styles from "./CreateForm.module.css";
 
-function CreateFormPanel({ panel, handleCategory, panelSelected }) {
+type CreateFormPanelTypes = {
+  panel: {
+    label: string;
+    text: string;
+    name: string;
+    value: string;
+    svg: JSX.Element;
+  };
+  handleCategory: (e: React.MouseEvent<HTMLInputElement>) => void;
+  panelSelected: string;
+};
+
+function CreateFormPanel({
+  panel,
+  handleCategory,
+  panelSelected,
+}: CreateFormPanelTypes) {
   return (
     <li>
       <label htmlFor={panel.label}>
         <div
           className={
-            panelSelected === panel.value ? styles.panel_active : styles.panel
+            panelSelected=== panel.value
+              ? styles.panel_active
+              : styles.panel
           }
         >
           <div className={styles.svg}>{panel.svg}</div>

@@ -3,16 +3,16 @@ import { HiCursorClick, HiCamera, HiOutlineX } from "react-icons/hi";
 import styles from "../Item/ItemPhotos.module.css";
 import useActive from "../useActive";
 
-function ItemPhotosMobileGallery({ photos }) {
+type ItemPhotosMobileGalleryTypes={ photos: string[]}
+
+function ItemPhotosMobileGallery({ photos }: ItemPhotosMobileGalleryTypes) {
   const [isOpened, setIsOpened] = useActive(true);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhoto, setSelectedPhoto] = useState<number>();
   const [fullscreen, setFullscreen] = useActive(false);
 
-  const handleImageClick = (i) => {
+  const handleImageClick = (i:number) => {
     setSelectedPhoto(i);
-    setFullscreen();
-    console.log(selectedPhoto);
-    console.log(fullscreen);
+    setFullscreen(!fullscreen);
   };
 
   const infiniteGallery = useRef(null);
@@ -30,7 +30,7 @@ function ItemPhotosMobileGallery({ photos }) {
               ></img>
               <div
                 className={styles.mobile_gallery_custom_element}
-                onClick={setIsOpened}
+                onClick={()=>setIsOpened}
               >
                 <div className={styles.mobile_gallery_more}>
                   <HiCursorClick />
@@ -59,7 +59,7 @@ function ItemPhotosMobileGallery({ photos }) {
   const MobileGridGallery = (
     <div>
       <nav className={styles.mobile_grid_gallery_nav}>
-        <div className={styles.mobile_grid_gallery_exit} onClick={setIsOpened}>
+        <div className={styles.mobile_grid_gallery_exit} onClick={()=>setIsOpened}>
           <HiOutlineX />
         </div>
         <div className={styles.mobile_grid_gallery_nav_title}>Galeria</div>

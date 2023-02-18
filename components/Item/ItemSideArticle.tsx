@@ -8,9 +8,7 @@ import FullscreenModal from "../FullscreenModal";
 import useActive from "../useActive";
 import { useState } from "react";
 
-function ItemSideArticle({ prop }) {
-  //const prop = Database[10];
-
+function ItemSideArticle({ prop }: { prop: any }) {
   const [isActive, setIsActive] = useActive(false);
   const [inputValues, setInputValues] = useState({
     name: "",
@@ -19,18 +17,20 @@ function ItemSideArticle({ prop }) {
     textmessage: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     alert("Submitting!");
     console.log(inputValues);
     setInputValues({ name: "", telephone: "", email: "", textmessage: "" });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (
       e.key === "Backspace" ||
       e.key === "Delete" ||
@@ -94,11 +94,11 @@ function ItemSideArticle({ prop }) {
                   className={styles.textarea}
                   name="textmessage"
                   id=""
-                  cols="30"
-                  rows="10"
+                  cols={30}
+                  rows={10}
                   onChange={handleChange}
                   required
-                  maxlength="2000"
+                  maxLength={2000}
                   placeholder="Wpisz wiadomość..."
                 ></textarea>
                 <div className={styles.form_additionalContact_wrapper}>
@@ -135,7 +135,7 @@ function ItemSideArticle({ prop }) {
                 </div>
               </form>
               <div className={styles.terms}>
-                <p onClick={setIsActive}>Terms of service</p>
+                <p onClick={() => setIsActive}>Terms of service</p>
                 {isActive ? (
                   <FullscreenModal
                     setIsActive={setIsActive}

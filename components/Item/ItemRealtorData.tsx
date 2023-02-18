@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 import styles from "./ItemRealtorData.module.css";
 import profilePicture from "../../assets/profile.jpg";
 
-function RealtorData({prop}) {
+function RealtorData({ prop }: { prop: any }) {
   return (
     <header className={styles.section_header}>
       <h2>Skontakuj się</h2>
@@ -19,9 +19,9 @@ function RealtorData({prop}) {
           {prop.estateAgencyInfo.includes("tel.") ? null : (
             <span>{prop.estateAgencyInfo}</span>
           )}
-          <span class="phoneNr">
+          <span className="phoneNr">
             tel.
-            <span class="phone">{prop.telephoneNumberInfo}</span>
+            <span className="phone">{prop.telephoneNumberInfo}</span>
           </span>
         </address>
       </div>
@@ -29,4 +29,4 @@ function RealtorData({prop}) {
   );
 }
 
-export default RealtorData
+export default RealtorData;

@@ -1,7 +1,16 @@
 import React from "react";
 import Dropdown from "../Dropdown";
 
-function DropdownNumberOfFloors({ data, handleChange }) {
+type DropdownNumberOfFloorsTypes = {
+  data: {
+    value: string|number;
+    label: string;
+  }[];
+  handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
+};
+
+
+function DropdownNumberOfFloors({ data, handleChange }:DropdownNumberOfFloorsTypes) {
   return (
     <div
       style={{

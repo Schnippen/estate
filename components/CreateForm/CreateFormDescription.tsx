@@ -1,7 +1,19 @@
 import React from "react";
 import styles from "./CreateFormContactDetails.module.css";
 
-function CreateFormDescription({ handleChange, textState, titleState }) {
+type CreateFormDescriptionTypes = {
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  textState: string;
+  titleState: string;
+};
+
+function CreateFormDescription({
+  handleChange,
+  textState,
+  titleState,
+}: CreateFormDescriptionTypes) {
   const divStyle = {
     display: "flex",
     flexDirection: "column",
@@ -17,7 +29,7 @@ function CreateFormDescription({ handleChange, textState, titleState }) {
     <article className={styles.article}>
       <h3>Tytuł i Opis</h3>
       <section className={styles.article_section}>
-        <div style={divStyle}>
+        <div style={divStyle as React.CSSProperties}>
           <label htmlFor="title" style={labelStyle}>
             Tytuł
           </label>
@@ -40,14 +52,14 @@ function CreateFormDescription({ handleChange, textState, titleState }) {
             </div>
           ) : null}
         </div>
-        <div style={divStyle}>
+        <div style={divStyle as React.CSSProperties}>
           <label htmlFor="description" style={labelStyle}>
             Opis
           </label>
           <textarea
             id="description"
-            cols="30"
-            rows="10"
+            cols={30}
+            rows={10}
             className={styles.descriptionText}
             name="descriptionInfo"
             onChange={(e) => {

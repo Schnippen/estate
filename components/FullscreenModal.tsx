@@ -4,10 +4,10 @@ import ButtonExit from "../Buttons/ButtonExit";
 import styles from "../components/Item/ItemSideArticleCredit.module.css";
 
 function TermsOfService({ setIsActive, isActive }) {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
-    const handleClose = (e) => {
+    const handleClose = (e: MouseEvent) => {
       if (isActive && ref.current === e.target) {
         setIsActive();
       }

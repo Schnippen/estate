@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "../Item/ItemSideArticleCredit.module.css";
-import bank1 from "../../assets/banks/alior.png";
-import bank2 from "../../assets/banks/bgz.png";
-import bank3 from "../../assets/banks/bos.png";
-import bank4 from "../../assets/banks/bps.png";
-import bank5 from "../../assets/banks/citi_handlowy.png";
-import bank6 from "../../assets/banks/ing.png";
-import bank7 from "../../assets/banks/mbank.png";
-import bank8 from "../../assets/banks/millennium.png";
-import bank9 from "../../assets/banks/pekao.png";
-import bank10 from "../../assets/banks/pko_bp.png";
-import bank11 from "../../assets/banks/santander.png";
+const bank1 = require("../../assets/banks/alior.png") as string;
+const bank2 = require("../../assets/banks/bgz.png") as string;
+const bank3 = require("../../assets/banks/bos.png") as string;
+const bank4 = require("../../assets/banks/bps.png") as string;
+const bank5 = require("../../assets/banks/citi_handlowy.png") as string;
+const bank6 = require("../../assets/banks/ing.png") as string;
+const bank7 = require("../../assets/banks/mbank.png") as string;
+const bank8 = require("../../assets/banks/millennium.png") as string;
+const bank9 = require("../../assets/banks/pekao.png") as string;
+const bank10 = require("../../assets/banks/pko_bp.png") as string;
+const bank11 = require("../../assets/banks/santander.png") as string;
 import Dropdown from "../Dropdown";
 import CreateFormInput from "../CreateForm/CreateFormInput";
 import { useState } from "react";
@@ -21,31 +21,31 @@ function ItemSideArticleCredit() {
     durationOfTheLoan: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setCredit({ ...credit, [e.target.name]: e.target.value });
   };
 
-  const handleMax = (e, limit) => {
+  const handleMax = (e: React.ChangeEvent<HTMLInputElement>, limit: number) => {
     setCredit({
       ...credit,
       [e.target.name]: e.target.value.slice(0, limit),
     });
   };
 
-  const handleDropdown = (ref) => {
-    setCredit({
-      ...credit,
-      [ref.current.name]: ref.current.value,
-    });
+  const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
+    if (ref.current) {
+      setCredit({
+        ...credit,
+        [ref.current.name]: ref.current.value,
+      });
+    }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (
-      e.key === "Backspace" ||
-      e.key === "Delete" ||
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowRight" ||
-      e.key === "Tab"
+      ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
     ) {
       return;
     }

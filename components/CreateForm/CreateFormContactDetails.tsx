@@ -4,15 +4,23 @@ import styles from "./CreateFormContactDetails.module.css";
 import useActive from "../useActive";
 import { useState, useEffect } from "react";
 
+type CreateFormContactDetailsTypes = {
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  inputValues: any;
+  handleKeyDown: (e: React.KeyboardEvent) => void;
+  handleDropdown: (ref: React.RefObject<HTMLInputElement>) => void;
+  handleMax: (e: React.ChangeEvent<HTMLInputElement>, limit: number) => void;
+};
+
 function CreateFormContactDetails({
   handleChange,
   inputValues,
   handleKeyDown,
   handleDropdown,
   handleMax,
-}) {
-
-
+}:CreateFormContactDetailsTypes) {
 
   //handle Email
   const [emailValid, setEmailValid] = useActive(false);
@@ -119,7 +127,7 @@ function CreateFormContactDetails({
               handleChange={dropdown[i].handleChange}
               placeholder={dropdown[i].placeholder}
               label={dropdown[i].label}
-              key={item.id}
+              
             />
           </div>
         ))}

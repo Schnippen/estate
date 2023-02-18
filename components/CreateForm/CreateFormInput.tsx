@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./CreateFormInput.module.css";
 
-function CreateFormInput({ data, handleChange, handleMax }) {
+type CreateFormInputTypes = {
+  data:any;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  handleMax:(e: React.ChangeEvent<HTMLInputElement>, limit: number) => void;
+};
+
+function CreateFormInput({ data, handleChange, handleMax }:CreateFormInputTypes) {
   return (
     <div className={styles.form_input_container}>
       <label htmlFor={data.label}>{data.labelText}</label>
@@ -14,7 +20,7 @@ function CreateFormInput({ data, handleChange, handleMax }) {
           handleChange(e);
           handleMax(e, data.limit);
         }}
-        maxlength={data.limit}
+        maxLength={data.limit}
         onKeyDown={data.f}
         className={styles.form_input}
       />

@@ -173,7 +173,9 @@ function CreateForm() {
     }
   }, [inputValues.priceInfo, inputValues.areaInfo]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setInputValues({ ...inputValues, [e.target.name]: e.target.value });
   };
 
@@ -325,7 +327,6 @@ function CreateForm() {
         {isValidTitleKategoria(inputValues.titleKategoria) && (
           <CreateFormDescription
             handleChange={handleChange}
-            handleKeyDown={handleKeyDown}
             titleState={inputValues.offerTitle}
             textState={inputValues.descriptionInfo}
           />
@@ -333,7 +334,7 @@ function CreateForm() {
         {isValidTitleKategoria(inputValues.titleKategoria) && (
           <CreateFormDetailedInformation
             handleDropdown={handleDropdown}
-            inputValues={inputValues}
+            //inputValues={inputValues}
             type={inputValues.titleKategoria}
             handleChange={handleChange}
             handleKeyDown={handleKeyDown}
