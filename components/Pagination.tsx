@@ -3,7 +3,11 @@ import styles from "./Pagination.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import stylesMobile from "./PaginationMobile.module.css";
 
-function Pagination({ pages, currentPage, setCurrentPage, isMobile }) {
+type PaginationTypes={
+  pages:number[]; currentPage:number; setCurrentPage: React.Dispatch<React.SetStateAction<number>>; isMobile:boolean; 
+}
+
+function Pagination({ pages, currentPage, setCurrentPage, isMobile }:PaginationTypes) {
   const handlePrevButton = () => {
     setCurrentPage((currentPage) => currentPage - 1);
   };

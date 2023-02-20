@@ -2,6 +2,23 @@ import React from "react";
 import styles from "./UserInterface.module.css";
 import { HiMail, HiLockClosed } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { IconType } from "react-icons/lib";
+
+type UserSignInTypes={
+  handleLogin: (e: {
+    target: {
+        name: string;
+        value?: string;
+    };
+}) => void;
+  handleSubmit:(e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  userLogin:any;
+  logOut:any;
+  userLoggedIn:any;
+  userData:any;
+  HiOutlineEyeOff?:IconType;
+  HiOutlineEye?:IconType;
+}
 
 const UserSignIn = ({
   handleLogin,
@@ -12,7 +29,7 @@ const UserSignIn = ({
   userData,
   HiOutlineEyeOff,
   HiOutlineEye,
-}) => {
+}:UserSignInTypes) => {
   //Loging Out
   const handleLogOut = async () => {
     try {

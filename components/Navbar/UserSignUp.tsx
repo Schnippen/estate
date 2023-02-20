@@ -23,23 +23,23 @@ function UserSignUp() {
   const [isLoading, setIsLoading] = useState(false);
 
   //email
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const [emailValid, setEmailValid] = useActive(false);
   const EMAIL_REGEX = /[^\s@]+@[^\s@]+\.[^\s@]+/gi;
   //password
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState<string>("");
   const [passwordValid, setPasswordValid] = useActive(false);
   const [focusedPassword, setFocusedPassword] = useActive(false);
   const [passwordShown, setPasswordShown] = useActive(false);
-  const inputRefPassword = useRef();
+  const inputRefPassword = useRef<HTMLInputElement>(null);
   const PASSWORD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,16}$/;
 
   //password Confirmation - Matched
-  const [passwordMatched, setPasswordMatched] = useState("");
+  const [passwordMatched, setPasswordMatched] = useState<string>("");
   const [passwordMatchedValid, setPasswordMatchedValid] = useActive(false);
   const [focusedPasswordMatched, setFocusedPasswordMatched] = useActive(false);
-  const inputRefPasswordMatched = useRef();
+  const inputRefPasswordMatched = useRef<HTMLInputElement>(null);
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -69,11 +69,10 @@ function UserSignUp() {
 
   const { createUser } = UserAuth();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Signing Up!");
     setIsLoading(true);
-    console.table(email, password);
     console.log("Proceed registration");
     try {
       await createUser(email, password);
@@ -159,17 +158,19 @@ function UserSignUp() {
                 <HiOutlineEye
                   className={styles.svgPassword}
                   onClick={() => {
+                    if (inputRefPassword.current) {
                     inputRefPassword.current.focus();
-                    setPasswordShown();
-                  }}
+                    setPasswordShown(!passwordShown);
+                  }}}
                 />
               ) : (
                 <HiOutlineEyeOff
                   className={styles.svgPassword}
                   onClick={() => {
+                    if (inputRefPassword.current) {
                     inputRefPassword.current.focus();
-                    setPasswordShown();
-                  }}
+                    setPasswordShown(!passwordShown);
+                  }}}
                 />
               )}
 
@@ -187,8 +188,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={setFocusedPassword}
-                onBlur={setFocusedPassword}
+                onFocus={()=>setFocusedPassword}
+                onBlur={()=>setFocusedPassword}
                 ref={inputRefPassword}
                 onKeyDown={handleSpace}
               />
@@ -209,17 +210,19 @@ function UserSignUp() {
                 <HiOutlineEye
                   className={styles.svgPassword}
                   onClick={() => {
+                    if(inputRefPasswordMatched.current){
                     inputRefPasswordMatched.current.focus();
                     setPasswordShown(!passwordShown);
-                  }}
+                  }}}
                 />
               ) : (
                 <HiOutlineEyeOff
                   className={styles.svgPassword}
                   onClick={() => {
+                    if(inputRefPasswordMatched.current){
                     inputRefPasswordMatched.current.focus();
                     setPasswordShown(!passwordShown);
-                  }}
+                  }}}
                 />
               )}
 
@@ -237,8 +240,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPasswordMatched(e.target.value)}
-                onFocus={setFocusedPasswordMatched}
-                onBlur={setFocusedPasswordMatched}
+                onFocus={()=>setFocusedPasswordMatched}
+                onBlur={()=>setFocusedPasswordMatched}
                 ref={inputRefPasswordMatched}
                 onKeyDown={handleSpace}
               />

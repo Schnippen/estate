@@ -3,13 +3,18 @@ import { useRef, useEffect } from "react";
 import ButtonExit from "../Buttons/ButtonExit";
 import styles from "../components/Item/ItemSideArticleCredit.module.css";
 
-function TermsOfService({ setIsActive, isActive }) {
+type TermsOfServiceTypes={
+  setIsActive:(value:boolean)=>void;
+  isActive:boolean; 
+}
+
+function TermsOfService({ setIsActive, isActive }:TermsOfServiceTypes) {
   const ref = useRef(null);
 
   useEffect(() => {
     const handleClose = (e: MouseEvent) => {
       if (isActive && ref.current === e.target) {
-        setIsActive();
+        setIsActive(!isActive);
       }
     };
     document.addEventListener("click", handleClose);
@@ -106,7 +111,7 @@ function TermsOfService({ setIsActive, isActive }) {
           </p>
         </div>
         <div style={{ width: "300px", margin: "1rem 0" }}>
-          <button className={styles.submit} onClick={setIsActive}>
+          <button className={styles.submit} onClick={()=>setIsActive}>
             Zamknij
           </button>
         </div>

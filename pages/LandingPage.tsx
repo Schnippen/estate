@@ -24,11 +24,7 @@ function LandingPage() {
   }, []);
 
   interface QueryDetails {
-    City: string;
-    TypeOfRealEstate: string;
-    TypeOfTransaction: string;
-    PriceFrom: string;
-    PriceTo: string;
+    [key: string]: string; 
   }
 
   const [renderError, setRenderError] = useState(false);

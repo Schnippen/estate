@@ -3,7 +3,11 @@ import styles from "./ListItemMobile.module.css";
 import { HiHeart } from "react-icons/hi";
 import Button from "./Button";
 
-function ListItemMobile({ item }) {
+type ListItemMobileTypes={
+  item: Record<string, string>;
+}
+
+function ListItemMobile({ item }:ListItemMobileTypes) {
   return (
     <li key={item.offerID} className={styles.listItem_container}>
       <article className={styles.grid_container}>
@@ -37,9 +41,9 @@ function ListItemMobile({ item }) {
               {typeof item.numberOfRoomsInfo === "string" ? (
                 <>
                   <p>
-                    {item.numberOfRoomsInfo === 1
+                    {parseInt(item.numberOfRoomsInfo) === 1
                       ? " Pokój"
-                      : item.numberOfRoomsInfo > 1 && item.numberOfRoomsInfo < 5
+                      : parseInt(item.numberOfRoomsInfo) > 1 && parseInt(item.numberOfRoomsInfo) < 5
                       ? " Pokoje"
                       : " Pokoi"}
                   </p>

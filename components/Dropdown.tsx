@@ -9,7 +9,7 @@ interface DropdownProps {
   handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
   placeholder: string;
   label?: string;
-  name: string;
+  name?: string;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({

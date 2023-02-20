@@ -8,11 +8,15 @@ import useActive from "./useActive";
 import { TbMap2 } from "react-icons/tb";
 import Dropdown from "./Dropdown";
 
+type Item = {
+  [key:string]: string;
+}
+
 function List({ isMobile }:{isMobile:boolean}) {
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [databaseState, setDatabaseState] = useState<{}[]>([]);
+  const [databaseState, setDatabaseState] = useState<Item[]>([]);
 
   const fetchDatabase: () => Promise<void>  = async () => {
     const response = await fetch(`http://localhost:3100/items`);
@@ -34,6 +38,8 @@ function List({ isMobile }:{isMobile:boolean}) {
   for (let i = 1; i <= Math.floor(databaseState.length / itemsPerPage); i++) {
     pages.push(i);
   }
+
+  
 
   //Sorting
   const handleSortingDatabaseState = (
@@ -63,13 +69,13 @@ function List({ isMobile }:{isMobile:boolean}) {
         [...databaseState].sort(
           (firstItem, secondItem) =>
             parseFloat(
-              firstItem.areaPriceInfo.replace(",", ".").split("zł").slice(0, -1)
+              firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")
             ) -
             parseFloat(
               secondItem.areaPriceInfo
                 .replace(",", ".")
                 .split("zł")
-                .slice(0, -1)
+                .join("")
             )
         )
       );
@@ -81,10 +87,10 @@ function List({ isMobile }:{isMobile:boolean}) {
               secondItem.areaPriceInfo
                 .replace(",", ".")
                 .split("zł")
-                .slice(0, -1)
+                .join("")
             ) -
             parseFloat(
-              firstItem.areaPriceInfo.replace(",", ".").split("zł").slice(0, -1)
+              firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")
             )
         )
       );

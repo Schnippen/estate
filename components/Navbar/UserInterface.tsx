@@ -14,7 +14,7 @@ import Loading from "../Loading";
 import UserSignIn from "./UserSignIn";
 import { UserAuth } from "../../context/AuthContext";
 
-interface UserLogintypes  {
+interface UserLoginTypes  {
   email: string;
   password: string;
 };
@@ -22,8 +22,8 @@ interface UserLogintypes  {
 function UserInterface() {
   const [isActiveBig, setIsActiveBig] = useActive(false);
   const [isActiveSmall, setIsActive] = useActive(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [userLogin, setUserLogin] = useState<UserLogintypes>({
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [userLogin, setUserLogin] = useState<UserLoginTypes>({
     email: "",
     password: "",
   });
@@ -32,18 +32,19 @@ function UserInterface() {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
   };
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement | null>(null);
   //Opening tabs
   useEffect(() => {
-    const handleClose = (e) => {
-      if (isActiveSmall && ref.current && !ref.current?.contains(e.target)) {
-        setIsActive();
+    const handleClose = (e:MouseEvent) => {
+      const targetNode = e.target as Node;  
+      if (isActiveSmall && ref.current && !ref.current?.contains(targetNode)) {
+        setIsActive(!isActiveSmall);
       } else if (
         isActiveBig &&
         ref.current &&
-        !ref.current?.contains(e.target)
+        !ref.current?.contains(targetNode)
       ) {
-        setIsActiveBig();
+        setIsActiveBig(!isActiveBig);
       }
     };
     document.addEventListener("click", handleClose);
@@ -70,9 +71,10 @@ function UserInterface() {
   };
 
   //Signing In
+ 
   const { signIn, userData, logOut, userLoggedIn } = UserAuth();
-
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Signing In!");
     setIsLoading(true);
@@ -88,7 +90,7 @@ function UserInterface() {
     }
   };
 
-  const ListItem = ({ icon: Icon, text }) => (
+  const ListItem = ({ icon: Icon, text}:{icon:React.ElementType;text:string}) => (
     <li>
       <div>
         <Icon />
@@ -136,7 +138,7 @@ function UserInterface() {
       >
         <HiDotsHorizontal />
       </button>
-      <div className={isActiveBig ? styles.menu_btnBig_Opened : null}>
+      <div className={isActiveBig ? styles.menu_btnBig_Opened : undefined}>
         {isActiveBig ? (
           <>
             {isLoading ? (
@@ -159,7 +161,7 @@ function UserInterface() {
           </>
         ) : null}
       </div>
-      <div className={isActiveSmall ? styles.menu_btnSmall_Opened : null}>
+      <div className={isActiveSmall ? styles.menu_btnSmall_Opened : undefined}>
         {isActiveSmall ? <List></List> : null}
       </div>
     </div>

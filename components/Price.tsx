@@ -1,7 +1,15 @@
 import React from "react";
 import Dropdown from "./Dropdown";
 
-function Price({ data, handleChange }) {
+type PriceTypes={
+  data:{
+    value: number;
+    label: string;
+}[];
+  handleChange:(ref: React.RefObject<HTMLInputElement>) => void;
+}
+
+function Price({ data, handleChange }:PriceTypes) {
   return (
     <div
       style={{

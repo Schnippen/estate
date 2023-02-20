@@ -4,13 +4,18 @@ import { useEffect, useRef } from "react";
 const profilePicture =require("../../assets/profile.jpg");
 import { HiMail, HiHeart, HiCog, HiOfficeBuilding } from "react-icons/hi";
 
-function SidebarMobile({ isOpened, setIsOpened }) {
-  const sidebarRef = useRef();
+type UserContextTypeTypes={
+  isOpened:boolean;
+  setIsOpened:(value:boolean)=>void;
+}
+
+function SidebarMobile({ isOpened, setIsOpened }:UserContextTypeTypes) {
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClose = (e) => {
+    const handleClose = (e:MouseEvent) => {
       if (isOpened && sidebarRef.current === e.target) {
-        setIsOpened();
+        setIsOpened(!isOpened);
       }
     };
     document.addEventListener("click", handleClose);

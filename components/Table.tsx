@@ -1,7 +1,11 @@
 import React from "react";
 import "./Table.module.css";
 
-function Table({ prop }) {
+type TableType={
+  prop: Record<string, string | number>;
+}
+
+function Table({ prop }:TableType) {
   const filtered = Object.entries(prop).map(([key, value]) => {
     if (value === "") {
       return Object.entries(prop).filter(() => value !== value);

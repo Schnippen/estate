@@ -33,7 +33,7 @@ function Navbar() {
         <>
           <div className={styles.logo}>{Logo}</div>
 
-          <div onClick={setIsOpened} className={styles.showSidebar}>
+          <div onClick={()=>setIsOpened} className={styles.showSidebar}>
             {isOpened ? (
               <TbArrowBarToLeft className={styles.svg} />
             ) : (
