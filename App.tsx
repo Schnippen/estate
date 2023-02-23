@@ -2,15 +2,16 @@ import LandingPage from "./pages/LandingPage";
 import Item from "./pages/Item";
 import Offers from "./pages/Offers";
 import NotFound from "./components/NotFound";
-import Leaflet from "./Leaflet/Leaflet";
+//import Leaflet from "./Leaflet/Leaflet";
 import UserSignUp from "./components/Navbar/UserSignUp";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
+import Blog from "./components/Blog";
 import "./App.css";
 import CreateForm from "./components/CreateForm/CreateForm";
-import React, { createContext, useState } from "react";
 import { AuthContextProvider } from "./context/AuthContext";
+import { MobileContextProvider } from "./context/MobileContext";
 
 //user context
 function App() {
@@ -23,21 +24,24 @@ function App() {
 
   return (
     <>
-      <AuthContextProvider>
-        <Navbar />
-      </AuthContextProvider>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/Offers" element={<Offers />} />
-        <Route path="/Item" element={<Item />} />
-        <Route path="/UserSignUp" element={<UserSignUp />} />
-        <Route path="/CreateForm" element={<CreateForm />} />
-        <Route path="/Leaflet" element={<Leaflet />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <MobileContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+        </AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Offers" element={<Offers />} />
+          <Route path="/Item" element={<Item />} />
+          <Route path="/UserSignUp" element={<UserSignUp />} />
+          <Route path="/CreateForm" element={<CreateForm />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/Blog" element={<Blog />} />
+        </Routes>
+        <Footer />
+      </MobileContextProvider>
     </>
   );
 }
 
 export default App;
+//<Route path="/Leaflet" element={<Leaflet />} />
