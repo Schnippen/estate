@@ -1,0 +1,240 @@
+.article {
+  width: 100%;
+  background-color: var(--article);
+  border-radius: 5px;
+  padding: 1rem 2rem;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%);
+  margin: 10px 0 10px 0;
+}
+
+.article > :not(h3) {
+  text-align: center;
+}
+.article_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_inputContainer {
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  transition: all 0.3s ease 0s;
+  outline: none;
+  text-align: center;
+}
+.input:focus {
+  outline: solid var(--tertiary-text-color);
+}
+
+.section_inputContainer > label {
+  padding: 5px 0;
+}
+
+.errorParagraph {
+  color: var(--article);
+  font-size: 16px;
+  text-align: center;
+  overflow: hidden;
+  background-color: #000000;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 0 0 0;
+}
+
+.errorSvg {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 110%;
+  top: 50%;
+  color: #ed4f32;
+}
+
+.negotiation_wrapper {
+  padding: 5px;
+}
+
+.section_negotiation_container {
+  background-color: var(--secondary-color);
+  height: 40px;
+  width: 280px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: var(--article);
+  cursor: pointer;
+}
+
+.section_negotiation_container:checked {
+  color: var(--tertiary-text-color);
+}
+
+.section_negotiation_container > input {
+  display: none;
+}
+
+.section_negotiation_container > input:checked + .custom_checkmark {
+  display: inline-block;
+  border-radius: 50%;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+  background-color: var(--tertiary-text-color);
+}
+
+.custom_checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--article);
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.negotiation_description {
+  padding: 5px;
+  width: 300px;
+}
+
+.negotiation_description > p {
+  font-size: 16px;
+  text-align: justify;
+  user-select: none;
+}
+
+.dropdown {
+  position: relative;
+  background-color: var(--secondary-color);
+  margin: 1rem 0;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  list-style: none;
+  padding: 0 10px;
+}
+
+.dropdown > div {
+  height: 100%;
+}
+.dropdown > div > label {
+  display: flex;
+  justify-content: center;
+  color: var(--primary-text-color);
+  padding: 5px 10px;
+}
+
+.descriptionTitle {
+  width: 600px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.descriptionText {
+  width: 600px;
+  height: 300px;
+  border-radius: 5px;
+  resize: none;
+  line-height: 150%;
+}
+.digitsStyle {
+  display: flex;
+  width: 600px;
+  justify-content: flex-end;
+}
+.moreInfoOpened {
+  position: absolute;
+  font-size: 12px;
+  top: 50%;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+
+.moreInfoClosed {
+  position: absolute;
+  font-size: 12px;
+  top: 50%;
+  right: 50px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+
+.moreInfoArrowOpened {
+  position: absolute;
+  right: 40px;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(0deg);
+  cursor: pointer;
+}
+.moreInfoArrowClosed {
+  position: absolute;
+  right: 40px;
+  top: -5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .article > header {
+    text-align: center;
+  }
+  .descriptionTitle {
+    width: 280px;
+  }
+
+  .descriptionText {
+    width: 280px;
+  }
+  .digitsStyle {
+    width: 280px;
+  }
+  .moreInfoOpened {
+    top: 50%;
+    right: 50px;
+    transform: translate(0px, 30px);
+  }
+  .moreInfoClosed {
+    top: 50%;
+    right: 50px;
+    transform: translate(0px, 30px);
+  }
+
+  .moreInfoArrowOpened {
+    right: -30px;
+    top: 10px;
+  }
+
+  .moreInfoArrowClosed {
+    right: -30px;
+    top: 10px;
+  }
+}
