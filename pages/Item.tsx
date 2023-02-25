@@ -1,32 +1,22 @@
 import styles from "../styles/Item.module.css";
-import { HiHeart } from "react-icons/hi";
 import useActive from "../components/useActive";
-import Button from "../components/Button";
 import ItemPhotos from "../components/Item/ItemPhotos";
 import ItemInfoDescription from "../components/Item/ItemInfoDescription";
 import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
-import {useContext } from "react";
+import { useContext } from "react";
 import MobileContext from "../context/MobileContext";
-import React from "react";
+import { useAddToFavorites } from "../components/useAddToFavorites";
 
 function Item() {
   const location = useLocation();
   const prop = location.state;
   const [isActive, setIsActive] = useActive(true);
-
   const isMobile = useContext(MobileContext);
 
-  const AddToFavorites = (
-    <div className={styles.addToFavorites}>
-      <label htmlFor="addToFavorites">Dodaj do ulubionych </label>
-      <Button id={"addToFavorites"}>
-        <HiHeart />
-      </Button>
-    </div>
-  );
+  const AddToFavorites = useAddToFavorites(prop.offerID, true);
 
   return (
     <>
@@ -106,10 +96,7 @@ function Item() {
                       Mapa<span></span>
                     </li>
                     <div>
-                      <span>dodaj do ulubionych </span>
-                      <Button>
-                        <HiHeart />
-                      </Button>
+                      <span>{AddToFavorites}</span>
                     </div>
                   </ul>
                 </div>

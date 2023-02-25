@@ -7,7 +7,7 @@ type CreateFormPanelTypes = {
     text: string;
     name: string;
     value: string;
-    svg: JSX.Element;
+    icon: JSX.Element;
   };
   handleCategory: (e: React.MouseEvent<HTMLInputElement>) => void;
   panelSelected: string;
@@ -28,7 +28,7 @@ function CreateFormPanel({
               : styles.panel
           }
         >
-          <div className={styles.svg}>{panel.svg}</div>
+          <div className={styles.icon}>{panel.icon}</div>
           <p>{panel.text}</p>
         </div>
       </label>

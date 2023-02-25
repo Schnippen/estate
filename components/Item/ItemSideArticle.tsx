@@ -32,11 +32,7 @@ function ItemSideArticle({ prop }: { prop: any }) {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (
-      e.key === "Backspace" ||
-      e.key === "Delete" ||
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowRight" ||
-      e.key === "Tab"
+      ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
     ) {
       return;
     }

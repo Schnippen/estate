@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useState } from "react";
 import styles from "./ListItem.module.css";
 import { HiHeart, HiMail } from "react-icons/hi";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
+import { useAddToFavorites } from "../components/useAddToFavorites";
 
-function ListItem({ item, isMobile }:{item:any,isMobile:boolean}) {
+function ListItem({ item, isMobile }: { item: any; isMobile: boolean }) {
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const AddToFavorites = useAddToFavorites(item.offerID, false);
+  const addToFavorites = (
+    <Button
+      id="addToFavorites"
+      onClick={() => {
+        setIsFavorite(!isFavorite);
+      }}
+    >
+      <HiHeart style={{ color: isFavorite ? "#daa520" : "#fff" }} />
+    </Button>
+  );
+
   return (
     <>
       {isMobile ? (
@@ -15,7 +29,9 @@ function ListItem({ item, isMobile }:{item:any,isMobile:boolean}) {
           to="/Item"
           state={item}
           className={styles.Link}
-          onClick={() => {
+          onClick={(e) => {
+            //e.preventDefault();
+            setIsFavorite(!isFavorite);
             window.scroll({ top: 0, left: 0, behavior: "smooth" });
           }}
         >
@@ -34,7 +50,7 @@ function ListItem({ item, isMobile }:{item:any,isMobile:boolean}) {
                 <h2 className={styles.grid_mini_title}>
                   {item.offerTitle
                     .split(" ")
-                    .map((n:string) => n.charAt(0).toUpperCase() + n.slice(1))
+                    .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
                     .join(" ")}
                 </h2>
                 <h3 className={styles.grid_mini_category}>
@@ -74,9 +90,7 @@ function ListItem({ item, isMobile }:{item:any,isMobile:boolean}) {
                 </div>
                 <p className={styles.grid_mini_favorite}>Dodaj do ulubionych</p>
                 <div className={styles.grid_mini_favoriteButton}>
-                  <Button>
-                    <HiHeart />
-                  </Button>
+                  {AddToFavorites}
                 </div>
               </section>
             </article>

@@ -12,6 +12,7 @@ import CreateFormLocation from "./CreateFormLocation";
 import CreateFormMedia from "./CreateFormMedia";
 import CreateFormDescription from "./CreateFormDescription";
 import CreateFormDetailedInformation from "./CreateFormDetailedInformation";
+import { PanelData } from "./CreateFormDataPanel";
 
 function CreateForm() {
   interface InputValuesTypes {
@@ -100,44 +101,6 @@ function CreateForm() {
     offerID: 0,
   });
 
-  const panelData = [
-    {
-      label: "Mieszkanie",
-      text: "Mieszkanie",
-      name: "string1",
-      value: "Mieszkanie",
-      svg: <FaRegBuilding />,
-    },
-    {
-      label: "Dom",
-      text: "Dom",
-      name: "string1",
-      value: "Dom",
-      svg: <BiHome />,
-    },
-    {
-      label: "Działka",
-      text: "Działka",
-      name: "string1",
-      value: "Działka",
-      svg: <BiLandscape />,
-    },
-    {
-      label: "Nieruchomość Komercyjna",
-      text: "Nieruchomość Komercyjna",
-      name: "string1",
-      value: "Nieruchomość Komercyjna",
-      svg: <SiHomeassistantcommunitystore />,
-    },
-    {
-      label: "Garaż",
-      text: "Garaż",
-      name: "string1",
-      value: "Garaż",
-      svg: <GiHomeGarage />,
-    },
-  ];
-
   const [category, setTitleCategory] = useState({
     string1: "",
     string2: "",
@@ -207,11 +170,7 @@ function CreateForm() {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (
-      e.key === "Backspace" ||
-      e.key === "Delete" ||
-      e.key === "ArrowLeft" ||
-      e.key === "ArrowRight" ||
-      e.key === "Tab"
+      ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
     ) {
       return;
     }
@@ -242,18 +201,18 @@ function CreateForm() {
   };
 
   function isValidTitleKategoria(titleKategoria: string) {
-    return (
-      titleKategoria === "Mieszkanie na sprzedaż" ||
-      titleKategoria === "Dom na sprzedaż" ||
-      titleKategoria === "Nieruchomość Komercyjna na sprzedaż" ||
-      titleKategoria === "Działka na sprzedaż" ||
-      titleKategoria === "Garaż na sprzedaż"
-    );
+    return [
+      "Mieszkanie na sprzedaż",
+      "Dom na sprzedaż",
+      "Nieruchomość Komercyjna na sprzedaż",
+      "Działka na sprzedaż",
+      "Garaż na sprzedaż",
+    ].includes(titleKategoria);
   }
 
-  const panelList = panelData.map((item, index) => (
+  const panelList = PanelData.map((data, index) => (
     <CreateFormPanel
-      panel={item}
+      panel={data}
       key={index}
       handleCategory={handleCategory}
       panelSelected={category.string1}
