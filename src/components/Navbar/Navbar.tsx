@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
-import {useContext } from "react";
+import { useContext } from "react";
 import useActive from "../useActive";
 import SidebarMobile from "./SidebarMobile";
 import MobileContext from "../../context/MobileContext";
@@ -60,9 +60,7 @@ function Navbar() {
             <a href="*">Overseas</a>
           </li>
           <Link to="/Blog">
-            <li>
-              Blog
-            </li>
+            <li>Blog</li>
           </Link>
         </ul>
       )}

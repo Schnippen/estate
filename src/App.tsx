@@ -12,6 +12,7 @@ import "./App.css";
 import CreateForm from "./components/CreateForm/CreateForm";
 import { AuthContextProvider } from "./context/AuthContext";
 import { MobileContextProvider } from "./context/MobileContext";
+import Favorites from "./components/Favorites";
 
 //user context
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/CreateForm" element={<CreateForm />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/Blog" element={<Blog />} />
+          <Route path="/Favorites" element={<Favorites />} />
         </Routes>
         <Footer />
       </MobileContextProvider>

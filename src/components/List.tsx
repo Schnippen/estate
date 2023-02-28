@@ -9,23 +9,23 @@ import { TbMap2 } from "react-icons/tb";
 import Dropdown from "./Dropdown";
 
 type Item = {
-  [key:string]: string;
-}
+  [key: string]: string;
+};
 
-function List({ isMobile }:{isMobile:boolean}) {
+function List({ isMobile }: { isMobile: boolean }) {
   const [isLoading, setIsLoading] = useActive(true);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(5);
   const [databaseState, setDatabaseState] = useState<Item[]>([]);
 
-  const fetchDatabase: () => Promise<void>  = async () => {
+  const fetchDatabase: () => Promise<void> = async () => {
     const response = await fetch(`http://localhost:3100/items`);
     const data = await response.json();
     setDatabaseState(data);
     setIsLoading(false);
   };
 
-  // Database bedzie łączyć sie z serverem useFetch
+  // Database bedzie łączyć sie z serwerem
   useEffect(() => {
     fetchDatabase();
   }, []);
@@ -38,8 +38,6 @@ function List({ isMobile }:{isMobile:boolean}) {
   for (let i = 1; i <= Math.floor(databaseState.length / itemsPerPage); i++) {
     pages.push(i);
   }
-
-  
 
   //Sorting
   const handleSortingDatabaseState = (
@@ -72,10 +70,7 @@ function List({ isMobile }:{isMobile:boolean}) {
               firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")
             ) -
             parseFloat(
-              secondItem.areaPriceInfo
-                .replace(",", ".")
-                .split("zł")
-                .join("")
+              secondItem.areaPriceInfo.replace(",", ".").split("zł").join("")
             )
         )
       );
@@ -84,10 +79,7 @@ function List({ isMobile }:{isMobile:boolean}) {
         [...databaseState].sort(
           (firstItem, secondItem) =>
             parseFloat(
-              secondItem.areaPriceInfo
-                .replace(",", ".")
-                .split("zł")
-                .join("")
+              secondItem.areaPriceInfo.replace(",", ".").split("zł").join("")
             ) -
             parseFloat(
               firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")

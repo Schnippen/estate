@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   HiDotsHorizontal,
   HiMail,
@@ -7,17 +7,19 @@ import {
   HiOfficeBuilding,
   HiUserCircle,
 } from "react-icons/hi";
+import { BsPersonXFill } from "react-icons/bs";
 import styles from "./UserInterface.module.css";
 import useActive from "../useActive";
 import { useRef, useEffect, useState } from "react";
 import Loading from "../Loading";
 import UserSignIn from "./UserSignIn";
 import { UserAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
-interface UserLoginTypes  {
+interface UserLoginTypes {
   email: string;
   password: string;
-};
+}
 
 function UserInterface() {
   const [isActiveBig, setIsActiveBig] = useActive(false);
@@ -28,15 +30,16 @@ function UserInterface() {
     password: "",
   });
 
-  const handleLogin = (e: { target: { name: string; value?: string ; }; }) => {
+  const handleLogin = (e: { target: { name: string; value?: string } }) => {
     setUserLogin({ ...userLogin, [e.target.name]: e.target.value });
   };
 
   const ref = useRef<HTMLDivElement | null>(null);
+
   //Opening tabs
   useEffect(() => {
-    const handleClose = (e:MouseEvent) => {
-      const targetNode = e.target as Node;  
+    const handleClose = (e: MouseEvent) => {
+      const targetNode = e.target as Node;
       if (isActiveSmall && ref.current && !ref.current?.contains(targetNode)) {
         setIsActive(!isActiveSmall);
       } else if (
@@ -71,10 +74,9 @@ function UserInterface() {
   };
 
   //Signing In
- 
   const { signIn, userData, logOut, userLoggedIn } = UserAuth();
-  
-  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Signing In!");
     setIsLoading(true);
@@ -89,9 +91,24 @@ function UserInterface() {
       setIsLoading(false);
     }
   };
+  //Favorites from local storage for notifications
+  const favoritesStorage = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  ) as Array<string | number>;
 
-  const ListItem = ({ icon: Icon, text}:{icon:React.ElementType;text:string}) => (
-    <li>
+  const Notification =
+    favoritesStorage.length > 0 ? (
+      <div className={styles.notification}>{favoritesStorage.length}</div>
+    ) : null;
+
+  const ListItem = ({
+    icon: Icon,
+    text,
+  }: {
+    icon: React.ElementType;
+    text: string;
+  }) => (
+    <li className={styles.menu_list_item}>
       <div>
         <Icon />
       </div>
@@ -103,11 +120,27 @@ function UserInterface() {
 
   const List = () => (
     <ul className={styles.menu_list}>
-      <ListItem icon={HiOfficeBuilding} text="Ogłoszenia" />
-      <ListItem icon={HiMail} text="Wiadomosci" />
-      <ListItem icon={HiHeart} text="Obserwowane" />
-      <ListItem icon={HiCog} text="Ustawienia" />
+      <Link to={"/*"}>
+        <ListItem icon={HiOfficeBuilding} text="Ogłoszenia" />
+      </Link>
+      <Link to={"/*"}>
+        <ListItem icon={HiMail} text="Wiadomosci" />
+      </Link>
+      <Link to={"/Favorites"} style={{ position: "relative" }}>
+        <ListItem icon={HiHeart} text="Ulubione" />
+        {Notification}
+      </Link>
+      <Link to={"/*"}>
+        <ListItem icon={HiCog} text="Ustawienia" />
+      </Link>
     </ul>
+  );
+
+  const BtnSmallNotLoggedIn = () => (
+    <div onClick={openBtn1Big} className={styles.notLoggedIn_cointainer}>
+      <BsPersonXFill className={styles.notLoggedIn_svg} />
+      <h3>You must be logged in</h3>
+    </div>
   );
 
   return (
@@ -123,7 +156,7 @@ function UserInterface() {
         }
         onClick={openBtn1Big}
       >
-        {userLoggedIn ? <HiUserCircle/> : "Sign In"}
+        {userLoggedIn ? <HiUserCircle /> : "Sign In"}
       </button>
       <button
         type="button"
@@ -162,10 +195,17 @@ function UserInterface() {
         ) : null}
       </div>
       <div className={isActiveSmall ? styles.menu_btnSmall_Opened : undefined}>
-        {isActiveSmall ? <List></List> : null}
+        {isActiveSmall ? (
+          userLoggedIn ? (
+            <List />
+          ) : (
+            <BtnSmallNotLoggedIn />
+          )
+        ) : null}
       </div>
     </div>
   );
 }
 
 export default UserInterface;
+//{isActiveSmall ? <List></List> : null}

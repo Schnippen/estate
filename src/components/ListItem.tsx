@@ -1,24 +1,14 @@
 import React, { useState } from "react";
 import styles from "./ListItem.module.css";
-import { HiHeart, HiMail } from "react-icons/hi";
+import { HiMail } from "react-icons/hi";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
 import { useAddToFavorites } from "../components/useAddToFavorites";
 
-function ListItem({ item, isMobile }: { item: any; isMobile: boolean }) {
+function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const AddToFavorites = useAddToFavorites(item.offerID, false);
-  const addToFavorites = (
-    <Button
-      id="addToFavorites"
-      onClick={() => {
-        setIsFavorite(!isFavorite);
-      }}
-    >
-      <HiHeart style={{ color: isFavorite ? "#daa520" : "#fff" }} />
-    </Button>
-  );
 
   return (
     <>

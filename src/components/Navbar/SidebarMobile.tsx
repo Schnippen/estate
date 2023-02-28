@@ -2,19 +2,18 @@ import React from "react";
 import styles from "./Navbar.module.css";
 import { useEffect, useRef } from "react";
 import { HiMail, HiHeart, HiCog, HiOfficeBuilding } from "react-icons/hi";
-import ButtonExit from "../../Buttons/ButtonExit";
-const profilePicture =require("../../assets/profile.jpg");
+const profilePicture = require("../../assets/profile.jpg");
 
-type UserContextTypeTypes={
-  isOpened:boolean;
-  setIsOpened:(value:boolean)=>void;
-}
+type UserContextTypeTypes = {
+  isOpened: boolean;
+  setIsOpened: (value: boolean) => void;
+};
 
-function SidebarMobile({ isOpened, setIsOpened }:UserContextTypeTypes) {
+function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleClose = (e:MouseEvent) => {
+    const handleClose = (e: MouseEvent) => {
       if (isOpened && sidebarRef.current === e.target) {
         setIsOpened(!isOpened);
       }
@@ -25,25 +24,14 @@ function SidebarMobile({ isOpened, setIsOpened }:UserContextTypeTypes) {
     };
   }, [isOpened]);
 
-  const Notification = (
-    <div
-      style={{
-        backgroundColor: "red",
-        height: "30px",
-        width: "30px",
-        right: "0",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: "50%",
-        verticalAlign: "middle",
-        gridColumn: "3",
-        justifySelf: "center",
-      }}
-    >
-      1
-    </div>
-  );
+  const favoritesStorage = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  ) as Array<string | number>;
+
+  const Notification =
+    favoritesStorage.length > 0 ? (
+      <div className={styles.notification}>{favoritesStorage.length}</div>
+    ) : null;
 
   return (
     <aside>
