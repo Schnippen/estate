@@ -131,7 +131,7 @@ function ItemSideArticle({ prop }: { prop: any }) {
                 </div>
               </form>
               <div className={styles.terms}>
-                <p onClick={() => setIsActive}>Terms of service</p>
+                <p onClick={()=>setIsActive(!isActive)}>Terms of service</p>
                 {isActive ? (
                   <FullscreenModal
                     setIsActive={setIsActive}

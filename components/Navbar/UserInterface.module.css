@@ -281,9 +281,7 @@
   flex-direction: column;
   cursor: pointer;
 }
-.notLoggedIn_cointainer:hover .notLoggedIn_svg .notLoggedIn_cointainer > h3 {
-  color: var(--tertiary-text-color);
-}
+
 .notLoggedIn_svg {
   color: white;
   width: 100px;
@@ -295,4 +293,9 @@
 }
 .notLoggedIn_cointainer > h3 {
   color: white;
+}
+
+.notLoggedIn_cointainer:hover *{
+  color: var(--tertiary-text-color);
+  transition: all 0.3s ease-in-out 0s;
 }
