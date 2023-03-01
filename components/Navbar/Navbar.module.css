@@ -46,7 +46,7 @@
 
 .sidebarUser {
   height: 125px;
-  width: 100%;  
+  width: 100%;
   position: relative;
   display: flex;
   padding: 10px 0;
@@ -73,7 +73,7 @@
   height: 50px;
   list-style: none;
   display: grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   user-select: none;
   border-bottom: 1px solid var(--article);
@@ -86,7 +86,7 @@
   color: var(--article);
 }
 
-.sidebarList > li> p{
+.sidebarList > li > p {
   color: var(--article);
 }
 
@@ -126,14 +126,26 @@
     padding: 0;
   }
 
-  .logo{
-     grid-column: 2/3;
-     position: absolute;
+  .logo {
+    grid-column: 2/3;
+    position: absolute;
   }
 
   .showSidebar {
-        grid-column: 1/2;
-    
+    grid-column: 1/2;
+  }
+  .notification {
+    background-color: var(--text-background);
+    height: 30px;
+    width: 30px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    vertical-align: middle;
+    grid-column: 3;
+    justify-self: center;
   }
 }
 

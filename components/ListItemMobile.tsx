@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./ListItemMobile.module.css";
-import { HiHeart } from "react-icons/hi";
-import Button from "./Button";
+import { useAddToFavorites } from "../components/useAddToFavorites";
 
-type ListItemMobileTypes={
-  item: Record<string, string>;
-}
+type ListItemMobileProps = {
+  item: any;
+};
 
-function ListItemMobile({ item }:ListItemMobileTypes) {
+const ListItemMobile: React.FC<ListItemMobileProps> = ({ item }) => {
+  const AddToFavorites = useAddToFavorites(item.offerID, false);
+
   return (
     <li key={item.offerID} className={styles.listItem_container}>
       <article className={styles.grid_container}>
@@ -24,7 +25,7 @@ function ListItemMobile({ item }:ListItemMobileTypes) {
             <div>
               {item.offerTitle
                 .split(" ")
-                .map((n:string) => n.charAt(0).toUpperCase() + n.slice(1))
+                .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
                 .join(" ")}
             </div>
           </h2>
@@ -43,7 +44,8 @@ function ListItemMobile({ item }:ListItemMobileTypes) {
                   <p>
                     {parseInt(item.numberOfRoomsInfo) === 1
                       ? " Pokój"
-                      : parseInt(item.numberOfRoomsInfo) > 1 && parseInt(item.numberOfRoomsInfo) < 5
+                      : parseInt(item.numberOfRoomsInfo) > 1 &&
+                        parseInt(item.numberOfRoomsInfo) < 5
                       ? " Pokoje"
                       : " Pokoi"}
                   </p>
@@ -56,15 +58,13 @@ function ListItemMobile({ item }:ListItemMobileTypes) {
             </div>
           </div>
           <div className={styles.grid_description_favoriteButton}>
-            <Button>
-              <HiHeart />
-            </Button>
+            {AddToFavorites}
           </div>
         </section>
       </article>
     </li>
   );
-}
+};
 
 export default ListItemMobile;
 <span>•</span>;
