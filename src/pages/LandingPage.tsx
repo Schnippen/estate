@@ -6,7 +6,7 @@ import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
-import { useState,useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
 import Price from "../components/Price";
@@ -14,11 +14,10 @@ import MobileContext from "../context/MobileContext";
 const backgroundImg = require("../assets/backgroundPhoto2.jpg") as string;
 
 function LandingPage() {
-  
-const isMobile = useContext(MobileContext);
+  const isMobile = useContext(MobileContext);
 
   interface QueryDetails {
-    [key: string]: string; 
+    [key: string]: string;
   }
 
   const [renderError, setRenderError] = useState(false);
@@ -29,6 +28,7 @@ const isMobile = useContext(MobileContext);
     PriceFrom: "",
     PriceTo: "",
   });
+  console.log(queryDetails);
 
   const handleChange = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {

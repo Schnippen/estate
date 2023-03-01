@@ -1,7 +1,15 @@
 import React from "react";
 import styles from "./Navbar.module.css";
 import { useEffect, useRef } from "react";
-import { HiMail, HiHeart, HiCog, HiOfficeBuilding } from "react-icons/hi";
+import {
+  HiMail,
+  HiHeart,
+  HiCog,
+  HiOfficeBuilding,
+  HiSearch,
+  HiUserCircle,
+} from "react-icons/hi";
+import { UserAuth } from "../../context/AuthContext";
 const profilePicture = require("../../assets/profile.jpg");
 
 type UserContextTypeTypes = {
@@ -11,6 +19,7 @@ type UserContextTypeTypes = {
 
 function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
   const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const { userData, userLoggedIn } = UserAuth();
 
   useEffect(() => {
     const handleClose = (e: MouseEvent) => {
@@ -22,6 +31,14 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
     return () => {
       document.removeEventListener("click", handleClose);
     };
+  }, [isOpened]);
+
+  useEffect(() => {
+    if (isOpened) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [isOpened]);
 
   const favoritesStorage = JSON.parse(
@@ -40,35 +57,61 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
           <div className={styles.sidebarContainer}>
             <div className={styles.sidebarUser}>
               <div>
-                <img
-                  className={styles.profilePicture}
-                  src={profilePicture}
-                  alt="Profile of user"
-                />
+                {userLoggedIn ? (
+                  <img
+                    className={styles.profilePicture}
+                    src={profilePicture}
+                    alt="Profile of user"
+                  />
+                ) : (
+                  <div className={styles.profilePicture}>
+                    <HiUserCircle className={styles.profilePicture} />
+                  </div>
+                )}
               </div>
               <div>
-                <h5> user email</h5>
+                <h5
+                  className={
+                    userLoggedIn ? styles.profileNameLogged : styles.profileName
+                  }
+                >
+                  {userLoggedIn ? userData.email : "Zaloguj się"}
+                </h5>
               </div>
             </div>
             <div className={styles.sidebarListWrapper}>
               <ul className={styles.sidebarList}>
                 <li>
-                  <HiOfficeBuilding className={styles.sidebarListSvg} />
-                  <p>Ogłoszenia</p>
+                  <HiSearch className={styles.sidebarListSvg} />
+                  <p>Szukaj Ogłoszeń</p>
                 </li>
-                <li>
-                  <HiMail className={styles.sidebarListSvg} />
-                  <p>Wiadomosci</p>
-                </li>
-                <li>
-                  <HiHeart className={styles.sidebarListSvg} />
-                  <p>Obserwowane</p>
-                  {Notification}
-                </li>
-                <li>
-                  <HiCog className={styles.sidebarListSvg} />
-                  <p>Ustawienia</p>
-                </li>
+                {userLoggedIn ? (
+                  <>
+                    <li>
+                      <HiOfficeBuilding className={styles.sidebarListSvg} />
+                      <p>Moje ogłoszenia</p>
+                    </li>
+                    <li>
+                      <HiMail className={styles.sidebarListSvg} />
+                      <p>Wiadomosci</p>
+                    </li>
+                    <li>
+                      <HiHeart
+                        className={
+                          favoritesStorage.length > 0
+                            ? styles.sidebarListSvg_notification
+                            : styles.sidebarListSvg
+                        }
+                      />
+                      <p>Obserwowane</p>
+                      {Notification}
+                    </li>
+                    <li>
+                      <HiCog className={styles.sidebarListSvg} />
+                      <p>Ustawienia</p>
+                    </li>
+                  </>
+                ) : null}
               </ul>
             </div>
           </div>

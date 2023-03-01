@@ -45,6 +45,14 @@ function UserSignUp() {
   const [showErrorModal, setShowErrorModal] = useState(false);
 
   useEffect(() => {
+    if (showSuccessModal || showErrorModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showSuccessModal, showErrorModal]);
+
+  useEffect(() => {
     setEmailValid(EMAIL_REGEX.test(email));
   }, [email]);
 
@@ -84,7 +92,7 @@ function UserSignUp() {
     }
   };
 
-  const handleSpace = (e:React.KeyboardEvent) => {
+  const handleSpace = (e: React.KeyboardEvent) => {
     e.key === " " && e.preventDefault();
   };
 
@@ -159,18 +167,20 @@ function UserSignUp() {
                   className={styles.svgPassword}
                   onClick={() => {
                     if (inputRefPassword.current) {
-                    inputRefPassword.current.focus();
-                    setPasswordShown(!passwordShown);
-                  }}}
+                      inputRefPassword.current.focus();
+                      setPasswordShown(!passwordShown);
+                    }
+                  }}
                 />
               ) : (
                 <HiOutlineEyeOff
                   className={styles.svgPassword}
                   onClick={() => {
                     if (inputRefPassword.current) {
-                    inputRefPassword.current.focus();
-                    setPasswordShown(!passwordShown);
-                  }}}
+                      inputRefPassword.current.focus();
+                      setPasswordShown(!passwordShown);
+                    }
+                  }}
                 />
               )}
 
@@ -188,8 +198,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={()=>setFocusedPassword}
-                onBlur={()=>setFocusedPassword}
+                onFocus={() => setFocusedPassword}
+                onBlur={() => setFocusedPassword}
                 ref={inputRefPassword}
                 onKeyDown={handleSpace}
               />
@@ -210,19 +220,21 @@ function UserSignUp() {
                 <HiOutlineEye
                   className={styles.svgPassword}
                   onClick={() => {
-                    if(inputRefPasswordMatched.current){
-                    inputRefPasswordMatched.current.focus();
-                    setPasswordShown(!passwordShown);
-                  }}}
+                    if (inputRefPasswordMatched.current) {
+                      inputRefPasswordMatched.current.focus();
+                      setPasswordShown(!passwordShown);
+                    }
+                  }}
                 />
               ) : (
                 <HiOutlineEyeOff
                   className={styles.svgPassword}
                   onClick={() => {
-                    if(inputRefPasswordMatched.current){
-                    inputRefPasswordMatched.current.focus();
-                    setPasswordShown(!passwordShown);
-                  }}}
+                    if (inputRefPasswordMatched.current) {
+                      inputRefPasswordMatched.current.focus();
+                      setPasswordShown(!passwordShown);
+                    }
+                  }}
                 />
               )}
 
@@ -240,8 +252,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPasswordMatched(e.target.value)}
-                onFocus={()=>setFocusedPasswordMatched}
-                onBlur={()=>setFocusedPasswordMatched}
+                onFocus={() => setFocusedPasswordMatched}
+                onBlur={() => setFocusedPasswordMatched}
                 ref={inputRefPasswordMatched}
                 onKeyDown={handleSpace}
               />

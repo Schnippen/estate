@@ -81,7 +81,7 @@ function Item() {
                           ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
                           : `${styles.multimedia_categories}`
                       }
-                      onClick={() => setIsActive}
+                      onClick={() => setIsActive(!isActive)}
                     >
                       Zdjęcia<span></span>
                     </li>
@@ -91,7 +91,7 @@ function Item() {
                           ? `${styles.multimedia_categories} ${styles.multimedia_categories_active}`
                           : `${styles.multimedia_categories}`
                       }
-                      onClick={() => setIsActive}
+                      onClick={() => setIsActive(!isActive)}
                     >
                       Mapa<span></span>
                     </li>

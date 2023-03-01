@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { HiCheck } from "react-icons/hi";
 
 interface DropdownProps {
-  data: { value: string|number; label: string }[];
+  data: { value: string | number; label: string }[];
   handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
   placeholder: string;
   label?: string;
@@ -20,8 +20,8 @@ const Dropdown: React.FC<DropdownProps> = ({
   name,
 }) => {
   const [isOpened, setIsOpened] = useActive(false);
-  const [InputTitle, setInputTitleState] = useState("");
-  const [selectedOption, setSelectedOption] = useState<string|number>("");
+  const [InputTitle, setInputTitleState] = useState<string>("");
+  const [selectedOption, setSelectedOption] = useState<string | number>("");
   const [highlighted, setHighlighted] = useState<number>();
   const ref = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -43,15 +43,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   };
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.addEventListener("change", handleInputChange);
-    }
-    return () => {
-      if (inputRef.current) {
-        inputRef.current &&
-          inputRef.current.removeEventListener("change", handleInputChange);
-      }
-    };
+    handleChange(inputRef);
   }, [selectedOption]);
 
   return (
@@ -61,9 +53,10 @@ const Dropdown: React.FC<DropdownProps> = ({
         id={label}
         type="text"
         className={isOpened ? styles.input_active : styles.input}
-        onClick={()=>setIsOpened(!isOpened)}
+        onClick={() => setIsOpened(!isOpened)}
         placeholder={placeholder}
         value={InputTitle}
+        onChange={(e) => setInputTitleState(e.target.value)}
       />
       <input type="hidden" value={selectedOption} ref={inputRef} name={name} />
       {isOpened && (
