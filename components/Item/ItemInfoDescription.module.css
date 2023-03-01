@@ -1,0 +1,156 @@
+.description_container {
+  padding: 0 40px 10px;
+  position: relative;
+}
+
+.description_container > h2 {
+  padding: 20px 0;
+}
+
+.description_container_maps {
+  position: relative;
+  padding: 0 3rem;
+}
+
+.description_wrapper {
+  background-color: var(--text-background);
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.description_wrapper > h3 {
+  padding: 20px 0;
+}
+
+.description_published {
+  padding: 20px 0;
+  font-size: 16px;
+}
+
+.description_container_maps {
+  background-color: var(--text-background);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  height: 518px;
+}
+
+.maps {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  .description_container {
+    padding: 0 10px 20px 10px;
+  }
+  .descriptionMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin-bottom: 20px;
+  }
+  .moreInfoClosed {
+    text-align: center;
+    user-select: none;
+    transition: rotate 0.5s ease-in-out;
+    vertical-align: middle;
+    transform: rotate(0deg);
+  }
+
+  .moreInfoOpened {
+    text-align: center;
+    user-select: none;
+    transition: rotate 0.5s ease-in-out;
+    vertical-align: middle;
+    transform: rotate(180deg);
+  }
+
+  .description_container_maps {
+    height: calc(100% - 100px);
+    width: 100vw;
+    padding: 0;
+    margin-top: 100px;
+  }
+  .maps {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+  }
+  .mobileMaps_svg {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    user-select: none;
+    background-color: var(--text-background);
+    border-radius: 5px;
+  }
+
+  .mobileMaps_svg > svg {
+    height: 140px;
+    width: 140px;
+    margin-bottom: 10px;
+  }
+  .mobileMaps_svg > *:active .mobileMaps_svg > svg:active {
+    color: var(--tertiary-text-color);
+  }
+  .mobileMaps_nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    background-color: var(--secondary-color);
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+  .mobileMaps_nav_exit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    background-color: var(--tertiary-color);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+  .mobileMaps_nav_exit > svg {
+    color: var(--primary-text-color);
+    height: 40px;
+    width: 40px;
+  }
+  .mobileMaps_nav_exit:active {
+    box-shadow: 0 0 2px 8px var(--tertiary-text-color);
+    transition: all 0.3s ease 0s;
+  }
+  .mobileMaps_nav_exit > svg:active {
+    color: var(--tertiary-text-color);
+  }
+
+  .mobileMaps_nav_offerTitle {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    color: var(--primary-text-color);
+  }
+
+  .mobileMaps_fullscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+  }
+}

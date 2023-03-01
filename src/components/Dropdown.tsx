@@ -38,10 +38,6 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   }, [isOpened]);
 
-  const handleInputChange = () => {
-    handleChange(inputRef);
-  };
-
   useEffect(() => {
     handleChange(inputRef);
   }, [selectedOption]);
