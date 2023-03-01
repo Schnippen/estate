@@ -3,12 +3,12 @@ import { useRef, useEffect } from "react";
 import ButtonExit from "../Buttons/ButtonExit";
 import styles from "../components/Item/ItemSideArticleCredit.module.css";
 
-type TermsOfServiceTypes={
-  setIsActive:(value:boolean)=>void;
-  isActive:boolean; 
-}
+type TermsOfServiceTypes = {
+  setIsActive: (value: boolean) => void;
+  isActive: boolean;
+};
 
-function TermsOfService({ setIsActive, isActive }:TermsOfServiceTypes) {
+function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -21,6 +21,14 @@ function TermsOfService({ setIsActive, isActive }:TermsOfServiceTypes) {
     return () => {
       document.removeEventListener("click", handleClose);
     };
+  }, [isActive]);
+
+  useEffect(() => {
+    if (isActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
   }, [isActive]);
 
   return (
@@ -39,7 +47,7 @@ function TermsOfService({ setIsActive, isActive }:TermsOfServiceTypes) {
         alignItems: "center",
       }}
     >
-      <ButtonExit setIsActive={setIsActive} />
+      <ButtonExit setIsActive={() => setIsActive(!isActive)} />
       <div
         style={{
           backgroundColor: "#554971",
@@ -111,7 +119,10 @@ function TermsOfService({ setIsActive, isActive }:TermsOfServiceTypes) {
           </p>
         </div>
         <div style={{ width: "300px", margin: "1rem 0" }}>
-          <button className={styles.submit} onClick={()=>setIsActive}>
+          <button
+            className={styles.submit}
+            onClick={() => setIsActive(!isActive)}
+          >
             Zamknij
           </button>
         </div>

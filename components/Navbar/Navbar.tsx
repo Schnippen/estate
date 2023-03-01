@@ -18,7 +18,6 @@ function Navbar() {
       <div>Anytown Real Estate</div>
     </Link>
   );
-  //console.log(isMobile)
 
   return (
     <nav className={styles.nav}>
@@ -71,5 +70,3 @@ function Navbar() {
 }
 
 export default Navbar;
-//
-//{isOpened ? <section className={styles.sidebar}>sidebar</section> : null}
