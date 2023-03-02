@@ -1,3 +1,0 @@
-# realEstateProject
-my project app
-
