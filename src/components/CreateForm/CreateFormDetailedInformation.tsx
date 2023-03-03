@@ -4,8 +4,7 @@ import styles from "./CreateFormContactDetails.module.css";
 import { HiChevronDown } from "react-icons/hi";
 import Dropdown from "../Dropdown";
 import CreateFormInput from "./CreateFormInput";
-import {
-  DropdownProps,
+import {DropdownProps,
   flatDropdownData,
   houseDropdownData,
   plotOfLandDropdownData,

@@ -9,7 +9,7 @@
   align-items: center;
   padding: 10px 10%;
   background-color: var(--primary-color);
-  z-index: 10;
+  z-index: 11;
 }
 
 .svg {
@@ -60,17 +60,16 @@
   width: 4rem;
   height: 4rem;
   object-fit: cover;
-  color:var(--article);
+  color: var(--article);
 }
 
-.profileNameLogged{
-  color:var(--tertiary-text-color);
+.profileNameLogged {
+  color: var(--tertiary-text-color);
 }
 
-.profileName{
-  color:var(--article);
+.profileName {
+  color: var(--article);
 }
-
 
 .sidebarListWrapper {
   margin: 10px 0;

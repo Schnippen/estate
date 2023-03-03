@@ -19,7 +19,6 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
     event.stopPropagation();
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
     navigate("/Item", { state: item });
-    console.log("Klik");
   };
 
   return (

@@ -48,7 +48,15 @@ function SearchForm() {
   };
   //div zamienić na <form>
   return (
-    <div className={styles.search__form}>
+    <div
+      className={styles.search_form}
+      style={{
+        height: isOpened ? "400px" : "200px",
+        transition: "height 0.3s ease-in-out",
+        overflow: "hidden",
+        maxHeight: isOpened ? "400px" : "200px",
+      }}
+    >
       <section className={styles.section}>
         <div>
           <input type="text" />
@@ -71,11 +79,11 @@ function SearchForm() {
             label={"Rodzaj Transakscji"}
           ></Dropdown>
         </div>
-        <div className={styles.dropdown} style={{ width: "100px" }}>
+        <div className={styles.dropdown} style={{ width: "320px" }}>
           <label htmlFor="">Cena w zł</label>
           <Price data={PriceData} handleChange={handleDropdown} />
         </div>
-        <div style={{ width: "320px" }}>
+        <div className={styles.dropdown} style={{ width: "320px" }}>
           <input
             type="text"
             name={"areaPrice"}
@@ -111,6 +119,28 @@ function SearchForm() {
             <HiSearch />
           </Button>
         </div>
+        {isOpened ? (
+          <section className={styles.sectionOpened}>
+            <div style={{ width: "280px" }}>
+              <input
+                type="text"
+                name={"liczbapokoi"}
+                id={"liczba pokoi"}
+                placeholder={"Liczba pokoi"}
+                onChange={(e) => {
+                  handleChange(e);
+                  handleMax(e, 2);
+                }}
+                maxLength={2}
+                onKeyDown={handleKeyDown}
+                className={styles.form_input}
+              />
+            </div>
+            <div>powierzchnia m2</div>
+            <div>rok budowy</div>
+            <div>piętro</div>
+          </section>
+        ) : null}
       </section>
     </div>
   );
