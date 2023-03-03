@@ -7,7 +7,7 @@ function BreadCrumbs({}) {
     <div className={styles.breadcrumbs}>
       <nav className={styles.breadcrumbs_nav}>
         <ul>
-          <Link to={"-1"}>
+          <Link to={"/Offers"}>
             <li>Wróć</li>
           </Link>
           <li>Kategoria</li>

@@ -39,6 +39,7 @@
   user-select: none;
   border-radius: 0 0 5px 5px;
   z-index: 9;
+  box-shadow: var(--box-shadow-dropdown);
 }
 
 .list_active::-webkit-scrollbar {

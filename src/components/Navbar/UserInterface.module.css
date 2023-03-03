@@ -69,6 +69,7 @@
   border-radius: 0 0 10px 10px;
   width: 100%;
   position: absolute;
+  box-shadow: var(--box-shadow-dropdown);
 }
 
 .menu_btnSmall_Opened {
@@ -78,6 +79,7 @@
   border-radius: 0 0 10px 10px;
   width: 100%;
   position: absolute;
+  box-shadow: var(--box-shadow-dropdown);
 }
 
 .menu_list {
@@ -295,7 +297,7 @@
   color: white;
 }
 
-.notLoggedIn_cointainer:hover *{
+.notLoggedIn_cointainer:hover * {
   color: var(--tertiary-text-color);
   transition: all 0.3s ease-in-out 0s;
 }

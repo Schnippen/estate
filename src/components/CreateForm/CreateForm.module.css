@@ -121,7 +121,7 @@
   color: var(--tertiary-text-color);
 }
 
-.svg > svg {
+.icon > svg {
   height: 80px;
   width: 80px;
   margin: 1rem;
@@ -209,7 +209,7 @@
     height: 122px;
   }
 
-  .svg > svg {
+  .icon > svg {
     height: 40px;
     width: 40px;
     margin: 10px;

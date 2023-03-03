@@ -2,54 +2,129 @@ import styles from "./SearchForm.module.css";
 import { useState } from "react";
 import { HiSearch } from "react-icons/hi";
 import Button from "./Button";
+import Dropdown from "./Dropdown";
+import Price from "../components/Price";
+import {
+  TypeOfRealEstate,
+  TypeOfTransaction,
+  PriceData,
+} from "./SearchFormData";
+import useActive from "./useActive";
 
 function SearchForm() {
-  const [selects, setSelects] = useState();
-
-  //Dopisać Inne Kategorie
-  /*
-  const category = {
-    1: "Mieszkanie na sprzedaż",
-    2: "Kawalerka na sprzedaż",
-    3: "Dom na sprzedaż",
-    4: "Działka na sprzedaż",
-    5: "",
-  };
-  //console.log(selects)
-  const handleChange = (e) => {
-    const parsedValue = parseInt(e.target.value);
-    if (parsedValue === 0) {
-      console.log("dowolne qwe");
-      setSelects([...selects]);
-    } else if (parsedValue === 1) {
-      console.log("chuj mam mieszkania na sprzedaż");
-      setSelects(
-        [...selects].filter(
-          (n) => n.titleKategoria === category[1] || category[2]
-        )
-      );
-    } else if (parsedValue === 3) {
-      console.log("pipi mam dom na sprzedaż");
-      setSelects([...selects].filter((n) => n.titleKategoria === category[3]));
-    } else if (parsedValue === 4) {
-      console.log("huhu działki na sprzedaż");
-      setSelects([...selects].filter((n) => n.titleKategoria === category[4]));
-    } else {
-      console.log("siusiu", typeof e.target.value);
+  const [isOpened, setIsOpened] = useActive(false);
+  const [pupu, setpupu] = useState({});
+  //zmienic nazwy state i handlechange
+  const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
+    if (ref.current) {
+      setpupu({
+        ...pupu,
+        [ref.current.name]: ref.current.value,
+      });
     }
   };
 
-  const handleNumberChange = (e) => {
-    const NumberChange = e.target.value;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setpupu({ ...pupu, [e.target.name]: e.target.value });
   };
-  */
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (
+      ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
+    ) {
+      return;
+    }
+    if (e.key < "0" || e.key > "9") {
+      e.preventDefault();
+    }
+  };
+
+  const handleMax = (e: React.ChangeEvent<HTMLInputElement>, limit: number) => {
+    setpupu({
+      ...pupu,
+      [e.target.name]: e.target.value.slice(0, limit),
+    });
+  };
+  //div zamienić na <form>
   return (
     <div className={styles.search__form}>
-      <Button>
-        <HiSearch />
-      </Button>
+      <section className={styles.section}>
+        <div>
+          <input type="text" />
+        </div>
+        <div className={styles.dropdown}>
+          <Dropdown
+            data={TypeOfRealEstate}
+            name={"TypeOfRealEstate"}
+            handleChange={handleDropdown}
+            placeholder={"Rodzaj Nieruchomości"}
+            label={"Rodzaj Nieruchomości"}
+          ></Dropdown>
+        </div>
+        <div className={styles.dropdown}>
+          <Dropdown
+            data={TypeOfTransaction}
+            name={"TypeOfTransaction"}
+            handleChange={handleDropdown}
+            placeholder={"Rodzaj Transakscji"}
+            label={"Rodzaj Transakscji"}
+          ></Dropdown>
+        </div>
+        <div className={styles.dropdown} style={{ width: "100px" }}>
+          <label htmlFor="">Cena w zł</label>
+          <Price data={PriceData} handleChange={handleDropdown} />
+        </div>
+        <div style={{ width: "320px" }}>
+          <input
+            type="text"
+            name={"areaPrice"}
+            id={"cena za metr"}
+            placeholder={"cena OD"}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 7);
+            }}
+            maxLength={7}
+            onKeyDown={handleKeyDown}
+            className={styles.form_input}
+          />
+          <input
+            type="text"
+            name={"areaPrice"}
+            id={"cena za metr"}
+            placeholder={"cena DO"}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 7);
+            }}
+            maxLength={7}
+            onKeyDown={handleKeyDown}
+            className={styles.form_input}
+          />
+        </div>
+        <div>
+          <button onClick={() => setIsOpened(!isOpened)}>rozwiń</button>
+        </div>
+        <div className={styles.submitButton}>
+          <Button>
+            <HiSearch />
+          </Button>
+        </div>
+      </section>
     </div>
   );
 }
 
 export default SearchForm;
+
+/*      <span>tutaj rozwijamy</span>
+      <div>liczba pokoi</div>
+      <div>powierzchnia m2</div>
+      <div>rok budowy</div>
+      <div>piętro</div>
+      <div>
+        <Button>
+          <HiSearch />
+        </Button>
+      </div>*/

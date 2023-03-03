@@ -7,7 +7,7 @@ import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "../components/Dropdown";
 import Price from "../components/Price";
 import MobileContext from "../context/MobileContext";
@@ -25,10 +25,10 @@ function LandingPage() {
     City: "",
     TypeOfRealEstate: "",
     TypeOfTransaction: "",
-    PriceFrom: "0",
+    PriceFrom: "",
     PriceTo: "",
   });
-  //console.log(queryDetails);
+  //console.log(queryDetails,'querydetails');
 
   const handleChange = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
@@ -42,7 +42,7 @@ function LandingPage() {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
   };
-
+  //exportuj typeOf
   const TypeOfRealEstate = [
     { value: "Mieszkanie na sprzedaż", label: "Mieszkania" },
     { value: "Dom na sprzedaż", label: "Domy" },
@@ -96,22 +96,13 @@ function LandingPage() {
   let Lorem =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, nemo! Voluptatibus soluta numquam rerum sint nisi voluptatem enim totam asperiores!";
 
-  let query = "http://localhost:3100/items?";
+  const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
-    console.table(queryDetails);
-    fetch(query)
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(query);
-        // update the state with the filtered data
-        //this.setState({ products: data });
-      })
-      .catch((err) => {
-        console.log(query);
-        // handle any errors
-      });
+    //console.table(queryDetails);
+    navigate("/Offers", { state: queryDetails });
   };
 
   const errorMessage = {
@@ -128,7 +119,10 @@ function LandingPage() {
           <div className={styles.errorDiv}>{errorMessage.message1}</div>
         ) : null}
         {isMobile ? null : (
-          <form className={styles.section_searchbar} onSubmit={handleSubmit}>
+          <form
+            className={styles.section_searchbar}
+            onSubmit={(e) => handleSubmit(e)}
+          >
             <div className={styles.form_div_wrapper}>
               <HiOutlineLocationMarker className={styles.svg} />
               <input
@@ -157,7 +151,13 @@ function LandingPage() {
                 label={"Rodzaj Transakscji"}
               ></Dropdown>
             </div>
-            <div className={styles.dropdown} style={{ width: "320px" }}>
+            <div
+              className={styles.dropdown}
+              style={{
+                width: "320px",
+                boxShadow: renderError ? "0px 0px 11px 4px red" : "none",
+              }}
+            >
               <label htmlFor="">Cena w zł</label>
               <Price data={PriceData} handleChange={handleChange} />
             </div>

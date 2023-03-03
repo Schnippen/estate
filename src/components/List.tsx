@@ -7,6 +7,7 @@ import styles from "./List.module.css";
 import useActive from "./useActive";
 import { TbMap2 } from "react-icons/tb";
 import Dropdown from "./Dropdown";
+import { useLocation } from "react-router-dom";
 
 type Item = {
   [key: string]: string;
@@ -17,14 +18,16 @@ function List({ isMobile }: { isMobile: boolean }) {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);
   const [databaseState, setDatabaseState] = useState<Item[]>([]);
+  const [query, setQuery] = useState<Item[]>();
 
-  const query = {
-    City: "",
-    titleKategoria: "",
-    marketInfo: "",
-    PriceFrom: "",
-    PriceTo: "",
-  };
+  //sending query from LandingPage
+  const location = useLocation();
+  const queryDetails = location.state;
+  useEffect(() => {
+    setQuery(queryDetails);
+    //console.log("oświeżyłem na location", queryDetails);
+    //console.log(query, "jestem state");
+  }, [queryDetails]);
 
   //Filters database for specific query
   const getSpecificQuery = (data: any, query: any) => {
@@ -62,15 +65,10 @@ function List({ isMobile }: { isMobile: boolean }) {
         }
       }
     }
-    console.log(filteredData);
+    //console.log(filteredData);
     return filteredData;
-    //parseFloat(shit["priceInfo"].slice(0,-2).split(" ").join(""))
-    /*return data.filter(
-      (object: any) => object["titleKategoria"] === "Działka na sprzedaż"
-    );*/
   };
 
-  //console.log(databaseState);
   const fetchDatabase: () => Promise<void> = async () => {
     const response = await fetch(`http://localhost:3100/items`);
     const data = await response.json();
@@ -78,8 +76,7 @@ function List({ isMobile }: { isMobile: boolean }) {
     setDatabaseState(specificData);
     setIsLoading(false);
   };
-  getSpecificQuery(databaseState, query);
-  // Database bedzie łączyć sie z serwerem
+
   useEffect(() => {
     fetchDatabase();
   }, []);

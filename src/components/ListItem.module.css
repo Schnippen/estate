@@ -25,6 +25,7 @@ a {
   border-radius: 16px;
   grid-row-start: 1;
   grid-row-end: 1;
+  cursor: pointer;
 }
 
 .grid_img img {
@@ -45,7 +46,7 @@ a {
   height: 100%;
   width: 100%;
   font-size: 22px;
-
+  cursor: pointer;
   grid-column-start: 1;
   grid-column-end: span 4;
   display: flex;
@@ -58,6 +59,7 @@ a {
   font-size: 16px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .grid_mini_price {
@@ -66,6 +68,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .grid_mini_floor {
   grid-column-start: 1;
@@ -147,4 +150,3 @@ a {
   align-items: center;
   justify-content: center;
 }
-

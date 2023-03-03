@@ -8,6 +8,7 @@
   height: 60px;
   align-items: center;
   background-color: var(--secondary-color);
+  text-align: center;
 }
 .section__options > div {
   margin: 0 10px;
