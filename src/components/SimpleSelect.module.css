@@ -1,0 +1,13 @@
+
+.simple_select{
+    display: flex;
+    flex-direction: column;
+}
+
+.select_form{
+    width: 100%;
+}
+
+.select_form>option{
+    padding: 0 8px;
+}

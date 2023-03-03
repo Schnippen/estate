@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import LandingPage from "./pages/LandingPage";
+import Item from "./pages/Item";
+import Offers from "./pages/Offers";
+import NotFound from "./components/NotFound";
+//import Leaflet from "./Leaflet/Leaflet";
+import UserSignUp from "./components/Navbar/UserSignUp";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer";
+import Blog from "./components/Blog";
+import "./App.css";
+import CreateForm from "./components/CreateForm/CreateForm";
+import { AuthContextProvider } from "./context/AuthContext";
+import { MobileContextProvider } from "./context/MobileContext";
+import Favorites from "./components/Favorites";
 
+//user context
 function App() {
+  /*
+  const [user, setUser] = useState();
+  const [isLogged, setIsLogged] = useState();
+  const UserContext = createContext(null);
+  isMobile???
+  */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MobileContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+        </AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Offers" element={<Offers />} />
+          <Route path="/Item" element={<Item />} />
+          <Route path="/UserSignUp" element={<UserSignUp />} />
+          <Route path="/CreateForm" element={<CreateForm />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/Blog" element={<Blog />} />
+          <Route path="/Favorites" element={<Favorites />} />
+        </Routes>
+        <Footer />
+      </MobileContextProvider>
+    </>
   );
 }
 
 export default App;
+//<Route path="/Leaflet" element={<Leaflet />} />
