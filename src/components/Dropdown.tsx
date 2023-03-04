@@ -38,6 +38,14 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
   }, [isOpened]);
 
+  const handleOnPaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
+
+  const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     handleChange(inputRef);
   }, [selectedOption]);
@@ -53,6 +61,8 @@ const Dropdown: React.FC<DropdownProps> = ({
         placeholder={placeholder}
         value={InputTitle}
         onChange={(e) => setInputTitleState(e.target.value)}
+        onPaste={handleOnPaste}
+        onKeyDown={handleOnKeyDown}
       />
       <input type="hidden" value={selectedOption} ref={inputRef} name={name} />
       {isOpened && (
