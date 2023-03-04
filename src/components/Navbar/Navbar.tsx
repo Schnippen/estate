@@ -7,6 +7,7 @@ import useActive from "../useActive";
 import SidebarMobile from "./SidebarMobile";
 import MobileContext from "../../context/MobileContext";
 import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";
+import DarkThemeButton from "../DarkThemeButton";
 
 function Navbar() {
   const isMobile = useContext(MobileContext);
@@ -63,8 +64,8 @@ function Navbar() {
           </Link>
         </ul>
       )}
-
       {isMobile ? null : <UserInterface />}
+      {isMobile ? null : <DarkThemeButton />}
     </nav>
   );
 }

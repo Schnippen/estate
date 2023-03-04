@@ -11,7 +11,7 @@
 
 .section {
   display: grid;
-  background-color: blueviolet;
+  background-color: var(--tertiary-color);
   width: 100%;
   height: 100%;
   grid-template-columns: repeat(5, 1fr) repeat(2, 100px);
@@ -23,7 +23,7 @@
 .sectionOpened {
   height: 200px;
   width: 100%;
-  background-color: red;
+  background-color: var(--tertiary-color);
   display: block;
   grid-column-start: span 8;
   display: grid;
@@ -75,11 +75,14 @@
 }
 
 .form_input_container {
-  width: 100%;
+  height: 80px;
+  background-color: var(--secondary-color);
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  padding: 0 10px;
+  flex-direction: column;
 }
 
 .form_input {
@@ -95,16 +98,17 @@
   outline: solid var(--tertiary-text-color);
 }
 
-.form_input_container > label {
-  padding: 5px 0;
+.form_input_container label {
+  justify-content: center;
+  color: white;
+  padding: 5px 10px;
 }
 
 .form_div_wrapper {
   position: relative;
-  padding: 0.5rem 0;
 }
 
-.inputText {
+.inputCity {
   width: 100%;
   height: 40px;
   box-sizing: border-box;
@@ -113,7 +117,9 @@
   transition: all 0.3s ease 0s;
   outline: none;
 }
-
+.inputCity:focus {
+  outline: solid var(--tertiary-text-color);
+}
 .svg {
   position: absolute;
   box-sizing: border-box;
@@ -126,4 +132,44 @@
   .search__form {
     width: 100%;
   }
+}
+
+.small_button {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
+  transition: all 0.3s ease 0s;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small_button:hover {
+  color: var(--tertiary-text-color);
+  background-color: var(--tertiary-color);
+}
+.small_button:active {
+  background-color: #051034;
+  transform: scale(0.8, 0.8);
+  transition: 0.15s;
+  box-shadow: 0 0 2px 6px var(--tertiary-text-color);
+}
+
+.small_button:disabled {
+  background-color: var(--disabled);
+  border: 2px solid var(--secondary-text-color);
+}
+
+.small_button_ArrowOpened {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(0deg);
+}
+
+.small_button_ArrowClosed {
+  transition: transform 0.5s ease-in-out;
+  transform: rotate(180deg);
 }

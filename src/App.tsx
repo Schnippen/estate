@@ -13,6 +13,7 @@ import "./App.css";
 import CreateForm from "./components/CreateForm/CreateForm";
 import { AuthContextProvider } from "./context/AuthContext";
 import { MobileContextProvider } from "./context/MobileContext";
+import { DarkThemeContextProvider } from "./context/DarkThemeContext";
 import Favorites from "./components/Favorites";
 
 //user context
@@ -27,20 +28,22 @@ function App() {
   return (
     <>
       <MobileContextProvider>
-        <AuthContextProvider>
-          <Navbar />
-        </AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/Offers" element={<Offers />} />
-          <Route path="/Item" element={<Item />} />
-          <Route path="/UserSignUp" element={<UserSignUp />} />
-          <Route path="/CreateForm" element={<CreateForm />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/Blog" element={<Blog />} />
-          <Route path="/Favorites" element={<Favorites />} />
-        </Routes>
-        <Footer />
+        <DarkThemeContextProvider>
+          <AuthContextProvider>
+            <Navbar />
+          </AuthContextProvider>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/Offers" element={<Offers />} />
+            <Route path="/Item" element={<Item />} />
+            <Route path="/UserSignUp" element={<UserSignUp />} />
+            <Route path="/CreateForm" element={<CreateForm />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/Blog" element={<Blog />} />
+            <Route path="/Favorites" element={<Favorites />} />
+          </Routes>
+          <Footer />
+        </DarkThemeContextProvider>
       </MobileContextProvider>
     </>
   );

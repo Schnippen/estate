@@ -1,6 +1,10 @@
 import styles from "./SearchForm.module.css";
 import { useState } from "react";
-import { HiSearch, HiOutlineLocationMarker } from "react-icons/hi";
+import {
+  HiSearch,
+  HiOutlineLocationMarker,
+  HiChevronDown,
+} from "react-icons/hi";
 import Button from "./Button";
 import Dropdown from "./Dropdown";
 import Price from "../components/Price";
@@ -11,9 +15,19 @@ import {
 } from "./SearchFormData";
 import useActive from "./useActive";
 
+interface QueryDetails {
+  [key: string]: string;
+}
+
 function SearchForm() {
   const [isOpened, setIsOpened] = useActive(false);
-  const [pupu, setpupu] = useState({});
+  const [pupu, setpupu] = useState({
+    City: "",
+    TypeOfRealEstate: "",
+    TypeOfTransaction: "",
+    PriceFrom: "",
+    PriceTo: "",
+  });
   //zmienic nazwy state i handlechange
   const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
@@ -47,54 +61,54 @@ function SearchForm() {
     });
   };
 
-const AreaPrice = ():JSX.Element => {
-  return (
-    <div className={styles.areaPrice} style={{ width: "320px" }}>
-      <label htmlFor="">Cena za m²</label>
-      <div
-        style={{
-          display: "flex",
-          width: "300px",
-          borderRadius: "5px",
-        }}
-      >
-        <input
-          type="text"
-          name={"areaPrice"}
-          id={"cena za metr"}
-          placeholder={"Cena od..."}
-          onChange={(e) => {
-            handleChange(e);
-            handleMax(e, 7);
-          }}
-          maxLength={7}
-          onKeyDown={handleKeyDown}
-          className={styles.form_input}
-        />
+  const AreaPrice = (): JSX.Element => {
+    return (
+      <div className={styles.areaPrice} style={{ width: "320px" }}>
+        <label htmlFor="">Cena za m²</label>
         <div
           style={{
-            height: "40px",
-            border: "solid #554971",
-            margin: "0 5px",
+            display: "flex",
+            width: "300px",
+            borderRadius: "5px",
           }}
-        ></div>
-        <input
-          type="text"
-          name={"areaPrice"}
-          id={"cena za metr"}
-          placeholder={"Cena do..."}
-          onChange={(e) => {
-            handleChange(e);
-            handleMax(e, 7);
-          }}
-          maxLength={7}
-          onKeyDown={handleKeyDown}
-          className={styles.form_input}
-        />
+        >
+          <input
+            type="text"
+            name={"areaPrice"}
+            id={"cena za metr"}
+            placeholder={"Cena od..."}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 7);
+            }}
+            maxLength={7}
+            onKeyDown={handleKeyDown}
+            className={styles.form_input}
+          />
+          <div
+            style={{
+              height: "40px",
+              border: "solid #554971",
+              margin: "0 5px",
+            }}
+          ></div>
+          <input
+            type="text"
+            name={"areaPrice"}
+            id={"cena za metr"}
+            placeholder={"Cena do..."}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 7);
+            }}
+            maxLength={7}
+            onKeyDown={handleKeyDown}
+            className={styles.form_input}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
   //div zamienić na <form>
   return (
     <div
@@ -107,15 +121,19 @@ const AreaPrice = ():JSX.Element => {
       }}
     >
       <section className={styles.section}>
-        <div className={styles.form_div_wrapper}>
-          <HiOutlineLocationMarker className={styles.svg} />
-          <input
-            type="text"
-            placeholder="np. miasto"
-            name="City"
-            className={styles.inputText}
-            onChange={handleChange}
-          />
+        <div className={styles.form_input_container}>
+          <label htmlFor="City">City</label>
+          <div className={styles.form_div_wrapper}>
+            <HiOutlineLocationMarker className={styles.svg} />
+            <input
+              type="text"
+              placeholder="np. miasto"
+              name="City"
+              id="City"
+              className={styles.inputCity}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <div className={styles.dropdown}>
           <Dropdown
@@ -141,7 +159,20 @@ const AreaPrice = ():JSX.Element => {
         </div>
         <AreaPrice />
         <div>
-          <button onClick={() => setIsOpened(!isOpened)}>rozwiń</button>
+          <button
+            onClick={() => setIsOpened(!isOpened)}
+            className={styles.small_button}
+            style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
+          >
+            <h3>Rozwiń</h3>
+            <HiChevronDown
+              className={
+                isOpened
+                  ? styles.small_button_ArrowClosed
+                  : styles.small_button_ArrowOpened
+              }
+            />
+          </button>
         </div>
         <div className={styles.submitButton}>
           <Button>
@@ -150,11 +181,15 @@ const AreaPrice = ():JSX.Element => {
         </div>
         {isOpened ? (
           <section className={styles.sectionOpened}>
-            <div style={{ width: "280px" }}>
+            <div
+              className={styles.form_input_container}
+              style={{ width: "200px" }}
+            >
+              <label htmlFor="numberOfRooms">Liczba pokoi</label>
               <input
                 type="text"
-                name={"liczbapokoi"}
-                id={"liczba pokoi"}
+                name={"numberOfRooms"}
+                id={"numberOfRooms"}
                 placeholder={"Liczba pokoi"}
                 onChange={(e) => {
                   handleChange(e);
@@ -165,11 +200,15 @@ const AreaPrice = ():JSX.Element => {
                 className={styles.form_input}
               />
             </div>
-            <div style={{ width: "280px" }}>
+            <div
+              className={styles.form_input_container}
+              style={{ width: "200px" }}
+            >
+              <label htmlFor="area">Powierzchnia</label>
               <input
                 type="text"
-                name={"powierzchnia"}
-                id={"powierzchnia"}
+                name={"area"}
+                id={"area"}
                 placeholder={"Powierzchnia"}
                 onChange={(e) => {
                   handleChange(e);
@@ -180,11 +219,15 @@ const AreaPrice = ():JSX.Element => {
                 className={styles.form_input}
               />
             </div>
-            <div style={{ width: "280px" }}>
+            <div
+              className={styles.form_input_container}
+              style={{ width: "200px" }}
+            >
+              <label htmlFor="yearOfConstruction">Rok Budowy</label>
               <input
                 type="text"
-                name={"rok budowy"}
-                id={"rok budowy"}
+                name={"yearOfConstruction"}
+                id={"yearOfConstruction"}
                 placeholder={"Rok budowy"}
                 onChange={(e) => {
                   handleChange(e);

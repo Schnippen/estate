@@ -26,7 +26,7 @@
   display: flex;
   height: 100px;
   align-items: center;
-  background-color: rgba(99, 118, 141, 1);
+  background-color:var(--primary-color);
   border-radius: 5px;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .errorDiv {
-  background-color: rgba(99, 118, 141, 1);
+  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   height: 50px;
@@ -64,7 +64,7 @@
 }
 
 .section_searchbar > div {
-  background-color: #554971;
+  background-color: var(--secondary-color);
   margin: 0 1rem;
   border-radius: 5px;
 }
