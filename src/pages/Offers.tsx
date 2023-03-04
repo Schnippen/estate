@@ -11,8 +11,8 @@ function Offers() {
 
   return (
     <>
-      <SearchForm />
       <main>
+        
         <List isMobile={isMobile} />
       </main>
     </>

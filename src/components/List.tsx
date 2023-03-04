@@ -8,7 +8,7 @@ import useActive from "./useActive";
 import { TbMap2 } from "react-icons/tb";
 import Dropdown from "./Dropdown";
 import { useLocation } from "react-router-dom";
-
+import SearchForm from "../components/SearchForm";
 type Item = {
   [key: string]: string;
 };
@@ -171,6 +171,7 @@ function List({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
+      <SearchForm />
       <section className={styles.section__main}>
         <section className={styles.section__options}>
           <div>

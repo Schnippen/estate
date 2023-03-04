@@ -1,5 +1,5 @@
 import styles from "./SearchForm.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   HiSearch,
   HiOutlineLocationMarker,
@@ -21,13 +21,23 @@ interface QueryDetails {
 
 function SearchForm() {
   const [isOpened, setIsOpened] = useActive(false);
+  const [renderErrorPrice, setRenderErrorPrice] = useState(false);
+  const [renderErrorArea, setRenderErrorArea] = useState(false);
+  const [renderErrorConstruction, setRenderErrorConstruction] = useState(false);
   const [pupu, setpupu] = useState({
     City: "",
     TypeOfRealEstate: "",
     TypeOfTransaction: "",
     PriceFrom: "",
     PriceTo: "",
+    areaPriceFrom: "",
+    areaPriceTo: "",
+    numberOfRooms: "",
+    Area: "",
+    YearOfConstructionFrom: "",
+    YearOfConstructionTo: "",
   });
+  console.table(pupu);
   //zmienic nazwy state i handlechange
   const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
@@ -43,6 +53,7 @@ function SearchForm() {
   ) => {
     setpupu({ ...pupu, [e.target.name]: e.target.value });
   };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (
       ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)
@@ -61,54 +72,56 @@ function SearchForm() {
     });
   };
 
-  const AreaPrice = (): JSX.Element => {
-    return (
-      <div className={styles.areaPrice} style={{ width: "320px" }}>
-        <label htmlFor="">Cena za m²</label>
-        <div
-          style={{
-            display: "flex",
-            width: "300px",
-            borderRadius: "5px",
-          }}
-        >
-          <input
-            type="text"
-            name={"areaPrice"}
-            id={"cena za metr"}
-            placeholder={"Cena od..."}
-            onChange={(e) => {
-              handleChange(e);
-              handleMax(e, 7);
-            }}
-            maxLength={7}
-            onKeyDown={handleKeyDown}
-            className={styles.form_input}
-          />
-          <div
-            style={{
-              height: "40px",
-              border: "solid #554971",
-              margin: "0 5px",
-            }}
-          ></div>
-          <input
-            type="text"
-            name={"areaPrice"}
-            id={"cena za metr"}
-            placeholder={"Cena do..."}
-            onChange={(e) => {
-              handleChange(e);
-              handleMax(e, 7);
-            }}
-            maxLength={7}
-            onKeyDown={handleKeyDown}
-            className={styles.form_input}
-          />
-        </div>
-      </div>
-    );
-  };
+  //renderErrorPrice
+  useEffect(() => {
+    let x = parseInt(pupu.PriceFrom);
+    let y = parseInt(pupu.PriceTo);
+    if (x === 0 && y === 0) {
+      setRenderErrorPrice(false);
+    } else if (x > y && y === 0) {
+      setRenderErrorPrice(() => false);
+    } else if (x > y && y > 0) {
+      setRenderErrorPrice(() => true);
+    } else if (x === y) {
+      setRenderErrorPrice(() => true);
+    } else {
+      setRenderErrorPrice(() => false);
+    }
+  }, [pupu.PriceFrom, pupu.PriceTo]);
+
+  //renderErrorArea
+  useEffect(() => {
+    let x = parseInt(pupu.areaPriceFrom);
+    let y = parseInt(pupu.areaPriceTo);
+    if (x === 0 && y === 0) {
+      setRenderErrorArea(false);
+    } else if (x > y && y === 0) {
+      setRenderErrorArea(() => false);
+    } else if (x > y && y > 0) {
+      setRenderErrorArea(() => true);
+    } else if (x === y) {
+      setRenderErrorArea(() => true);
+    } else {
+      setRenderErrorArea(() => false);
+    }
+  }, [pupu.areaPriceFrom, pupu.areaPriceTo]);
+  //renderErrorYearOfConstruction
+  useEffect(() => {
+    let x = parseInt(pupu.YearOfConstructionFrom);
+    let y = parseInt(pupu.YearOfConstructionTo);
+    if (x === 0 && y === 0) {
+      setRenderErrorConstruction(false);
+    } else if (x > y && y === 0) {
+      setRenderErrorConstruction(() => false);
+    } else if (x > y && y > 0) {
+      setRenderErrorConstruction(() => true);
+    } else if (x === y) {
+      setRenderErrorConstruction(() => true);
+    } else {
+      setRenderErrorConstruction(() => false);
+    }
+  }, [pupu.YearOfConstructionFrom, pupu.YearOfConstructionTo]);
+
   //div zamienić na <form>
   return (
     <div
@@ -153,11 +166,68 @@ function SearchForm() {
             label={"Rodzaj Transakscji"}
           ></Dropdown>
         </div>
-        <div className={styles.dropdown} style={{ width: "320px" }}>
+        <div
+          className={styles.dropdown}
+          style={{
+            width: "320px",
+            boxShadow: renderErrorPrice ? "0px 0px 11px 4px red" : "none",
+          }}
+        >
           <label htmlFor="">Cena w zł</label>
           <Price data={PriceData} handleChange={handleDropdown} />
         </div>
-        <AreaPrice />
+        <div
+          className={styles.areaPrice}
+          style={{
+            width: "320px",
+            boxShadow: renderErrorConstruction
+              ? "0px 0px 11px 4px red"
+              : "none",
+          }}
+        >
+          <label htmlFor="">Rok Budowy</label>
+          <div
+            style={{
+              display: "flex",
+              width: "300px",
+              borderRadius: "5px",
+            }}
+          >
+            <input
+              type="text"
+              name={"YearOfConstructionFrom"}
+              id={"rok_budowy"}
+              placeholder={"Rok od..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 4);
+              }}
+              maxLength={4}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+            <div
+              style={{
+                height: "40px",
+                border: "solid #554971",
+                margin: "0 5px",
+              }}
+            ></div>
+            <input
+              type="text"
+              name={"YearOfConstructionTo"}
+              id={"rok_budowy"}
+              placeholder={"Rok do..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 4);
+              }}
+              maxLength={4}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+          </div>
+        </div>
         <div>
           <button
             onClick={() => setIsOpened(!isOpened)}
@@ -207,7 +277,7 @@ function SearchForm() {
               <label htmlFor="area">Powierzchnia</label>
               <input
                 type="text"
-                name={"area"}
+                name={"Area"}
                 id={"area"}
                 placeholder={"Powierzchnia"}
                 onChange={(e) => {
@@ -226,7 +296,7 @@ function SearchForm() {
               <label htmlFor="yearOfConstruction">Rok Budowy</label>
               <input
                 type="text"
-                name={"yearOfConstruction"}
+                name={"YearOfConstruction"}
                 id={"yearOfConstruction"}
                 placeholder={"Rok budowy"}
                 onChange={(e) => {
@@ -237,6 +307,56 @@ function SearchForm() {
                 onKeyDown={handleKeyDown}
                 className={styles.form_input}
               />
+            </div>
+            <div
+              className={styles.areaPrice}
+              style={{
+                width: "320px",
+                boxShadow: renderErrorArea ? "0px 0px 11px 4px red" : "none",
+              }}
+            >
+              <label htmlFor="">Cena za m²</label>
+              <div
+                style={{
+                  display: "flex",
+                  width: "300px",
+                  borderRadius: "5px",
+                }}
+              >
+                <input
+                  type="text"
+                  name={"areaPriceFrom"}
+                  id={"cena za metr"}
+                  placeholder={"Cena od..."}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleMax(e, 7);
+                  }}
+                  maxLength={7}
+                  onKeyDown={handleKeyDown}
+                  className={styles.form_input}
+                />
+                <div
+                  style={{
+                    height: "40px",
+                    border: "solid #554971",
+                    margin: "0 5px",
+                  }}
+                ></div>
+                <input
+                  type="text"
+                  name={"areaPriceTo"}
+                  id={"cena za metr"}
+                  placeholder={"Cena do..."}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleMax(e, 7);
+                  }}
+                  maxLength={7}
+                  onKeyDown={handleKeyDown}
+                  className={styles.form_input}
+                />
+              </div>
             </div>
             <div>piętro</div>
           </section>
