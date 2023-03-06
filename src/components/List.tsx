@@ -13,20 +13,49 @@ type Item = {
   [key: string]: string;
 };
 
+type QueryDetails = {
+  City: string;
+  TypeOfRealEstate: string;
+  TypeOfTransaction: string;
+  PriceFrom: string;
+  PriceTo: string;
+  YearOfConstructionFrom: string;
+  YearOfConstructionTo: string;
+  numberOfRooms: string;
+  AreaFrom: string;
+  AreaTo: string;
+  areaPriceFrom: string;
+  areaPriceTo: string;
+};
+
 function List({ isMobile }: { isMobile: boolean }) {
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);
   const [databaseState, setDatabaseState] = useState<Item[]>([]);
-  const [query, setQuery] = useState<Item[]>();
-
+  const [query, setQuery]: [
+    QueryDetails,
+    React.Dispatch<React.SetStateAction<QueryDetails>>
+  ] = useState({
+    City: "",
+    TypeOfRealEstate: "",
+    TypeOfTransaction: "",
+    PriceFrom: "",
+    PriceTo: "",
+    YearOfConstructionFrom: "",
+    YearOfConstructionTo: "",
+    numberOfRooms: "",
+    AreaFrom: "",
+    AreaTo: "",
+    areaPriceFrom: "",
+    areaPriceTo: "",
+  });
   //sending query from LandingPage
   const location = useLocation();
   const queryDetails = location.state;
   useEffect(() => {
+    console.log(queryDetails, "querydetails");
     setQuery(queryDetails);
-    //console.log("oświeżyłem na location", queryDetails);
-    //console.log(query, "jestem state");
   }, [queryDetails]);
 
   //Filters database for specific query
@@ -35,14 +64,15 @@ function List({ isMobile }: { isMobile: boolean }) {
     for (const key in query) {
       if (query[key].length > 0) {
         console.log(`${key}: ${query[key]}`);
-        if (key === "titleKategoria") {
+        if (key === "TypeOfRealEstate") {
           filteredData = filteredData.filter(
-            (object: any) => object[key] === query["titleKategoria"]
+            (object: any) =>
+              object["titleKategoria"] === query["TypeOfRealEstate"]
           );
         }
-        if (key === "marketInfo") {
+        if (key === "TypeOfTransaction") {
           filteredData = filteredData.filter(
-            (object: any) => object[key] === query["marketInfo"]
+            (object: any) => object["marketInfo"] === query["TypeOfTransaction"]
           );
         }
         if (key === "PriceFrom") {
@@ -72,14 +102,16 @@ function List({ isMobile }: { isMobile: boolean }) {
   const fetchDatabase: () => Promise<void> = async () => {
     const response = await fetch(`http://localhost:3100/items`);
     const data = await response.json();
+    console.log(query, "uzywam query");
     const specificData = getSpecificQuery(data, query);
     setDatabaseState(specificData);
     setIsLoading(false);
+    console.log(specificData);
   };
 
   useEffect(() => {
     fetchDatabase();
-  }, []);
+  }, [query]);
 
   //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
   const pagesVisited = currentPage * itemsPerPage;
@@ -171,7 +203,7 @@ function List({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <SearchForm />
+      <SearchForm query={query} setQuery={setQuery} />
       <section className={styles.section__main}>
         <section className={styles.section__options}>
           <div>

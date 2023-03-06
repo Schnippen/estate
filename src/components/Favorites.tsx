@@ -71,7 +71,12 @@ function Favorites() {
             height: "80vh",
           }}
         >
-          <Loading color={"#141212"} svgColor="#554971" top={60} left={35} />
+          <Loading
+            color={"#141212"}
+            svgColor="var(--secondary-color)"
+            top={60}
+            left={47}
+          />
         </div>
       ) : (
         noItems

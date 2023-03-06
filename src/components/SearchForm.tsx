@@ -15,17 +15,34 @@ import {
 } from "./SearchFormData";
 import useActive from "./useActive";
 
-interface QueryDetails {
-  [key: string]: string;
-}
+type QueryDetails = {
+  City: string;
+  TypeOfRealEstate: string;
+  TypeOfTransaction: string;
+  PriceFrom: string;
+  PriceTo: string;
+  YearOfConstructionFrom: string;
+  YearOfConstructionTo: string;
+  numberOfRooms: string;
+  AreaFrom: string;
+  AreaTo: string;
+  areaPriceFrom: string;
+  areaPriceTo: string;
+};
 
-function SearchForm() {
+function SearchForm({
+  query,
+  setQuery,
+}: {
+  query: QueryDetails;
+  setQuery: React.Dispatch<React.SetStateAction<QueryDetails>>;
+}) {
   const [isOpened, setIsOpened] = useActive(false);
   const [renderErrorPrice, setRenderErrorPrice] = useState(false);
   const [renderErrorAreaPrice, setRenderErrorAreaPrice] = useState(false);
   const [renderErrorConstruction, setRenderErrorConstruction] = useState(false);
   const [renderErrorArea, setRenderErrorArea] = useState(false);
-  const [pupu, setpupu] = useState({
+  /*const [query, setQuery] = useState({
     City: "",
     TypeOfRealEstate: "",
     TypeOfTransaction: "",
@@ -38,13 +55,14 @@ function SearchForm() {
     AreaTo: "",
     areaPriceFrom: "",
     areaPriceTo: "",
-  });
-  console.table(pupu);
+  });*/
+  //console.log(query2);
+  //console.table(query);
   //zmienic nazwy state i handlechange
   const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
-      setpupu({
-        ...pupu,
+      setQuery({
+        ...query,
         [ref.current.name]: ref.current.value,
       });
     }
@@ -53,7 +71,7 @@ function SearchForm() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setpupu({ ...pupu, [e.target.name]: e.target.value });
+    setQuery({ ...query, [e.target.name]: e.target.value });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -68,8 +86,8 @@ function SearchForm() {
   };
 
   const handleMax = (e: React.ChangeEvent<HTMLInputElement>, limit: number) => {
-    setpupu({
-      ...pupu,
+    setQuery({
+      ...query,
       [e.target.name]: e.target.value.slice(0, limit),
     });
   };
@@ -91,24 +109,24 @@ function SearchForm() {
   };
 
   useEffect(() => {
-    setRenderErrorPrice(calculateError(pupu.PriceFrom, pupu.PriceTo));
-  }, [pupu.PriceFrom, pupu.PriceTo]);
+    setRenderErrorPrice(calculateError(query.PriceFrom, query.PriceTo));
+  }, [query.PriceFrom, query.PriceTo]);
 
   useEffect(() => {
     setRenderErrorAreaPrice(
-      calculateError(pupu.areaPriceFrom, pupu.areaPriceTo)
+      calculateError(query.areaPriceFrom, query.areaPriceTo)
     );
-  }, [pupu.areaPriceFrom, pupu.areaPriceTo]);
+  }, [query.areaPriceFrom, query.areaPriceTo]);
 
   useEffect(() => {
     setRenderErrorConstruction(
-      calculateError(pupu.YearOfConstructionFrom, pupu.YearOfConstructionTo)
+      calculateError(query.YearOfConstructionFrom, query.YearOfConstructionTo)
     );
-  }, [pupu.YearOfConstructionFrom, pupu.YearOfConstructionTo]);
+  }, [query.YearOfConstructionFrom, query.YearOfConstructionTo]);
 
   useEffect(() => {
-    setRenderErrorArea(calculateError(pupu.AreaFrom, pupu.AreaTo));
-  }, [pupu.AreaFrom, pupu.AreaTo]);
+    setRenderErrorArea(calculateError(query.AreaFrom, query.AreaTo));
+  }, [query.AreaFrom, query.AreaTo]);
 
   //div zamienić na <form>
   return (
