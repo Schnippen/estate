@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ListItem.module.css";
 import { HiMail } from "react-icons/hi";
-import Button from "./Button";
+import Button from "./Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
 import { useAddToFavorites } from "../components/useAddToFavorites";

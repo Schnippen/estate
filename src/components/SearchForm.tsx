@@ -5,7 +5,7 @@ import {
   HiOutlineLocationMarker,
   HiChevronDown,
 } from "react-icons/hi";
-import Button from "./Button";
+import Button from "./Buttons/Button";
 import Dropdown from "./Dropdown";
 import Price from "../components/Price";
 import {

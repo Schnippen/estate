@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMaps from "../GoogleMaps";
 import styles from "../Item/ItemInfoDescription.module.css";
-import Table from "./../Table";
+import Table from "./Table";
 import useActive from "../useActive";
 import { HiChevronDown, HiOutlineX } from "react-icons/hi";
 import { GrMapLocation } from "react-icons/gr";

@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  background-color: rgba(99, 118, 141, 1);
+  background-color:var(--primary-color);
   display: block;
   bottom: 0;
   padding: 2rem 6rem;

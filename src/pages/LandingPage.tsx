@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../styles/LandingPage.module.css";
 import Card from "../components/Card";
-import Button from "../components/Button";
+import Button from "../components/Buttons/Button";
 import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
@@ -33,7 +33,7 @@ function LandingPage() {
     PriceFrom: "",
     PriceTo: "",
   });
-  console.log(queryDetails,'landingpage');
+  console.log(queryDetails, "landingpage");
 
   const handleChange = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {

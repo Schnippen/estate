@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
-import ButtonExit from "../Buttons/ButtonExit";
+import ButtonExit from "./Buttons/ButtonExit";
 import styles from "../components/Item/ItemSideArticleCredit.module.css";
 
 type TermsOfServiceTypes = {
