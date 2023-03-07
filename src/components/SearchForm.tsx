@@ -33,9 +33,13 @@ type QueryDetails = {
 function SearchForm({
   query,
   setQuery,
+  handleForm,
+  searchFormLength,
 }: {
   query: QueryDetails;
   setQuery: React.Dispatch<React.SetStateAction<QueryDetails>>;
+  handleForm: (e: React.FormEvent<HTMLFormElement>) => void;
+  searchFormLength:number;
 }) {
   const [isOpened, setIsOpened] = useActive(false);
   const [renderErrorPrice, setRenderErrorPrice] = useState(false);
@@ -114,7 +118,7 @@ function SearchForm({
 
   //div zamienić na <form>
   return (
-    <div
+    <form
       className={styles.search_form}
       style={{
         height: isOpened ? "400px" : "200px",
@@ -122,6 +126,7 @@ function SearchForm({
         overflow: "hidden",
         maxHeight: isOpened ? "400px" : "200px",
       }}
+      onSubmit={(e) => handleForm(e)}
     >
       <section className={styles.section}>
         <div className={styles.form_input_container}>
@@ -238,6 +243,7 @@ function SearchForm({
           <Button>
             <HiSearch />
           </Button>
+          {searchFormLength}
         </div>
         {isOpened ? (
           <section className={styles.sectionOpened}>
@@ -367,7 +373,7 @@ function SearchForm({
           </section>
         ) : null}
       </section>
-    </div>
+    </form>
   );
 }
 

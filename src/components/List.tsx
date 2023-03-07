@@ -32,6 +32,7 @@ function List({ isMobile }: { isMobile: boolean }) {
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);
+  const [searchFormLength, setSearchFormLength] = useState<number>(0);
   const [databaseState, setDatabaseState] = useState<Item[]>([]);
   const [query, setQuery]: [
     QueryDetails,
@@ -54,8 +55,6 @@ function List({ isMobile }: { isMobile: boolean }) {
     QueryDetails,
     React.Dispatch<React.SetStateAction<QueryDetails>>
   ] = useState(query);
-
-  //console.log(querySearchForm,"querySearchForm");
 
   //sending query from LandingPage
   const location = useLocation();
@@ -118,13 +117,48 @@ function List({ isMobile }: { isMobile: boolean }) {
     [databaseState, query]
   );
 
+  //initialize database in to state
   useEffect(() => {
     fetchDatabase();
   }, [query]);
 
-  //handleForm
+  console.log(querySearchForm, "querySearchForm");
+
+  const fetchDatabaseSearchForm = useMemo(
+    () => async () => {
+      const response = await fetch(`http://localhost:3100/items`);
+      const data = await response.json();
+      const specificData = getSpecificQuery(data, querySearchForm);
+      setDatabaseState(specificData);
+      setIsLoading(false);
+      console.log(specificData);
+      console.log(specificData.length, "searchform odpowiedź");
+    },
+    [databaseState, querySearchForm]
+  );
+
+  //fetch for searchform result length
+  const fetchDatabaseSearchFormResultLength = useMemo(
+    () => async () => {
+      const response = await fetch(`http://localhost:3100/items`);
+      const data = await response.json();
+      const specificData = getSpecificQuery(data, querySearchForm);
+      return specificData.length;
+    },
+    [databaseState, querySearchForm]
+  );
+
+  useEffect(() => {
+    fetchDatabaseSearchFormResultLength().then((result) => {
+      setSearchFormLength(result);
+    });
+  }, [querySearchForm]);
+
+  //handleForm SearchForm
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(querySearchForm);
+    fetchDatabaseSearchForm();
   };
 
   //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
@@ -217,7 +251,12 @@ function List({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <SearchForm query={querySearchForm} setQuery={setQuerySearchForm} />
+      <SearchForm
+        query={querySearchForm}
+        setQuery={setQuerySearchForm}
+        handleForm={handleForm}
+        searchFormLength={searchFormLength}
+      />
       <section className={styles.section__main}>
         <section className={styles.section__options}>
           <div>
