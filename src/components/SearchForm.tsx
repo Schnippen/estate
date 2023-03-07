@@ -42,23 +42,7 @@ function SearchForm({
   const [renderErrorAreaPrice, setRenderErrorAreaPrice] = useState(false);
   const [renderErrorConstruction, setRenderErrorConstruction] = useState(false);
   const [renderErrorArea, setRenderErrorArea] = useState(false);
-  /*const [query, setQuery] = useState({
-    City: "",
-    TypeOfRealEstate: "",
-    TypeOfTransaction: "",
-    PriceFrom: "",
-    PriceTo: "",
-    YearOfConstructionFrom: "",
-    YearOfConstructionTo: "",
-    numberOfRooms: "",
-    AreaFrom: "",
-    AreaTo: "",
-    areaPriceFrom: "",
-    areaPriceTo: "",
-  });*/
-  //console.log(query2);
-  //console.table(query);
-  //zmienic nazwy state i handlechange
+
   const handleDropdown = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {
       setQuery({

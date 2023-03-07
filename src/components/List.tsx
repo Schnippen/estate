@@ -1,6 +1,6 @@
 import React from "react";
 import ListItem from "./ListItem";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Pagination from "./Pagination";
 import Loading from "./Loading";
 import styles from "./List.module.css";
@@ -50,6 +50,13 @@ function List({ isMobile }: { isMobile: boolean }) {
     areaPriceFrom: "",
     areaPriceTo: "",
   });
+  const [querySearchForm, setQuerySearchForm]: [
+    QueryDetails,
+    React.Dispatch<React.SetStateAction<QueryDetails>>
+  ] = useState(query);
+
+  //console.log(querySearchForm,"querySearchForm");
+
   //sending query from LandingPage
   const location = useLocation();
   const queryDetails = location.state;
@@ -95,23 +102,30 @@ function List({ isMobile }: { isMobile: boolean }) {
         }
       }
     }
-    //console.log(filteredData);
+    console.log(filteredData);
     return filteredData;
   };
 
-  const fetchDatabase: () => Promise<void> = async () => {
-    const response = await fetch(`http://localhost:3100/items`);
-    const data = await response.json();
-    console.log(query, "uzywam query");
-    const specificData = getSpecificQuery(data, query);
-    setDatabaseState(specificData);
-    setIsLoading(false);
-    console.log(specificData);
-  };
+  const fetchDatabase = useMemo(
+    () => async () => {
+      const response = await fetch(`http://localhost:3100/items`);
+      const data = await response.json();
+      const specificData = getSpecificQuery(data, query);
+      setDatabaseState(specificData);
+      setIsLoading(false);
+      console.log(specificData);
+    },
+    [databaseState, query]
+  );
 
   useEffect(() => {
     fetchDatabase();
   }, [query]);
+
+  //handleForm
+  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
 
   //jest bug w paginacji, przy zmianie itemsPerPage pokazuje zakres wiekszy niz ostatina strona
   const pagesVisited = currentPage * itemsPerPage;
@@ -203,7 +217,7 @@ function List({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      <SearchForm query={query} setQuery={setQuery} />
+      <SearchForm query={querySearchForm} setQuery={setQuerySearchForm} />
       <section className={styles.section__main}>
         <section className={styles.section__options}>
           <div>

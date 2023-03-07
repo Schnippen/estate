@@ -5,8 +5,11 @@ const DarkThemeContext = createContext<{
 }>({ toggleTheme: () => {} });
 
 export const DarkThemeContextProvider = ({ children }: { children: any }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false);
-
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(() => {
+    const storedTheme = localStorage.getItem("DarkTheme");
+    return storedTheme ? JSON.parse(storedTheme) : false;
+  });
+    console.log(!!localStorage.getItem("DarkTheme"));
   useEffect(() => {
     const root = document.documentElement;
     if (isDarkTheme) {
@@ -21,6 +24,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#daa520");
+      localStorage.setItem("DarkTheme", "true");
     } else {
       root.style.setProperty("--primary-color", "#63768d");
       root.style.setProperty("--secondary-color", "#554971");
@@ -33,6 +37,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#daa520");
+      localStorage.setItem("DarkTheme", "false");
     }
   }, [isDarkTheme]);
 
