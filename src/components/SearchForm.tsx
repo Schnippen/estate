@@ -116,6 +116,23 @@ function SearchForm({
     setRenderErrorArea(calculateError(query.AreaFrom, query.AreaTo));
   }, [query.AreaFrom, query.AreaTo]);
 
+  const handleReset=()=>{
+    setQuery({
+      City: "",
+      TypeOfRealEstate: "",
+      TypeOfTransaction: "",
+      PriceFrom: "",
+      PriceTo: "",
+      YearOfConstructionFrom: "",
+      YearOfConstructionTo: "",
+      numberOfRooms: "",
+      AreaFrom: "",
+      AreaTo: "",
+      areaPriceFrom: "",
+      areaPriceTo: "",
+    });
+  }
+
   //div zamienić na <form>
   return (
     <form
@@ -243,6 +260,7 @@ function SearchForm({
           <Button>
             <HiSearch />
           </Button>
+          <h4 onClick={handleReset}>reset!</h4>
           {searchFormLength}
         </div>
         {isOpened ? (

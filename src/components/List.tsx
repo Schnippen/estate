@@ -99,6 +99,58 @@ function List({ isMobile }: { isMobile: boolean }) {
               : true
           );
         }
+        if (key === "YearOfConstructionFrom") {
+          filteredData = filteredData.filter((object: any) =>
+            query["YearOfConstructionFrom"] > 0
+              ? parseFloat(object["yearOfConstructionInfo"]) >=
+                query["YearOfConstructionFrom"]
+              : true
+          );
+        }
+        if (key === "YearOfConstructionTo") {
+          filteredData = filteredData.filter((object: any) =>
+            query["YearOfConstructionTo"] > 0
+              ? parseFloat(object["yearOfConstructionInfo"]) <=
+                query["YearOfConstructionTo"]
+              : true
+          );
+        }
+        if (key === "AreaFrom") {
+          filteredData = filteredData.filter((object: any) =>
+            query["AreaFrom"] > 0
+              ? parseFloat(
+                  object["areaInfo"]?.slice(0, -3)?.split(" ").join("")
+                ) >= query["AreaFrom"]
+              : true
+          );
+        }
+        if (key === "AreaTo") {
+          filteredData = filteredData.filter((object: any) =>
+            query["AreaTo"] > 0
+              ? parseFloat(
+                  object["areaInfo"]?.slice(0, -3)?.split(" ").join("")
+                ) <= query["AreaTo"]
+              : true
+          );
+        }
+        if (key === "areaPriceFrom") {
+          filteredData = filteredData.filter((object: any) =>
+            query["areaPriceFrom"] > 0
+              ? parseFloat(
+                  object["areaPriceInfo"].slice(0, -2).split(" ").join("")
+                ) >= query["areaPriceFrom"]
+              : true
+          );
+        }
+        if (key === "areaPriceTo") {
+          filteredData = filteredData.filter((object: any) =>
+            query["areaPriceTo"] > 0
+              ? parseFloat(
+                  object["areaPriceInfo"].slice(0, -2).split(" ").join("")
+                ) <= query["areaPriceTo"]
+              : true
+          );
+        }
       }
     }
     console.log(filteredData);
@@ -248,6 +300,10 @@ function List({ isMobile }: { isMobile: boolean }) {
     { value: 20, label: "20" },
     { value: 100, label: "100" },
   ];
+
+  useEffect(() => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   return (
     <>
