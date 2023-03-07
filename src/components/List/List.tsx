@@ -2,13 +2,13 @@ import React from "react";
 import ListItem from "./ListItem";
 import { useState, useEffect, useMemo } from "react";
 import Pagination from "./Pagination";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import styles from "./List.module.css";
-import useActive from "./useActive";
+import useActive from "../useActive";
 import { TbMap2 } from "react-icons/tb";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import { useLocation } from "react-router-dom";
-import SearchForm from "../components/SearchForm";
+import SearchForm from "../SearchForm";
 type Item = {
   [key: string]: string;
 };

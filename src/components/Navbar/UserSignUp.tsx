@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./UserSignUp.module.css";
-import Button from "../Button";
+import Button from "../Buttons/Button";
 import {
   HiMail,
   HiLockClosed,

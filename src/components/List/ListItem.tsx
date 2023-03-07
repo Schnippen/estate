@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "./ListItem.module.css";
 import { HiMail } from "react-icons/hi";
-import Button from "./Buttons/Button";
+import Button from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
-import { useAddToFavorites } from "../components/useAddToFavorites";
+import { useAddToFavorites } from "../useAddToFavorites";
 
 function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
