@@ -9,7 +9,7 @@ import {
 } from "react-icons/hi";
 import { BsPersonXFill } from "react-icons/bs";
 import styles from "./UserInterface.module.css";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import { useRef, useEffect, useState } from "react";
 import Loading from "../Loading";
 import UserSignIn from "./UserSignIn";

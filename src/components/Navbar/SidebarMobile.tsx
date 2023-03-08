@@ -10,6 +10,7 @@ import {
   HiUserCircle,
 } from "react-icons/hi";
 import { UserAuth } from "../../context/AuthContext";
+import DarkThemeButton from "../Buttons/DarkThemeButton";
 const profilePicture = require("../../assets/profile.jpg");
 
 type UserContextTypeTypes = {

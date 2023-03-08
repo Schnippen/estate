@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/Item.module.css";
-import useActive from "../components/useActive";
+import useActive from "../utils/useActive";
 import ItemPhotos from "../components/Item/ItemPhotos";
 import ItemInfoDescription from "../components/Item/ItemInfoDescription";
 import ItemSideArticle from "../components/Item/ItemSideArticle";
@@ -9,7 +9,7 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import MobileContext from "../context/MobileContext";
-import { useAddToFavorites } from "../components/useAddToFavorites";
+import { useAddToFavorites } from "../utils/useAddToFavorites";
 
 function Item() {
   const location = useLocation();

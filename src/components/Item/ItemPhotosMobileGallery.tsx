@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { HiCursorClick, HiCamera, HiOutlineX } from "react-icons/hi";
 import styles from "../Item/ItemPhotos.module.css";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 
 type ItemPhotosMobileGalleryTypes={ photos: string[]}
 

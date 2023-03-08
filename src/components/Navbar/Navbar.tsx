@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import UserInterface from "./UserInterface";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import SidebarMobile from "./SidebarMobile";
 import MobileContext from "../../context/MobileContext";
 import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";

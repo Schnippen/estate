@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Dropdown.module.css";
-import useActive from "./useActive";
+import useActive from "../utils/useActive";
 import { useState, useRef, useEffect } from "react";
 import { HiCheck } from "react-icons/hi";
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./CreateFormContactDetails.module.css";
+import { useThrottledFunc } from "../../utils/useThrottle";
 
 type CreateFormDescriptionTypes = {
   handleChange: (
@@ -25,6 +26,11 @@ function CreateFormDescription({
     padding: "5px 0",
   };
 
+  const handleOnChange = useThrottledFunc(
+    (e: React.ChangeEvent<HTMLInputElement>) => handleChange(e),
+    2000
+  );
+
   return (
     <article className={styles.article}>
       <h3>Tytuł i Opis</h3>
@@ -39,7 +45,7 @@ function CreateFormDescription({
             name="offerTitle"
             className={styles.descriptionTitle}
             onChange={(e) => {
-              handleChange(e);
+              handleOnChange(e);
             }}
             maxLength={100}
           />
@@ -63,7 +69,7 @@ function CreateFormDescription({
             className={styles.descriptionText}
             name="descriptionInfo"
             onChange={(e) => {
-              handleChange(e);
+              handleOnChange(e);
             }}
             maxLength={6000}
           ></textarea>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import DarkThemeContext from "../../context/DarkThemeContext";
 import { MdBrightness4 } from "react-icons/md";
-import useActive from "./../useActive";
+import useActive from "../../utils/useActive";
 import styles from "./DarkThemeButton.module.css";
 
 function DarkThemeButton() {

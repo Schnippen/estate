@@ -1,7 +1,7 @@
 import React from "react";
 import ListItem from "./List/ListItem";
 import { useState, useEffect, useContext } from "react";
-import useActive from "./useActive";
+import useActive from "../utils/useActive";
 import MobileContext from "../context/MobileContext";
 import Loading from "./Loading";
 import styles from "./Favorites.module.css";

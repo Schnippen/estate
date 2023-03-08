@@ -13,7 +13,7 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import { BsFacebook, BsApple } from "react-icons/bs";
 import { useState, useEffect, useRef } from "react";
 import { UserAuth } from "../../context/AuthContext";

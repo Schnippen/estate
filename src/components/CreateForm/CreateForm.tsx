@@ -10,6 +10,7 @@ import CreateFormDescription from "./CreateFormDescription";
 import CreateFormDetailedInformation from "./CreateFormDetailedInformation";
 import { PanelData } from "./CreateFormDataPanel";
 
+
 function CreateForm() {
   interface InputValuesTypes {
     titleKategoria: string;
@@ -45,13 +46,12 @@ function CreateForm() {
     plotWidthInfo: string;
     numberOfOfferInfo: string;
     publishedInfo: string;
-    //amenities: [],
     googleMapsInfo: [];
     telephoneNumberInfo: string;
     sellerInfo: string;
     estateAgencyInfo: string;
     sellerInfoEmail: string;
-    offerID: number;
+    offerID: number | string;
   }
 
   const [inputValues, setInputValues] = useState<InputValuesTypes>({
@@ -88,13 +88,12 @@ function CreateForm() {
     plotWidthInfo: "",
     numberOfOfferInfo: "",
     publishedInfo: "",
-    //amenities: [],
     googleMapsInfo: [],
     telephoneNumberInfo: "",
     sellerInfo: "",
     estateAgencyInfo: "",
     sellerInfoEmail: "",
-    offerID: 0,
+    offerID: 11111111,
   });
 
   const [category, setTitleCategory] = useState({
@@ -179,8 +178,7 @@ function CreateForm() {
     e.preventDefault();
     alert("Submitting!");
     console.log(inputValues);
-    let UUID = Date.now();
-    setInputValues({ ...inputValues, offerID: UUID });
+
     const data = { ...inputValues };
     fetch("http://localhost:3100/items", {
       method: "POST",
@@ -310,7 +308,15 @@ function CreateForm() {
             type="submit"
             value="Opublikuj"
             className={styles.submit}
-            disabled={
+          ></input>
+        </div>
+      </section>
+    </form>
+  );
+}
+
+export default CreateForm;
+/*            disabled={
               inputValues.titleKategoria &&
               inputValues.priceInfo &&
               inputValues.areaInfo &&
@@ -320,11 +326,7 @@ function CreateForm() {
                 ? false
                 : true
             }
-          ></input>
-        </div>
-      </section>
-    </form>
-  );
-}
-
-export default CreateForm;
+            
+            
+                let UUID = Date.now();
+    setInputValues({ ...inputValues, offerID: UUID });*/

@@ -1,28 +1,26 @@
-import React from 'react';
-import { useEffect } from 'react';
-import {useNavigate} from 'react-router-dom';
-
+import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function NotFound() {
+  const style: React.CSSProperties = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    width: "100%",
+    userSelect: "none",
+    backgroundColor: "#554971",
+    color: "#fff",
+  };
 
-    const style: React.CSSProperties = {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      width: "100vw",
-      userSelect: "none",
-      backgroundColor: "#554971",
-      color: "#fff",
-    };
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-    useEffect(()=>{
-    setTimeout(()=>{
-        navigate(-1)
-    },1000)
-    },[])
+  useEffect(() => {
+    setTimeout(() => {
+      navigate(-1);
+    }, 1000);
+  }, []);
 
   return (
     <div style={style}>
@@ -33,4 +31,4 @@ function NotFound() {
   );
 }
 
-export default NotFound
+export default NotFound;

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ListItemMobile.module.css";
-import { useAddToFavorites } from "../useAddToFavorites";
+import { useAddToFavorites } from "../../utils/useAddToFavorites";
 
 type ListItemMobileProps = {
   item: any;

@@ -1,7 +1,7 @@
 import React from "react";
 import Dropdown from "../Dropdown";
 import styles from "./CreateFormContactDetails.module.css";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import { useState, useEffect } from "react";
 
 type CreateFormContactDetailsTypes = {

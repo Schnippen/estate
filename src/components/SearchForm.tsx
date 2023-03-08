@@ -13,7 +13,7 @@ import {
   TypeOfTransaction,
   PriceData,
 } from "./SearchFormData";
-import useActive from "./useActive";
+import useActive from "../utils/useActive";
 
 type QueryDetails = {
   City: string;

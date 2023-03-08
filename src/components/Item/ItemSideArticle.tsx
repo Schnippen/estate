@@ -5,7 +5,7 @@ import { HiPhone, HiMail } from "react-icons/hi";
 import ItemSideArticleCredit from "./ItemSideArticleCredit";
 import RealtorData from "./ItemRealtorData";
 import FullscreenModal from "../FullscreenModal";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import { useState } from "react";
 
 function ItemSideArticle({ prop }: { prop: any }) {

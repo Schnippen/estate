@@ -1,52 +1,53 @@
-.card_section_item{
-    margin: auto;
-    height: 488px;
-    width: 366px;
-    padding: 24px;
-    background-color: var(--primary-text-color);
-    box-shadow:rgb(209 209 213) 0px 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    user-select: none;
-    transition: all 200ms ease-in-out 0s;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: justify;
+.card_section_item {
+  margin: auto;
+  height: 488px;
+  width: 366px;
+  padding: 24px;
+  background-color: var(--primary-text-color);
+  box-shadow: rgb(209 209 213) 0px 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 200ms ease-in-out 0s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: justify;
 }
 
-.card_svg>svg{
-    height: 96px;
-    width: 96px;
+.card_svg > svg {
+  height: 96px;
+  width: 96px;
+}
+.card_title {
+  text-align: center;
+}
+.card_section_item:hover {
+  transform: scale(1.05);
 }
 
-.card_section_item:hover{
-    transform: scale(1.05);
+.card_section_item:active {
+  transform: scale(1.03);
+  transition: 0.1s;
+  box-shadow: 0 0 2px 2px var(--tertiary-text-color);
 }
 
-.card_section_item:active{
-    transform: scale(1.03);
-    transition: 0.1s;
-    box-shadow: 0 0 2px 2px var(--tertiary-text-color);
+.card_section_item:hover button {
+  background-color: var(--tertiary-color);
+  color: var(--tertiary-text-color);
 }
 
-.card_section_item:hover button{
-    background-color: var(--tertiary-color);
-    color:var(--tertiary-text-color);
+.card_section_button {
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--article);
 }
 
-.card_section_button{
-    padding:1rem;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--secondary-color);
-    color:var(--article);
-}
-
-@media (max-width: 800px){
-    .card_section_item{
-        width: 300px;
-    
-    }
+@media (max-width: 800px) {
+  .card_section_item {
+    width: 300px;
+  }
 }

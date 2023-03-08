@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useActive from "./useActive";
-import Button from "./Buttons/Button";
+import Button from "../components/Buttons/Button";
 import { HiHeart } from "react-icons/hi";
 
 export const useAddToFavorites = (offerID: number,labelOn:boolean) => {

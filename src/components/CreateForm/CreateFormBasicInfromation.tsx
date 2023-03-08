@@ -4,7 +4,7 @@ import DropdownNumberOfFloors from "./DropdownNumberOfFloors";
 import styles from "./CreateFormContactDetails.module.css";
 import stylesInput from "./CreateFormInput.module.css";
 import { useState, useEffect } from "react";
-import useActive from "../useActive";
+import useActive from "../../utils/useActive";
 import { BiErrorAlt } from "react-icons/bi";
 
 type CreateFormBasicInfromationTypes={

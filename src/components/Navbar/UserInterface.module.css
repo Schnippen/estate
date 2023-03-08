@@ -199,6 +199,7 @@
   color: var(--primary-text-color);
   text-align: center;
   user-select: none;
+  cursor: pointer;
 }
 .submit:disabled {
   background-color: var(--disabled);
@@ -243,6 +244,7 @@
   padding: 10px 0;
   color: var(--primary-text-color);
   transition: all 0.3s ease 0s;
+  
 }
 
 .signup:hover {

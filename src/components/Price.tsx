@@ -20,6 +20,7 @@ function Price({ data, handleChange }:PriceTypes) {
       }}
     >
       <Dropdown
+      
         data={data}
         name={"PriceFrom"}
         handleChange={handleChange}

@@ -4,7 +4,7 @@ import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useState } from "react";
 import FullscreenPhotosGallery from "../FullscreenPhotosGallery";
 import ItemPhotosMobileGallery from "./ItemPhotosMobileGallery";
-import useActive from "./../useActive";
+import useActive from "../../utils/useActive";
 
 interface ItemPhotosProps {
   isMobile: boolean;

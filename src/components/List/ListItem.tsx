@@ -4,7 +4,7 @@ import { HiMail } from "react-icons/hi";
 import Button from "../Buttons/Button";
 import { useNavigate } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
-import { useAddToFavorites } from "../useAddToFavorites";
+import { useAddToFavorites } from "../../utils/useAddToFavorites";
 
 function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
