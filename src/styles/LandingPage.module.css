@@ -158,3 +158,8 @@
     background-color: rgba(0, 0, 0, 0);
   }
 }
+
+@media (min-width: 800px) and (max-width: 1510px) {
+  .section_searchbar{}
+  
+}

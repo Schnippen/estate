@@ -7,7 +7,6 @@ import ListItemMobile from "./ListItemMobile";
 import { useAddToFavorites } from "../../utils/useAddToFavorites";
 
 function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const AddToFavorites = useAddToFavorites(item.offerID, false);
 
   let navigate = useNavigate();
