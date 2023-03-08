@@ -26,8 +26,9 @@
   display: flex;
   height: 100px;
   align-items: center;
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
   border-radius: 5px;
+  justify-content: center;
 }
 
 .dropdown {
@@ -44,7 +45,7 @@
 .dropdown label {
   display: flex;
   justify-content: center;
-  color: white;
+  color: var(--primary-text-color);
   padding: 5px 10px;
 }
 
@@ -71,14 +72,19 @@
 
 .form_div_wrapper {
   position: relative;
-  padding: 0.5rem 0;
+  padding: 10px 10px;
+  color: var(--primary-text-color);
+}
+.form_label_wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .inputText {
   width: 100%;
   height: 40px;
   box-sizing: border-box;
-  padding-left: 1.5rem;
+  padding-left: 30px;
   border-radius: 5px;
   transition: all 0.3s ease 0s;
   outline: none;
@@ -87,9 +93,10 @@
 .svg {
   position: absolute;
   box-sizing: border-box;
-  top: 50%;
-  left: 6px;
+  top: 65%;
+  left: 15px;
   transform: translateY(-50%);
+  color: var(--secondary-text-color);
 }
 
 .number_select {
@@ -159,7 +166,36 @@
   }
 }
 
-@media (min-width: 800px) and (max-width: 1510px) {
-  .section_searchbar{}
-  
+@media (max-width: 1530px) {
+  .section_searchbar {
+    width: 96%;
+    bottom: 50%;
+    left: 2%;
+    right: 2%;
+  }
+}
+@media (max-width: 1260px) {
+  .section_searchbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 500px;
+    flex-direction: column;
+    top: 20%;
+    width: 40%;
+    left: 30%;
+    right: 30%;
+  }
+  .form_div_wrapper {
+    width: 320px;
+  }
+  .dropdown {
+    width: 320px;
+  }
+}
+
+@media (max-width: 940px) {
+  .section_searchbar {
+    width: 340px;
+  }
 }

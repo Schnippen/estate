@@ -96,11 +96,15 @@ function LandingPage() {
             onSubmit={(e) => handleSubmit(e)}
           >
             <div className={styles.form_div_wrapper}>
+              <div className={styles.form_label_wrapper}>
+                <label htmlFor="city">Miasto</label>
+              </div>
               <HiOutlineLocationMarker className={styles.svg} />
               <input
                 type="text"
                 placeholder="np. miasto"
                 name="City"
+                id="city"
                 className={styles.inputText}
                 onChange={handleInput}
               />
