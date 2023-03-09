@@ -283,6 +283,7 @@
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  text-align: center;
 }
 
 .notLoggedIn_svg {
@@ -309,6 +310,9 @@
     position: relative;
     width: 250px;
   }
+      .inputText {
+    width: 230px;
+  }
 }
 @media (max-width: 1280px) {
   .btn__group {
@@ -316,11 +320,21 @@
     position: relative;
     width: 200px;
   }
+    .inputText {
+    width: 180px;
+  }
 }
 @media (max-width: 1000px) {
   .btn__group {
     display: inline-block;
     position: relative;
     width: 180px;
+  }
+  .inputText {
+    width: 160px;
+  }
+  .menu_btnBig_Opened {
+    height: 350px;
+    text-align: center;
   }
 }

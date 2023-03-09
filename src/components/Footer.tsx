@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styles from "./Footer.module.css";
 import { FiTwitter, FiFacebook, FiInstagram } from "react-icons/fi";
 import { HiPhone } from "react-icons/hi";
@@ -11,7 +11,7 @@ type ListItemTypes = {
 };
 
 function Footer() {
-  const ListItem = ({ icon: Icon, text }:ListItemTypes) => (
+  const ListItem = ({ icon: Icon, text }: ListItemTypes) => (
     <Link to={text}>
       <Button>
         <Icon />
@@ -44,8 +44,14 @@ function Footer() {
             </div>
           </article>
         </section>
-        <div className={styles.container_opinions}>opinie klientów</div>
-        <div className={styles.container_navigation}>nawigacja strony</div>
+        <div className={styles.container_opinions}>
+          Inne Kredyty Blog Zapytaj eksperta Wersja mobilna Regulamin Polityka
+          prywatności Ochrona danych
+        </div>
+        <div className={styles.container_navigation}>
+          Usługi Dla agencji nieruchomości Dla deweloperów Dla reklamodawców Kup
+          baner do wywieszenia Zamów wnętrze w 3D Dodaj ogłoszenie Cennik
+        </div>
       </div>
     </footer>
   );
