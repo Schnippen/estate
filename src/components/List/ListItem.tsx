@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ListItem.module.css";
 import { HiMail } from "react-icons/hi";
 import Button from "../Buttons/Button";
@@ -82,8 +82,10 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
                 ) : null}
               </div>
               <div className={styles.grid_mini_area}>
+                
                 <div>{item.areaInfo}</div>
-                <div>{item.areaPriceInfo}&nbsp;m²</div>
+                {typeof item.areaPriceInfo === "string" ? (
+                <div>{item.areaPriceInfo}&nbsp;m²</div>):null}
               </div>
               <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
               <div className={styles.grid_mini_sendMessageButton}>

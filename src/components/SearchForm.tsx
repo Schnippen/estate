@@ -264,7 +264,7 @@ function SearchForm({
           {searchFormLength}
         </div>
         {isOpened ? (
-          <section className={styles.sectionOpened}>
+          <section className={styles.sectionOpened} >
             <div
               className={styles.form_input_container}
               style={{ width: "200px" }}
