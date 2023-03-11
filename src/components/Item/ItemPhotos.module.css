@@ -77,6 +77,7 @@
 }
 .container_photos_bigPhoto_arrowPrev:disabled,
 .container_photos_bigPhoto_arrowNext:disabled {
+  cursor: not-allowed;
   background-color: var(--disabled);
   border: 2px solid var(--secondary-text-color);
 }

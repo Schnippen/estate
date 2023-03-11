@@ -93,6 +93,7 @@
   transition: all 0.3s ease 0s;
   outline: none;
   text-align: center;
+  border: none;
 }
 .form_input:focus {
   outline: solid var(--tertiary-text-color);
@@ -160,6 +161,7 @@
 }
 
 .small_button:disabled {
+  cursor: not-allowed;
   background-color: var(--disabled);
   border: 2px solid var(--secondary-text-color);
 }

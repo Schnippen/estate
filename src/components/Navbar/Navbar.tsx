@@ -57,7 +57,7 @@ function Navbar() {
             <a href="*">Kredyty</a>
           </li>
           <li>
-            <a href="*">Overseas</a>
+            <a href="*">Analitics</a>
           </li>
           <Link to="/Blog">
             <li>Blog</li>

@@ -172,6 +172,7 @@
   box-shadow: 0 0 2px 8px var(--tertiary-text-color);
 }
 .submit:disabled {
+  cursor: not-allowed;
   background-color: var(--disabled);
 }
 

@@ -49,6 +49,7 @@
 }
 
 .pagination__mobile_list_btn:disabled {
+  cursor: not-allowed;
   background-color: var(--disabled);
   border: 2px solid black;
 }

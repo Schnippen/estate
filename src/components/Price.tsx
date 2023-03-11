@@ -1,15 +1,15 @@
 import React from "react";
 import Dropdown from "./Dropdown";
 
-type PriceTypes={
-  data:{
+type PriceTypes = {
+  data: {
     value: number;
     label: string;
-}[];
-  handleChange:(ref: React.RefObject<HTMLInputElement>) => void;
-}
+  }[];
+  handleChange: (ref: React.RefObject<HTMLInputElement>) => void;
+};
 
-function Price({ data, handleChange }:PriceTypes) {
+function Price({ data, handleChange }: PriceTypes) {
   return (
     <div
       style={{
@@ -20,13 +20,12 @@ function Price({ data, handleChange }:PriceTypes) {
       }}
     >
       <Dropdown
-      
         data={data}
         name={"PriceFrom"}
         handleChange={handleChange}
         placeholder={"Cena od..."}
       ></Dropdown>
-      <div style={{ height: "40px", border: "solid #554971" }}></div>
+      <div style={{ height: "40px", border: "solid var(--secondary-color)" }}></div>
       <Dropdown
         data={data}
         name={"PriceTo"}

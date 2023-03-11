@@ -39,7 +39,7 @@ function SearchForm({
   query: QueryDetails;
   setQuery: React.Dispatch<React.SetStateAction<QueryDetails>>;
   handleForm: (e: React.FormEvent<HTMLFormElement>) => void;
-  searchFormLength:number;
+  searchFormLength: number;
 }) {
   const [isOpened, setIsOpened] = useActive(false);
   const [renderErrorPrice, setRenderErrorPrice] = useState(false);
@@ -116,7 +116,7 @@ function SearchForm({
     setRenderErrorArea(calculateError(query.AreaFrom, query.AreaTo));
   }, [query.AreaFrom, query.AreaTo]);
 
-  const handleReset=()=>{
+  const handleReset = () => {
     setQuery({
       City: "",
       TypeOfRealEstate: "",
@@ -131,7 +131,7 @@ function SearchForm({
       areaPriceFrom: "",
       areaPriceTo: "",
     });
-  }
+  };
 
   //div zamienić na <form>
   return (
@@ -221,7 +221,7 @@ function SearchForm({
             <div
               style={{
                 height: "40px",
-                border: "solid #554971",
+                border: "solid var(--secondary-color)",
                 margin: "0 5px",
               }}
             ></div>
@@ -264,7 +264,7 @@ function SearchForm({
           {searchFormLength}
         </div>
         {isOpened ? (
-          <section className={styles.sectionOpened} >
+          <section className={styles.sectionOpened}>
             <div
               className={styles.form_input_container}
               style={{ width: "200px" }}
@@ -316,7 +316,7 @@ function SearchForm({
                 <div
                   style={{
                     height: "40px",
-                    border: "solid #554971",
+                    border: "solid var(--secondary-color)",
                     margin: "0 5px",
                   }}
                 ></div>
@@ -368,7 +368,7 @@ function SearchForm({
                 <div
                   style={{
                     height: "40px",
-                    border: "solid #554971",
+                    border: "solid var(--secondary-color)",
                     margin: "0 5px",
                   }}
                 ></div>

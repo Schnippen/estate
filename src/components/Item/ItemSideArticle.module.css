@@ -142,6 +142,7 @@ label {
 }
 
 .submit:disabled {
+  cursor: not-allowed;
   background-color: var(--disabled);
 }
 
