@@ -187,6 +187,7 @@ function CreateForm() {
     })
       .then((response) => response.json())
       .then((result) => {
+        console.log("Success:");
         console.log(result);
       })
       .catch((error) => {

@@ -1,0 +1,11 @@
+.body {
+  margin-top: 100px;
+  background-color: blanchedalmond;
+  width: 100%;
+  height: 100vh;
+}
+
+.pie {
+  width: 200px;
+  height: 200px;
+}

@@ -15,6 +15,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { MobileContextProvider } from "./context/MobileContext";
 import { DarkThemeContextProvider } from "./context/DarkThemeContext";
 import Favorites from "./components/Favorites";
+import Analitics from "./components/Analitics";
 
 //user context
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/Blog" element={<Blog />} />
             <Route path="/Favorites" element={<Favorites />} />
+            <Route path="/Analitics" element={<Analitics />} />
           </Routes>
           <Footer />
         </DarkThemeContextProvider>

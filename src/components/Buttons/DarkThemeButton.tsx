@@ -8,7 +8,6 @@ function DarkThemeButton() {
   const { toggleTheme } = useContext(DarkThemeContext);
   const [isActive, setIsActive] = useActive(false);
 
-  console.log(isActive, "darkteheme");
   return (
     <button
       className={styles.smallButton}
