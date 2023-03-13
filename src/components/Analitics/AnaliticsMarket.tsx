@@ -19,7 +19,14 @@ function AnaliticsMarket({ estateData }: any) {
     const rynekArray = [rynekPierwotny, rynekWtórny];
     return rynekArray;
   };
-
+  const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: "Share of primary and secondary market",
+      },
+    },
+  };
   const dataPie = {
     labels: ["Primary market", "Secondary market"],
     datasets: [
@@ -35,7 +42,7 @@ function AnaliticsMarket({ estateData }: any) {
 
   return (
     <div>
-      <Pie data={dataPie} />;
+      <Pie data={dataPie} options={options} />;
     </div>
   );
 }

@@ -31,7 +31,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
     city: string,
     index: number
   ) {
-    let valuesArray = [30, 40, 50, 60, 70, 80];
+    let valuesArray = [30, 40, 50, 60, 70, 80, 1000];
     let countAveragePrimarySecondary = 0;
     const totalAverage = estateData.reduce(
       (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
@@ -107,8 +107,8 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
     const avgPriceSecondary = (totalAverageSecondary / countSecondary).toFixed(
       2
     );
-    console.log(valuesArray[index], valuesArray[index + 1]);
-    console.log(avgPrice, avgPricePrimary, avgPriceSecondary);
+    //console.log(valuesArray[index], valuesArray[index + 1]);
+    //console.log(avgPrice, avgPricePrimary, avgPriceSecondary);
     return [avgPrice, avgPricePrimary, avgPriceSecondary];
   }
   const labels = ["<30", "30-40", "40-50", "50-60", "70-80", "80<"];
@@ -129,7 +129,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
           (item, index) => calculateAvgPricePerMeter(estateData, city, index)[1]
         ),
         borderColor: "rgb(255, 99, 242)",
-        backgroundColor: "rgba(255, 60, 132, 0.5)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {
         label: "Secondary Market",
@@ -137,7 +137,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
           (item, index) => calculateAvgPricePerMeter(estateData, city, index)[2]
         ),
         borderColor: "rgb(215, 99, 242)",
-        backgroundColor: "rgba(255, 200, 132, 0.5)",
+        backgroundColor: "rgba(53, 162, 125, 0.5)",
       },
     ],
   };
