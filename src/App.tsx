@@ -15,7 +15,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { MobileContextProvider } from "./context/MobileContext";
 import { DarkThemeContextProvider } from "./context/DarkThemeContext";
 import Favorites from "./components/Favorites";
-import Analitics from "./components/Analitics";
+import Analitics from "./components/Analitics/Analitics";
 
 //user context
 function App() {
