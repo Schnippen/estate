@@ -1,8 +1,9 @@
 import styles from "./Analitics.module.css";
-
 import { useState, useEffect, useCallback } from "react";
 import AnaliticsMarket from "./AnaliticsMarket";
 import AnaliticsAveragePrice from "./AnaliticsAveragePrice";
+import AnaliticsAveragePricePerMeter from "./AnaliticsAveragePricePerMeter";
+
 function Analitics() {
   const [estateData, setEstateData] = useState<Array<{}>>([]);
 
@@ -31,7 +32,10 @@ function Analitics() {
         </div>
       </section>
       <section>
-        <div>za dany przedział metrów &gt;30,30-40 50 60, etc</div>
+        <div className={styles.bar}>
+          za dany przedział metrów &gt;30,30-40 50 60, etc
+          <AnaliticsAveragePricePerMeter estateData={estateData} />
+        </div>
       </section>
     </body>
   );

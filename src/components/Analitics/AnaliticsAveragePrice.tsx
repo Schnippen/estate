@@ -105,14 +105,14 @@ function AnaliticsAveragePrice({ estateData }: any) {
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
-        label: "Primary Market",
+        label: "Average Primary Market Price",
         data: labels.map(
           (item, index) => calculateAvgPrice(estateData, item)[1]
         ),
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {
-        label: "Secondary Market",
+        label: "Average Secondary Market Price",
         data: labels.map(
           (item, index) => calculateAvgPrice(estateData, item)[2]
         ),
