@@ -23,7 +23,7 @@ function AnaliticsMarket({ estateData }: any) {
     plugins: {
       title: {
         display: true,
-        text: "Share of primary and secondary market",
+        text: `${"city"}`,
       },
     },
   };
@@ -42,7 +42,7 @@ function AnaliticsMarket({ estateData }: any) {
 
   return (
     <div>
-      <Pie data={dataPie} options={options} />;
+      <Pie data={dataPie} options={options} />
     </div>
   );
 }

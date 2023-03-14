@@ -9,7 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { count } from "console";
 
 ChartJS.register(
   CategoryScale,
@@ -20,11 +19,46 @@ ChartJS.register(
   Legend
 );
 
-function AnaliticsAveragePricePerMeter({ estateData }: any) {
-  //   areaInfo
-  //areaPriceInfo
+function AnaliticsAveragePricePerMeter({
+  estateData,
+  inputValue,
+}: {
+  estateData: any;
+  inputValue: {
+    city: string;
+  };
+}) {
+  const labelValues = [
+    "Andrychów",
+    "Będzin",
+    "Częstochowa",
+    "Gliwice",
+    "Katowice",
+    "Mikołów",
+    "Mysłowice",
+    "Pszczyna",
+    "Rybnik",
+    "Sosnowiec",
+    "Zabrze",
+  ];
+  const array = [
+    "andrychow",
+    "bedzin",
+    "czestochowa",
+    "gliwice",
+    "katowice",
+    "mikolow",
+    "myslowice",
+    "pszczyna",
+    "rybnik",
+    "sosnowiec",
+    "zabrze",
+  ];
 
-  const city = "katowice";
+  const city = inputValue.city;
+  const index = array.indexOf(city);
+  const labelValue =
+    index !== -1 ? labelValues[index] : "no city has been selected";
 
   function calculateAvgPricePerMeter(
     estateData: any,
@@ -111,16 +145,23 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
     //console.log(avgPrice, avgPricePrimary, avgPriceSecondary);
     return [avgPrice, avgPricePrimary, avgPriceSecondary];
   }
-  const labels = ["<30", "30-40", "40-50", "50-60", "70-80", "80<"];
+  const labels = [
+    "<30 m²",
+    "30-40 m²",
+    "40-50 m²",
+    "50-60 m²",
+    "70-80 m²",
+    "80< m²",
+  ];
   const data = {
     labels,
     datasets: [
       {
-        label: "Primary & Secondary Market",
+        label: "Market Average",
         data: labels.map(
           (item, index) => calculateAvgPricePerMeter(estateData, city, index)[0]
         ),
-        borderColor: "rgb(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132, 0.9)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
@@ -128,7 +169,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
         data: labels.map(
           (item, index) => calculateAvgPricePerMeter(estateData, city, index)[1]
         ),
-        borderColor: "rgb(255, 99, 242)",
+        borderColor: "rgba(53, 162, 235, 0.9)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {
@@ -136,7 +177,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
         data: labels.map(
           (item, index) => calculateAvgPricePerMeter(estateData, city, index)[2]
         ),
-        borderColor: "rgb(215, 99, 242)",
+        borderColor: "rgba(53, 162, 125, 0.9)",
         backgroundColor: "rgba(53, 162, 125, 0.5)",
       },
     ],
@@ -156,7 +197,7 @@ function AnaliticsAveragePricePerMeter({ estateData }: any) {
       },
       title: {
         display: true,
-        text: `${city}`,
+        text: `${labelValue}`,
       },
     },
   };
