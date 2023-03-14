@@ -1,6 +1,7 @@
 import React from "react";
 import ListItem from "./ListItem";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { HiChevronDown } from "react-icons/hi";
 import Pagination from "./Pagination";
 import Loading from "../Loading";
 import styles from "./List.module.css";
@@ -29,6 +30,7 @@ type QueryDetails = {
 };
 
 function List({ isMobile }: { isMobile: boolean }) {
+  const [isOpened, setIsOpened] = useActive(false);
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);
@@ -153,21 +155,17 @@ function List({ isMobile }: { isMobile: boolean }) {
         }
       }
     }
-    console.log(filteredData);
+    //console.log(filteredData);
     return filteredData;
   };
 
-  const fetchDatabase = useMemo(
-    () => async () => {
-      const response = await fetch(`http://localhost:3100/items`);
-      const data = await response.json();
-      const specificData = getSpecificQuery(data, query);
-      setDatabaseState(specificData);
-      setIsLoading(false);
-      console.log(specificData);
-    },
-    [databaseState, query]
-  );
+  const fetchDatabase = useCallback(async () => {
+    const response = await fetch(`http://localhost:3100/items`);
+    const data = await response.json();
+    const specificData = getSpecificQuery(data, query);
+    setDatabaseState(specificData);
+    setIsLoading(false);
+  }, [query]);
 
   //initialize database in to state
   useEffect(() => {
@@ -176,35 +174,29 @@ function List({ isMobile }: { isMobile: boolean }) {
 
   console.log(querySearchForm, "querySearchForm");
 
-  const fetchDatabaseSearchForm = useMemo(
-    () => async () => {
-      const response = await fetch(`http://localhost:3100/items`);
-      const data = await response.json();
-      const specificData = getSpecificQuery(data, querySearchForm);
-      setDatabaseState(specificData);
-      setIsLoading(false);
-      console.log(specificData);
-      console.log(specificData.length, "searchform odpowiedź");
-    },
-    [databaseState, querySearchForm]
-  );
+  const fetchDatabaseSearchForm = useCallback(async () => {
+    const response = await fetch(`http://localhost:3100/items`);
+    const data = await response.json();
+    const specificData = getSpecificQuery(data, querySearchForm);
+    setDatabaseState(specificData);
+    setIsLoading(false);
+    console.log(specificData);
+    console.log(specificData.length, "searchform odpowiedź");
+  }, [querySearchForm]);
 
   //fetch for searchform result length
-  const fetchDatabaseSearchFormResultLength = useMemo(
-    () => async () => {
-      const response = await fetch(`http://localhost:3100/items`);
-      const data = await response.json();
-      const specificData = getSpecificQuery(data, querySearchForm);
-      return specificData.length;
-    },
-    [databaseState, querySearchForm]
-  );
+  const fetchDatabaseSearchFormResultLength = useCallback(async () => {
+    const response = await fetch(`http://localhost:3100/items`);
+    const data = await response.json();
+    const specificData = getSpecificQuery(data, querySearchForm);
+    return specificData.length;
+  }, [querySearchForm]);
 
   useEffect(() => {
     fetchDatabaseSearchFormResultLength().then((result) => {
       setSearchFormLength(result);
     });
-  }, [querySearchForm]);
+  }, [fetchDatabaseSearchFormResultLength]);
 
   //handleForm SearchForm
   const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -305,45 +297,109 @@ function List({ isMobile }: { isMobile: boolean }) {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
   }, [currentPage]);
 
+  const SectionOptions = (
+    <section className={styles.section__options}>
+      <div>
+        <Dropdown
+          data={SortPrice}
+          placeholder={"Sortuj"}
+          handleChange={handleSortingDatabaseState}
+        ></Dropdown>
+      </div>
+      <div>
+        <Dropdown
+          data={NumberOfOffers}
+          placeholder={"Ilość ofert na stronie"}
+          handleChange={handleNumberOfOffers}
+        ></Dropdown>
+      </div>
+      <div
+        style={{
+          color: "var(--primary-text-color)",
+          textAlign: "center",
+          userSelect: "none",
+        }}
+      >
+        Liczba ogłoszeń: <strong>{databaseState.length}</strong>
+      </div>
+      <div>
+        Zobacz na mapie
+        <TbMap2 />
+      </div>
+    </section>
+  );
+
+  const SectionOptionsMobile = (
+    <section
+      className={
+        isOpened
+          ? styles.section__options_mobile_opened
+          : styles.section__options_mobile_closed
+      }
+    >
+      <button
+        onClick={() => setIsOpened(!isOpened)}
+        className={styles.small_button}
+        style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
+      >
+        <h3>Rozwiń</h3>
+        <HiChevronDown
+          className={
+            isOpened
+              ? styles.small_button_ArrowClosed
+              : styles.small_button_ArrowOpened
+          }
+        />
+      </button>
+      <aside>
+        <div>
+          <Dropdown
+            data={SortPrice}
+            placeholder={"Sortuj"}
+            handleChange={handleSortingDatabaseState}
+          ></Dropdown>
+        </div>
+        <div>
+          <Dropdown
+            data={NumberOfOffers}
+            placeholder={"Ilość ofert na stronie"}
+            handleChange={handleNumberOfOffers}
+          ></Dropdown>
+        </div>
+        <div
+          style={{
+            color: "var(--primary-text-color)",
+            textAlign: "center",
+            userSelect: "none",
+          }}
+        >
+          Liczba ogłoszeń: <strong>{databaseState.length}</strong>
+        </div>
+        <div>
+          Zobacz na mapie
+          <TbMap2 />
+        </div>
+      </aside>
+    </section>
+  );
+
   return (
     <>
-      <SearchForm
-        query={querySearchForm}
-        setQuery={setQuerySearchForm}
-        handleForm={handleForm}
-        searchFormLength={searchFormLength}
-      />
+      {isMobile ? (
+        <div style={{ marginTop: "100px" }}>gówno</div>
+      ) : (
+        <SearchForm
+          query={querySearchForm}
+          setQuery={setQuerySearchForm}
+          handleForm={handleForm}
+          searchFormLength={searchFormLength}
+        />
+      )}
+
       <section className={styles.section__main}>
-        <section className={styles.section__options}>
-          <div>
-            <Dropdown
-              data={SortPrice}
-              placeholder={"Sortuj"}
-              handleChange={handleSortingDatabaseState}
-            ></Dropdown>
-          </div>
-          <div>
-            <Dropdown
-              data={NumberOfOffers}
-              placeholder={"Ilość ofert na stronie"}
-              handleChange={handleNumberOfOffers}
-            ></Dropdown>
-          </div>
-          <div
-            style={{
-              color: "#fff",
-              textAlign: "center",
-            }}
-          >
-            Liczba ogłoszeń: <strong>{databaseState.length}</strong>
-          </div>
-          <div>
-            zobacz na mapie
-            <TbMap2 />
-          </div>
-        </section>
+        {isMobile ? SectionOptionsMobile : SectionOptions}
         {isLoading ? (
-          <body style={{ height: "800px" }}>
+          <body style={{ height: "800px", width: "100%" }}>
             <Loading color={"#141212"} svgColor="#554971" top={58} left={47} />
           </body>
         ) : (

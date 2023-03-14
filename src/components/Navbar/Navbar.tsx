@@ -30,11 +30,18 @@ function Navbar() {
             onClick={() => setIsOpened(!isOpened)}
             className={styles.showSidebar}
           >
-            {isOpened ? (
-              <TbArrowBarToLeft className={styles.svg} />
-            ) : (
-              <TbArrowBarRight className={styles.svg} />
-            )}
+            <div
+              style={{ transform: isOpened ? "rotate(45deg)" : "rotate(0)" }}
+            ></div>
+            <div
+              style={{
+                opacity: isOpened ? "0" : "1",
+                transform: isOpened ? "translateX(20px)" : "translateX(0)",
+              }}
+            ></div>
+            <div
+              style={{ transform: isOpened ? "rotate(-45deg)" : "rotate(0)" }}
+            ></div>
           </div>
         </>
       ) : (
@@ -47,19 +54,19 @@ function Navbar() {
 
       {isMobile ? null : (
         <ul className={styles.nav__links}>
-          <Link to="/Offers">
+          <Link to="/Offers" className={styles.nav__link}>
             <li>Buy</li>
           </Link>
-          <li>
-            <a href="*">Rent</a>
-          </li>
-          <li>
-            <a href="*">Kredyty</a>
-          </li>
-          <Link to="/Analitics">
+          <Link to="*" className={styles.nav__link}>
+            <li>....</li>
+          </Link>
+          <Link to="*" className={styles.nav__link}>
+            <li>....</li>
+          </Link>
+          <Link to="/Analitics" className={styles.nav__link}>
             <li>Analitics</li>
           </Link>
-          <Link to="/Blog">
+          <Link to="/Blog" className={styles.nav__link}>
             <li>Blog</li>
           </Link>
         </ul>

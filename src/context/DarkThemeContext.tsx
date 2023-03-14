@@ -9,7 +9,6 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
     const storedTheme = localStorage.getItem("DarkTheme");
     return storedTheme ? JSON.parse(storedTheme) : false;
   });
-  console.log(!!localStorage.getItem("DarkTheme"));
   useEffect(() => {
     const root = document.documentElement;
     if (isDarkTheme) {

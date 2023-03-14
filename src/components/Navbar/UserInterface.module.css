@@ -25,6 +25,7 @@
 .btnSmall {
   border-radius: 0px 5px 5px 0px;
   width: 40%;
+  border-left: 1px solid rgba(216, 216, 216, 0.4);
 }
 
 .btn > svg {
@@ -311,7 +312,7 @@
     position: relative;
     width: 250px;
   }
-      .inputText {
+  .inputText {
     width: 230px;
   }
 }
@@ -321,7 +322,7 @@
     position: relative;
     width: 200px;
   }
-    .inputText {
+  .inputText {
     width: 180px;
   }
 }

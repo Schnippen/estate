@@ -53,3 +53,4 @@ function App() {
 
 export default App;
 //<Route path="/Leaflet" element={<Leaflet />} />
+///Item/:id

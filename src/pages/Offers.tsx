@@ -1,7 +1,4 @@
-import React from "react";
-
 import { useContext } from "react";
-import SearchForm from "../components/SearchForm";
 import List from "../components/List/List";
 import MobileContext from "../context/MobileContext";
 

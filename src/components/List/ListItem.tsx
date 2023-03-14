@@ -2,14 +2,24 @@ import React from "react";
 import styles from "./ListItem.module.css";
 import { HiMail } from "react-icons/hi";
 import Button from "../Buttons/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
 import { useAddToFavorites } from "../../utils/useAddToFavorites";
+import { useEffect } from "react";
 
 function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
   const AddToFavorites = useAddToFavorites(item.offerID, false);
 
   let navigate = useNavigate();
+  /*
+    console.log(item.offerID);
+    //let offerID2 = prop.offerID.toString();
+    let { offerID2 } = useParams();
+
+    console.log(offerID2,"useparam");
+    useEffect(() => {
+      console.log(`/Item/${offerID2}`);
+    }, []);*/
 
   const handleNavigateItem = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
@@ -82,10 +92,10 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
                 ) : null}
               </div>
               <div className={styles.grid_mini_area}>
-                
                 <div>{item.areaInfo}</div>
                 {typeof item.areaPriceInfo === "string" ? (
-                <div>{item.areaPriceInfo}&nbsp;m²</div>):null}
+                  <div>{item.areaPriceInfo}&nbsp;m²</div>
+                ) : null}
               </div>
               <p className={styles.grid_mini_sendMessage}>Napisz wiadomość</p>
               <div className={styles.grid_mini_sendMessageButton}>

@@ -7,7 +7,7 @@ import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MobileContext from "../context/MobileContext";
 import { useAddToFavorites } from "../utils/useAddToFavorites";
 

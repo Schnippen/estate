@@ -115,6 +115,9 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
                 ) : null}
               </ul>
             </div>
+            <div className={styles.dark_theme}>
+              <DarkThemeButton />
+            </div>
           </div>
         </section>
       </div>
