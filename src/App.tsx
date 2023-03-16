@@ -9,7 +9,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 import Blog from "./components/Blog";
-import "./App.css";
 import CreateForm from "./components/CreateForm/CreateForm";
 import { AuthContextProvider } from "./context/AuthContext";
 import { MobileContextProvider } from "./context/MobileContext";
@@ -36,7 +35,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/Offers" element={<Offers />} />
-            <Route path="/Item" element={<Item />} />
+            <Route path="/Item/:id" element={<Item />} />
             <Route path="/UserSignUp" element={<UserSignUp />} />
             <Route path="/CreateForm" element={<CreateForm />} />
             <Route path="*" element={<NotFound />} />

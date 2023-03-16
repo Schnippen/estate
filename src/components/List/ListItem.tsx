@@ -2,24 +2,14 @@ import React from "react";
 import styles from "./ListItem.module.css";
 import { HiMail } from "react-icons/hi";
 import Button from "../Buttons/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ListItemMobile from "./ListItemMobile";
 import { useAddToFavorites } from "../../utils/useAddToFavorites";
-import { useEffect } from "react";
 
 function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
   const AddToFavorites = useAddToFavorites(item.offerID, false);
 
   let navigate = useNavigate();
-  /*
-    console.log(item.offerID);
-    //let offerID2 = prop.offerID.toString();
-    let { offerID2 } = useParams();
-
-    console.log(offerID2,"useparam");
-    useEffect(() => {
-      console.log(`/Item/${offerID2}`);
-    }, []);*/
 
   const handleNavigateItem = (
     event: React.MouseEvent<HTMLElement, MouseEvent>
@@ -27,9 +17,9 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
     event.preventDefault();
     event.stopPropagation();
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
-    navigate("/Item", { state: item });
+    navigate(`/Item/${item.offerID}`, { state: item });
   };
-
+  console.log(item.offerID);
   return (
     <>
       {isMobile ? (

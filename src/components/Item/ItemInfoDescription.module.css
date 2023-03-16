@@ -5,6 +5,7 @@
 
 .description_container > h2 {
   padding: 20px 0;
+  border-bottom: 2px solid rgba(216, 216, 216, 0.4);
 }
 
 .description_container_maps {

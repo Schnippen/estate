@@ -60,7 +60,8 @@
 
 .grid_description_title {
   font-size: 20px;
-
+  border-top: 2px solid rgba(216, 216, 216, 0.4);
+  border-bottom: 2px solid rgba(216, 216, 216, 0.4);
   grid-column: 1/5;
   padding: 0 10px;
   display: flex;

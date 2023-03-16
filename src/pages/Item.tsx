@@ -6,7 +6,7 @@ import ItemInfoDescription from "../components/Item/ItemInfoDescription";
 import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
-import { useLocation } from "react-router-dom";
+import { useLocation,useParams } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import MobileContext from "../context/MobileContext";
 import { useAddToFavorites } from "../utils/useAddToFavorites";
@@ -18,6 +18,11 @@ function Item() {
   const isMobile = useContext(MobileContext);
 
   const AddToFavorites = useAddToFavorites(prop.offerID, true);
+
+  const { id } = useParams();
+    useEffect(() => {
+      console.log(`/Item/${id}`);
+    }, [])
 
   return (
     <>
