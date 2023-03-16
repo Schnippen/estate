@@ -7,6 +7,8 @@ type pinPositionTypes = {
   lng: number | null;
 };
 
+const apiKey = process.env.REACT_APP_API_KEY;
+
 function CreateFormLocation() {
   const [pinPosition, setPinPosition] = useState<pinPositionTypes>({
     lat: null,
@@ -48,7 +50,7 @@ export default CreateFormLocation;
         <div style={{ height: "400px", width: "100%" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: REACT_APP_API_KEY=your_api_key_here,
+              key: apiKey,
             }}
             defaultCenter={{ lat: 50.259421, lng: 19.021984 }}
             defaultZoom={12}
