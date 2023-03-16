@@ -48,9 +48,9 @@ export default CreateFormLocation;
         <div style={{ height: "400px", width: "100%" }}>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: "AIzaSyCleabmXTnnMnTqpUh1oYHrLNQogawq16U",
+              key: REACT_APP_API_KEY=your_api_key_here,
             }}
-            defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
+            defaultCenter={{ lat: 50.259421, lng: 19.021984 }}
             defaultZoom={12}
             onClick={handleMapClick}
           ></GoogleMapReact>

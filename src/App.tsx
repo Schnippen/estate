@@ -3,7 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import Item from "./pages/Item";
 import Offers from "./pages/Offers";
 import NotFound from "./components/NotFound";
-//import Leaflet from "./Leaflet/Leaflet";
+
 import UserSignUp from "./components/Navbar/UserSignUp";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
@@ -51,5 +51,3 @@ function App() {
 }
 
 export default App;
-//<Route path="/Leaflet" element={<Leaflet />} />
-///Item/:id

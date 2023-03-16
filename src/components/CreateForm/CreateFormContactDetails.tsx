@@ -20,8 +20,7 @@ function CreateFormContactDetails({
   handleKeyDown,
   handleDropdown,
   handleMax,
-}:CreateFormContactDetailsTypes) {
-
+}: CreateFormContactDetailsTypes) {
   //handle Email
   const [emailValid, setEmailValid] = useActive(false);
   const [email, setEmail] = useState("");
@@ -114,11 +113,6 @@ function CreateFormContactDetails({
             className={styles.input}
           />
         </div>
-        <div>
-          obługa w jezyku
-          <input type="checkbox" name="" id="" value="" />
-        </div>
-
         {dropdown.map((item, i) => (
           <div className={styles.dropdown}>
             <Dropdown
@@ -127,14 +121,9 @@ function CreateFormContactDetails({
               handleChange={dropdown[i].handleChange}
               placeholder={dropdown[i].placeholder}
               label={dropdown[i].label}
-              
             />
           </div>
         ))}
-        <div>
-          spam
-          <input type="checkbox" name="" id="" value="" />
-        </div>
       </section>
     </article>
   );

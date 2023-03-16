@@ -192,7 +192,7 @@ function LandingPage() {
               alt="Sprzedaj Nieruchomość"
               svg={<BsCashCoin />}
             ></Card>
-            <Link to="/Leaflet">
+            <Link to="*">
               <Card
                 title="Srawdź Mapę"
                 description={Lorem}

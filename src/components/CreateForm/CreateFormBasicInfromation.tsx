@@ -327,7 +327,6 @@ function CreateFormBasicInfromation({
               }}
             >
               <DropdownNumberOfFloors
-                //id="pietro"
                 handleChange={handleChangeNumberOfFloors}
                 data={numberOfFloorsData}
               />
