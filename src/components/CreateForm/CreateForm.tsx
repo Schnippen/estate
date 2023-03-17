@@ -10,6 +10,7 @@ import CreateFormDescription from "./CreateFormDescription";
 import CreateFormDetailedInformation from "./CreateFormDetailedInformation";
 import { PanelData } from "./CreateFormDataPanel";
 
+
 function CreateForm() {
   interface InputValuesTypes {
     titleKategoria: string;
@@ -51,7 +52,6 @@ function CreateForm() {
     estateAgencyInfo: string;
     sellerInfoEmail: string;
     offerID: number | string;
-    id: number;
   }
 
   const [inputValues, setInputValues] = useState<InputValuesTypes>({
@@ -93,8 +93,7 @@ function CreateForm() {
     sellerInfo: "",
     estateAgencyInfo: "",
     sellerInfoEmail: "",
-    offerID: 0,
-    id: 0,
+    offerID: 11111111,
   });
 
   const [category, setTitleCategory] = useState({
@@ -175,17 +174,11 @@ function CreateForm() {
     }
   };
 
-  //UUID
-  useEffect(() => {
-    let UUID = Date.now();
-    setInputValues({ ...inputValues, offerID: UUID });
-    setInputValues({ ...inputValues, id: UUID });
-  }, []);
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
     console.log(inputValues);
+
     const data = { ...inputValues };
     fetch("http://localhost:3100/items", {
       method: "POST",

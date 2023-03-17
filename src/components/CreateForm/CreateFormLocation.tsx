@@ -52,7 +52,7 @@ export default CreateFormLocation;
             bootstrapURLKeys={{
               key: apiKey,
             }}
-            defaultCenter={{ lat: 50.259421, lng: 19.021984 }}
+            defaultCenter={{ lat: 37.7749, lng: -122.4194 }}
             defaultZoom={12}
             onClick={handleMapClick}
           ></GoogleMapReact>

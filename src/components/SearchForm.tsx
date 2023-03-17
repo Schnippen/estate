@@ -387,7 +387,7 @@ function SearchForm({
                 />
               </div>
             </div>
-            <div>szukaj po uuid lub id</div>
+            <div>piętro</div>
           </section>
         ) : null}
       </section>
