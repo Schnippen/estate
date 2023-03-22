@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Item/ItemPhotos.module.css";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
 import { useState } from "react";
-import FullscreenPhotosGallery from "../FullscreenPhotosGallery";
+import FullscreenPhotosGallery from "./ItemFullscreenPhotosGallery";
 import ItemPhotosMobileGallery from "./ItemPhotosMobileGallery";
 import useActive from "../../utils/useActive";
 
@@ -10,7 +10,7 @@ interface ItemPhotosProps {
   isMobile: boolean;
 }
 
-const ItemPhotos:React.FC<ItemPhotosProps> = ({ isMobile }) =>{
+const ItemPhotos: React.FC<ItemPhotosProps> = ({ isMobile }) => {
   const photos = [
     "https://picsum.photos/500/500?random=1",
     "https://picsum.photos/500/500?random=2",
@@ -29,7 +29,7 @@ const ItemPhotos:React.FC<ItemPhotosProps> = ({ isMobile }) =>{
   const [thumbnail, setThumbnail] = useState(0);
 
   //thumnails list
-  const photosList = photos.map((n, i:number) => (
+  const photosList = photos.map((n, i: number) => (
     <li
       className={selectedPhoto === i ? styles.selected : undefined}
       key={i}
@@ -71,7 +71,7 @@ const ItemPhotos:React.FC<ItemPhotosProps> = ({ isMobile }) =>{
         photosLength={photosLength}
       ></FullscreenPhotosGallery>
       <img
-        onClick={()=>setIsActive}
+        onClick={() => setIsActive(!isActive)}
         src={photosList[selectedPhoto].props.children.props.src}
         alt="Big Thumbnail"
         loading="lazy"
@@ -112,6 +112,6 @@ const ItemPhotos:React.FC<ItemPhotosProps> = ({ isMobile }) =>{
       {isMobile ? null : ThumbnailsCarousel}
     </>
   );
-}
+};
 
 export default ItemPhotos;

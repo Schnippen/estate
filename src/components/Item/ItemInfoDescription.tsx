@@ -6,10 +6,10 @@ import useActive from "../../utils/useActive";
 import { HiChevronDown, HiOutlineX } from "react-icons/hi";
 import { GrMapLocation } from "react-icons/gr";
 
-type ItemInfoDescriptionTypes={
-  prop:any;
-  isMobile:boolean;
-}
+type ItemInfoDescriptionTypes = {
+  prop: any;
+  isMobile: boolean;
+};
 
 function ItemInfoDescription({ prop, isMobile }: ItemInfoDescriptionTypes) {
   const [isOpened, setIsOpened] = useActive(false);
@@ -29,7 +29,10 @@ function ItemInfoDescription({ prop, isMobile }: ItemInfoDescriptionTypes) {
 
   const DescriptionMobile = (
     <>
-      <header className={styles.descriptionMobile} onClick={() => setIsOpened}>
+      <header
+        className={styles.descriptionMobile}
+        onClick={() => setIsOpened(!isOpened)}
+      >
         <h3>Opis nieruchomości</h3>
         <div>
           <HiChevronDown
@@ -65,14 +68,14 @@ function ItemInfoDescription({ prop, isMobile }: ItemInfoDescriptionTypes) {
           <nav className={styles.mobileMaps_nav}>
             <div
               className={styles.mobileMaps_nav_exit}
-              onClick={() => setIsMapOpened}
+              onClick={() => setIsMapOpened(!isMapOpened)}
             >
               <HiOutlineX />
             </div>
             <h4 className={styles.mobileMaps_nav_offerTitle}>
               {prop.offerTitle
                 .split(" ")
-                .map((n:string) => n.charAt(0).toUpperCase() + n.slice(1))
+                .map((n: string) => n.charAt(0).toUpperCase() + n.slice(1))
                 .join(" ")}
             </h4>
           </nav>
@@ -81,7 +84,10 @@ function ItemInfoDescription({ prop, isMobile }: ItemInfoDescriptionTypes) {
           </div>
         </>
       ) : (
-        <div className={styles.mobileMaps_svg} onClick={() => setIsMapOpened}>
+        <div
+          className={styles.mobileMaps_svg}
+          onClick={() => setIsMapOpened(!isMapOpened)}
+        >
           <GrMapLocation />
           <h4>Zobacz na mapie</h4>
         </div>

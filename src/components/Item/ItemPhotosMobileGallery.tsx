@@ -3,14 +3,14 @@ import { HiCursorClick, HiCamera, HiOutlineX } from "react-icons/hi";
 import styles from "../Item/ItemPhotos.module.css";
 import useActive from "../../utils/useActive";
 
-type ItemPhotosMobileGalleryTypes={ photos: string[]}
+type ItemPhotosMobileGalleryTypes = { photos: string[] };
 
 function ItemPhotosMobileGallery({ photos }: ItemPhotosMobileGalleryTypes) {
-  const [isOpened, setIsOpened] = useActive(true);
+  const [isOpened, setIsOpened] = useActive(false);
   const [selectedPhoto, setSelectedPhoto] = useState<number>();
   const [fullscreen, setFullscreen] = useActive(false);
 
-  const handleImageClick = (i:number) => {
+  const handleImageClick = (i: number) => {
     setSelectedPhoto(i);
     setFullscreen(!fullscreen);
   };
@@ -30,7 +30,7 @@ function ItemPhotosMobileGallery({ photos }: ItemPhotosMobileGalleryTypes) {
               ></img>
               <div
                 className={styles.mobile_gallery_custom_element}
-                onClick={()=>setIsOpened}
+                onClick={() => setIsOpened(!isOpened)}
               >
                 <div className={styles.mobile_gallery_more}>
                   <HiCursorClick />
@@ -59,7 +59,10 @@ function ItemPhotosMobileGallery({ photos }: ItemPhotosMobileGalleryTypes) {
   const MobileGridGallery = (
     <div>
       <nav className={styles.mobile_grid_gallery_nav}>
-        <div className={styles.mobile_grid_gallery_exit} onClick={()=>setIsOpened}>
+        <div
+          className={styles.mobile_grid_gallery_exit}
+          onClick={() => setIsOpened(!isOpened)}
+        >
           <HiOutlineX />
         </div>
         <div className={styles.mobile_grid_gallery_nav_title}>Galeria</div>
@@ -72,7 +75,7 @@ function ItemPhotosMobileGallery({ photos }: ItemPhotosMobileGalleryTypes) {
                 <img
                   src={photo}
                   alt={`infinite_gallery_photo_${index}`}
-                  className={styles.infinite_gallery_item_photo}
+                  className={styles.mobile_gallery_image_infinite}
                 />
               </li>
             ))}

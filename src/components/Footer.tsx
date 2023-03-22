@@ -26,16 +26,45 @@ function Footer() {
       <ListItem icon={FiInstagram} text="*" />
     </ul>
   );
+  const options = [
+    "Inne",
+    "Kredyty",
+    "Blog",
+    "Zapytaj eksperta",
+    "Wersja mobilna",
+    "Regulamin",
+    "Polityka prywatności",
+    "Ochrona danych",
+  ];
+  const others = [
+    " Usługi Dla agencji nieruchomości",
+    "Dla deweloperów",
+    "Dla reklamodawców",
+    "Kup baner do wywieszenia",
+    "Zamów wnętrze w 3D",
+    "Dodaj ogłoszenie Cennik",
+  ];
+
+  const OptionsList = ({ options }: { options: string[] }) => (
+    <ul>
+      {options.map((item) => (
+        <li className={styles.options_li} key={item}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <section className={styles.container_social}>
           <article className={styles.social}>
-            <label>Bądźmy w kontakcie:</label>
+            <h4 className={styles.title}>Bądźmy w kontakcie:</h4>
             <List></List>
           </article>
           <article className={styles.social}>
-            <label>Centrum pomocy klienta</label>
+            <h4 className={styles.title}>Centrum pomocy klienta</h4>
             <div className={styles.social_contact}>
               <h3>
                 <HiPhone style={{ verticalAlign: "middle" }} />
@@ -44,14 +73,18 @@ function Footer() {
             </div>
           </article>
         </section>
-        <div className={styles.container_opinions}>
-          Inne Kredyty Blog Zapytaj eksperta Wersja mobilna Regulamin Polityka
-          prywatności Ochrona danych
-        </div>
-        <div className={styles.container_navigation}>
-          Usługi Dla agencji nieruchomości Dla deweloperów Dla reklamodawców Kup
-          baner do wywieszenia Zamów wnętrze w 3D Dodaj ogłoszenie Cennik
-        </div>
+        <section className={styles.container_options}>
+          <h4 className={styles.title}>Inne</h4>
+          <article className={styles.article}>
+            <OptionsList options={options} />
+          </article>
+        </section>
+        <section className={styles.container_navigation}>
+          <h4 className={styles.title}>Usługi</h4>
+          <article className={styles.article}>
+            <OptionsList options={others} />
+          </article>
+        </section>
       </div>
     </footer>
   );

@@ -104,6 +104,7 @@
 .menu_list > a > .menu_list_item {
   color: white;
   text-decoration: none;
+  border-bottom: 1px solid rgba(216, 216, 216, 0.4);
 }
 
 .menu_list > a > .menu_list_item:hover {

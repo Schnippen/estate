@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./FullscreenPhotosGallery.module.css";
+import styles from "./ItemFullscreenPhotosGallery.module.css";
 import {
   HiOutlineX,
   HiArrowLeft,
@@ -7,14 +7,14 @@ import {
   HiOutlinePhotograph,
 } from "react-icons/hi";
 
-type FullscreenPhotosGalleryTypes={
-  isActive:boolean;
-  setIsActive:(value: boolean) => void;
-  photosList:JSX.Element[];
-  selectedPhoto:number;
-  setSelectedPhoto:React.Dispatch<React.SetStateAction<number>>;
-  photosLength:number;
-}
+type FullscreenPhotosGalleryTypes = {
+  isActive: boolean;
+  setIsActive: (value: boolean) => void;
+  photosList: JSX.Element[];
+  selectedPhoto: number;
+  setSelectedPhoto: React.Dispatch<React.SetStateAction<number>>;
+  photosLength: number;
+};
 
 function FullscreenPhotosGallery({
   isActive,
@@ -23,7 +23,7 @@ function FullscreenPhotosGallery({
   selectedPhoto,
   setSelectedPhoto,
   photosLength,
-}:FullscreenPhotosGalleryTypes) {
+}: FullscreenPhotosGalleryTypes) {
   return (
     <div
       className={
@@ -54,12 +54,17 @@ function FullscreenPhotosGallery({
           alt="Fullscreen"
         />
       </div>
-      <button className={styles.buttonExit} onClick={()=>setIsActive}>
+      <button
+        className={styles.buttonExit}
+        onClick={() => setIsActive(!isActive)}
+      >
         <HiOutlineX />
       </button>
       <div className={styles.counter}>
         {selectedPhoto + 1}/{photosLength}
-        <HiOutlinePhotograph />
+        <div>
+          <HiOutlinePhotograph />
+        </div>
       </div>
     </div>
   );

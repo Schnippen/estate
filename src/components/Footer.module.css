@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
   display: block;
   bottom: 0;
   padding: 2rem 6rem;
@@ -24,6 +24,10 @@
   text-align: center;
 }
 
+.container_social > .social:last-child {
+  height: 154px;
+}
+
 .social {
   display: block;
   padding: 1rem;
@@ -32,9 +36,9 @@
   width: 366px;
 }
 
-.social label {
-  font-weight: 600;
+.title {
   color: var(--primary-text-color);
+  text-align: center;
 }
 
 .social_links {
@@ -42,7 +46,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: var(--article);
-  height: 60px;
+  height: 80px;
   border-radius: 5px;
   margin-top: 5px;
 }
@@ -53,13 +57,70 @@
   align-items: center;
   margin-top: 5px;
   background-color: var(--article);
-  height: 60px;
+  height: 80px;
   border-radius: 5px;
   font-weight: 600;
 }
+
 .social_contact > h3:hover {
   color: var(--tertiary-text-color);
   transition: all 0.3s ease 0s;
+}
+
+.container_options {
+  grid-column: 2/3;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  width: 366px;
+  padding: 1rem;
+  height: 312px;
+}
+
+.container_navigation {
+  grid-column: 3/3;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  width: 366px;
+  padding: 1rem;
+  height: 312px;
+}
+
+.options_li {
+  list-style: none;
+}
+
+.article {
+  margin-top: 5px;
+  display: flex;
+  border-radius: 5px;
+  height: calc(100% - 1rem);
+}
+.article ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.article li {
+  padding-left: 10px;
+  font-weight: 600;
+  color: var(--primary-text-color);
+}
+.article li:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--tertiary-text-color);
+}
+
+@media (max-width: 1280px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container section {
+    margin: 10px 0;
+  }
 }
 
 @media (max-width: 800px) {
@@ -74,5 +135,8 @@
   }
   .social {
     width: auto;
+  }
+  .container_navigation,.container_options{
+    width: 300px;
   }
 }

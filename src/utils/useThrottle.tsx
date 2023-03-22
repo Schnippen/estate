@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useThrottledFunc(func: any, delay: number) {
   const [isThrottled, setIsThrottled] = useState(false);
