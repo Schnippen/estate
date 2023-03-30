@@ -16,14 +16,8 @@ import { DarkThemeContextProvider } from "./context/DarkThemeContext";
 import Favorites from "./components/Favorites";
 import Analitics from "./components/Analitics/Analitics";
 
-//user context
 function App() {
-  /*
-  const [user, setUser] = useState();
-  const [isLogged, setIsLogged] = useState();
-  const UserContext = createContext(null);
-  isMobile???
-  */
+
 
   return (
     <>
@@ -51,5 +45,3 @@ function App() {
 }
 
 export default App;
-//<Route path="/Leaflet" element={<Leaflet />} />
-///Item/:id
