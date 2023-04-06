@@ -29,6 +29,7 @@
   background-color: var(--primary-color);
   border-radius: 5px;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .dropdown {
@@ -173,8 +174,11 @@
     left: 2%;
     right: 2%;
   }
+  .section_searchbar > button {
+    margin: 0 4px;
+  }
 }
-@media (max-width: 1260px) {
+@media (max-width: 1280px) {
   .section_searchbar {
     display: flex;
     align-items: center;
@@ -190,6 +194,9 @@
     width: 320px;
   }
   .dropdown {
+    width: 320px;
+  }
+  .section_searchbar > button {
     width: 320px;
   }
 }

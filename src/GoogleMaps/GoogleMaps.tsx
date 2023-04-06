@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function GoogleMaps() {
-  return (
-    <div>GoogleMaps</div>
-  )
+  return <div>GoogleMaps</div>;
 }
 
-export default GoogleMaps
+export default GoogleMaps;
