@@ -188,80 +188,30 @@ function SearchForm({
           <label htmlFor="">Cena w zł</label>
           <Price data={PriceData} handleChange={handleDropdown} />
         </div>
-        <div
-          className={styles.areaPrice}
-          style={{
-            width: "320px",
-            boxShadow: renderErrorConstruction
-              ? "0px 0px 11px 4px red"
-              : "none",
-          }}
-        >
-          <label htmlFor="">Rok Budowy</label>
-          <div
-            style={{
-              display: "flex",
-              width: "300px",
-              borderRadius: "5px",
-            }}
-          >
-            <input
-              type="text"
-              name={"YearOfConstructionFrom"}
-              id={"rok_budowy"}
-              placeholder={"Rok od..."}
-              onChange={(e) => {
-                handleChange(e);
-                handleMax(e, 4);
-              }}
-              maxLength={4}
-              onKeyDown={handleKeyDown}
-              className={styles.form_input}
-            />
-            <div
-              style={{
-                height: "40px",
-                border: "solid var(--secondary-color)",
-                margin: "0 5px",
-              }}
-            ></div>
-            <input
-              type="text"
-              name={"YearOfConstructionTo"}
-              id={"rok_budowy"}
-              placeholder={"Rok do..."}
-              onChange={(e) => {
-                handleChange(e);
-                handleMax(e, 4);
-              }}
-              maxLength={4}
-              onKeyDown={handleKeyDown}
-              className={styles.form_input}
-            />
+        <div className={styles.section_submit}>
+          <div className={styles.small_button_div}>
+            <button
+              onClick={() => setIsOpened(!isOpened)}
+              className={styles.small_button}
+              style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
+            >
+              <h3>Rozwiń</h3>
+              <HiChevronDown
+                className={
+                  isOpened
+                    ? styles.small_button_ArrowClosed
+                    : styles.small_button_ArrowOpened
+                }
+              />
+            </button>
           </div>
-        </div>
-        <div>
-          <button
-            onClick={() => setIsOpened(!isOpened)}
-            className={styles.small_button}
-            style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
-          >
-            <h3>Rozwiń</h3>
-            <HiChevronDown
-              className={
-                isOpened
-                  ? styles.small_button_ArrowClosed
-                  : styles.small_button_ArrowOpened
-              }
-            />
-          </button>
-        </div>
-        <div className={styles.submitButton}>
-          <Button>
-            <HiSearch />
-          </Button>
-          <h4 onClick={handleReset}>reset!</h4>
-          {searchFormLength}
+          <div className={styles.submitButton}>
+            <Button>
+              <HiSearch />
+            </Button>
+            <h4 onClick={handleReset}>reset!</h4>
+            {searchFormLength}
+          </div>
         </div>
         {isOpened ? (
           <section className={styles.sectionOpened}>
@@ -284,7 +234,6 @@ function SearchForm({
                 className={styles.form_input}
               />
             </div>
-
             <div
               className={styles.areaPrice}
               style={{
@@ -387,7 +336,58 @@ function SearchForm({
                 />
               </div>
             </div>
-            <div>piętro</div>
+            <div
+              className={styles.areaPrice}
+              style={{
+                width: "320px",
+                boxShadow: renderErrorConstruction
+                  ? "0px 0px 11px 4px red"
+                  : "none",
+              }}
+            >
+              <label htmlFor="">Rok Budowy</label>
+              <div
+                style={{
+                  display: "flex",
+                  width: "300px",
+                  borderRadius: "5px",
+                }}
+              >
+                <input
+                  type="text"
+                  name={"YearOfConstructionFrom"}
+                  id={"rok_budowy"}
+                  placeholder={"Rok od..."}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleMax(e, 4);
+                  }}
+                  maxLength={4}
+                  onKeyDown={handleKeyDown}
+                  className={styles.form_input}
+                />
+                <div
+                  style={{
+                    height: "40px",
+                    border: "solid var(--secondary-color)",
+                    margin: "0 5px",
+                  }}
+                ></div>
+                <input
+                  type="text"
+                  name={"YearOfConstructionTo"}
+                  id={"rok_budowy"}
+                  placeholder={"Rok do..."}
+                  onChange={(e) => {
+                    handleChange(e);
+                    handleMax(e, 4);
+                  }}
+                  maxLength={4}
+                  onKeyDown={handleKeyDown}
+                  className={styles.form_input}
+                />
+              </div>
+            </div>
           </section>
         ) : null}
       </section>
