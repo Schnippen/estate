@@ -41,7 +41,6 @@ function SearchForm({
   handleForm: (e: React.FormEvent<HTMLFormElement>) => void;
   searchFormLength: number;
 }) {
-  const [isOpened, setIsOpened] = useActive(false);
   const [renderErrorPrice, setRenderErrorPrice] = useState(false);
   const [renderErrorAreaPrice, setRenderErrorAreaPrice] = useState(false);
   const [renderErrorConstruction, setRenderErrorConstruction] = useState(false);
@@ -137,12 +136,7 @@ function SearchForm({
   return (
     <form
       className={styles.search_form}
-      style={{
-        height: isOpened ? "400px" : "200px",
-        transition: "height 0.3s ease-in-out",
-        overflow: "hidden",
-        maxHeight: isOpened ? "400px" : "200px",
-      }}
+
       onSubmit={(e) => handleForm(e)}
     >
       <section className={styles.section}>
@@ -190,22 +184,6 @@ function SearchForm({
         </div>
         <div className={styles.section_submit}>
           <div>
-            <div className={styles.small_button_div}>
-              <button
-                onClick={() => setIsOpened(!isOpened)}
-                className={styles.small_button}
-                style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
-              >
-                <h3>Rozwiń</h3>
-                <HiChevronDown
-                  className={
-                    isOpened
-                      ? styles.small_button_ArrowClosed
-                      : styles.small_button_ArrowOpened
-                  }
-                />
-              </button>
-            </div>
             <div className={styles.submitButton}>
               <Button>
                 <HiSearch />
@@ -213,187 +191,179 @@ function SearchForm({
             </div>
           </div>
           <h5 onClick={handleReset}>
-            Liczba ogłoszeń: 
+            Liczba ogłoszeń:
             {searchFormLength > 0 ? searchFormLength : null}
           </h5>
         </div>
-        {isOpened ? (
-          <section className={styles.sectionOpened}>
-            <div
-              className={styles.form_input_container}
-              style={{ width: "200px" }}
-            >
-              <label htmlFor="numberOfRooms">Liczba pokoi</label>
-              <input
-                type="text"
-                name={"numberOfRooms"}
-                id={"numberOfRooms"}
-                placeholder={"Liczba pokoi"}
-                onChange={(e) => {
-                  handleChange(e);
-                  handleMax(e, 2);
-                }}
-                maxLength={2}
-                onKeyDown={handleKeyDown}
-                className={styles.form_input}
-              />
-            </div>
-            <div
-              className={styles.areaPrice}
-              style={{
-                width: "320px",
-                boxShadow: renderErrorArea ? "0px 0px 11px 4px red" : "none",
+
+        <div className={styles.form_input_container} style={{ width: "200px" }}>
+          <label htmlFor="numberOfRooms">Liczba pokoi</label>
+          <input
+            type="text"
+            name={"numberOfRooms"}
+            id={"numberOfRooms"}
+            placeholder={"Liczba pokoi"}
+            onChange={(e) => {
+              handleChange(e);
+              handleMax(e, 2);
+            }}
+            maxLength={2}
+            onKeyDown={handleKeyDown}
+            className={styles.form_input}
+          />
+        </div>
+        <div
+          className={styles.areaPrice}
+          style={{
+            width: "320px",
+            boxShadow: renderErrorArea ? "0px 0px 11px 4px red" : "none",
+          }}
+        >
+          <label htmlFor="Area">Powierzchnia m²</label>
+          <div
+            style={{
+              display: "flex",
+              width: "300px",
+              borderRadius: "5px",
+            }}
+          >
+            <input
+              type="text"
+              name={"AreaFrom"}
+              id={"Area"}
+              placeholder={"od..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 7);
               }}
-            >
-              <label htmlFor="Area">Powierzchnia m²</label>
-              <div
-                style={{
-                  display: "flex",
-                  width: "300px",
-                  borderRadius: "5px",
-                }}
-              >
-                <input
-                  type="text"
-                  name={"AreaFrom"}
-                  id={"Area"}
-                  placeholder={"od..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 7);
-                  }}
-                  maxLength={7}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-                <div
-                  style={{
-                    height: "40px",
-                    border: "solid var(--secondary-color)",
-                    margin: "0 5px",
-                  }}
-                ></div>
-                <input
-                  type="text"
-                  name={"AreaTo"}
-                  id={"powierzchnia"}
-                  placeholder={"do..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 7);
-                  }}
-                  maxLength={7}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-              </div>
-            </div>
+              maxLength={7}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
             <div
-              className={styles.areaPrice}
               style={{
-                width: "320px",
-                boxShadow: renderErrorAreaPrice
-                  ? "0px 0px 11px 4px red"
-                  : "none",
+                height: "40px",
+                border: "solid var(--secondary-color)",
+                margin: "0 5px",
               }}
-            >
-              <label htmlFor="">Cena za m²</label>
-              <div
-                style={{
-                  display: "flex",
-                  width: "300px",
-                  borderRadius: "5px",
-                }}
-              >
-                <input
-                  type="text"
-                  name={"areaPriceFrom"}
-                  id={"cena za metr"}
-                  placeholder={"Cena od..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 7);
-                  }}
-                  maxLength={7}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-                <div
-                  style={{
-                    height: "40px",
-                    border: "solid var(--secondary-color)",
-                    margin: "0 5px",
-                  }}
-                ></div>
-                <input
-                  type="text"
-                  name={"areaPriceTo"}
-                  id={"cena za metr"}
-                  placeholder={"Cena do..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 7);
-                  }}
-                  maxLength={7}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-              </div>
-            </div>
+            ></div>
+            <input
+              type="text"
+              name={"AreaTo"}
+              id={"powierzchnia"}
+              placeholder={"do..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 7);
+              }}
+              maxLength={7}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+          </div>
+        </div>
+        <div
+          className={styles.areaPrice}
+          style={{
+            width: "320px",
+            boxShadow: renderErrorAreaPrice ? "0px 0px 11px 4px red" : "none",
+          }}
+        >
+          <label htmlFor="">Cena za m²</label>
+          <div
+            style={{
+              display: "flex",
+              width: "300px",
+              borderRadius: "5px",
+            }}
+          >
+            <input
+              type="text"
+              name={"areaPriceFrom"}
+              id={"cena za metr"}
+              placeholder={"Cena od..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 7);
+              }}
+              maxLength={7}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
             <div
-              className={styles.areaPrice}
               style={{
-                width: "320px",
-                boxShadow: renderErrorConstruction
-                  ? "0px 0px 11px 4px red"
-                  : "none",
+                height: "40px",
+                border: "solid var(--secondary-color)",
+                margin: "0 5px",
               }}
-            >
-              <label htmlFor="">Rok Budowy</label>
-              <div
-                style={{
-                  display: "flex",
-                  width: "300px",
-                  borderRadius: "5px",
-                }}
-              >
-                <input
-                  type="text"
-                  name={"YearOfConstructionFrom"}
-                  id={"rok_budowy"}
-                  placeholder={"Rok od..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 4);
-                  }}
-                  maxLength={4}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-                <div
-                  style={{
-                    height: "40px",
-                    border: "solid var(--secondary-color)",
-                    margin: "0 5px",
-                  }}
-                ></div>
-                <input
-                  type="text"
-                  name={"YearOfConstructionTo"}
-                  id={"rok_budowy"}
-                  placeholder={"Rok do..."}
-                  onChange={(e) => {
-                    handleChange(e);
-                    handleMax(e, 4);
-                  }}
-                  maxLength={4}
-                  onKeyDown={handleKeyDown}
-                  className={styles.form_input}
-                />
-              </div>
-            </div>
-          </section>
-        ) : null}
+            ></div>
+            <input
+              type="text"
+              name={"areaPriceTo"}
+              id={"cena za metr"}
+              placeholder={"Cena do..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 7);
+              }}
+              maxLength={7}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+          </div>
+        </div>
+        <div
+          className={styles.areaPrice}
+          style={{
+            width: "320px",
+            boxShadow: renderErrorConstruction
+              ? "0px 0px 11px 4px red"
+              : "none",
+          }}
+        >
+          <label htmlFor="">Rok Budowy</label>
+          <div
+            style={{
+              display: "flex",
+              width: "300px",
+              borderRadius: "5px",
+            }}
+          >
+            <input
+              type="text"
+              name={"YearOfConstructionFrom"}
+              id={"rok_budowy"}
+              placeholder={"Rok od..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 4);
+              }}
+              maxLength={4}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+            <div
+              style={{
+                height: "40px",
+                border: "solid var(--secondary-color)",
+                margin: "0 5px",
+              }}
+            ></div>
+            <input
+              type="text"
+              name={"YearOfConstructionTo"}
+              id={"rok_budowy"}
+              placeholder={"Rok do..."}
+              onChange={(e) => {
+                handleChange(e);
+                handleMax(e, 4);
+              }}
+              maxLength={4}
+              onKeyDown={handleKeyDown}
+              className={styles.form_input}
+            />
+          </div>
+        </div>
       </section>
     </form>
   );

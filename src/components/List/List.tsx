@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 import Loading from "../Loading";
 import styles from "./List.module.css";
 import useActive from "../../utils/useActive";
-import { TbMap2 } from "react-icons/tb";
+import { TbMap2, TbListNumbers } from "react-icons/tb";
 import Dropdown from "../Dropdown";
 import { useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
@@ -241,11 +241,11 @@ function List({ isMobile }: { isMobile: boolean }) {
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
-            parseFloat(
-              firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")
+            parseInt(
+              secondItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             ) -
-            parseFloat(
-              secondItem.areaPriceInfo.replace(",", ".").split("zł").join("")
+            parseInt(
+              firstItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             )
         )
       );
@@ -253,11 +253,11 @@ function List({ isMobile }: { isMobile: boolean }) {
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
-            parseFloat(
-              secondItem.areaPriceInfo.replace(",", ".").split("zł").join("")
+            parseInt(
+              secondItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             ) -
-            parseFloat(
-              firstItem.areaPriceInfo.replace(",", ".").split("zł").join("")
+            parseInt(
+              firstItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             )
         )
       );
@@ -350,36 +350,39 @@ function List({ isMobile }: { isMobile: boolean }) {
               : styles.small_button_ArrowOpened
           }
         />
+        <TbListNumbers />
       </button>
-      <aside>
-        <div>
-          <Dropdown
-            data={SortPrice}
-            placeholder={"Sortuj"}
-            handleChange={handleSortingDatabaseState}
-          ></Dropdown>
-        </div>
-        <div>
-          <Dropdown
-            data={NumberOfOffers}
-            placeholder={"Ilość ofert na stronie"}
-            handleChange={handleNumberOfOffers}
-          ></Dropdown>
-        </div>
-        <div
-          style={{
-            color: "var(--primary-text-color)",
-            textAlign: "center",
-            userSelect: "none",
-          }}
-        >
-          Liczba ogłoszeń: <strong>{databaseState.length}</strong>
-        </div>
-        <div>
-          Zobacz na mapie
-          <TbMap2 />
-        </div>
-      </aside>
+      {isOpened ? (
+        <aside>
+          <div>
+            <Dropdown
+              data={SortPrice}
+              placeholder={"Sortuj"}
+              handleChange={handleSortingDatabaseState}
+            ></Dropdown>
+          </div>
+          <div>
+            <Dropdown
+              data={NumberOfOffers}
+              placeholder={"Ilość ofert na stronie"}
+              handleChange={handleNumberOfOffers}
+            ></Dropdown>
+          </div>
+          <div
+            style={{
+              color: "var(--primary-text-color)",
+              textAlign: "center",
+              userSelect: "none",
+            }}
+          >
+            Liczba ogłoszeń: <strong>{databaseState.length}</strong>
+          </div>
+          <div style={{ color: "var(--primary-text-color)" }}>
+            Zobacz na mapie
+            <TbMap2 />
+          </div>
+        </aside>
+      ) : null}
     </section>
   );
 
