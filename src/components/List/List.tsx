@@ -330,7 +330,7 @@ function List({ isMobile }: { isMobile: boolean }) {
       >
         Liczba ogłoszeń: <strong>{databaseState.length}</strong>
       </div>
-      <div>
+      <div style={{ color: "var(--primary-text-color)" }}>
         Zobacz na mapie
         <TbMap2 />
       </div>

@@ -1,7 +1,7 @@
 .body {
   display: flex;
   margin-top: 100px;
-  background-color: blanchedalmond;
+  background-color: var(--primary-text-color);
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,7 @@
 
 .header {
   margin: 20px 0;
+  animation: fade-in 2s ease-in-out;
 }
 .header > h2 {
   user-select: none;
@@ -25,6 +26,7 @@
   height: 488px;
   width: 100%;
   border-radius: 5px;
+  animation: fade-in 2s ease-in-out;
 }
 
 .section:first-child {
@@ -93,4 +95,13 @@
 }
 
 @media screen and (min-width: 768px) {
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
