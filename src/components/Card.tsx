@@ -13,7 +13,7 @@ type CardProps={
 function Card(props:CardProps) {
 
   return (
-    <li>
+    <li className={styles.card_section_item_li}>
       <div className={styles.card_section_item}>
         <div className={styles.card_svg}>{props.svg}</div>
         <h3 className={styles.card_title}>{props.title}</h3>

@@ -1,3 +1,6 @@
+.card_section_item_li {
+  list-style: none;
+}
 .card_section_item {
   margin: auto;
   height: 488px;

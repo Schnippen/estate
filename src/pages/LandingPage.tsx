@@ -90,62 +90,56 @@ function LandingPage() {
         {renderError ? (
           <div className={styles.errorDiv}>{errorMessage.message1}</div>
         ) : null}
-        {isMobile ? null : (
-          <form
-            className={styles.section_searchbar}
-            onSubmit={(e) => handleSubmit(e)}
+        <form
+          className={styles.section_searchbar}
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <div className={styles.form_div_wrapper}>
+            <div className={styles.form_label_wrapper}>
+              <label htmlFor="city">Miasto</label>
+            </div>
+            <HiOutlineLocationMarker className={styles.svg} />
+            <input
+              type="text"
+              placeholder="np. miasto"
+              name="City"
+              id="city"
+              className={styles.inputText}
+              onChange={handleInput}
+            />
+          </div>
+          <div className={styles.dropdown}>
+            <Dropdown
+              data={TypeOfRealEstate}
+              name={"TypeOfRealEstate"}
+              handleChange={handleChange}
+              placeholder={"Rodzaj Nieruchomości"}
+              label={"Rodzaj Nieruchomości"}
+            ></Dropdown>
+          </div>
+          <div className={styles.dropdown}>
+            <Dropdown
+              data={TypeOfTransaction}
+              name={"TypeOfTransaction"}
+              handleChange={handleChange}
+              placeholder={"Rodzaj Transakscji"}
+              label={"Rodzaj Transakscji"}
+            ></Dropdown>
+          </div>
+          <div
+            className={styles.dropdown}
+            style={{
+              width: "320px",
+              boxShadow: renderError ? "0px 0px 11px 4px red" : "none",
+            }}
           >
-            <div className={styles.form_div_wrapper}>
-              <div className={styles.form_label_wrapper}>
-                <label htmlFor="city">Miasto</label>
-              </div>
-              <HiOutlineLocationMarker className={styles.svg} />
-              <input
-                type="text"
-                placeholder="np. miasto"
-                name="City"
-                id="city"
-                className={styles.inputText}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.dropdown}>
-              <Dropdown
-                data={TypeOfRealEstate}
-                name={"TypeOfRealEstate"}
-                handleChange={handleChange}
-                placeholder={"Rodzaj Nieruchomości"}
-                label={"Rodzaj Nieruchomości"}
-              ></Dropdown>
-            </div>
-            <div className={styles.dropdown}>
-              <Dropdown
-                data={TypeOfTransaction}
-                name={"TypeOfTransaction"}
-                handleChange={handleChange}
-                placeholder={"Rodzaj Transakscji"}
-                label={"Rodzaj Transakscji"}
-              ></Dropdown>
-            </div>
-            <div
-              className={styles.dropdown}
-              style={{
-                width: "320px",
-                boxShadow: renderError ? "0px 0px 11px 4px red" : "none",
-              }}
-            >
-              <label htmlFor="">Cena w zł</label>
-              <Price data={PriceData} handleChange={handleChange} />
-            </div>
-            <Button
-              type={"submit"}
-              onClick={handleSubmit}
-              disabled={renderError}
-            >
-              <HiSearch />
-            </Button>
-          </form>
-        )}
+            <label htmlFor="">Cena w zł</label>
+            <Price data={PriceData} handleChange={handleChange} />
+          </div>
+          <Button type={"submit"} onClick={handleSubmit} disabled={renderError}>
+            <HiSearch />
+          </Button>
+        </form>
       </section>
       <section className={styles.landing__page_card_section}>
         {isMobile ? (

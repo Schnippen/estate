@@ -88,6 +88,11 @@
 
 .options_li {
   list-style: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+}
+.options_li:active {
+  transform: scale(0.95 );
 }
 
 .article {

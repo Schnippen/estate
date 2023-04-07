@@ -206,3 +206,11 @@
     width: 340px;
   }
 }
+@media (max-width: 400px) {
+  .section_searchbar {
+    width: 340px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

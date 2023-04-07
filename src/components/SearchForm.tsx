@@ -189,29 +189,33 @@ function SearchForm({
           <Price data={PriceData} handleChange={handleDropdown} />
         </div>
         <div className={styles.section_submit}>
-          <div className={styles.small_button_div}>
-            <button
-              onClick={() => setIsOpened(!isOpened)}
-              className={styles.small_button}
-              style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
-            >
-              <h3>Rozwiń</h3>
-              <HiChevronDown
-                className={
-                  isOpened
-                    ? styles.small_button_ArrowClosed
-                    : styles.small_button_ArrowOpened
-                }
-              />
-            </button>
+          <div>
+            <div className={styles.small_button_div}>
+              <button
+                onClick={() => setIsOpened(!isOpened)}
+                className={styles.small_button}
+                style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
+              >
+                <h3>Rozwiń</h3>
+                <HiChevronDown
+                  className={
+                    isOpened
+                      ? styles.small_button_ArrowClosed
+                      : styles.small_button_ArrowOpened
+                  }
+                />
+              </button>
+            </div>
+            <div className={styles.submitButton}>
+              <Button>
+                <HiSearch />
+              </Button>
+            </div>
           </div>
-          <div className={styles.submitButton}>
-            <Button>
-              <HiSearch />
-            </Button>
-            <h4 onClick={handleReset}>reset!</h4>
-            {searchFormLength}
-          </div>
+          <h5 onClick={handleReset}>
+            Liczba ogłoszeń: 
+            {searchFormLength > 0 ? searchFormLength : null}
+          </h5>
         </div>
         {isOpened ? (
           <section className={styles.sectionOpened}>

@@ -2,7 +2,7 @@
   margin-top: 100px;
   height: 200px;
   width: 100%;
-  background-color: #8ac6d0;
+  background-color: var(--text-background);
   z-index: 0;
   padding: 20px 0;
   display: flex;
@@ -70,12 +70,24 @@
   color: white;
   padding: 5px 10px;
 }
-.section_submit{
+.section_submit {
   grid-column-start: 5;
   grid-row: 1;
   display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(216, 216, 216, 0.4);
 }
-
+.section_submit > h5 {
+  text-align: center;
+  margin: 5px 0;
+  color: var(--primary-text-color);
+}
+.section_submit > div {
+  display: flex;
+}
+.section_submit > div > div {
+  margin: 5px 10px;
+}
 
 .form_input_container {
   height: 80px;
