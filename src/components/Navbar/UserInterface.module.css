@@ -194,7 +194,7 @@
   width: 100%;
   padding: 10px 32px;
   border-radius: 5px;
-  background-color: #8ac6d0;
+  background-color: var(--primary-color);
   border-style: none;
   transition: all 0.3s ease 0s;
   font-weight: bold;
@@ -274,7 +274,7 @@
   width: 4rem;
   height: 4rem;
   object-fit: cover;
-  background-color: aqua;
+  background-color: var(--primary-color);
 }
 
 .notLoggedIn_cointainer {

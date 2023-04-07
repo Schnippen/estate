@@ -86,7 +86,8 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "PriceFrom") {
           filteredData = filteredData.filter((object: any) =>
             query["PriceFrom"] > 0
-              ? parseFloat(
+              ? object["priceInfo"] &&
+                parseInt(
                   object["priceInfo"].slice(0, -2).split(" ").join("")
                 ) >= query["PriceFrom"]
               : true
@@ -95,7 +96,8 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "PriceTo") {
           filteredData = filteredData.filter((object: any) =>
             query["PriceTo"] > 0
-              ? parseFloat(
+              ? object["priceInfo"] &&
+                parseInt(
                   object["priceInfo"].slice(0, -2).split(" ").join("")
                 ) <= query["PriceTo"]
               : true
@@ -104,23 +106,26 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "YearOfConstructionFrom") {
           filteredData = filteredData.filter((object: any) =>
             query["YearOfConstructionFrom"] > 0
-              ? parseFloat(object["yearOfConstructionInfo"]) >=
-                query["YearOfConstructionFrom"]
+              ? object["yearOfConstructionInfo"] &&
+                parseInt(object["yearOfConstructionInfo"]) >=
+                  query["YearOfConstructionFrom"]
               : true
           );
         }
         if (key === "YearOfConstructionTo") {
           filteredData = filteredData.filter((object: any) =>
             query["YearOfConstructionTo"] > 0
-              ? parseFloat(object["yearOfConstructionInfo"]) <=
-                query["YearOfConstructionTo"]
+              ? object["yearOfConstructionInfo"] &&
+                parseInt(object["yearOfConstructionInfo"]) <=
+                  query["YearOfConstructionTo"]
               : true
           );
         }
         if (key === "AreaFrom") {
           filteredData = filteredData.filter((object: any) =>
             query["AreaFrom"] > 0
-              ? parseFloat(
+              ? object["areaInfo"] &&
+                parseInt(
                   object["areaInfo"]?.slice(0, -3)?.split(" ").join("")
                 ) >= query["AreaFrom"]
               : true
@@ -129,7 +134,8 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "AreaTo") {
           filteredData = filteredData.filter((object: any) =>
             query["AreaTo"] > 0
-              ? parseFloat(
+              ? object["areaInfo"] &&
+                parseInt(
                   object["areaInfo"]?.slice(0, -3)?.split(" ").join("")
                 ) <= query["AreaTo"]
               : true
@@ -138,7 +144,8 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "areaPriceFrom") {
           filteredData = filteredData.filter((object: any) =>
             query["areaPriceFrom"] > 0
-              ? parseFloat(
+              ? object["areaPriceInfo"] &&
+                parseInt(
                   object["areaPriceInfo"].slice(0, -2).split(" ").join("")
                 ) >= query["areaPriceFrom"]
               : true
@@ -147,7 +154,8 @@ function List({ isMobile }: { isMobile: boolean }) {
         if (key === "areaPriceTo") {
           filteredData = filteredData.filter((object: any) =>
             query["areaPriceTo"] > 0
-              ? parseFloat(
+              ? object["areaPriceInfo"] &&
+                parseInt(
                   object["areaPriceInfo"].slice(0, -2).split(" ").join("")
                 ) <= query["areaPriceTo"]
               : true
@@ -225,16 +233,16 @@ function List({ isMobile }: { isMobile: boolean }) {
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
-            parseFloat(firstItem.priceInfo.split(" ").slice(0, -1).join("")) -
-            parseFloat(secondItem.priceInfo.split(" ").slice(0, -1).join(""))
+            parseInt(firstItem.priceInfo.split(" ").slice(0, -1).join("")) -
+            parseInt(secondItem.priceInfo.split(" ").slice(0, -1).join(""))
         )
       );
     } else if (sortBy === 3) {
       setDatabaseState(
         [...databaseState].sort(
           (firstItem, secondItem) =>
-            parseFloat(secondItem.priceInfo.split(" ").slice(0, -1).join("")) -
-            parseFloat(firstItem.priceInfo.split(" ").slice(0, -1).join(""))
+            parseInt(secondItem.priceInfo.split(" ").slice(0, -1).join("")) -
+            parseInt(firstItem.priceInfo.split(" ").slice(0, -1).join(""))
         )
       );
     } else if (sortBy === 4) {
@@ -242,10 +250,10 @@ function List({ isMobile }: { isMobile: boolean }) {
         [...databaseState].sort(
           (firstItem, secondItem) =>
             parseInt(
-              secondItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
+              firstItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             ) -
             parseInt(
-              firstItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
+              secondItem.areaPriceInfo?.replace(",", ".").split("zł").join("")
             )
         )
       );

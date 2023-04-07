@@ -19,6 +19,7 @@ process.env
 .env.test.local
 .env.production.local
 data.json
+data_estate.json
 
 npm-debug.log*
 yarn-debug.log*

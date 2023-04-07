@@ -43,7 +43,9 @@ function AnaliticsAveragePrice({ estateData }: any) {
           areaPriceInfo &&
           cityInfo === item
         ) {
-          const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+          const areaPrice = parseInt(
+            areaPriceInfo.slice(0, -2).split(" ").join("")
+          );
           if (!isNaN(areaPrice)) {
             countAll++;
             return acc + areaPrice;
@@ -57,7 +59,9 @@ function AnaliticsAveragePrice({ estateData }: any) {
     const totalAveragePrimary = estateData.reduce(
       (acc: number, { areaPriceInfo, marketInfo, cityInfo }: any) => {
         if (marketInfo === "pierwotny" && areaPriceInfo && cityInfo === item) {
-          const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+          const areaPrice = parseInt(
+            areaPriceInfo.slice(0, -2).split(" ").join("")
+          );
           if (!isNaN(areaPrice)) {
             countPrimary++;
             return acc + areaPrice;
@@ -71,7 +75,9 @@ function AnaliticsAveragePrice({ estateData }: any) {
     const totalAverageSecondary = estateData.reduce(
       (acc: number, { areaPriceInfo, marketInfo, cityInfo }: any) => {
         if (marketInfo === "wtórny" && areaPriceInfo && cityInfo === item) {
-          const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+          const areaPrice = parseInt(
+            areaPriceInfo.slice(0, -2).split(" ").join("")
+          );
           if (!isNaN(areaPrice)) {
             countSecondary++;
             return acc + areaPrice;

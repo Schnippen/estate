@@ -70,7 +70,7 @@ function AnaliticsAveragePricePerMeter({
     const totalAverage = estateData.reduce(
       (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
         if (areaInfo) {
-          const area = parseFloat(areaInfo.slice(0, -3));
+          const area = parseInt(areaInfo.trim().slice(0, -3));
           if (
             (marketInfo === "wtórny" || marketInfo === "pierwotny") &&
             areaPriceInfo &&
@@ -78,7 +78,7 @@ function AnaliticsAveragePricePerMeter({
             area >= valuesArray[index] &&
             area <= valuesArray[index + 1]
           ) {
-            const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
             if (!isNaN(areaPrice)) {
               countAveragePrimarySecondary++;
               return acc + areaPrice;
@@ -93,7 +93,7 @@ function AnaliticsAveragePricePerMeter({
     const totalAveragePrimary = estateData.reduce(
       (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
         if (areaInfo) {
-          const area = parseFloat(areaInfo.slice(0, -3));
+          const area = parseInt(areaInfo.trim().slice(0, -3));
           if (
             marketInfo === "pierwotny" &&
             areaPriceInfo &&
@@ -101,7 +101,7 @@ function AnaliticsAveragePricePerMeter({
             area >= 0 &&
             area <= 30
           ) {
-            const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
             if (!isNaN(areaPrice)) {
               countPrimary++;
               return acc + areaPrice;
@@ -116,7 +116,7 @@ function AnaliticsAveragePricePerMeter({
     const totalAverageSecondary = estateData.reduce(
       (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
         if (areaInfo) {
-          const area = parseFloat(areaInfo.slice(0, -3));
+          const area = parseInt(areaInfo.trim().slice(0, -3));
           if (
             marketInfo === "wtórny" &&
             areaPriceInfo &&
@@ -124,7 +124,7 @@ function AnaliticsAveragePricePerMeter({
             area >= 0 &&
             area <= 30
           ) {
-            const areaPrice = parseFloat(areaPriceInfo.slice(0, -3));
+            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
             if (!isNaN(areaPrice)) {
               countSecondary++;
               return acc + areaPrice;

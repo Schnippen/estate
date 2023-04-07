@@ -37,6 +37,7 @@
 .section > h2 {
   margin: 10px 0;
   user-select: none;
+  border-bottom: 1px solid rgba(216, 216, 216, 0.4);
 }
 
 .section:last-child {
@@ -92,5 +93,4 @@
 }
 
 @media screen and (min-width: 768px) {
-  
 }

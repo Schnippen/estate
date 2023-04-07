@@ -24,6 +24,7 @@
   height: 100%;
   padding: 3rem 0;
   user-select: none;
+  
 }
 
 .bigPhoto_arrowPrev,
@@ -46,19 +47,7 @@
   align-items: center;
 }
 
-.bigPhoto_arrowPrev {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
-.bigPhoto_arrowNext {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
 .bigPhoto_arrowPrev > svg,
 .bigPhoto_arrowNext > svg {
   transition: all 0.3s ease 0s;
@@ -102,6 +91,8 @@
   width: 100px;
   background-color: rgba(99, 118, 141, 1);
   border-radius: 0 100% 100% 0;
+  display: flex;
+    align-items: center;
 }
 
 .ornament_next {
@@ -113,6 +104,8 @@
   width: 100px;
   background-color: rgba(99, 118, 141, 1);
   border-radius: 100% 0 0 100%;
+  display: flex;
+    align-items: center;
 }
 
 .buttonExit {

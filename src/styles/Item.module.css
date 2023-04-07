@@ -1,12 +1,13 @@
 .container {
-  background-color: lightblue;
+  background-color: var(--primary-color);
   margin: auto;
   width: 75%;
   display: flex;
+  margin-bottom: 20px;
 }
 
 .container_article_main {
-  width: 75%;
+  width: 74%;
 }
 
 .section_item {
