@@ -60,91 +60,92 @@ function AnaliticsAveragePricePerMeter({
   const labelValue =
     index !== -1 ? labelValues[index] : "no city has been selected";
 
-  function calculateAvgPricePerMeter(
-    estateData: any,
-    city: string,
-    index: number
-  ) {
-    let valuesArray = [30, 40, 50, 60, 70, 80, 1000];
-    let countAveragePrimarySecondary = 0;
-    const totalAverage = estateData.reduce(
-      (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
-        if (areaInfo) {
-          const area = parseInt(areaInfo.trim().slice(0, -3));
-          if (
-            (marketInfo === "wtórny" || marketInfo === "pierwotny") &&
-            areaPriceInfo &&
-            cityInfo === city &&
-            area >= valuesArray[index] &&
-            area <= valuesArray[index + 1]
-          ) {
-            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
-            if (!isNaN(areaPrice)) {
-              countAveragePrimarySecondary++;
-              return acc + areaPrice;
-            }
-          }
-        }
-        return acc;
-      },
-      0
-    );
-    let countPrimary = 0;
-    const totalAveragePrimary = estateData.reduce(
-      (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
-        if (areaInfo) {
-          const area = parseInt(areaInfo.trim().slice(0, -3));
-          if (
-            marketInfo === "pierwotny" &&
-            areaPriceInfo &&
-            cityInfo === city &&
-            area >= 0 &&
-            area <= 30
-          ) {
-            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
-            if (!isNaN(areaPrice)) {
-              countPrimary++;
-              return acc + areaPrice;
-            }
-          }
-        }
-        return acc;
-      },
-      0
-    );
-    let countSecondary = 0;
-    const totalAverageSecondary = estateData.reduce(
-      (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
-        if (areaInfo) {
-          const area = parseInt(areaInfo.trim().slice(0, -3));
-          if (
-            marketInfo === "wtórny" &&
-            areaPriceInfo &&
-            cityInfo === city &&
-            area >= 0 &&
-            area <= 30
-          ) {
-            const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
-            if (!isNaN(areaPrice)) {
-              countSecondary++;
-              return acc + areaPrice;
-            }
-          }
-        }
-        return acc;
-      },
-      0
-    );
+ function calculateAvgPricePerMeter(
+   estateData: any,
+   city: string,
+   index: number
+ ) {
+   let valuesArray = [30, 40, 50, 60, 70, 80, 1000];
+   let countAveragePrimarySecondary = 0;
+   const totalAverage = estateData.reduce(
+     (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
+       if (areaInfo) {
+         const area = parseInt(areaInfo.trim().slice(0, -3));
+         if (
+           (marketInfo === "wtórny" || marketInfo === "pierwotny") &&
+           cityInfo === city &&
+           area >= valuesArray[index] &&
+           area <= valuesArray[index + 1]
+         ) {
+           const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
+           if (!isNaN(areaPrice)) {
+             countAveragePrimarySecondary++;
+             return acc + areaPrice;
+           }
+         }
+       }
+       return acc;
+     },
+     0
+   );
 
-    const avgPrice = (totalAverage / countAveragePrimarySecondary).toFixed(2);
-    const avgPricePrimary = (totalAveragePrimary / countPrimary).toFixed(2);
-    const avgPriceSecondary = (totalAverageSecondary / countSecondary).toFixed(
-      2
-    );
-    //console.log(valuesArray[index], valuesArray[index + 1]);
-    //console.log(avgPrice, avgPricePrimary, avgPriceSecondary);
-    return [avgPrice, avgPricePrimary, avgPriceSecondary];
-  }
+   let countPrimary = 0;
+
+   const totalAveragePrimary = estateData.reduce(
+     (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
+       if (areaInfo) {
+         const area = parseInt(areaInfo.trim().slice(0, -3));
+         if (
+           marketInfo === "pierwotny" &&
+           cityInfo === city &&
+           area >= 0 &&
+           area <= 30
+         ) {
+           const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
+           if (!isNaN(areaPrice)) {
+             countPrimary++;
+             return acc + areaPrice;
+           }
+         }
+       }
+       return acc;
+     },
+     0
+   );
+
+   let countSecondary = 0;
+   const totalAverageSecondary = estateData.reduce(
+     (acc: number, { areaPriceInfo, cityInfo, marketInfo, areaInfo }: any) => {
+       if (areaInfo) {
+         const area = parseInt(areaInfo.trim().slice(0, -3));
+         if (
+           marketInfo === "wtórny" &&
+           cityInfo === city &&
+           area >= 0 &&
+           area <= 30
+         ) {
+           const areaPrice = parseInt(areaPriceInfo.trim().slice(0, -3));
+           if (!isNaN(areaPrice)) {
+             countSecondary++;
+             return acc + areaPrice;
+           }
+         }
+       }
+       return acc;
+     },
+     0
+   );
+   console.log(totalAverage);
+   console.log(countAveragePrimarySecondary, "countaverageprimarysec");
+   const avgPrice = (totalAverage / countAveragePrimarySecondary).toFixed(2);
+   const avgPricePrimary = (totalAveragePrimary / countPrimary).toFixed(2);
+   const avgPriceSecondary = (totalAverageSecondary / countSecondary).toFixed(
+     2
+   );
+   //console.log(valuesArray[index], valuesArray[index + 1]);
+   //console.log(avgPrice, avgPricePrimary, avgPriceSecondary);
+   return [avgPrice, avgPricePrimary, avgPriceSecondary];
+ }
   const labels = [
     "<30 m²",
     "30-40 m²",
