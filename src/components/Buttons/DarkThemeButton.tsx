@@ -48,7 +48,3 @@ function DarkThemeButton() {
 }
 
 export default DarkThemeButton;
-//<MdBrightness4 />;
-//MdBrightness5;
-//MdBrightness3;
-//MdBrightnessLow
