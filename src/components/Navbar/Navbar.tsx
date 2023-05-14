@@ -6,7 +6,7 @@ import { useContext } from "react";
 import useActive from "../../utils/useActive";
 import SidebarMobile from "./SidebarMobile";
 import MobileContext from "../../context/MobileContext";
-import { TbArrowBarRight, TbArrowBarToLeft } from "react-icons/tb";
+import { MdOutlineRealEstateAgent } from "react-icons/md";
 import DarkThemeButton from "../Buttons/DarkThemeButton";
 
 function Navbar() {
@@ -16,7 +16,10 @@ function Navbar() {
 
   const Logo = (
     <Link to="/">
-      <div>Anytown Real Estate</div>
+      <div className={styles.logo_container}>
+        <MdOutlineRealEstateAgent />
+        Anytown Real Estate
+      </div>
     </Link>
   );
 

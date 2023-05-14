@@ -21,6 +21,23 @@
 .logo {
   cursor: pointer;
 }
+.logo_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--tertiary-color);
+  border-bottom: 1px solid var(--tertiary-color);
+  color: var(--article);
+  transition: all 0.5s ease 0s;
+}
+.logo_container:hover {
+  color: var(--tertiary-text-color);
+  border-color: var(--primary-text-color);
+}
+.logo_container > svg {
+  width: 40px;
+  height: 40px;
+}
 .modal {
   position: fixed;
   top: 100px;
@@ -150,13 +167,14 @@
   .nav {
     display: grid;
     justify-items: center;
-    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     padding: 0;
   }
 
   .logo {
     grid-column: 2/3;
     position: absolute;
+    text-align: center;
   }
 
   .showSidebar {
