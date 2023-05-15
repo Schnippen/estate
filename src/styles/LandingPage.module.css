@@ -215,3 +215,17 @@
     transform: translate(-50%, -50%);
   }
 }
+
+.suggestions {
+  width: 100%;
+  display: block;
+  background-color: red;
+  position: absolute;
+  text-align: center;
+}
+.suggestions li{
+  list-style: none;
+  margin: 10px 0;
+  cursor: pointer;
+  user-select: none;
+}

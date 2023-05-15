@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/LandingPage.module.css";
 import Card from "../components/Card";
 import Button from "../components/Buttons/Button";
-import { HiOutlineLocationMarker, HiSearch } from "react-icons/hi";
+import {  HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
@@ -16,6 +16,7 @@ import {
   TypeOfTransaction,
   PriceData,
 } from "./LandingPageData";
+import CityDropdown from "../components/CityDropdown";
 const backgroundImg = require("../assets/backgroundPhoto2.jpg") as string;
 
 function LandingPage() {
@@ -45,7 +46,10 @@ function LandingPage() {
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQueryDetails({ ...queryDetails, [e.target.name]: e.target.value });
+    setQueryDetails({
+      ...queryDetails,
+      [e.target.name]: e.target.value
+    });
   };
 
   //renderError
@@ -94,20 +98,7 @@ function LandingPage() {
           className={styles.section_searchbar}
           onSubmit={(e) => handleSubmit(e)}
         >
-          <div className={styles.form_div_wrapper}>
-            <div className={styles.form_label_wrapper}>
-              <label htmlFor="city">Miasto</label>
-            </div>
-            <HiOutlineLocationMarker className={styles.svg} />
-            <input
-              type="text"
-              placeholder="np. miasto"
-              name="City"
-              id="city"
-              className={styles.inputText}
-              onChange={handleInput}
-            />
-          </div>
+          <CityDropdown handleInput={handleInput} queryDetails={queryDetails} setQueryDetails={setQueryDetails}/>
           <div className={styles.dropdown}>
             <Dropdown
               data={TypeOfRealEstate}

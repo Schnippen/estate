@@ -61,16 +61,16 @@ function Navbar() {
             <li>Buy</li>
           </Link>
           <Link to="*" className={styles.nav__link}>
-            <li>....</li>
+            <li>TBA</li>
           </Link>
           <Link to="*" className={styles.nav__link}>
-            <li>....</li>
+            <li>TBA</li>
           </Link>
           <Link to="/Analitics" className={styles.nav__link}>
             <li>Analitics</li>
           </Link>
           <Link to="/Blog" className={styles.nav__link}>
-            <li>Blog</li>
+            <li>TBA</li>
           </Link>
         </ul>
       )}
