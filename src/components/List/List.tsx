@@ -397,7 +397,7 @@ function List({ isMobile }: { isMobile: boolean }) {
   return (
     <>
       {isMobile ? (
-        <div style={{ marginTop: "100px" }}>gówno</div>
+        <div style={{ marginTop: "100px" }}>jestem list mobile</div>
       ) : (
         <SearchForm
           query={querySearchForm}
@@ -417,6 +417,7 @@ function List({ isMobile }: { isMobile: boolean }) {
           <ul className={styles.list__container}>{items}</ul>
         )}
         <Pagination
+        isLoading={isLoading}
           pages={pages}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}

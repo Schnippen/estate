@@ -19,7 +19,7 @@ function CityDropdown({
   queryDetails,
   setQueryDetails,
 }: CityDropdownTypes) {
-  const [focused, setFocused] = useState<boolean>(true);
+  const [focused, setFocused] = useState<boolean>(false);
   const [hovered, setHovered] = useState<boolean>(false);
 
   const DropdownData = {

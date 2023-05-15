@@ -13,7 +13,7 @@ import {
   TypeOfTransaction,
   PriceData,
 } from "./SearchFormData";
-
+import CityDropdown from "./CityDropdown";
 
 type QueryDetails = {
   City: string;
@@ -134,11 +134,7 @@ function SearchForm({
 
   //div zamienić na <form>
   return (
-    <form
-      className={styles.search_form}
-
-      onSubmit={(e) => handleForm(e)}
-    >
+    <form className={styles.search_form} onSubmit={(e) => handleForm(e)}>
       <section className={styles.section}>
         <div className={styles.form_input_container}>
           <label htmlFor="City">City</label>

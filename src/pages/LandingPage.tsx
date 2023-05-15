@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/LandingPage.module.css";
 import Card from "../components/Card";
 import Button from "../components/Buttons/Button";
-import {  HiSearch } from "react-icons/hi";
+import { HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
@@ -48,7 +48,7 @@ function LandingPage() {
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQueryDetails({
       ...queryDetails,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -98,7 +98,11 @@ function LandingPage() {
           className={styles.section_searchbar}
           onSubmit={(e) => handleSubmit(e)}
         >
-          <CityDropdown handleInput={handleInput} queryDetails={queryDetails} setQueryDetails={setQueryDetails}/>
+          <CityDropdown
+            handleInput={handleInput}
+            queryDetails={queryDetails}
+            setQueryDetails={setQueryDetails}
+          />
           <div className={styles.dropdown}>
             <Dropdown
               data={TypeOfRealEstate}
@@ -170,13 +174,15 @@ function LandingPage() {
                 svg={<MdOutlineMapsHomeWork />}
               ></Card>
             </Link>
-            <Card
-              title="Sprzedaj Nieruchomość"
-              description={Lorem}
-              buttonDescription="Zobacz swoje możliwości"
-              alt="Sprzedaj Nieruchomość"
-              svg={<BsCashCoin />}
-            ></Card>
+            <Link to="/Leaflet">
+              <Card
+                title="Sprzedaj Nieruchomość"
+                description={Lorem}
+                buttonDescription="Zobacz swoje możliwości"
+                alt="Sprzedaj Nieruchomość"
+                svg={<BsCashCoin />}
+              ></Card>
+            </Link>
             <Link to="/Leaflet">
               <Card
                 title="Srawdź Mapę"
