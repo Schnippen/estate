@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ItemRealtorData.module.css";
-import profilePicture from "../../assets/profile.jpg";
+import DefaultProfilePicture from "../../assets/profile.jpg";
+import UserProfilePicture from "../../assets/profile.jpg";
 
 function RealtorData({ prop }: { prop: any }) {
   return (
@@ -9,7 +10,7 @@ function RealtorData({ prop }: { prop: any }) {
       <div className={styles.contact}>
         <img
           className={styles.profilePicture}
-          src={profilePicture}
+          src={UserProfilePicture || DefaultProfilePicture}
           alt="Profile of realtor"
         />
         <address>

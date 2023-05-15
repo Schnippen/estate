@@ -8,7 +8,13 @@ import FullscreenModal from "../FullscreenModal";
 import useActive from "../../utils/useActive";
 import { useState } from "react";
 
-function ItemSideArticle({ prop }: { prop: any }) {
+function ItemSideArticle({
+  prop,
+  AskForPrice,
+}: {
+  prop: any;
+  AskForPrice: React.MutableRefObject<HTMLTextAreaElement | null>;
+}) {
   const [isActive, setIsActive] = useActive(false);
   const [inputValues, setInputValues] = useState({
     name: "",
@@ -87,6 +93,7 @@ function ItemSideArticle({ prop }: { prop: any }) {
                   />
                 </div>
                 <textarea
+                  ref={AskForPrice}
                   className={styles.textarea}
                   name="textmessage"
                   id=""
@@ -131,7 +138,7 @@ function ItemSideArticle({ prop }: { prop: any }) {
                 </div>
               </form>
               <div className={styles.terms}>
-                <p onClick={()=>setIsActive(!isActive)}>Terms of service</p>
+                <p onClick={() => setIsActive(!isActive)}>Terms of service</p>
                 {isActive ? (
                   <FullscreenModal
                     setIsActive={setIsActive}

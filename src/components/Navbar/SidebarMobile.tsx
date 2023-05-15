@@ -11,7 +11,8 @@ import {
 } from "react-icons/hi";
 import { UserAuth } from "../../context/AuthContext";
 import DarkThemeButton from "../Buttons/DarkThemeButton";
-const profilePicture = require("../../assets/profile.jpg");
+import DefaultProfilePicture from "../../assets/profile.jpg";
+const UserProfilePicture = require("../../assets/profile.jpg");
 
 type UserContextTypeTypes = {
   isOpened: boolean;
@@ -61,7 +62,7 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
                 {userLoggedIn ? (
                   <img
                     className={styles.profilePicture}
-                    src={profilePicture}
+                    src={UserProfilePicture || DefaultProfilePicture}
                     alt="Profile of user"
                   />
                 ) : (

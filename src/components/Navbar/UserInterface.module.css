@@ -183,6 +183,7 @@
   transition: all 0.3s ease 0s;
   outline: none;
   padding-left: 25px;
+  background-color: var(--article);
 }
 
 .inputText:focus {

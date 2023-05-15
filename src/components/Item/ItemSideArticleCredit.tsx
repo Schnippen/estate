@@ -102,6 +102,10 @@ function ItemSideArticleCredit() {
           type="submit"
           className={styles.submit}
           value="Oblicz"
+          onClick={(e) => {
+            console.warn("calculated");
+            e.preventDefault();
+          }}
           disabled={
             credit.creditValue && credit.durationOfTheLoan ? false : true
           }

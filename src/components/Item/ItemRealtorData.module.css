@@ -24,6 +24,8 @@
   object-fit: cover;
   top: 50%;
   transform: translateY(-50%);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: var(--secondary-color) dotted 2px;
 }
 
 address {

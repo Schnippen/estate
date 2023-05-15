@@ -6,8 +6,8 @@ import ItemInfoDescription from "../components/Item/ItemInfoDescription";
 import ItemSideArticle from "../components/Item/ItemSideArticle";
 import GoogleMaps from "../components/GoogleMaps";
 import BreadCrumbs from "../components/BreadCrumbs";
-import { useLocation,useParams } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import { useContext, useEffect, useRef } from "react";
 import MobileContext from "../context/MobileContext";
 import { useAddToFavorites } from "../utils/useAddToFavorites";
 
@@ -18,11 +18,19 @@ function Item() {
   const isMobile = useContext(MobileContext);
 
   const AddToFavorites = useAddToFavorites(prop.offerID, true);
+  const AskForPrice = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleAskForPrice = () => {
+    console.log("gwo");
+    if (AskForPrice.current) {
+      AskForPrice.current.focus();
+    }
+  };
 
   const { id } = useParams();
-    useEffect(() => {
-      console.log(`/Item/${id}`);
-    }, [])
+  useEffect(() => {
+    console.log(`/Item/${id}`);
+  }, []);
 
   return (
     <>
@@ -46,8 +54,11 @@ function Item() {
                 <div className={styles.container_article_main_categories}>
                   <ul className={styles.container_article_main_categories_list}>
                     {prop.priceInfo === "Zapytaj o cenę" ? (
-                      <li>
-                        <a href="*">{prop.priceInfo}</a>
+                      <li
+                        className={styles.ask_for_price}
+                        onClick={() => handleAskForPrice()}
+                      >
+                        <p>{prop.priceInfo}</p>
                       </li>
                     ) : (
                       <li>
@@ -120,7 +131,7 @@ function Item() {
             <ItemInfoDescription prop={prop} isMobile={isMobile} />
           </section>
         </article>
-        <ItemSideArticle prop={prop} />
+        <ItemSideArticle prop={prop} AskForPrice={AskForPrice} />
       </div>
     </>
   );

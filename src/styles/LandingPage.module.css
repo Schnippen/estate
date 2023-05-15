@@ -89,6 +89,7 @@
   border-radius: 5px;
   transition: all 0.3s ease 0s;
   outline: none;
+  background-color: var(--article);
 }
 
 .svg {

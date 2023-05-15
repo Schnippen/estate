@@ -14,6 +14,7 @@
   transition: all 0.3s ease 0s;
   outline: none;
   text-align: center;
+  background-color: var(--article);
 }
 .form_input:focus {
   outline: solid var(--tertiary-text-color);

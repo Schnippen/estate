@@ -24,11 +24,12 @@ function TermsOfService({ setIsActive, isActive }: TermsOfServiceTypes) {
   }, [isActive]);
 
   useEffect(() => {
-    if (isActive) {
-      document.body.style.overflow = "hidden";
-    } else {
+
+      document.body.style.overflow = isActive ? "hidden" : "auto";
+  
+    return () => {
       document.body.style.overflow = "auto";
-    }
+    };
   }, [isActive]);
 
   return (

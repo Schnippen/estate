@@ -10,7 +10,7 @@ function ButtonExit({ setIsActive }: ButtonExitTypes) {
   return (
     <button
       className={styles.buttonExit}
-      onClick={() => setIsActive}
+      onClick={() => setIsActive && setIsActive(false)}
       style={{ right: "100px", marginTop: "3rem", top: "0" }}
     >
       <HiOutlineX />

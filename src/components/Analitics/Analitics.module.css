@@ -90,7 +90,7 @@
   display: grid;
   grid-template-columns: 800px 200px;
   grid-template-rows: 50% 50%;
-  background-color: var(--text-background);
+  background-color: var(--article);
   align-items: center;
 }
 
