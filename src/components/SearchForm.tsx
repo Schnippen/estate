@@ -132,23 +132,16 @@ function SearchForm({
     });
   };
 
-  //div zamienić na <form>
   return (
     <form className={styles.search_form} onSubmit={(e) => handleForm(e)}>
       <section className={styles.section}>
         <div className={styles.form_input_container}>
-          <label htmlFor="City">City</label>
-          <div className={styles.form_div_wrapper}>
-            <HiOutlineLocationMarker className={styles.svg} />
-            <input
-              type="text"
-              placeholder="np. miasto"
-              name="City"
-              id="City"
-              className={styles.inputCity}
-              onChange={handleChange}
-            />
-          </div>
+          <CityDropdown
+            handleInput={handleChange}
+            queryDetails={query}
+            setQueryDetails={setQuery}
+            scroll={true}
+          />
         </div>
         <div className={styles.dropdown}>
           <Dropdown

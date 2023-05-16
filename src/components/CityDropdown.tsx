@@ -2,22 +2,21 @@ import React from "react";
 import { useState } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import styles from "./CityDropdown.module.css";
+
 type CityDropdownTypes = {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   queryDetails: {
     [key: string]: string;
   };
-  setQueryDetails: React.Dispatch<
-    React.SetStateAction<{
-      [key: string]: string;
-    }>
-  >;
+  setQueryDetails: React.Dispatch<React.SetStateAction<any>>;
+  scroll?: boolean;
 };
 
 function CityDropdown({
   handleInput,
   queryDetails,
   setQueryDetails,
+  scroll,
 }: CityDropdownTypes) {
   const [focused, setFocused] = useState<boolean>(false);
   const [hovered, setHovered] = useState<boolean>(false);
@@ -70,6 +69,20 @@ function CityDropdown({
             className={styles.suggestions}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            style={
+              scroll
+                ? {
+                    height: `${
+                      DropdownData.data.length * 32 > 140
+                        ? 140
+                        : DropdownData.data.length * 32
+                    }px`,
+                    overflowY: `${
+                      DropdownData.data.length * 32 > 140 ? "scroll" : "visible"
+                    }`,
+                  }
+                : undefined
+            }
           >
             {DropdownData.data
               .filter((item) =>
@@ -92,7 +105,7 @@ function CityDropdown({
                       ...queryDetails,
                       City: item.value,
                     });
-                    //setFocused(false);
+                    setFocused(false);
                   }}
                 >
                   {item.label}

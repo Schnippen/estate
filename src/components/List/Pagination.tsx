@@ -36,10 +36,7 @@ function Pagination({
   const handleLastButton = () => {
     setCurrentPage((currentPage) => pages.length - 0);
   };
-  console.log(isLoading);
-  console.log(currentPage);
-  console.log(pages[1]);
-  console.log(pages.length);
+
   const PaginationMobile = (
     <nav className={stylesMobile.pagination}>
       <ul className={stylesMobile.pagination__list}>
