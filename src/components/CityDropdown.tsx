@@ -61,7 +61,6 @@ function CityDropdown({
             if (!hovered) {
               setFocused(false);
             }
-            console.log("blur");
           }}
         />
         {focused ? (

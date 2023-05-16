@@ -36,6 +36,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   const createUser = (email: string, password: string) => {
+    console.log("auth", email, password);
     return createUserWithEmailAndPassword(auth, email, password).catch(
       (error) => {
         console.log(error.code, error.message);
@@ -44,6 +45,7 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
   };
 
   const signIn = (email: string, password: string) => {
+    console.log(email, password);
     return signInWithEmailAndPassword(auth, email, password).catch((error) => {
       console.log(error.code, error.message);
     });

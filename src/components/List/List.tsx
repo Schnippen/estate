@@ -9,7 +9,7 @@ import useActive from "../../utils/useActive";
 import { TbMap2, TbListNumbers } from "react-icons/tb";
 import Dropdown from "../Dropdown";
 import { useLocation } from "react-router-dom";
-import SearchForm from "../SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 type Item = {
   [key: string]: string;
 };
@@ -31,6 +31,7 @@ type QueryDetails = {
 
 function List({ isMobile }: { isMobile: boolean }) {
   const [isOpened, setIsOpened] = useActive(false);
+  const [isOpenedSearchForm, setIsOpenedSearchForm] = useActive(false);
   const [isLoading, setIsLoading] = useActive(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = useState<number>(5);
@@ -328,7 +329,7 @@ function List({ isMobile }: { isMobile: boolean }) {
           userSelect: "none",
         }}
       >
-        Liczba ogłoszeń: <strong>{databaseState.length}</strong>
+        Number of listings: <strong>{databaseState.length}</strong>
       </div>
       <div style={{ color: "var(--primary-text-color)" }}>
         Zobacz na mapie
@@ -350,7 +351,7 @@ function List({ isMobile }: { isMobile: boolean }) {
         className={styles.small_button}
         style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
       >
-        <h3>Rozwiń</h3>
+        <h3>Expand</h3>
         <HiChevronDown
           className={
             isOpened
@@ -383,7 +384,7 @@ function List({ isMobile }: { isMobile: boolean }) {
               userSelect: "none",
             }}
           >
-            Liczba ogłoszeń: <strong>{databaseState.length}</strong>
+            Number of listings: <strong>{databaseState.length}</strong>
           </div>
           <div style={{ color: "var(--primary-text-color)" }}>
             Zobacz na mapie
@@ -393,11 +394,45 @@ function List({ isMobile }: { isMobile: boolean }) {
       ) : null}
     </section>
   );
-
+  const SearchFormMobile = (
+    <div
+      className={
+        isOpenedSearchForm
+          ? styles.SearchFormMobile_opened
+          : styles.SearchFormMobile_closed
+      }
+    >
+      <div className={styles.button_container}>
+        <button
+          onClick={() => setIsOpenedSearchForm(!isOpenedSearchForm)}
+          className={styles.small_button}
+          style={{ color: isOpenedSearchForm ? "#daa520" : "#efe7e7" }}
+        >
+          <h3>Open</h3>
+          <HiChevronDown
+            className={
+              isOpenedSearchForm
+                ? styles.small_button_ArrowClosed
+                : styles.small_button_ArrowOpened
+            }
+          />
+          <TbListNumbers />
+        </button>
+      </div>
+      {isOpenedSearchForm ? (
+        <SearchForm
+          query={querySearchForm}
+          setQuery={setQuerySearchForm}
+          handleForm={handleForm}
+          searchFormLength={searchFormLength}
+        />
+      ) : null}
+    </div>
+  );
   return (
     <>
       {isMobile ? (
-        <div style={{ marginTop: "100px" }}>jestem list mobile</div>
+        <div style={{ marginTop: "100px" }}>{SearchFormMobile}</div>
       ) : (
         <SearchForm
           query={querySearchForm}
@@ -410,14 +445,28 @@ function List({ isMobile }: { isMobile: boolean }) {
       <section className={styles.section__main}>
         {isMobile ? SectionOptionsMobile : SectionOptions}
         {isLoading ? (
-          <body style={{ height: "800px", width: "100%" }}>
-            <Loading color={"#141212"} svgColor="#554971" top={58} left={47} />
-          </body>
+          <div style={{ height: "800px", width: "100%" }}>
+            {isMobile ? (
+              <Loading
+                color={"#141212"}
+                svgColor="#554971"
+                top={60}
+                left={35}
+              />
+            ) : (
+              <Loading
+                color={"#141212"}
+                svgColor="#554971"
+                top={58}
+                left={47}
+              />
+            )}
+          </div>
         ) : (
           <ul className={styles.list__container}>{items}</ul>
         )}
         <Pagination
-        isLoading={isLoading}
+          isLoading={isLoading}
           pages={pages}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}

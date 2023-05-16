@@ -208,4 +208,3 @@ function UserInterface() {
 }
 
 export default UserInterface;
-//{isActiveSmall ? <List></List> : null}

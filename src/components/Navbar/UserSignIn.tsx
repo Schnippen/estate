@@ -30,8 +30,6 @@ const UserSignIn = ({
   logOut,
   userLoggedIn,
   userData,
-  HiOutlineEyeOff,
-  HiOutlineEye,
 }: UserSignInTypes) => {
   //Loging Out
   const handleLogOut = async () => {
@@ -117,5 +115,3 @@ const UserSignIn = ({
 };
 
 export default UserSignIn;
-//<HiOutlineEye className={styles.svgPassword} />
-//<HiOutlineEyeOff className={styles.svgPassword} />

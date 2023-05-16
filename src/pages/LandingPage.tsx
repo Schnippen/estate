@@ -34,7 +34,6 @@ function LandingPage() {
     PriceFrom: "",
     PriceTo: "",
   });
-  console.log(queryDetails, "landingpage");
 
   const handleChange = (ref: React.RefObject<HTMLInputElement>) => {
     if (ref.current) {

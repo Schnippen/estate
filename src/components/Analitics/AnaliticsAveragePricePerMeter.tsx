@@ -135,8 +135,8 @@ function AnaliticsAveragePricePerMeter({
      },
      0
    );
-   console.log(totalAverage);
-   console.log(countAveragePrimarySecondary, "countaverageprimarysec");
+   //console.log(totalAverage);
+   //console.log(countAveragePrimarySecondary, "countaverageprimarysec");
    const avgPrice = (totalAverage / countAveragePrimarySecondary).toFixed(2);
    const avgPricePrimary = (totalAveragePrimary / countPrimary).toFixed(2);
    const avgPriceSecondary = (totalAverageSecondary / countSecondary).toFixed(

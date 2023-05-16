@@ -1,19 +1,15 @@
 import styles from "./SearchForm.module.css";
 import { useState, useEffect } from "react";
-import {
-  HiSearch,
-  HiOutlineLocationMarker,
-  HiChevronDown,
-} from "react-icons/hi";
-import Button from "./Buttons/Button";
-import Dropdown from "./Dropdown";
-import Price from "../components/Price";
+import { HiSearch } from "react-icons/hi";
+import Button from "../Buttons/Button";
+import Dropdown from "../Dropdown";
+import Price from "../Price";
 import {
   TypeOfRealEstate,
   TypeOfTransaction,
   PriceData,
 } from "./SearchFormData";
-import CityDropdown from "./CityDropdown";
+import CityDropdown from "../CityDropdown";
 
 type QueryDetails = {
   City: string;

@@ -11,7 +11,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
   });
   useEffect(() => {
     const root = document.documentElement;
-    if (isDarkTheme) {
+    if (!isDarkTheme) {
       root.style.setProperty("--primary-color", "#63768d");
       root.style.setProperty("--secondary-color", "#554971");
       root.style.setProperty("--tertiary-color", "#36213e");
@@ -23,7 +23,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#daa520");
-      localStorage.setItem("DarkTheme", "false");
+      localStorage.setItem("DarkTheme", "true");
     } else {
       root.style.setProperty("--primary-color", "#172f55");
       root.style.setProperty("--secondary-color", "#313066");
@@ -36,7 +36,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#FFEBC9");
-      localStorage.setItem("DarkTheme", "true");
+      localStorage.setItem("DarkTheme", "false");
     }
   }, [isDarkTheme]);
 

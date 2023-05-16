@@ -46,6 +46,7 @@
   text-align: center;
   box-shadow: var(--box-shadow-dropdown);
   border-radius: 0 0 5px 5px;
+  z-index: 10;
 }
 .suggestions li {
   color: var(--secondary-text-color);

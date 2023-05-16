@@ -29,16 +29,16 @@ function UserSignUp() {
   //password
   const [password, setPassword] = useState<string>("");
   const [passwordValid, setPasswordValid] = useActive(false);
-  const [focusedPassword, setFocusedPassword] = useActive(false);
+  const [focusedPassword, setFocusedPassword] = useState(false);
   const [passwordShown, setPasswordShown] = useActive(false);
   const inputRefPassword = useRef<HTMLInputElement>(null);
   const PASSWORD_REGEX =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,16}$/;
-
+  const [showPasswordError, setShowPasswordError] = useState(false);
   //password Confirmation - Matched
   const [passwordMatched, setPasswordMatched] = useState<string>("");
   const [passwordMatchedValid, setPasswordMatchedValid] = useActive(false);
-  const [focusedPasswordMatched, setFocusedPasswordMatched] = useActive(false);
+  const [focusedPasswordMatched, setFocusedPasswordMatched] = useState(false);
   const inputRefPasswordMatched = useRef<HTMLInputElement>(null);
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -59,9 +59,8 @@ function UserSignUp() {
   useEffect(() => {
     setPasswordValid(PASSWORD_REGEX.test(password));
     setPasswordMatchedValid(passwordMatched === password);
+    setShowPasswordError(focusedPassword && !passwordValid);
   }, [password, passwordMatched]);
-
-  //console.table(passwordValid, password, passwordMatched, passwordMatchedValid);
 
   //go back after success or error
   const navigate = useNavigate();
@@ -83,8 +82,11 @@ function UserSignUp() {
     setIsLoading(true);
     console.log("Proceed registration");
     try {
+      console.log("createUSER");
+      console.log(email, password);
       await createUser(email, password);
       setShowSuccessModal(true);
+      console.log("Success");
     } catch (error) {
       console.log(error);
       console.log("An error occurred. Please try again.");
@@ -97,22 +99,22 @@ function UserSignUp() {
   };
 
   return (
-    <body className={styles.signUp_body}>
+    <div className={styles.signUp_body}>
       <div className={styles.header}>
-        <h2>Dołącz do Anytown Real Estate</h2>
+        <h2>Join Anytown Real Estate</h2>
       </div>
-      <Link to={"-1"}>
+      <Link to={"/"}>
         <span className={styles.backButton}>
           <Button>
             <HiArrowLeft />
           </Button>
-          Wróć
+          Return
         </span>
       </Link>
       <div className={styles.signUp_container}>
         <form onSubmit={handleSubmit}>
           <div className={styles.authentication}>
-            <h5>skorzystaj z </h5>
+            <h5>use </h5>
             <div className={styles.authentication_button_wrapper}>
               <button className={styles.authentication_button}>
                 <FcGoogle />
@@ -127,7 +129,7 @@ function UserSignUp() {
                 Apple
               </button>
             </div>
-            <h5 style={{ margin: "0 0 10px 0" }}>lub zarejestruj sie przez</h5>
+            <h5 style={{ margin: "0 0 10px 0" }}>or register via</h5>
           </div>
           <div className={styles.authentication_panel}>
             <label htmlFor="email">E-mail:</label>
@@ -154,12 +156,12 @@ function UserSignUp() {
             {!email || emailValid ? null : (
               <div className={styles.errorParagraph}>
                 <p>
-                  To pole musi zawierać poprawny adres e-mail (np.
-                  jan.kowalski@mail.com).
+                  This field must contain a valid email address (e.g
+                  johndoe@test.com)
                 </p>
               </div>
             )}
-            <label htmlFor="password">Hasło:</label>
+            <label htmlFor="password">Password:</label>
             <div className={styles.form_div_wrapper}>
               <HiLockClosed className={styles.svg} />
               {passwordShown ? (
@@ -198,8 +200,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPassword(e.target.value)}
-                onFocus={() => setFocusedPassword}
-                onBlur={() => setFocusedPassword}
+                onFocus={() => setFocusedPassword((prev) => !prev)}
+                onBlur={() => setFocusedPassword((prev) => !prev)}
                 ref={inputRefPassword}
                 onKeyDown={handleSpace}
               />
@@ -207,13 +209,14 @@ function UserSignUp() {
             {focusedPassword && !passwordValid ? (
               <div className={styles.errorParagraph}>
                 <p>
-                  Hasło musi mieć długośc od 8 do 16 liter<br></br>
-                  Musi zawierać jedną liczbę, wielką literę<br></br>
-                  oraz jeden ze znaków specjalnych !@#$%
+                  Password must be between 8 and 16 characters long.<br></br>
+                  It must contain at least one number, one uppercase letter,
+                  <br></br>
+                  and one of the special characters: !@#$%
                 </p>
               </div>
             ) : null}
-            <label htmlFor="passwordConfirmation">Powtórz Hasło:</label>
+            <label htmlFor="passwordConfirmation">Repeat Password:</label>
             <div className={styles.form_div_wrapper}>
               <HiLockClosed className={styles.svg} />
               {passwordShown ? (
@@ -243,7 +246,7 @@ function UserSignUp() {
                 type={passwordShown ? "text" : "password"}
                 name="passwordConfirmation"
                 required
-                placeholder="Powtórz Hasło..."
+                placeholder="Repeat Password..."
                 className={
                   !passwordMatched
                     ? styles.inputText
@@ -252,8 +255,8 @@ function UserSignUp() {
                     : styles.inputTextError
                 }
                 onChange={(e) => setPasswordMatched(e.target.value)}
-                onFocus={() => setFocusedPasswordMatched}
-                onBlur={() => setFocusedPasswordMatched}
+                onFocus={() => setFocusedPasswordMatched((prev) => !prev)}
+                onBlur={() => setFocusedPasswordMatched((prev) => !prev)}
                 ref={inputRefPasswordMatched}
                 onKeyDown={handleSpace}
               />
@@ -298,7 +301,7 @@ function UserSignUp() {
           </div>
         </div>
       ) : null}
-    </body>
+    </div>
   );
 }
 
