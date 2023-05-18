@@ -19,7 +19,10 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
     navigate(`/Item/${item.offerID}`, { state: item });
   };
-
+  const photosPicsum = [
+    57, 61, 78, 6, 88, 101, 116, 164, 178, 188, 214, 221, 234, 238, 288, 290,
+    299, 308, 322, 320, 397, 405, 437,
+  ];
   return (
     <>
       {isMobile ? (
@@ -32,9 +35,9 @@ function ListItem({ item, isMobile }: { item: any; isMobile?: boolean }) {
               onClick={(e) => handleNavigateItem(e)}
             >
               <img
-                src={`https://picsum.photos/500/500?random=${Math.floor(
-                  Math.random() * 100
-                )}`}
+                src={`https://picsum.photos/id/${photosPicsum[Math.floor(
+                  Math.random() * photosPicsum.length)]
+                }/500/500`}
                 alt="listing"
                 loading="lazy"
               ></img>

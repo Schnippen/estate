@@ -34,7 +34,7 @@ function Item() {
 
   return (
     <>
-      <BreadCrumbs />
+      <BreadCrumbs prop={prop} />
       <div className={styles.container}>
         <article className={styles.container_article_main}>
           <section className={styles.section_item}>

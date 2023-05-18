@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./BreadCrumbs.module.css";
 import { Link } from "react-router-dom";
 
-function BreadCrumbs({}) {
+function BreadCrumbs({ prop }: any) {
   return (
     <div className={styles.breadcrumbs}>
       <nav className={styles.breadcrumbs_nav}>
@@ -12,7 +12,7 @@ function BreadCrumbs({}) {
           </Link>
           <li>Kategoria</li>
           <li>Województwo</li>
-          <li>Miasto</li>
+          <li>{prop ? prop.cityInfo : "Miasto"}</li>
         </ul>
       </nav>
     </div>

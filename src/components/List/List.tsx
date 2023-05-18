@@ -355,6 +355,7 @@ function List({ isMobile }: { isMobile: boolean }) {
         onClick={() => setIsOpened(!isOpened)}
         className={styles.small_button}
         style={{ color: isOpened ? "#daa520" : "#efe7e7" }}
+        disabled={isLoading}
       >
         <h3>Expand</h3>
         <HiChevronDown
@@ -411,6 +412,7 @@ function List({ isMobile }: { isMobile: boolean }) {
         <button
           onClick={() => setIsOpenedSearchForm(!isOpenedSearchForm)}
           className={styles.small_button}
+          disabled={isLoading}
           style={{ color: isOpenedSearchForm ? "#daa520" : "#efe7e7" }}
         >
           <h3>Open</h3>
