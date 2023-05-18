@@ -69,7 +69,8 @@ function Pagination({
       </ul>
     </nav>
   );
-
+  console.log(isLoading || currentPage < pages[1]);
+  console.log(pages[1])
   return (
     <>
       {isMobile ? (
@@ -99,7 +100,7 @@ function Pagination({
             <li>
               <button
                 className={styles.pagination__list_btn}
-                disabled={isLoading || currentPage < pages[1]}
+                disabled={isLoading || currentPage < pages[1] ||pages[1]===undefined }
                 onClick={handlePrevMinusOneButton}
               >
                 {currentPage < pages[1] || pages[1] === undefined

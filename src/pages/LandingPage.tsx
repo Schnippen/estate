@@ -76,7 +76,7 @@ function LandingPage() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Submitting!");
-    //console.table(queryDetails);
+    console.table(queryDetails);
     navigate("/Offers", { state: queryDetails });
   };
 

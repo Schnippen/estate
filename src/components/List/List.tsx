@@ -73,6 +73,11 @@ function List({ isMobile }: { isMobile: boolean }) {
     for (const key in query) {
       if (query[key].length > 0) {
         console.log(`${key}: ${query[key]}`);
+        if (key === "City") {
+          filteredData = filteredData.filter(
+            (object: any) => object["cityInfo"] === query["City"]
+          );
+        }
         if (key === "TypeOfRealEstate") {
           filteredData = filteredData.filter(
             (object: any) =>

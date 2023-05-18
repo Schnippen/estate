@@ -49,7 +49,7 @@ function Analitics() {
   };
 
   return (
-    <body className={styles.body}>
+    <div className={styles.body}>
       <header className={styles.header}>
         <h1>Analitics</h1>
       </header>
@@ -86,7 +86,7 @@ function Analitics() {
           </div>
         </section>
       </article>
-    </body>
+    </div>
   );
 }
 

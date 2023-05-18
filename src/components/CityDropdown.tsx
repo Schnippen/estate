@@ -23,16 +23,16 @@ function CityDropdown({
 
   const DropdownData = {
     data: [
-      { value: "warszawa", label: "Warszawa" },
-      { value: "wroclaw", label: "Wrocław" },
-      { value: "szczecin", label: "Szczecin" },
-      { value: "poznan", label: "Poznań" },
-      { value: "lodz", label: "Łódź" },
-      { value: "lublin", label: "Lublin" },
-      { value: "krakow", label: "Kraków" },
-      { value: "katowice", label: "Katowice" },
-      { value: "gdansk", label: "Gdańsk" },
-      { value: "bydgoszcz", label: "Bydgoszcz" },
+      { value: "Warszawa", label: "Warszawa" },
+      { value: "Wrocław", label: "Wrocław" },
+      { value: "Szczecin", label: "Szczecin" },
+      { value: "Poznań", label: "Poznań" },
+      { value: "Łódź", label: "Łódź" },
+      { value: "Lublin", label: "Lublin" },
+      { value: "Kraków", label: "Kraków" },
+      { value: "Katowice", label: "Katowice" },
+      { value: "Gdańsk", label: "Gdańsk" },
+      { value: "Bydgoszcz", label: "Bydgoszcz" },
     ],
     name: "city",
     placeholder: "Choose a city...",
@@ -55,7 +55,6 @@ function CityDropdown({
           onChange={handleInput}
           onFocus={() => {
             setFocused(true);
-            console.log(focused, "focus");
           }}
           onBlur={() => {
             if (!hovered) {
