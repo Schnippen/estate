@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+#root{
+  background-color: var(--background-color);
+}
 :root {
   --primary-color: #63768d;
   --secondary-color: #554971;
