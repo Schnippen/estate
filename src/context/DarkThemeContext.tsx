@@ -23,6 +23,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#FFEBC9");
+      root.style.setProperty("--landing-page-form", "rgb(23 47 85 / 69%)");
       localStorage.setItem("DarkTheme", "true");
     } else {
       root.style.setProperty("--primary-color", "#63768d");
@@ -36,6 +37,7 @@ export const DarkThemeContextProvider = ({ children }: { children: any }) => {
       root.style.setProperty("--primary-text-color", "#efe7e7");
       root.style.setProperty("--secondary-text-color", "#141212");
       root.style.setProperty("--tertiary-text-color", "#daa520");
+      root.style.setProperty("--landing-page-form", "rgba(99 118 141 / 81%)");
       localStorage.setItem("DarkTheme", "false");
     }
   }, [isDarkTheme]);

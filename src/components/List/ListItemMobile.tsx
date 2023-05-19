@@ -8,11 +8,22 @@ type ListItemMobileProps = {
 
 const ListItemMobile: React.FC<ListItemMobileProps> = ({ item }) => {
   const AddToFavorites = useAddToFavorites(item.offerID, false);
-
+  const photosPicsum = [
+    57, 61, 78, 6, 88, 101, 116, 164, 178, 188, 214, 221, 234, 238, 288, 290,
+    299, 308, 322, 320, 397, 405, 437,
+  ];
   return (
     <li key={item.offerID} className={styles.listItem_container}>
       <article className={styles.grid_container}>
-        <section className={styles.grid_img}></section>
+        <section className={styles.grid_img}>
+          <img
+            src={`https://picsum.photos/id/${
+              photosPicsum[Math.floor(Math.random() * photosPicsum.length)]
+            }/500/500`}
+            alt="listing"
+            loading="lazy"
+          ></img>
+        </section>
         <section className={styles.grid_description}>
           <h3 className={styles.grid_description_category}>
             <div>{item.titleKategoria}</div>

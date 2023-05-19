@@ -114,7 +114,9 @@ function UserSignUp() {
       <div className={styles.signUp_container}>
         <form onSubmit={handleSubmit}>
           <div className={styles.authentication}>
-            <h5>use </h5>
+            <h5 style={{ borderBottom: "1px solid rgba(216, 216, 216, 0.4)" }}>
+              use{" "}
+            </h5>
             <div className={styles.authentication_button_wrapper}>
               <button className={styles.authentication_button}>
                 <FcGoogle />
@@ -129,7 +131,14 @@ function UserSignUp() {
                 Apple
               </button>
             </div>
-            <h5 style={{ margin: "0 0 10px 0" }}>or register via</h5>
+            <h5
+              style={{
+                margin: "0 0 10px 0",
+                borderBottom: "1px solid rgba(216, 216, 216, 0.4)",
+              }}
+            >
+              or register via
+            </h5>
           </div>
           <div className={styles.authentication_panel}>
             <label htmlFor="email">E-mail:</label>

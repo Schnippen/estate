@@ -22,6 +22,12 @@
   background-color: bisque;
   border-radius: 16px 16px 0 0;
 }
+.grid_img img {
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
 
 .grid_description {
   width: 300px;

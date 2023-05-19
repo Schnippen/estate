@@ -26,7 +26,7 @@
   display: flex;
   height: 100px;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--landing-page-form);
   border-radius: 5px;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
@@ -116,7 +116,6 @@
 
 .landing__page_card_section {
   margin: 40px 4rem;
-
 }
 
 .landing__page_card_section_list {
