@@ -24,7 +24,7 @@ function Blog() {
   };
   console.log(listOfPosts);
   return (
-    <body className={styles.blog_body}>
+    <div className={styles.blog_body}>
       <div>
         <input
           type="text"
@@ -38,7 +38,7 @@ function Blog() {
       {ListOfPosts}
       <div>text osobny koponent</div>
       <div>lista postów ul list</div>
-    </body>
+    </div>
   );
 }
 

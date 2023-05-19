@@ -452,7 +452,13 @@ function List({ isMobile }: { isMobile: boolean }) {
       <section className={styles.section__main}>
         {isMobile ? SectionOptionsMobile : SectionOptions}
         {isLoading ? (
-          <div style={{ height: "800px", width: "100%" }}>
+          <div
+            style={{
+              height: "800px",
+              width: "100%",
+              backgroundColor: "var(--background-color)",
+            }}
+          >
             {isMobile ? (
               <Loading
                 color={"#141212"}

@@ -55,7 +55,7 @@ function Favorites() {
   );*/
 
   return (
-    <body className={styles.body}>
+    <div className={styles.body}>
       <header className={styles.header}>
         <h1
           style={{
@@ -82,7 +82,7 @@ function Favorites() {
         noItems
       )}
       <section className={styles.section_items}>{ItemsList}</section>
-    </body>
+    </div>
   );
 }
 

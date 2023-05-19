@@ -116,6 +116,7 @@
 
 .landing__page_card_section {
   margin: 40px 4rem;
+
 }
 
 .landing__page_card_section_list {
@@ -223,7 +224,7 @@
   position: absolute;
   text-align: center;
 }
-.suggestions li{
+.suggestions li {
   list-style: none;
   margin: 10px 0;
   cursor: pointer;

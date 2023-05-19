@@ -1,22 +1,15 @@
 import React from "react";
 import styles from "../styles/LandingPage.module.css";
 import Card from "../components/Card";
-import Button from "../components/Buttons/Button";
-import { HiSearch } from "react-icons/hi";
 import { TbMap2 } from "react-icons/tb";
 import { MdOutlineMapsHomeWork } from "react-icons/md";
 import { BsCashCoin } from "react-icons/bs";
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Dropdown from "../components/Dropdown";
-import Price from "../components/Price";
+
 import MobileContext from "../context/MobileContext";
-import {
-  TypeOfRealEstate,
-  TypeOfTransaction,
-  PriceData,
-} from "./LandingPageData";
-import CityDropdown from "../components/CityDropdown";
+
+import LandingPageSearchForm from "../components/LandingPageSearchForm";
 const backgroundImg = require("../assets/backgroundPhoto2.jpg") as string;
 
 function LandingPage() {
@@ -93,47 +86,14 @@ function LandingPage() {
         {renderError ? (
           <div className={styles.errorDiv}>{errorMessage.message1}</div>
         ) : null}
-        <form
-          className={styles.section_searchbar}
-          onSubmit={(e) => handleSubmit(e)}
-        >
-          <CityDropdown
-            handleInput={handleInput}
-            queryDetails={queryDetails}
-            setQueryDetails={setQueryDetails}
-          />
-          <div className={styles.dropdown}>
-            <Dropdown
-              data={TypeOfRealEstate}
-              name={"TypeOfRealEstate"}
-              handleChange={handleChange}
-              placeholder={"Rodzaj Nieruchomości"}
-              label={"Rodzaj Nieruchomości"}
-            ></Dropdown>
-          </div>
-          <div className={styles.dropdown}>
-            <Dropdown
-              data={TypeOfTransaction}
-              name={"TypeOfTransaction"}
-              handleChange={handleChange}
-              placeholder={"Rodzaj Transakscji"}
-              label={"Rodzaj Transakscji"}
-            ></Dropdown>
-          </div>
-          <div
-            className={styles.dropdown}
-            style={{
-              width: "320px",
-              boxShadow: renderError ? "0px 0px 11px 4px red" : "none",
-            }}
-          >
-            <label htmlFor="">Cena w zł</label>
-            <Price data={PriceData} handleChange={handleChange} />
-          </div>
-          <Button type={"submit"} onClick={handleSubmit} disabled={renderError}>
-            <HiSearch />
-          </Button>
-        </form>
+        <LandingPageSearchForm
+          handleSubmit={handleSubmit}
+          handleInput={handleInput}
+          queryDetails={queryDetails}
+          setQueryDetails={setQueryDetails}
+          handleChange={handleChange}
+          renderError={renderError}
+        />
       </section>
       <section className={styles.landing__page_card_section}>
         {isMobile ? (
