@@ -36,11 +36,11 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
   }, [isOpened]);
 
   useEffect(() => {
-    if (isOpened) {
-      document.body.style.overflow = "hidden";
-    } else {
+    document.body.style.overflow = isOpened ? "hidden" : "auto";
+
+    return () => {
       document.body.style.overflow = "auto";
-    }
+    };
   }, [isOpened]);
 
   const favoritesStorage = JSON.parse(
