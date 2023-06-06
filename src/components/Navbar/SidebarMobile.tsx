@@ -77,7 +77,7 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
                     userLoggedIn ? styles.profileNameLogged : styles.profileName
                   }
                 >
-                  {userLoggedIn ? userData.email :"Not logged in"}
+                  {userLoggedIn ? userData.email : "Not logged in"}
                 </h5>
               </div>
             </div>
@@ -85,17 +85,17 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
               <ul className={styles.sidebarList}>
                 <li>
                   <HiSearch className={styles.sidebarListSvg} />
-                  <p>Szukaj Ogłoszeń</p>
+                  <p>Browse Listings</p>
                 </li>
                 {userLoggedIn ? (
                   <>
                     <li>
                       <HiOfficeBuilding className={styles.sidebarListSvg} />
-                      <p>Moje ogłoszenia</p>
+                      <p>My listings</p>
                     </li>
                     <li>
                       <HiMail className={styles.sidebarListSvg} />
-                      <p>Wiadomosci</p>
+                      <p>Messages</p>
                     </li>
                     <li>
                       <HiHeart
@@ -105,12 +105,12 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
                             : styles.sidebarListSvg
                         }
                       />
-                      <p>Obserwowane</p>
+                      <p>Favorites</p>
                       {Notification}
                     </li>
                     <li>
                       <HiCog className={styles.sidebarListSvg} />
-                      <p>Ustawienia</p>
+                      <p>Settings</p>
                     </li>
                   </>
                 ) : null}
