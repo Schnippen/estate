@@ -77,7 +77,7 @@ function SidebarMobile({ isOpened, setIsOpened }: UserContextTypeTypes) {
                     userLoggedIn ? styles.profileNameLogged : styles.profileName
                   }
                 >
-                  {userLoggedIn ? userData.email : "Zaloguj się"}
+                  {userLoggedIn ? userData.email :"Not logged in"}
                 </h5>
               </div>
             </div>
