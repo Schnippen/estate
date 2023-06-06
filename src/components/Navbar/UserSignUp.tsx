@@ -16,7 +16,8 @@ import { Link } from "react-router-dom";
 import useActive from "../../utils/useActive";
 import { BsFacebook, BsApple } from "react-icons/bs";
 import { useState, useEffect, useRef } from "react";
-import { UserAuth } from "../../context/AuthContext";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 function UserSignUp() {
   //loading
@@ -74,17 +75,18 @@ function UserSignUp() {
     }
   }, [showSuccessModal, showErrorModal]);
 
-  const { createUser } = UserAuth();
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert("Signing Up!");
     setIsLoading(true);
     console.log("Proceed registration");
+
     try {
-      console.log("createUSER");
-      console.log(email, password);
-      await createUser(email, password);
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       setShowSuccessModal(true);
       console.log("Success");
     } catch (error) {
@@ -272,13 +274,13 @@ function UserSignUp() {
             </div>
             {focusedPasswordMatched && !passwordMatchedValid ? (
               <div className={styles.errorParagraph}>
-                <p>Powtórz Hasło</p>
+                <p>Repeat password</p>
               </div>
             ) : null}
             <div>
               <input
                 type="submit"
-                value={"Zarejestruj się"}
+                value={"Sign Up"}
                 className={styles.submit}
                 disabled={
                   !emailValid || !passwordValid || !passwordMatchedValid

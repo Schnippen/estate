@@ -8,6 +8,16 @@ import {
 } from "firebase/auth";
 import { auth } from "../firebase";
 
+import { firestore } from "../firebase";
+/* import {
+  where,
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+  query,
+} from "firebase/firestore"; */
+
 type UserContextProps = {
   createUser: (email: string, password: string) => void;
   signIn: (email: string, password: string) => void;
@@ -37,12 +47,27 @@ export const AuthContextProvider = ({ children }: { children: any }) => {
 
   const createUser = (email: string, password: string) => {
     console.log("auth", email, password);
-    return createUserWithEmailAndPassword(auth, email, password).catch(
+    /*     return createUserWithEmailAndPassword(auth, email, password).catch(
       (error) => {
         console.log(error.code, error.message);
       }
+    ); */
+    return createUserWithEmailAndPassword(auth, email, password).catch(
+      (error) => {
+        console.log(error);
+      }
     );
   };
+
+  /*   const usersCollection = collection(FIRESTORE_DB, 'users');
+      const userDocRef = doc(usersCollection, response.user.uid);
+      await setDoc(userDocRef, {
+        uid: response.user.uid,
+        email: response.user.email,
+        displayName: response.user.displayName,
+        moneyPaid: 0,
+        tokens: 30,
+      }); */
 
   const signIn = (email: string, password: string) => {
     console.log(email, password);

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ListItemMobile.module.css";
 import { useAddToFavorites } from "../../utils/useAddToFavorites";
+import { useNavigate } from "react-router-dom";
 
 type ListItemMobileProps = {
   item: any;
@@ -12,6 +13,18 @@ const ListItemMobile: React.FC<ListItemMobileProps> = ({ item }) => {
     57, 61, 78, 6, 88, 101, 116, 164, 178, 188, 214, 221, 234, 238, 288, 290,
     299, 308, 322, 320, 397, 405, 437,
   ];
+
+  let navigate = useNavigate();
+
+  const handleNavigateItem = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    navigate(`/Item/${item.offerID}`, { state: item });
+  };
+
   return (
     <li key={item.offerID} className={styles.listItem_container}>
       <article className={styles.grid_container}>
@@ -32,7 +45,10 @@ const ListItemMobile: React.FC<ListItemMobileProps> = ({ item }) => {
             <h3>{item.priceInfo}</h3>
             {item.areaPriceInfo}&nbsp;m²
           </div>
-          <h2 className={styles.grid_description_title}>
+          <h2
+            className={styles.grid_description_title}
+            onClick={(e) => handleNavigateItem(e)}
+          >
             <div>
               {item.offerTitle
                 .split(" ")

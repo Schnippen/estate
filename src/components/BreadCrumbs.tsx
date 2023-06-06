@@ -8,7 +8,7 @@ function BreadCrumbs({ prop }: any) {
       <nav className={styles.breadcrumbs_nav}>
         <ul>
           <Link to={"/Offers"}>
-            <li>Wróć</li>
+            <li>Go Back</li>
           </Link>
           <li>Kategoria</li>
           <li>Województwo</li>
