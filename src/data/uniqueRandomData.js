@@ -247,8 +247,10 @@ function usableArea(data) {
     }
 
     // Remove non-numeric characters and convert to integer
-    const numericLandArea = parseInt(landArea.replace(/\D/g, ""), 10);
 
+    const numericLandArea = parseFloat(
+      landArea.replace(/[^\d,]/g, "").replace(",", ".")
+    );
     // Update the property object with the processed usableArea
     return { ...property, usableArea: numericLandArea };
   });
