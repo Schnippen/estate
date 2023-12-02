@@ -126,7 +126,9 @@ function areaInfo(data) {
     }
 
     // Remove the "zł" part and leave only the numeric value
-    const numericPrice = parseInt(areaInfo.replace(/\D/g, ""), 10);
+    const numericPrice = parseFloat(
+      areaInfo.replace(/[^\d,]/g, "").replace(",", ".")
+    );
 
     // Update the property object with the processed priceInfo
     return { ...property, areaInfo: numericPrice };
@@ -165,7 +167,9 @@ function landAreaInfo(data) {
     }
 
     // Remove non-numeric characters and convert to integer
-    const numericLandArea = parseInt(landArea.replace(/\D/g, ""), 10);
+    const numericLandArea = parseFloat(
+      landArea.replace(/[^\d,]/g, "").replace(",", ".")
+    );
 
     // Update the property object with the processed landAreaInfo
     return { ...property, landAreaInfo: numericLandArea };
